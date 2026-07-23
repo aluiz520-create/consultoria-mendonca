@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eaf1e6"/>
+      <stop offset="100%" stop-color="#cfe0d3"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4f9563"/>
+      <stop offset="100%" stop-color="#2f5d3f"/>
+    </linearGradient>
+    <linearGradient id="silo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9d1d3"/>
+      <stop offset="55%" stop-color="#aeb9bc"/>
+      <stop offset="100%" stop-color="#8c9a9d"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="500" height="500" fill="url(#sky)"/>
+
+  <circle cx="410" cy="90" r="60" fill="#c9a24b" opacity="0.18"/>
+
+  <!-- silos -->
+  <g>
+    <rect x="70" y="180" width="70" height="160" fill="url(#silo)"/>
+    <ellipse cx="105" cy="180" rx="35" ry="12" fill="#dfe4e5"/>
+    <path d="M70,180 Q105,150 140,180 Z" fill="#97a6a9"/>
+    <rect x="100" y="150" width="10" height="20" fill="#97a6a9"/>
+
+    <rect x="150" y="140" width="86" height="200" fill="url(#silo)"/>
+    <ellipse cx="193" cy="140" rx="43" ry="14" fill="#dfe4e5"/>
+    <path d="M150,140 Q193,102 236,140 Z" fill="#8c9a9d"/>
+    <rect x="188" y="102" width="10" height="24" fill="#8c9a9d"/>
+
+    <rect x="245" y="195" width="60" height="145" fill="url(#silo)"/>
+    <ellipse cx="275" cy="195" rx="30" ry="10" fill="#dfe4e5"/>
+    <path d="M245,195 Q275,168 305,195 Z" fill="#97a6a9"/>
+
+    <g stroke="#93a1a4" stroke-width="2" opacity="0.6">
+      <line x1="105" y1="185" x2="105" y2="335"/>
+      <line x1="193" y1="145" x2="193" y2="335"/>
+      <line x1="275" y1="200" x2="275" y2="335"/>
+    </g>
+  </g>
+
+  <!-- ground / field -->
+  <path d="M0,340 C90,318 160,352 260,332 C350,314 420,338 500,322 L500,500 L0,500 Z" fill="url(#field)"/>
+
+  <g stroke="#c9a24b" stroke-width="3" opacity="0.55" stroke-linecap="round">
+    <path d="M-10,380 C120,360 220,400 340,372 C400,358 460,372 510,362"/>
+    <path d="M-10,410 C120,390 220,430 340,402 C400,388 460,402 510,392"/>
+    <path d="M-10,440 C120,420 220,460 340,432 C400,418 460,432 510,422"/>
+  </g>
+
+  <!-- laptop on the field, front-right -->
+  <g transform="translate(330, 380)">
+    <rect x="-8" y="52" width="14" height="20" rx="2" fill="#1b3a2b"/>
+    <rect x="-70" y="66" width="140" height="9" rx="4" fill="#1b3a2b"/>
+    <rect x="-58" y="-14" width="116" height="76" rx="7" fill="#1b3a2b"/>
+    <rect x="-49" y="-5" width="98" height="58" rx="2" fill="#eaf1e6"/>
+    <path d="M-30,32 L-12,12 L4,26 L34,-4" stroke="#2f5d3f" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
