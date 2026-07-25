@@ -357,6 +357,11 @@ p { margin: 0 0 12px; color: var(--muted); }
   color: var(--muted);
   font-size: 0.85rem;
 }
+.card-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
 
 /* E-book product */
 .ebook-card {
