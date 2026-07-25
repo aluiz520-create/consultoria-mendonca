@@ -160,6 +160,11 @@ p { margin: 0 0 12px; color: var(--muted); }
   font-size: 0.95rem;
 }
 .hero-price strong { color: var(--gold-500); }
+.hero-area {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
 
 .badge {
   position: absolute;
