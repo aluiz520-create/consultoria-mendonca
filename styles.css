@@ -374,6 +374,47 @@ p { margin: 0 0 12px; color: var(--muted); }
   margin-top: 4px;
 }
 
+/* Lead magnet */
+.lead-magnet {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.lead-magnet-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.lead-magnet-icon {
+  font-size: 2.6rem;
+  flex-shrink: 0;
+}
+.lead-magnet-inner h2 {
+  text-align: left;
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+}
+.lead-magnet-inner > div:nth-child(2) {
+  flex: 1 1 380px;
+}
+.lead-magnet-inner p {
+  margin: 0;
+}
+.lead-magnet-inner .btn {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+@media (max-width: 720px) {
+  .lead-magnet-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+  .lead-magnet-inner .btn {
+    margin-left: 0;
+  }
+}
+
 /* Case study */
 .case-card {
   max-width: 900px;
