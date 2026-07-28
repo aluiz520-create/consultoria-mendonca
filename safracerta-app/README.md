@@ -11,10 +11,10 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Lançamento de custos por categoria, por safra.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido).
+- Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
 ## O que ainda falta (próximos passos, ver plano de 90 dias)
 
-- Cobrança recorrente (Asaas/Stripe) e bloqueio de acesso por inadimplência.
 - Geração de PDF do contrato.
 - Alertas via WhatsApp (vencimento de contrato, lembrete de lançamento mensal) — hoje só há o campo `alertas` no banco, sem o job/integração.
 - Assistente de IA (Claude API) para insights automáticos do dashboard.
@@ -23,7 +23,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode o conteúdo de `supabase/migrations/0001_init.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem** `supabase/migrations/0001_init.sql` e depois `supabase/migrations/0002_asaas.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```
@@ -42,9 +42,18 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 
 5. Acesse `http://localhost:3000`, crie uma conta em `/signup`, confirme o e-mail (o Supabase envia automaticamente) e entre.
 
+## Configurar a cobrança (Asaas)
+
+1. Crie uma conta em [asaas.com](https://www.asaas.com) — comece pelo ambiente **sandbox** (`sandbox.asaas.com`) para testar sem mexer com dinheiro real.
+2. Em Integrações → API, copie a **API Key** e preencha `ASAAS_API_KEY` no `.env.local` (mantenha `ASAAS_API_URL=https://sandbox.asaas.com/api/v3` enquanto estiver testando).
+3. Em Integrações → Webhooks, cadastre a URL `https://SEU_DOMINIO/api/webhooks/asaas`, marque os eventos `PAYMENT_CONFIRMED`, `PAYMENT_RECEIVED`, `PAYMENT_OVERDUE`, `PAYMENT_DELETED` e `SUBSCRIPTION_DELETED`, e defina um token de autenticação — cole esse mesmo token em `ASAAS_WEBHOOK_TOKEN`.
+4. Quando for para produção: troque `ASAAS_API_URL` para `https://api.asaas.com/v3`, use a API Key de produção e cadastre o webhook de produção com o mesmo token.
+
+Os preços dos planos self-service (Starter R$ 97 e Pro R$ 297) ficam em `lib/asaas.ts` (`PLANOS_PRECO`). O plano Cerealista/Escritório é vendido manualmente (o botão na tela de plano leva direto ao WhatsApp), por isso não tem checkout automático.
+
 ## Deploy
 
-Pensado para [Vercel](https://vercel.com): importe este diretório (`safracerta-app/`) como projeto, configure as mesmas variáveis de ambiente do `.env.local` e aponte `NEXT_PUBLIC_SITE_URL` para o domínio final. Não é necessário nenhum build step além do padrão do Next.js.
+Pensado para [Vercel](https://vercel.com): importe este diretório (`safracerta-app/`) como projeto, configure as mesmas variáveis de ambiente do `.env.local` (incluindo as do Asaas) e aponte `NEXT_PUBLIC_SITE_URL` para o domínio final. Não é necessário nenhum build step além do padrão do Next.js.
 
 ## Nota de segurança
 

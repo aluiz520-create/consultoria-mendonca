@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/app/fazendas", label: "Fazendas", icon: "🌾" },
   { href: "/app/custos", label: "Custos", icon: "💰" },
   { href: "/app/contratos", label: "Contratos", icon: "📄" },
+  { href: "/app/configuracoes/plano", label: "Plano", icon: "💳" },
 ];
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {

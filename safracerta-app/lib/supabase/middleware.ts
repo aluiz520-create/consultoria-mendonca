@@ -48,5 +48,25 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  const isPlanoRoute = request.nextUrl.pathname.startsWith("/app/configuracoes");
+
+  if (user && isAppRoute && !isPlanoRoute) {
+    const { data: perfil } = await supabase.from("users").select("account_id").eq("id", user.id).single();
+
+    if (perfil) {
+      const { data: assinatura } = await supabase
+        .from("assinaturas")
+        .select("status")
+        .eq("account_id", perfil.account_id)
+        .single();
+
+      if (assinatura && ["atrasada", "cancelada"].includes(assinatura.status)) {
+        const url = request.nextUrl.clone();
+        url.pathname = "/app/configuracoes/plano";
+        return NextResponse.redirect(url);
+      }
+    }
+  }
+
   return response;
 }
