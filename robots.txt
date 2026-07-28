@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aluiz520-create.github.io/consultoria-mendonca/sitemap.xml
