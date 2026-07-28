@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-600: #2f6b3a;
+  --green-700: #265a30;
+  --green-900: #16321c;
+  --gold-500: #d3a13c;
+}
+
+body {
+  color: var(--green-900);
+}

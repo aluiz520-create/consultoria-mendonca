@@ -1,0 +1,51 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
+
+export async function GET(request: Request) {
+  const supabase = createClient();
+  const { searchParams } = new URL(request.url);
+  const safraId = searchParams.get("safraId");
+
+  if (!safraId) return NextResponse.json({ error: "Informe safraId." }, { status: 400 });
+
+  const { data, error } = await supabase
+    .from("lancamentos_custo")
+    .select("id, descricao, valor, data, categorias_custo(nome, grupo)")
+    .eq("safra_id", safraId)
+    .order("data", { ascending: false });
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  return NextResponse.json({ lancamentos: data });
+}
+
+export async function POST(request: Request) {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
+
+  const body = await request.json();
+  const { safra_id, categoria_id, descricao, valor, data } = body;
+
+  if (!safra_id || !categoria_id || !valor) {
+    return NextResponse.json({ error: "Preencha safra, categoria e valor." }, { status: 400 });
+  }
+
+  const { data: lancamento, error } = await supabase
+    .from("lancamentos_custo")
+    .insert({
+      safra_id,
+      categoria_id,
+      descricao,
+      valor,
+      data: data || new Date().toISOString().slice(0, 10),
+      created_by: user.id,
+    })
+    .select()
+    .single();
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  return NextResponse.json({ lancamento }, { status: 201 });
+}
