@@ -362,6 +362,12 @@ p { margin: 0 0 12px; color: var(--muted); }
   color: var(--muted);
   margin: 8px 0 0;
 }
+.cards-secondary {
+  margin-top: 32px;
+}
+.cards-secondary .btn {
+  margin-top: 4px;
+}
 
 /* E-book product */
 .ebook-card {
