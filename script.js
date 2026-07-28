@@ -21,28 +21,30 @@ function fallbackCopy(text) {
   return ok;
 }
 
-copyBtn.addEventListener("click", async () => {
-  const text = pixKey.textContent.trim();
-  const original = copyBtn.textContent;
-  let copied = false;
+if (copyBtn && pixKey) {
+  copyBtn.addEventListener("click", async () => {
+    const text = pixKey.textContent.trim();
+    const original = copyBtn.textContent;
+    let copied = false;
 
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    try {
-      await navigator.clipboard.writeText(text);
-      copied = true;
-    } catch (err) {
-      copied = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch (err) {
+        copied = false;
+      }
     }
-  }
 
-  if (!copied) {
-    copied = fallbackCopy(text);
-  }
+    if (!copied) {
+      copied = fallbackCopy(text);
+    }
 
-  if (copied) {
-    copyBtn.textContent = "Copiado!";
-    setTimeout(() => { copyBtn.textContent = original; }, 2000);
-  } else {
-    alert("Não foi possível copiar automaticamente. Chave Pix: " + text);
-  }
-});
+    if (copied) {
+      copyBtn.textContent = "Copiado!";
+      setTimeout(() => { copyBtn.textContent = original; }, 2000);
+    } else {
+      alert("Não foi possível copiar automaticamente. Chave Pix: " + text);
+    }
+  });
+}
