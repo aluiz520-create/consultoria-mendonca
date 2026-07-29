@@ -5,8 +5,11 @@ import { DeleteButton } from "@/components/delete-button";
 import { VoltarButton } from "@/components/voltar-button";
 import { MarcarPagoButton } from "@/components/marcar-pago-button";
 import { statusPagamento } from "@/lib/status-pagamento";
+import { calcularSaldos } from "@/lib/estoque";
+import { labelTipoOperacao } from "@/lib/operacoes-agricolas";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
 import { RegistrarProducaoForm } from "./registrar-producao-form";
+import { NovaOperacaoForm } from "./nova-operacao-form";
 
 function formatarReais(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -39,7 +42,17 @@ export default async function OperacoesPage({
     );
   }
 
-  const [{ data: plantio }, { data: lancamentos }, { data: categorias }] = await Promise.all([
+  const [
+    { data: plantio },
+    { data: lancamentos },
+    { data: categorias },
+    { data: funcionarios },
+    { data: maquinas },
+    { data: implementos },
+    { data: produtos },
+    { data: operacoes },
+    { data: movimentacoes },
+  ] = await Promise.all([
     supabase
       .from("plantios")
       .select(
@@ -55,7 +68,27 @@ export default async function OperacoesPage({
       .eq("plantio_id", plantioId)
       .order("data", { ascending: false }),
     supabase.from("categorias_custo").select("id, nome").order("nome"),
+    supabase.from("funcionarios").select("id, nome").eq("ativo", true).order("nome"),
+    supabase.from("maquinas").select("id, nome").eq("ativo", true).order("nome"),
+    supabase.from("implementos").select("id, nome").eq("ativo", true).order("nome"),
+    supabase.from("produtos_estoque").select("id, nome, unidade_medida").eq("ativo", true).order("nome"),
+    supabase
+      .from("operacoes_agricolas")
+      .select(
+        "id, tipo, data, area_executada_ha, horas, observacoes, funcionarios(nome), maquinas(nome), implementos(nome), operacao_produtos(quantidade, valor_total, produtos_estoque(nome, unidade_medida))"
+      )
+      .eq("plantio_id", plantioId)
+      .order("data", { ascending: false }),
+    supabase.from("estoque_movimentacoes").select("produto_id, tipo, quantidade"),
   ]);
+
+  const saldos = calcularSaldos(movimentacoes ?? []);
+  const produtosComSaldo = (produtos ?? []).map((p) => ({
+    id: p.id,
+    nome: p.nome,
+    unidade_medida: p.unidade_medida,
+    saldo: saldos.get(p.id) ?? 0,
+  }));
 
   if (!plantio) {
     return <p className="text-gray-500">Plantio não encontrado.</p>;
@@ -135,6 +168,55 @@ export default async function OperacoesPage({
         )}
       </div>
 
+      <h2 className="text-lg font-semibold text-green-900 mb-3">Registrar operação agrícola</h2>
+      <div className="mb-8">
+        <NovaOperacaoForm
+          plantioId={plantioId}
+          funcionarios={funcionarios ?? []}
+          maquinas={maquinas ?? []}
+          implementos={implementos ?? []}
+          produtos={produtosComSaldo}
+        />
+      </div>
+
+      {!!operacoes?.length && (
+        <>
+          <h2 className="text-lg font-semibold text-green-900 mb-3">Operações agrícolas registradas</h2>
+          <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5 mb-8">
+            {operacoes.map((o) => (
+              <div key={o.id} className="flex items-center justify-between px-5 py-3 text-sm">
+                <div>
+                  <p className="font-medium text-green-900">
+                    {labelTipoOperacao(o.tipo)} — {new Date(o.data).toLocaleDateString("pt-BR")}
+                  </p>
+                  <p className="text-gray-500">
+                    {(o.funcionarios as any)?.nome ? `${(o.funcionarios as any).nome} · ` : ""}
+                    {(o.maquinas as any)?.nome ? `${(o.maquinas as any).nome} · ` : ""}
+                    {(o.implementos as any)?.nome ? `${(o.implementos as any).nome} · ` : ""}
+                    {o.horas ? `${o.horas}h` : ""}
+                    {o.area_executada_ha ? ` · ${o.area_executada_ha} ha` : ""}
+                  </p>
+                  {!!(o.operacao_produtos as any)?.length && (
+                    <p className="text-gray-400 text-xs mt-0.5">
+                      {(o.operacao_produtos as any)
+                        .map(
+                          (op: any) =>
+                            `${op.quantidade} ${op.produtos_estoque?.unidade_medida} de ${op.produtos_estoque?.nome}`
+                        )
+                        .join(", ")}
+                    </p>
+                  )}
+                </div>
+                <DeleteButton
+                  url={`/api/operacoes-agricolas/${o.id}`}
+                  confirmMessage="Apagar esta operação? Isso também desfaz a baixa de estoque e os custos gerados por ela."
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
       <div className="mb-6">
         <NovoLancamentoForm plantioId={plantioId} categorias={categorias ?? []} />
         <Link href="/app/operacoes/rateio" className="text-sm text-green-700 font-medium mt-2 inline-block">
@@ -142,7 +224,7 @@ export default async function OperacoesPage({
         </Link>
       </div>
 
-      <h2 className="text-lg font-semibold text-green-900 mb-3">Operações</h2>
+      <h2 className="text-lg font-semibold text-green-900 mb-3">Custos e receitas lançados</h2>
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5">
         {!lancamentos?.length && (
           <p className="p-5 text-sm text-gray-500">Nenhuma operação lançada ainda.</p>

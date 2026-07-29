@@ -19,6 +19,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Estoque (`/app/estoque`): cadastro de produtos (sementes, fertilizantes, defensivos, combustíveis...) com saldo calculado a partir das entradas e saídas; a API bloqueia registrar uma saída maior que o saldo disponível.
 - Equipe e Máquinas (`/app/recursos`): cadastro de funcionários, máquinas e implementos (com custo/hora opcional), usado pelas operações agrícolas.
 - Compras (`/app/compras`): toda compra de insumo/produto gera automaticamente, em um só lançamento, a entrada no estoque e a conta a pagar em Operações (com centro de resultado herdado da categoria) — apagar a compra desfaz as duas automaticamente.
+- Operações agrícolas (dentro de `/app/operacoes`, por plantio): registra o que foi feito no talhão (plantio, adubação, pulverização, cultivo, irrigação, colheita), com funcionário, máquina, implemento e horas trabalhadas, e os produtos de estoque usados. Ao salvar, gera sozinho: baixa do estoque de cada produto (valida saldo disponível), custo de mão de obra (horas × custo/hora do funcionário), custo de maquinário (horas × custo/hora da máquina) e custo dos insumos consumidos (pelo custo médio de compra) — apagar a operação desfaz tudo automaticamente.
 - Auditoria: toda criação, alteração e exclusão em fazendas, talhões, culturas, safras, plantios, operações, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
 - Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
@@ -30,7 +31,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 2. ✅ Cadastros base: Funcionários, Máquinas, Implementos (`/app/recursos`)
 3. ✅ Estoque: produtos, saldo, movimentações (`/app/estoque`)
 4. ✅ Compras (`/app/compras`) — origem obrigatória do custo (gera conta a pagar + entrada em estoque)
-5. Operações agrícolas por talhão — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
+5. ✅ Operações agrícolas por talhão (`/app/operacoes`) — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
 6. Colheita completa — peso, umidade, armazém
 7. Venda completa — cliente, contrato, frete, desconto, recebimentos parciais
 8. Resultado/DRE completo — lucro bruto/líquido, custos administrativos/arrendamento/financeiro, indicadores por hectare/saca
@@ -45,7 +46,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```
