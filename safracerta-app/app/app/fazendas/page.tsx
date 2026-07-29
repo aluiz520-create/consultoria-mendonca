@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { DeleteButton } from "@/components/delete-button";
 
 export default async function FazendasPage() {
   const supabase = createClient();
@@ -30,19 +31,26 @@ export default async function FazendasPage() {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {fazendas.map((f) => (
-            <Link
+            <div
               key={f.id}
-              href={`/app/fazendas/${f.id}`}
-              className="block bg-white rounded-2xl border border-black/5 p-5 hover:shadow-sm transition-shadow"
+              className="relative block bg-white rounded-2xl border border-black/5 p-5 hover:shadow-sm transition-shadow"
             >
-              <h3 className="font-semibold text-green-900">{f.nome}</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                {[f.municipio, f.uf].filter(Boolean).join(" · ") || "Localização não informada"}
-              </p>
-              {f.area_total_ha && (
-                <p className="text-sm text-gray-500 mt-1">{f.area_total_ha} ha</p>
-              )}
-            </Link>
+              <div className="absolute top-4 right-4">
+                <DeleteButton
+                  url={`/api/fazendas/${f.id}`}
+                  confirmMessage={`Apagar a fazenda "${f.nome}"? Isso também apaga todas as safras e custos lançados nela.`}
+                />
+              </div>
+              <Link href={`/app/fazendas/${f.id}`} className="block pr-16">
+                <h3 className="font-semibold text-green-900">{f.nome}</h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  {[f.municipio, f.uf].filter(Boolean).join(" · ") || "Localização não informada"}
+                </p>
+                {f.area_total_ha && (
+                  <p className="text-sm text-gray-500 mt-1">{f.area_total_ha} ha</p>
+                )}
+              </Link>
+            </div>
           ))}
         </div>
       )}

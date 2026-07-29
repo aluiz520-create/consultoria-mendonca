@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { custoPorHectare, custoPorSaca } from "@/lib/calculos/custoPorHectare";
+import { DeleteButton } from "@/components/delete-button";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
 
 function formatarReais(valor: number) {
@@ -95,7 +96,10 @@ export default async function CustosPage({
               </p>
               <p className="text-gray-500">{new Date(l.data).toLocaleDateString("pt-BR")}</p>
             </div>
-            <p className="font-medium">{formatarReais(Number(l.valor))}</p>
+            <div className="flex items-center gap-4">
+              <p className="font-medium">{formatarReais(Number(l.valor))}</p>
+              <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar este lançamento de custo?" />
+            </div>
           </div>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { DeleteButton } from "@/components/delete-button";
 import { NovoContratoForm } from "./novo-contrato-form";
 
 function statusContrato(dataFim: string): { label: string; className: string } {
@@ -49,9 +50,15 @@ export default async function ContratosPage() {
                   {new Date(c.data_fim).toLocaleDateString("pt-BR")}
                 </p>
               </div>
-              <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${status.className}`}>
-                {status.label}
-              </span>
+              <div className="flex items-center gap-4">
+                <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${status.className}`}>
+                  {status.label}
+                </span>
+                <DeleteButton
+                  url={`/api/contratos/${c.id}`}
+                  confirmMessage={`Apagar o contrato com "${c.contraparte_nome}"?`}
+                />
+              </div>
             </div>
           );
         })}

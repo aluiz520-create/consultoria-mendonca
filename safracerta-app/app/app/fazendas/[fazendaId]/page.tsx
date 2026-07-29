@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { DeleteButton } from "@/components/delete-button";
 import { NovaSafraForm } from "./nova-safra-form";
 
 export default async function FazendaDetalhePage({
@@ -29,7 +30,15 @@ export default async function FazendaDetalhePage({
       <Link href="/app/fazendas" className="text-sm text-green-700">
         ← Fazendas
       </Link>
-      <h1 className="text-2xl font-semibold text-green-900 mt-2">{fazenda.nome}</h1>
+      <div className="flex items-center justify-between mt-2">
+        <h1 className="text-2xl font-semibold text-green-900">{fazenda.nome}</h1>
+        <DeleteButton
+          url={`/api/fazendas/${fazenda.id}`}
+          confirmMessage={`Apagar a fazenda "${fazenda.nome}"? Isso também apaga todas as safras e custos lançados nela.`}
+          label="Apagar fazenda"
+          redirectTo="/app/fazendas"
+        />
+      </div>
       <p className="text-sm text-gray-500 mb-6">
         {[fazenda.municipio, fazenda.uf].filter(Boolean).join(" · ")}
         {fazenda.area_total_ha ? ` · ${fazenda.area_total_ha} ha` : ""}
@@ -39,20 +48,27 @@ export default async function FazendaDetalhePage({
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 mb-6">
         {safras?.map((s) => (
-          <Link
+          <div
             key={s.id}
-            href={`/app/custos?safraId=${s.id}`}
-            className="block bg-white rounded-2xl border border-black/5 p-4 hover:shadow-sm transition-shadow"
+            className="relative block bg-white rounded-2xl border border-black/5 p-4 hover:shadow-sm transition-shadow"
           >
-            <h3 className="font-semibold text-green-900">
-              {s.cultura} — {s.ano}
-            </h3>
-            <p className="text-sm text-gray-500 mt-1">{s.area_plantada_ha} ha plantados</p>
-            {s.produtividade_esperada_sc_ha && (
-              <p className="text-sm text-gray-500">{s.produtividade_esperada_sc_ha} sc/ha esperado</p>
-            )}
-            <p className="text-xs text-green-700 mt-2">Ver custos →</p>
-          </Link>
+            <div className="absolute top-3 right-3">
+              <DeleteButton
+                url={`/api/safras/${s.id}`}
+                confirmMessage={`Apagar a safra "${s.cultura} — ${s.ano}"? Isso também apaga os custos lançados nela.`}
+              />
+            </div>
+            <Link href={`/app/custos?safraId=${s.id}`} className="block pr-14">
+              <h3 className="font-semibold text-green-900">
+                {s.cultura} — {s.ano}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">{s.area_plantada_ha} ha plantados</p>
+              {s.produtividade_esperada_sc_ha && (
+                <p className="text-sm text-gray-500">{s.produtividade_esperada_sc_ha} sc/ha esperado</p>
+              )}
+              <p className="text-xs text-green-700 mt-2">Ver custos →</p>
+            </Link>
+          </div>
         ))}
       </div>
 
