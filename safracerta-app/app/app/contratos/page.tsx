@@ -24,6 +24,12 @@ export default async function ContratosPage() {
           <h1 className="text-2xl font-semibold text-green-900">Contratos</h1>
           <p className="text-sm text-gray-500">Arrendamentos e parcerias, com alerta de vencimento.</p>
         </div>
+        <Link
+          href="/app/contratos/venda"
+          className="rounded-lg border border-green-600 text-green-700 text-sm font-medium px-4 py-2 hover:bg-green-50"
+        >
+          Venda de Produção →
+        </Link>
       </div>
 
       <div className="mb-6">
