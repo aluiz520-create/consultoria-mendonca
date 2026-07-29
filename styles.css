@@ -225,8 +225,26 @@ p { margin: 0 0 12px; color: var(--muted); }
     padding: 60px 24px;
     text-align: center;
     justify-content: center;
+    align-items: flex-start;
   }
-  .hero-banner-text p { margin-left: auto; margin-right: auto; }
+  .hero-banner-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-banner-text .badge {
+    margin-bottom: 20px;
+  }
+  .hero-banner-text h1 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  .hero-banner-text p {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
+  }
   .hero-banner-right { flex-basis: 100%; min-height: 280px; }
   .hero-banner-img { min-height: 280px; }
   .strip-item { border-right: none; flex: 1 1 45%; }
