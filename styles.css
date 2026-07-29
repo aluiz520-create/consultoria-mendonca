@@ -506,6 +506,13 @@ p { margin: 0 0 12px; color: var(--muted); }
   color: var(--green-700);
   margin-bottom: 14px;
 }
+.ebook-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.ebook-actions .btn { display: inline-block; }
 .ebook-note { font-size: 0.82rem; color: var(--muted); margin: 12px 0 0; }
 
 @media (max-width: 620px) {
