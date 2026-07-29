@@ -7,7 +7,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## O que já funciona (MVP)
 
 - Cadastro/login (e-mail e senha) — cada novo usuário ganha automaticamente uma `account` (multi-tenant) via trigger no banco.
-- CRUD de fazendas, talhões (opcional) e safras (soja/milho/feijão) — hierarquia fazenda → talhão → safra, com criação de talhão direto no formulário de nova safra e safras agrupadas por talhão na tela da fazenda.
+- Hierarquia fazenda → talhão → safra: a fazenda lista os talhões; cada talhão tem sua própria página com suas safras (soja/milho/feijão), custos e colheita. Talhão é obrigatório em toda safra — quem não quer dividir a fazenda cadastra um único talhão representando a área toda.
 - Lançamento de custos por categoria, por safra, com controle de pagamento: marca se já foi pago (à vista) ou informa vencimento (a prazo), com status (Pago / A vencer / Vencido) e botão de marcar como pago.
 - Financeiro (`/app/financeiro`): fluxo de pagamento com tudo que está em aberto (ordenado por vencimento, vencidos em destaque), total pendente e total vencido, e histórico dos pagos recentemente.
 - Registro de produção colhida (sacas e umidade) na tela de custos, fechando o ciclo previsto × realizado: custo/saca e margem passam a usar a produção real assim que ela é registrada, em vez da estimativa.
@@ -28,7 +28,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

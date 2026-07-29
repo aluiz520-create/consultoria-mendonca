@@ -14,15 +14,15 @@ export async function POST(request: Request) {
     preco_referencia_sc,
   } = body;
 
-  if (!fazenda_id || !cultura || !ano || !area_plantada_ha) {
-    return NextResponse.json({ error: "Preencha fazenda, cultura, safra e área plantada." }, { status: 400 });
+  if (!fazenda_id || !talhao_id || !cultura || !ano || !area_plantada_ha) {
+    return NextResponse.json({ error: "Preencha talhão, cultura, safra e área plantada." }, { status: 400 });
   }
 
   const { data, error } = await supabase
     .from("safras")
     .insert({
       fazenda_id,
-      talhao_id: talhao_id || null,
+      talhao_id,
       cultura,
       ano,
       area_plantada_ha,
