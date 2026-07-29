@@ -4,8 +4,15 @@ import { createClient } from "@/lib/supabase/server";
 export async function POST(request: Request) {
   const supabase = createClient();
   const body = await request.json();
-  const { fazenda_id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, preco_referencia_sc } =
-    body;
+  const {
+    fazenda_id,
+    talhao_id,
+    cultura,
+    ano,
+    area_plantada_ha,
+    produtividade_esperada_sc_ha,
+    preco_referencia_sc,
+  } = body;
 
   if (!fazenda_id || !cultura || !ano || !area_plantada_ha) {
     return NextResponse.json({ error: "Preencha fazenda, cultura, safra e área plantada." }, { status: 400 });
@@ -15,6 +22,7 @@ export async function POST(request: Request) {
     .from("safras")
     .insert({
       fazenda_id,
+      talhao_id: talhao_id || null,
       cultura,
       ano,
       area_plantada_ha,

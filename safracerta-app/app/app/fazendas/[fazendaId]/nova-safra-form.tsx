@@ -5,9 +5,15 @@ import { useRouter } from "next/navigation";
 
 const CULTURAS = ["Soja", "Milho", "Feijão"];
 
-export function NovaSafraForm({ fazendaId }: { fazendaId: string }) {
+interface Talhao {
+  id: string;
+  nome: string;
+}
+
+export function NovaSafraForm({ fazendaId, talhoes }: { fazendaId: string; talhoes: Talhao[] }) {
   const router = useRouter();
   const [aberto, setAberto] = useState(false);
+  const [talhaoId, setTalhaoId] = useState("");
   const [cultura, setCultura] = useState(CULTURAS[0]);
   const [ano, setAno] = useState("2025/2026");
   const [areaPlantadaHa, setAreaPlantadaHa] = useState("");
@@ -26,6 +32,7 @@ export function NovaSafraForm({ fazendaId }: { fazendaId: string }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         fazenda_id: fazendaId,
+        talhao_id: talhaoId || null,
         cultura,
         ano,
         area_plantada_ha: Number(areaPlantadaHa),
@@ -81,6 +88,25 @@ export function NovaSafraForm({ fazendaId }: { fazendaId: string }) {
           />
         </div>
       </div>
+
+      {talhoes.length > 0 && (
+        <div>
+          <label className="block text-sm font-medium mb-1">Talhão (opcional)</label>
+          <select
+            value={talhaoId}
+            onChange={(e) => setTalhaoId(e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="">Toda a fazenda / sem talhão específico</option>
+            {talhoes.map((t) => (
+              <option key={t.id} value={t.id}>
+                {t.nome}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
       <div className="grid grid-cols-3 gap-3">
         <div>
           <label className="block text-sm font-medium mb-1">Área plantada (ha)</label>

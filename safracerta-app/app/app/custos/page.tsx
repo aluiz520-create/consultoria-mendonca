@@ -39,7 +39,7 @@ export default async function CustosPage({
   const [{ data: safra }, { data: lancamentos }, { data: categorias }] = await Promise.all([
     supabase
       .from("safras")
-      .select("id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, fazendas(nome)")
+      .select("id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, fazendas(nome), talhoes(nome)")
       .eq("id", safraId)
       .single(),
     supabase
@@ -67,7 +67,8 @@ export default async function CustosPage({
         {safra.cultura} — {safra.ano}
       </h1>
       <p className="text-sm text-gray-500 mb-6">
-        {(safra.fazendas as any)?.nome} · {safra.area_plantada_ha} ha
+        {(safra.fazendas as any)?.nome}
+        {(safra.talhoes as any)?.nome ? ` · ${(safra.talhoes as any).nome}` : ""} · {safra.area_plantada_ha} ha
       </p>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
