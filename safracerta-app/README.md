@@ -1,6 +1,6 @@
 # SafraCerta
 
-Sistema de gestão agrícola e financeira para produtores rurais e escritórios do agro, organizado na hierarquia Empresa → Safra → Fazenda → Cultura → Talhão → Centro de Resultado. Começou como MVP enxuto (descrito em [`../plano-monetizacao-saas.md`](../plano-monetizacao-saas.md) e [`../docs/arquitetura-tecnica-saas.md`](../docs/arquitetura-tecnica-saas.md)) e está evoluindo para o fluxo operacional completo da safra: planejamento → estoque → compras → operações agrícolas → colheita → venda → resultado (DRE).
+Sistema de gestão agrícola e financeira para produtores rurais e escritórios do agro, organizado na hierarquia Empresa → Safra → Fazenda → Cultura → Talhão → Centro de Resultado. Começou como MVP enxuto (descrito em [`../plano-monetizacao-saas.md`](../plano-monetizacao-saas.md) e [`../docs/arquitetura-tecnica-saas.md`](../docs/arquitetura-tecnica-saas.md)) e evoluiu para o fluxo operacional completo da safra: planejamento → estoque → compras → operações agrícolas → colheita → venda → resultado (DRE).
 
 Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS + Recharts.
 
@@ -12,6 +12,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Financeiro (`/app/financeiro`): fluxo de pagamento com tudo que está em aberto (ordenado por vencimento, vencidos em destaque), total pendente e total vencido, e histórico dos pagos recentemente.
 - Colheita completa (dentro de `/app/operacoes`, por plantio): cada carga entregue no armazém é registrada com peso líquido, umidade e armazém de destino (cadastro criado na hora, inline); as sacas (base 60kg) e o total do plantio são recalculados sozinhos a partir da soma das cargas, fechando o ciclo previsto × realizado — custo/saca e margem passam a usar a produção real assim que a primeira carga é registrada.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
+- Resultado/DRE (`/app/resultado`, por safra): Receita bruta − frete − desconto = Receita líquida; − custos operacionais (produção + máquinas) = Lucro bruto; − administrativas − arrendamento − despesas financeiras = Lucro líquido. Os custos são agrupados automaticamente pela categoria/centro já usados em Operações (sem lançamento duplicado), com indicadores de área, produção, receita/custo/lucro por hectare e por saca.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
 - Venda completa em `/app/contratos/venda`: cadastro de clientes (criado na hora, inline), quantidade, preço por saca/tonelada/kg, frete e desconto (valor líquido calculado automaticamente), forma de pagamento, status de entrega e recebimentos parciais — cada contrato mostra quanto já foi recebido, o saldo e o status (A receber / Parcial / Pago).
 - Rateio de despesas entre plantios: uma compra que atende mais de um plantio (fazenda/talhão diferentes) pode ser dividida por percentual em `/app/operacoes/rateio`, gerando automaticamente uma operação em cada plantio.
@@ -23,9 +24,9 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Auditoria: toda criação, alteração e exclusão em fazendas, talhões, culturas, safras, plantios, operações, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
 - Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
-## Roteiro do ERP completo (em andamento)
+## Roteiro do ERP completo
 
-O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. Etapas, na ordem:
+O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. Todas as etapas estão concluídas:
 
 1. ✅ Centro de Resultado
 2. ✅ Cadastros base: Funcionários, Máquinas, Implementos (`/app/recursos`)
@@ -34,7 +35,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 5. ✅ Operações agrícolas por talhão (`/app/operacoes`) — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
 6. ✅ Colheita completa (`/app/operacoes`) — peso, umidade, armazém, sacas recalculadas por carga
 7. ✅ Venda completa (`/app/contratos/venda`) — cliente, contrato, frete, desconto, recebimentos parciais
-8. Resultado/DRE completo — lucro bruto/líquido, custos administrativos/arrendamento/financeiro, indicadores por hectare/saca
+8. ✅ Resultado/DRE completo (`/app/resultado`) — lucro bruto/líquido, custos operacionais/administrativos/arrendamento/financeiro, indicadores por hectare/saca
 
 ## Outras pendências
 
@@ -46,7 +47,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`, `0015_colheita.sql`, `0016_venda_completa.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`, `0015_colheita.sql`, `0016_venda_completa.sql`, `0017_despesas_financeiras.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

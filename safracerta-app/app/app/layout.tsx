@@ -4,6 +4,7 @@ import { signOut } from "./actions";
 
 const NAV_ITEMS = [
   { href: "/app/dashboard", label: "Dashboard", icon: "📊" },
+  { href: "/app/resultado", label: "Resultado (DRE)", icon: "📈" },
   { href: "/app/fazendas", label: "Fazendas", icon: "🌾" },
   { href: "/app/operacoes", label: "Operações", icon: "💰" },
   { href: "/app/recursos", label: "Equipe e Máquinas", icon: "🚜" },
