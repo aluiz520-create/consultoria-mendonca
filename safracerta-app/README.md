@@ -10,7 +10,9 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - CRUD de fazendas e safras (soja/milho/feijão).
 - Lançamento de custos por categoria, por safra.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
-- Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido).
+- Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
+- Rateio de despesas entre fazendas/safras: uma compra que atende mais de uma safra pode ser dividida por percentual em `/app/custos/rateio`, gerando automaticamente um lançamento de custo em cada safra.
+- Auditoria: toda criação, alteração e exclusão em fazendas, safras, custos, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
 - Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
 ## O que ainda falta (próximos passos, ver plano de 90 dias)
@@ -23,7 +25,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem** `supabase/migrations/0001_init.sql` e depois `supabase/migrations/0002_asaas.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, depois `0002_asaas.sql`, depois `0003_regras_negocio.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

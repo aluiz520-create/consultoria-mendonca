@@ -23,7 +23,11 @@ export default async function CustosPage({
         <Link href="/app/fazendas" className="text-green-700 font-medium">
           Fazendas
         </Link>{" "}
-        para lançar custos.
+        para lançar custos, ou{" "}
+        <Link href="/app/custos/rateio" className="text-green-700 font-medium">
+          rateie uma despesa entre várias safras
+        </Link>
+        .
       </div>
     );
   }
@@ -80,6 +84,9 @@ export default async function CustosPage({
 
       <div className="mb-6">
         <NovoLancamentoForm safraId={safraId} categorias={categorias ?? []} />
+        <Link href="/app/custos/rateio" className="text-sm text-green-700 font-medium mt-2 inline-block">
+          Ou ratear uma despesa entre esta e outras safras →
+        </Link>
       </div>
 
       <h2 className="text-lg font-semibold text-green-900 mb-3">Lançamentos</h2>
