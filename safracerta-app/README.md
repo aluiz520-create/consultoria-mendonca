@@ -10,7 +10,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - **Hierarquia: Empresa → Safra (ciclo agrícola, ex. "2025/2026") → Fazenda → Cultura → Talhão → Plantio.** Safra e Cultura são cadastros próprios da conta, reutilizados em toda a empresa. Talhão é obrigatório e é o ponto de entrada na fazenda; dentro dele, cada Plantio é a combinação específica de uma Safra + uma Cultura naquele Talhão, e é ali que moram custos (Operações), colheita e resultado. Quem não quer dividir a fazenda cadastra um único talhão representando a área toda.
 - Operações (`/app/operacoes`, por plantio): lançamento de custo por categoria, com controle de pagamento — marca se já foi pago (à vista) ou informa vencimento (a prazo), com status (Pago / A vencer / Vencido) e botão de marcar como pago.
 - Financeiro (`/app/financeiro`): fluxo de pagamento com tudo que está em aberto (ordenado por vencimento, vencidos em destaque), total pendente e total vencido, e histórico dos pagos recentemente.
-- Registro de produção colhida (sacas e umidade) na tela de Operações, fechando o ciclo previsto × realizado: custo/saca e margem passam a usar a produção real assim que ela é registrada, em vez da estimativa.
+- Colheita completa (dentro de `/app/operacoes`, por plantio): cada carga entregue no armazém é registrada com peso líquido, umidade e armazém de destino (cadastro criado na hora, inline); as sacas (base 60kg) e o total do plantio são recalculados sozinhos a partir da soma das cargas, fechando o ciclo previsto × realizado — custo/saca e margem passam a usar a produção real assim que a primeira carga é registrada.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
 - Contratos de venda de produção (comercialização da safra) em `/app/contratos/venda`: comprador, quantidade, preço por saca/tonelada/kg, valor total calculado, forma de pagamento e status de entrega.
@@ -32,7 +32,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 3. ✅ Estoque: produtos, saldo, movimentações (`/app/estoque`)
 4. ✅ Compras (`/app/compras`) — origem obrigatória do custo (gera conta a pagar + entrada em estoque)
 5. ✅ Operações agrícolas por talhão (`/app/operacoes`) — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
-6. Colheita completa — peso, umidade, armazém
+6. ✅ Colheita completa (`/app/operacoes`) — peso, umidade, armazém, sacas recalculadas por carga
 7. Venda completa — cliente, contrato, frete, desconto, recebimentos parciais
 8. Resultado/DRE completo — lucro bruto/líquido, custos administrativos/arrendamento/financeiro, indicadores por hectare/saca
 
@@ -46,7 +46,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`, `0015_colheita.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

@@ -8,8 +8,8 @@ import { statusPagamento } from "@/lib/status-pagamento";
 import { calcularSaldos } from "@/lib/estoque";
 import { labelTipoOperacao } from "@/lib/operacoes-agricolas";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
-import { RegistrarProducaoForm } from "./registrar-producao-form";
 import { NovaOperacaoForm } from "./nova-operacao-form";
+import { NovaColheitaForm } from "./nova-colheita-form";
 
 function formatarReais(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -52,6 +52,8 @@ export default async function OperacoesPage({
     { data: produtos },
     { data: operacoes },
     { data: movimentacoes },
+    { data: armazens },
+    { data: colheitas },
   ] = await Promise.all([
     supabase
       .from("plantios")
@@ -80,6 +82,12 @@ export default async function OperacoesPage({
       .eq("plantio_id", plantioId)
       .order("data", { ascending: false }),
     supabase.from("estoque_movimentacoes").select("produto_id, tipo, quantidade"),
+    supabase.from("armazens").select("id, nome").order("nome"),
+    supabase
+      .from("colheitas")
+      .select("id, data, peso_liquido_kg, umidade, sacas, armazens(nome)")
+      .eq("plantio_id", plantioId)
+      .order("data", { ascending: false }),
   ]);
 
   const saldos = calcularSaldos(movimentacoes ?? []);
@@ -138,11 +146,19 @@ export default async function OperacoesPage({
       </div>
 
       <div className="grid sm:grid-cols-2 gap-4 mb-6">
-        <RegistrarProducaoForm
-          plantioId={plantioId}
-          producaoAtual={plantio.producao_colhida_sc}
-          umidadeAtual={plantio.umidade_colheita}
-        />
+        <div className="bg-white rounded-2xl border border-black/5 p-4">
+          <p className="text-xs text-gray-500">Produção colhida (total das cargas)</p>
+          {plantio.producao_colhida_sc != null ? (
+            <>
+              <p className="text-lg font-semibold text-green-900">{plantio.producao_colhida_sc.toFixed(1)} sc</p>
+              {plantio.umidade_colheita != null && (
+                <p className="text-xs text-gray-500">Umidade média: {plantio.umidade_colheita.toFixed(1)}%</p>
+              )}
+            </>
+          ) : (
+            <p className="text-sm text-gray-400">Ainda não colhida</p>
+          )}
+        </div>
         {plantio.produtividade_esperada_sc_ha && (
           <div className="bg-white rounded-2xl border border-black/5 p-4">
             <p className="text-xs text-gray-500">Produtividade — esperada × realizada</p>
@@ -166,6 +182,30 @@ export default async function OperacoesPage({
             </p>
           </div>
         )}
+      </div>
+
+      <h2 className="text-lg font-semibold text-green-900 mb-3">Colheita</h2>
+      <div className="grid sm:grid-cols-2 gap-4 mb-8 items-start">
+        <NovaColheitaForm plantioId={plantioId} armazens={armazens ?? []} />
+        <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5">
+          {!colheitas?.length && (
+            <p className="p-4 text-sm text-gray-500">Nenhuma carga de colheita registrada ainda.</p>
+          )}
+          {colheitas?.map((c) => (
+            <div key={c.id} className="flex items-center justify-between px-4 py-2.5 text-sm">
+              <div>
+                <p className="font-medium text-green-900">
+                  {Number(c.sacas).toFixed(1)} sc — {(c.armazens as any)?.nome ?? "Sem armazém"}
+                </p>
+                <p className="text-gray-500 text-xs">
+                  {new Date(c.data).toLocaleDateString("pt-BR")}
+                  {c.umidade != null ? ` · umidade ${c.umidade}%` : ""} · {c.peso_liquido_kg} kg
+                </p>
+              </div>
+              <DeleteButton url={`/api/colheitas/${c.id}`} confirmMessage="Apagar esta carga de colheita?" />
+            </div>
+          ))}
+        </div>
       </div>
 
       <h2 className="text-lg font-semibold text-green-900 mb-3">Registrar operação agrícola</h2>

@@ -16,6 +16,8 @@ const TABELA_LABEL: Record<string, string> = {
   estoque_movimentacoes: "Movimentação de estoque",
   compras: "Compra",
   operacoes_agricolas: "Operação agrícola",
+  armazens: "Armazém",
+  colheitas: "Colheita",
 };
 
 const ACAO_LABEL: Record<string, string> = {
