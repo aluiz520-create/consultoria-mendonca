@@ -24,7 +24,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. Etapas, na ordem:
 
 1. ✅ Centro de Resultado
-2. Cadastros base: Funcionários, Máquinas, Implementos
+2. ✅ Cadastros base: Funcionários, Máquinas, Implementos (`/app/recursos`)
 3. Estoque: produtos, saldo, movimentações
 4. Compras — origem obrigatória do custo (gera conta a pagar + entrada em estoque)
 5. Operações agrícolas por talhão — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
@@ -42,7 +42,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```
