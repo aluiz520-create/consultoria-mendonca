@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { descreverEvento, resumoEvento } from "@/lib/auditoria";
+import { VoltarButton } from "@/components/voltar-button";
 
 export default async function AtividadePage() {
   const supabase = createClient();
@@ -12,6 +13,7 @@ export default async function AtividadePage() {
 
   return (
     <div>
+      <VoltarButton />
       <h1 className="text-2xl font-semibold text-green-900 mb-1">Atividade</h1>
       <p className="text-sm text-gray-500 mb-6">
         Histórico de criações, alterações e exclusões — quem fez o quê e quando.

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { custoPorHectare, custoPorSaca } from "@/lib/calculos/custoPorHectare";
 import { DeleteButton } from "@/components/delete-button";
+import { VoltarButton } from "@/components/voltar-button";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
 
 function formatarReais(valor: number) {
@@ -18,7 +19,9 @@ export default async function CustosPage({
 
   if (!safraId) {
     return (
-      <div className="bg-white rounded-2xl border border-black/5 p-10 text-center text-gray-500">
+      <div>
+        <VoltarButton />
+        <div className="bg-white rounded-2xl border border-black/5 p-10 text-center text-gray-500">
         Selecione uma fazenda e uma safra em{" "}
         <Link href="/app/fazendas" className="text-green-700 font-medium">
           Fazendas
@@ -28,6 +31,7 @@ export default async function CustosPage({
           rateie uma despesa entre várias safras
         </Link>
         .
+        </div>
       </div>
     );
   }
@@ -58,6 +62,7 @@ export default async function CustosPage({
 
   return (
     <div>
+      <VoltarButton />
       <h1 className="text-2xl font-semibold text-green-900">
         {safra.cultura} — {safra.ano}
       </h1>

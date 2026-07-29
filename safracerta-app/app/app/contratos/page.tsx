@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { DeleteButton } from "@/components/delete-button";
+import { VoltarButton } from "@/components/voltar-button";
 import { statusContrato } from "@/lib/status-contrato";
 import { NovoContratoForm } from "./novo-contrato-form";
 
@@ -17,6 +18,7 @@ export default async function ContratosPage() {
 
   return (
     <div>
+      <VoltarButton />
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-semibold text-green-900">Contratos</h1>

@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { VoltarButton } from "@/components/voltar-button";
 import { AssinaturaForm } from "./assinatura-form";
 
 const STATUS_LABEL: Record<string, { label: string; className: string }> = {
@@ -31,6 +32,7 @@ export default async function PlanoPage() {
 
   return (
     <div>
+      <VoltarButton />
       <h1 className="text-2xl font-semibold text-green-900 mb-1">Plano e assinatura</h1>
       <p className="text-sm text-gray-500 mb-6">Gerencie sua assinatura do SafraCerta.</p>
 

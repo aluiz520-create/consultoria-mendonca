@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { DeleteButton } from "@/components/delete-button";
+import { VoltarButton } from "@/components/voltar-button";
 
 export default async function FazendasPage() {
   const supabase = createClient();
@@ -11,6 +12,7 @@ export default async function FazendasPage() {
 
   return (
     <div>
+      <VoltarButton />
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-semibold text-green-900">Fazendas</h1>

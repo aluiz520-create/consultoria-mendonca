@@ -42,6 +42,12 @@ export default function NovaFazendaPage() {
 
   return (
     <div className="max-w-lg">
+      <button
+        onClick={() => router.back()}
+        className="text-sm text-green-700 hover:text-green-800 font-medium mb-2 inline-flex items-center gap-1"
+      >
+        ← Voltar
+      </button>
       <h1 className="text-2xl font-semibold text-green-900 mb-6">Nova fazenda</h1>
 
       <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-black/5 p-6 space-y-4">
