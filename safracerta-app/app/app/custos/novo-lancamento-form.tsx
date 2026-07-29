@@ -14,6 +14,8 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
   const [descricao, setDescricao] = useState("");
   const [valor, setValor] = useState("");
   const [data, setData] = useState(new Date().toISOString().slice(0, 10));
+  const [jaPago, setJaPago] = useState(true);
+  const [dataVencimento, setDataVencimento] = useState("");
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
 
@@ -31,6 +33,8 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
         descricao,
         valor: Number(valor),
         data,
+        data_pagamento: jaPago ? data : null,
+        data_vencimento: jaPago ? null : dataVencimento || null,
       }),
     });
 
@@ -44,6 +48,7 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
 
     setDescricao("");
     setValor("");
+    setDataVencimento("");
     router.refresh();
   }
 
@@ -86,7 +91,8 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
           />
         </div>
       </div>
-      <div className="flex items-end gap-3">
+
+      <div className="flex flex-wrap items-end gap-3">
         <div>
           <label className="block text-sm font-medium mb-1">Data</label>
           <input
@@ -96,6 +102,24 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
             className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
           />
         </div>
+
+        <label className="flex items-center gap-2 text-sm pb-2.5">
+          <input type="checkbox" checked={jaPago} onChange={(e) => setJaPago(e.target.checked)} />
+          Já foi pago (à vista)
+        </label>
+
+        {!jaPago && (
+          <div>
+            <label className="block text-sm font-medium mb-1">Vencimento</label>
+            <input
+              type="date"
+              value={dataVencimento}
+              onChange={(e) => setDataVencimento(e.target.value)}
+              className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            />
+          </div>
+        )}
+
         <button
           type="submit"
           disabled={carregando || !categoriaId}

@@ -14,6 +14,9 @@ export function NovaSafraForm({ fazendaId, talhoes }: { fazendaId: string; talho
   const router = useRouter();
   const [aberto, setAberto] = useState(false);
   const [talhaoId, setTalhaoId] = useState("");
+  const [criandoTalhao, setCriandoTalhao] = useState(false);
+  const [novoTalhaoNome, setNovoTalhaoNome] = useState("");
+  const [novoTalhaoArea, setNovoTalhaoArea] = useState("");
   const [cultura, setCultura] = useState(CULTURAS[0]);
   const [ano, setAno] = useState("2025/2026");
   const [areaPlantadaHa, setAreaPlantadaHa] = useState("");
@@ -27,12 +30,36 @@ export function NovaSafraForm({ fazendaId, talhoes }: { fazendaId: string; talho
     setErro(null);
     setCarregando(true);
 
+    let talhaoIdFinal = talhaoId || null;
+
+    if (criandoTalhao && novoTalhaoNome) {
+      const resTalhao = await fetch("/api/talhoes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fazenda_id: fazendaId,
+          nome: novoTalhaoNome,
+          area_ha: novoTalhaoArea ? Number(novoTalhaoArea) : null,
+        }),
+      });
+
+      if (!resTalhao.ok) {
+        setCarregando(false);
+        const { error } = await resTalhao.json();
+        setErro(error ?? "Não foi possível criar o talhão.");
+        return;
+      }
+
+      const { talhao } = await resTalhao.json();
+      talhaoIdFinal = talhao.id;
+    }
+
     const res = await fetch("/api/safras", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         fazenda_id: fazendaId,
-        talhao_id: talhaoId || null,
+        talhao_id: talhaoIdFinal,
         cultura,
         ano,
         area_plantada_ha: Number(areaPlantadaHa),
@@ -89,23 +116,63 @@ export function NovaSafraForm({ fazendaId, talhoes }: { fazendaId: string; talho
         </div>
       </div>
 
-      {talhoes.length > 0 && (
-        <div>
-          <label className="block text-sm font-medium mb-1">Talhão (opcional)</label>
-          <select
-            value={talhaoId}
-            onChange={(e) => setTalhaoId(e.target.value)}
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          >
-            <option value="">Toda a fazenda / sem talhão específico</option>
-            {talhoes.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.nome}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
+      <div>
+        <label className="block text-sm font-medium mb-1">Talhão (opcional)</label>
+        {!criandoTalhao ? (
+          <div className="flex gap-2">
+            <select
+              value={talhaoId}
+              onChange={(e) => setTalhaoId(e.target.value)}
+              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            >
+              <option value="">Toda a fazenda / sem talhão específico</option>
+              {talhoes.map((t) => (
+                <option key={t.id} value={t.id}>
+                  {t.nome}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={() => {
+                setCriandoTalhao(true);
+                setTalhaoId("");
+              }}
+              className="text-sm text-green-700 font-medium whitespace-nowrap"
+            >
+              + novo talhão
+            </button>
+          </div>
+        ) : (
+          <div className="flex gap-2 items-start">
+            <input
+              value={novoTalhaoNome}
+              onChange={(e) => setNovoTalhaoNome(e.target.value)}
+              placeholder="Nome do talhão"
+              className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            />
+            <input
+              type="number"
+              step="0.01"
+              value={novoTalhaoArea}
+              onChange={(e) => setNovoTalhaoArea(e.target.value)}
+              placeholder="Área (ha)"
+              className="w-28 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setCriandoTalhao(false);
+                setNovoTalhaoNome("");
+                setNovoTalhaoArea("");
+              }}
+              className="text-xs text-gray-500 whitespace-nowrap mt-2.5"
+            >
+              cancelar
+            </button>
+          </div>
+        )}
+      </div>
 
       <div className="grid grid-cols-3 gap-3">
         <div>

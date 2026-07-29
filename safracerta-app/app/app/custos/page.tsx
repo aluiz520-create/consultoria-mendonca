@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import { custoPorHectare, custoPorSaca } from "@/lib/calculos/custoPorHectare";
 import { DeleteButton } from "@/components/delete-button";
 import { VoltarButton } from "@/components/voltar-button";
+import { MarcarPagoButton } from "@/components/marcar-pago-button";
+import { statusPagamento } from "@/lib/status-pagamento";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
 import { RegistrarProducaoForm } from "./registrar-producao-form";
 
@@ -47,7 +49,7 @@ export default async function CustosPage({
       .single(),
     supabase
       .from("lancamentos_custo")
-      .select("id, descricao, valor, data, categorias_custo(nome)")
+      .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome)")
       .eq("safra_id", safraId)
       .order("data", { ascending: false }),
     supabase.from("categorias_custo").select("id, nome").order("nome"),
@@ -136,21 +138,33 @@ export default async function CustosPage({
         {!lancamentos?.length && (
           <p className="p-5 text-sm text-gray-500">Nenhum lançamento ainda.</p>
         )}
-        {lancamentos?.map((l) => (
-          <div key={l.id} className="flex items-center justify-between px-5 py-3 text-sm">
-            <div>
-              <p className="font-medium text-green-900">
-                {(l.categorias_custo as any)?.nome}
-                {l.descricao ? ` — ${l.descricao}` : ""}
-              </p>
-              <p className="text-gray-500">{new Date(l.data).toLocaleDateString("pt-BR")}</p>
+        {lancamentos?.map((l) => {
+          const status = statusPagamento(l.data_vencimento, l.data_pagamento);
+          return (
+            <div key={l.id} className="flex items-center justify-between px-5 py-3 text-sm">
+              <div>
+                <p className="font-medium text-green-900">
+                  {(l.categorias_custo as any)?.nome}
+                  {l.descricao ? ` — ${l.descricao}` : ""}
+                </p>
+                <p className="text-gray-500">
+                  {new Date(l.data).toLocaleDateString("pt-BR")}
+                  {l.data_vencimento && !l.data_pagamento
+                    ? ` · vencimento ${new Date(l.data_vencimento).toLocaleDateString("pt-BR")}`
+                    : ""}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${status.className}`}>
+                  {status.label}
+                </span>
+                <p className="font-medium">{formatarReais(Number(l.valor))}</p>
+                {!l.data_pagamento && <MarcarPagoButton id={l.id} />}
+                <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar este lançamento de custo?" />
+              </div>
             </div>
-            <div className="flex items-center gap-4">
-              <p className="font-medium">{formatarReais(Number(l.valor))}</p>
-              <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar este lançamento de custo?" />
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

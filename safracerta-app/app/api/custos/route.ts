@@ -10,7 +10,7 @@ export async function GET(request: Request) {
 
   const { data, error } = await supabase
     .from("lancamentos_custo")
-    .select("id, descricao, valor, data, categorias_custo(nome, grupo)")
+    .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome, grupo)")
     .eq("safra_id", safraId)
     .order("data", { ascending: false });
 
@@ -27,11 +27,13 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
 
   const body = await request.json();
-  const { safra_id, categoria_id, descricao, valor, data } = body;
+  const { safra_id, categoria_id, descricao, valor, data, data_vencimento, data_pagamento } = body;
 
   if (!safra_id || !categoria_id || !valor) {
     return NextResponse.json({ error: "Preencha safra, categoria e valor." }, { status: 400 });
   }
+
+  const dataLancamento = data || new Date().toISOString().slice(0, 10);
 
   const { data: lancamento, error } = await supabase
     .from("lancamentos_custo")
@@ -40,7 +42,9 @@ export async function POST(request: Request) {
       categoria_id,
       descricao,
       valor,
-      data: data || new Date().toISOString().slice(0, 10),
+      data: dataLancamento,
+      data_vencimento: data_vencimento || null,
+      data_pagamento: data_pagamento || null,
       created_by: user.id,
     })
     .select()
