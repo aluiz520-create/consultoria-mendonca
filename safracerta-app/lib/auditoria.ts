@@ -9,6 +9,12 @@ const TABELA_LABEL: Record<string, string> = {
   contrato_aditivos: "Aditivo de contrato",
   contratos_venda: "Contrato de venda",
   despesas_rateadas: "Rateio de despesa",
+  funcionarios: "Funcionário",
+  maquinas: "Máquina",
+  implementos: "Implemento",
+  produtos_estoque: "Produto de estoque",
+  estoque_movimentacoes: "Movimentação de estoque",
+  compras: "Compra",
 };
 
 const ACAO_LABEL: Record<string, string> = {

@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/app/operacoes", label: "Operações", icon: "💰" },
   { href: "/app/recursos", label: "Equipe e Máquinas", icon: "🚜" },
   { href: "/app/estoque", label: "Estoque", icon: "📦" },
+  { href: "/app/compras", label: "Compras", icon: "🛒" },
   { href: "/app/financeiro", label: "Financeiro", icon: "🧾" },
   { href: "/app/contratos", label: "Contratos", icon: "📄" },
   { href: "/app/atividade", label: "Atividade", icon: "🕒" },
