@@ -33,11 +33,19 @@ export async function POST(request: Request) {
     );
   }
 
+  const { data: centroComercial } = await supabase
+    .from("centros_resultado")
+    .select("id")
+    .eq("account_id", perfil.account_id)
+    .eq("nome", "Comercial")
+    .single();
+
   const { data, error } = await supabase
     .from("contratos_venda")
     .insert({
       account_id: perfil.account_id,
       plantio_id: plantio_id || null,
+      centro_resultado_id: centroComercial?.id ?? null,
       comprador_nome,
       cultura,
       quantidade,

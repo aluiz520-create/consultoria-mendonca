@@ -10,7 +10,9 @@ export async function GET(request: Request) {
 
   const { data, error } = await supabase
     .from("lancamentos_custo")
-    .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome, grupo)")
+    .select(
+      "id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome, grupo), centros_resultado(nome)"
+    )
     .eq("plantio_id", plantioId)
     .order("data", { ascending: false });
 
@@ -35,6 +37,12 @@ export async function POST(request: Request) {
 
   const dataLancamento = data || new Date().toISOString().slice(0, 10);
 
+  const { data: categoria } = await supabase
+    .from("categorias_custo")
+    .select("centro_resultado_id")
+    .eq("id", categoria_id)
+    .single();
+
   const { data: lancamento, error } = await supabase
     .from("lancamentos_custo")
     .insert({
@@ -45,6 +53,7 @@ export async function POST(request: Request) {
       data: dataLancamento,
       data_vencimento: data_vencimento || null,
       data_pagamento: data_pagamento || null,
+      centro_resultado_id: categoria?.centro_resultado_id ?? null,
       created_by: user.id,
     })
     .select()

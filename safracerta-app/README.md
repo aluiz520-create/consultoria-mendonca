@@ -1,6 +1,6 @@
 # SafraCerta
 
-MVP do painel de custo por hectare, contratos de arrendamento/parceria e break-even para produtores rurais e escritórios do agro — descrito em [`../plano-monetizacao-saas.md`](../plano-monetizacao-saas.md) e [`../docs/arquitetura-tecnica-saas.md`](../docs/arquitetura-tecnica-saas.md).
+Sistema de gestão agrícola e financeira para produtores rurais e escritórios do agro, organizado na hierarquia Empresa → Safra → Fazenda → Cultura → Talhão → Centro de Resultado. Começou como MVP enxuto (descrito em [`../plano-monetizacao-saas.md`](../plano-monetizacao-saas.md) e [`../docs/arquitetura-tecnica-saas.md`](../docs/arquitetura-tecnica-saas.md)) e está evoluindo para o fluxo operacional completo da safra: planejamento → estoque → compras → operações agrícolas → colheita → venda → resultado (DRE).
 
 Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS + Recharts.
 
@@ -15,10 +15,24 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
 - Contratos de venda de produção (comercialização da safra) em `/app/contratos/venda`: comprador, quantidade, preço por saca/tonelada/kg, valor total calculado, forma de pagamento e status de entrega.
 - Rateio de despesas entre plantios: uma compra que atende mais de um plantio (fazenda/talhão diferentes) pode ser dividida por percentual em `/app/operacoes/rateio`, gerando automaticamente uma operação em cada plantio.
+- Centro de Resultado (Produção / Administrativo / Máquinas / Comercial): todo custo e toda receita ficam automaticamente ligados a um centro, herdado da categoria de custo já escolhida (ou do tipo de receita) — sem nenhum campo ou clique extra no formulário.
 - Auditoria: toda criação, alteração e exclusão em fazendas, talhões, culturas, safras, plantios, operações, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
 - Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
-## O que ainda falta (próximos passos, ver plano de 90 dias)
+## Roteiro do ERP completo (em andamento)
+
+O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. Etapas, na ordem:
+
+1. ✅ Centro de Resultado
+2. Cadastros base: Funcionários, Máquinas, Implementos
+3. Estoque: produtos, saldo, movimentações
+4. Compras — origem obrigatória do custo (gera conta a pagar + entrada em estoque)
+5. Operações agrícolas por talhão — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
+6. Colheita completa — peso, umidade, armazém
+7. Venda completa — cliente, contrato, frete, desconto, recebimentos parciais
+8. Resultado/DRE completo — lucro bruto/líquido, custos administrativos/arrendamento/financeiro, indicadores por hectare/saca
+
+## Outras pendências
 
 - Geração de PDF do contrato.
 - Alertas via WhatsApp (vencimento de contrato, lembrete de lançamento mensal) — hoje só há o campo `alertas` no banco, sem o job/integração.
@@ -28,7 +42,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

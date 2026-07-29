@@ -49,7 +49,9 @@ export default async function OperacoesPage({
       .single(),
     supabase
       .from("lancamentos_custo")
-      .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome)")
+      .select(
+        "id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome), centros_resultado(nome)"
+      )
       .eq("plantio_id", plantioId)
       .order("data", { ascending: false }),
     supabase.from("categorias_custo").select("id, nome").order("nome"),
@@ -156,6 +158,7 @@ export default async function OperacoesPage({
                 </p>
                 <p className="text-gray-500">
                   {new Date(l.data).toLocaleDateString("pt-BR")}
+                  {(l.centros_resultado as any)?.nome ? ` · ${(l.centros_resultado as any).nome}` : ""}
                   {l.data_vencimento && !l.data_pagamento
                     ? ` · vencimento ${new Date(l.data_vencimento).toLocaleDateString("pt-BR")}`
                     : ""}

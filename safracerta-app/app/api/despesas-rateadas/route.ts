@@ -40,6 +40,12 @@ export async function POST(request: Request) {
 
   const dataLancamento = data || new Date().toISOString().slice(0, 10);
 
+  const { data: categoria } = await supabase
+    .from("categorias_custo")
+    .select("centro_resultado_id")
+    .eq("id", categoria_id)
+    .single();
+
   const { data: despesa, error: erroDespesa } = await supabase
     .from("despesas_rateadas")
     .insert({
@@ -63,6 +69,7 @@ export async function POST(request: Request) {
     data: dataLancamento,
     created_by: user.id,
     despesa_rateada_id: despesa.id,
+    centro_resultado_id: categoria?.centro_resultado_id ?? null,
   }));
 
   const { error: erroLancamentos } = await supabase.from("lancamentos_custo").insert(lancamentos);
