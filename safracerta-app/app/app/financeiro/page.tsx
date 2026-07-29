@@ -14,13 +14,15 @@ export default async function FinanceiroPage() {
     supabase
       .from("lancamentos_custo")
       .select(
-        "id, descricao, valor, data, data_vencimento, categorias_custo(nome), safras(cultura, ano, fazendas(nome))"
+        "id, descricao, valor, data, data_vencimento, categorias_custo(nome), plantios(culturas(nome), safras(nome), fazendas(nome))"
       )
       .is("data_pagamento", null)
       .order("data_vencimento", { ascending: true, nullsFirst: false }),
     supabase
       .from("lancamentos_custo")
-      .select("id, descricao, valor, data_pagamento, categorias_custo(nome), safras(cultura, ano, fazendas(nome))")
+      .select(
+        "id, descricao, valor, data_pagamento, categorias_custo(nome), plantios(culturas(nome), safras(nome), fazendas(nome))"
+      )
       .not("data_pagamento", "is", null)
       .order("data_pagamento", { ascending: false })
       .limit(15),
@@ -63,7 +65,8 @@ export default async function FinanceiroPage() {
                   {l.descricao ? ` — ${l.descricao}` : ""}
                 </p>
                 <p className="text-gray-500">
-                  {(l.safras as any)?.fazendas?.nome} · {(l.safras as any)?.cultura} {(l.safras as any)?.ano}
+                  {(l.plantios as any)?.fazendas?.nome} · {(l.plantios as any)?.culturas?.nome}{" "}
+                  {(l.plantios as any)?.safras?.nome}
                   {l.data_vencimento ? ` · vencimento ${new Date(l.data_vencimento).toLocaleDateString("pt-BR")}` : ""}
                 </p>
               </div>
@@ -90,7 +93,7 @@ export default async function FinanceiroPage() {
                 {l.descricao ? ` — ${l.descricao}` : ""}
               </p>
               <p className="text-gray-500">
-                {(l.safras as any)?.fazendas?.nome} · pago em{" "}
+                {(l.plantios as any)?.fazendas?.nome} · pago em{" "}
                 {new Date(l.data_pagamento).toLocaleDateString("pt-BR")}
               </p>
             </div>

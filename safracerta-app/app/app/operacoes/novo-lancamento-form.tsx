@@ -8,7 +8,7 @@ interface Categoria {
   nome: string;
 }
 
-export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; categorias: Categoria[] }) {
+export function NovoLancamentoForm({ plantioId, categorias }: { plantioId: string; categorias: Categoria[] }) {
   const router = useRouter();
   const [categoriaId, setCategoriaId] = useState(categorias[0]?.id ?? "");
   const [descricao, setDescricao] = useState("");
@@ -28,7 +28,7 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        safra_id: safraId,
+        plantio_id: plantioId,
         categoria_id: categoriaId,
         descricao,
         valor: Number(valor),
@@ -54,7 +54,7 @@ export function NovoLancamentoForm({ safraId, categorias }: { safraId: string; c
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-black/5 p-5 space-y-4">
-      <h3 className="font-semibold text-green-900">Novo lançamento</h3>
+      <h3 className="font-semibold text-green-900">Nova operação</h3>
       <div className="grid sm:grid-cols-4 gap-3">
         <div>
           <label className="block text-sm font-medium mb-1">Categoria</label>

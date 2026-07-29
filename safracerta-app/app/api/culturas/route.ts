@@ -13,25 +13,16 @@ export async function POST(request: Request) {
   if (!perfil) return NextResponse.json({ error: "Conta não encontrada." }, { status: 400 });
 
   const body = await request.json();
-  const { nome, data_inicio, data_fim } = body as {
-    nome: string;
-    data_inicio?: string;
-    data_fim?: string;
-  };
+  const { nome } = body as { nome: string };
 
-  if (!nome) return NextResponse.json({ error: "Informe o nome da safra (ex: 2025/2026)." }, { status: 400 });
+  if (!nome) return NextResponse.json({ error: "Informe o nome da cultura." }, { status: 400 });
 
   const { data, error } = await supabase
-    .from("safras")
-    .insert({
-      account_id: perfil.account_id,
-      nome,
-      data_inicio: data_inicio || null,
-      data_fim: data_fim || null,
-    })
+    .from("culturas")
+    .insert({ account_id: perfil.account_id, nome })
     .select()
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
-  return NextResponse.json({ safra: data }, { status: 201 });
+  return NextResponse.json({ cultura: data }, { status: 201 });
 }

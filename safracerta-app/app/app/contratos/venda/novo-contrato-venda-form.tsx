@@ -3,16 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-interface SafraOpcao {
+interface PlantioOpcao {
   id: string;
   label: string;
   cultura: string;
 }
 
-export function NovoContratoVendaForm({ safras }: { safras: SafraOpcao[] }) {
+export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }) {
   const router = useRouter();
   const [aberto, setAberto] = useState(false);
-  const [safraId, setSafraId] = useState("");
+  const [plantioId, setPlantioId] = useState("");
   const [compradorNome, setCompradorNome] = useState("");
   const [cultura, setCultura] = useState("");
   const [quantidade, setQuantidade] = useState("");
@@ -25,10 +25,10 @@ export function NovoContratoVendaForm({ safras }: { safras: SafraOpcao[] }) {
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
 
-  function handleSafraChange(id: string) {
-    setSafraId(id);
-    const safra = safras.find((s) => s.id === id);
-    if (safra) setCultura(safra.cultura);
+  function handlePlantioChange(id: string) {
+    setPlantioId(id);
+    const plantio = plantios.find((p) => p.id === id);
+    if (plantio) setCultura(plantio.cultura);
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -40,7 +40,7 @@ export function NovoContratoVendaForm({ safras }: { safras: SafraOpcao[] }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        safra_id: safraId || null,
+        plantio_id: plantioId || null,
         comprador_nome: compradorNome,
         cultura,
         quantidade: Number(quantidade),
@@ -85,16 +85,16 @@ export function NovoContratoVendaForm({ safras }: { safras: SafraOpcao[] }) {
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-black/5 p-5 space-y-4 max-w-2xl">
       <div className="grid sm:grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium mb-1">Safra (opcional)</label>
+          <label className="block text-sm font-medium mb-1">Plantio (opcional)</label>
           <select
-            value={safraId}
-            onChange={(e) => handleSafraChange(e.target.value)}
+            value={plantioId}
+            onChange={(e) => handlePlantioChange(e.target.value)}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
           >
-            <option value="">Sem vínculo com safra específica</option>
-            {safras.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.label}
+            <option value="">Sem vínculo com plantio específico</option>
+            {plantios.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.label}
               </option>
             ))}
           </select>

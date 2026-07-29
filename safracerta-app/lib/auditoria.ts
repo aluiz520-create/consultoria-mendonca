@@ -1,9 +1,13 @@
 const TABELA_LABEL: Record<string, string> = {
   fazendas: "Fazenda",
+  talhoes: "Talhão",
+  culturas: "Cultura",
   safras: "Safra",
-  lancamentos_custo: "Lançamento de custo",
+  plantios: "Plantio",
+  lancamentos_custo: "Operação",
   contratos: "Contrato",
   contrato_aditivos: "Aditivo de contrato",
+  contratos_venda: "Contrato de venda",
   despesas_rateadas: "Rateio de despesa",
 };
 
@@ -24,8 +28,8 @@ function nomeAmigavel(dados: Record<string, unknown> | null): string | null {
   return (
     (dados.nome as string) ||
     (dados.contraparte_nome as string) ||
+    (dados.comprador_nome as string) ||
     (dados.descricao as string) ||
-    (dados.cultura ? `${dados.cultura} ${dados.ano ?? ""}`.trim() : null) ||
     null
   );
 }

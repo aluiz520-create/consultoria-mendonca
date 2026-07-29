@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
   const body = await request.json();
   const {
-    safra_id,
+    plantio_id,
     comprador_nome,
     cultura,
     quantidade,
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     .from("contratos_venda")
     .insert({
       account_id: perfil.account_id,
-      safra_id: safra_id || null,
+      plantio_id: plantio_id || null,
       comprador_nome,
       cultura,
       quantidade,

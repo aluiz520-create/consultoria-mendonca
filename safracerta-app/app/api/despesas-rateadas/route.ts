@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
 interface RateioInput {
-  safra_id: string;
+  plantio_id: string;
   percentual: number;
 }
 
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
   };
 
   if (!categoria_id || !valor_total || !rateios?.length) {
-    return NextResponse.json({ error: "Preencha categoria, valor total e ao menos uma safra no rateio." }, { status: 400 });
+    return NextResponse.json({ error: "Preencha categoria, valor total e ao menos um plantio no rateio." }, { status: 400 });
   }
 
   const somaPercentuais = rateios.reduce((acc, r) => acc + Number(r.percentual), 0);
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   if (erroDespesa) return NextResponse.json({ error: erroDespesa.message }, { status: 400 });
 
   const lancamentos = rateios.map((r) => ({
-    safra_id: r.safra_id,
+    plantio_id: r.plantio_id,
     categoria_id,
     descricao: descricao ? `${descricao} (rateio ${r.percentual}%)` : `Rateio de despesa (${r.percentual}%)`,
     valor: Number((valor_total * (Number(r.percentual) / 100)).toFixed(2)),

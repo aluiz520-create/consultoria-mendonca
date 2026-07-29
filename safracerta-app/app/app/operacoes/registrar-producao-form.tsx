@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export function RegistrarProducaoForm({
-  safraId,
+  plantioId,
   producaoAtual,
   umidadeAtual,
 }: {
-  safraId: string;
+  plantioId: string;
   producaoAtual: number | null;
   umidadeAtual: number | null;
 }) {
@@ -24,7 +24,7 @@ export function RegistrarProducaoForm({
     setErro(null);
     setCarregando(true);
 
-    const res = await fetch(`/api/safras/${safraId}`, {
+    const res = await fetch(`/api/plantios/${plantioId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

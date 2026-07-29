@@ -15,21 +15,21 @@ function formatarReais(valor: number) {
 export default async function DashboardPage({
   searchParams,
 }: {
-  searchParams: { safraId?: string };
+  searchParams: { plantioId?: string };
 }) {
   const supabase = createClient();
 
-  const { data: safras } = await supabase
-    .from("safras")
+  const { data: plantios } = await supabase
+    .from("plantios")
     .select(
-      "id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, preco_referencia_sc, fazenda_id, fazendas(nome)"
+      "id, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, preco_referencia_sc, fazenda_id, culturas(nome), safras(nome), fazendas(nome)"
     )
     .order("created_at", { ascending: false });
 
-  if (!safras?.length) {
+  if (!plantios?.length) {
     return (
       <div className="bg-white rounded-2xl border border-black/5 p-10 text-center text-gray-500">
-        Cadastre uma fazenda e uma safra para ver o seu dashboard.
+        Cadastre uma fazenda, um talhão e um plantio para ver o seu dashboard.
         <div className="mt-4">
           <Link href="/app/fazendas/nova" className="text-green-700 font-medium">
             + Nova fazenda
@@ -39,32 +39,32 @@ export default async function DashboardPage({
     );
   }
 
-  const safraAtual = safras.find((s) => s.id === searchParams.safraId) ?? safras[0];
+  const plantioAtual = plantios.find((p) => p.id === searchParams.plantioId) ?? plantios[0];
 
   const { data: lancamentos } = await supabase
     .from("lancamentos_custo")
     .select("valor, data, categorias_custo(nome)")
-    .eq("safra_id", safraAtual.id);
+    .eq("plantio_id", plantioAtual.id);
 
-  const produtividadeParaCalculo = safraAtual.producao_colhida_sc
-    ? safraAtual.producao_colhida_sc / safraAtual.area_plantada_ha
-    : safraAtual.produtividade_esperada_sc_ha;
+  const produtividadeParaCalculo = plantioAtual.producao_colhida_sc
+    ? plantioAtual.producao_colhida_sc / plantioAtual.area_plantada_ha
+    : plantioAtual.produtividade_esperada_sc_ha;
 
   const custoTotal = (lancamentos ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
-  const cPorHa = custoPorHectare(custoTotal, safraAtual.area_plantada_ha);
-  const cPorSaca = safraAtual.producao_colhida_sc
-    ? custoTotal / safraAtual.producao_colhida_sc
+  const cPorHa = custoPorHectare(custoTotal, plantioAtual.area_plantada_ha);
+  const cPorSaca = plantioAtual.producao_colhida_sc
+    ? custoTotal / plantioAtual.producao_colhida_sc
     : produtividadeParaCalculo
-    ? custoPorSaca(custoTotal, safraAtual.area_plantada_ha, produtividadeParaCalculo)
+    ? custoPorSaca(custoTotal, plantioAtual.area_plantada_ha, produtividadeParaCalculo)
     : null;
 
   const breakEven =
-    produtividadeParaCalculo && safraAtual.preco_referencia_sc
+    produtividadeParaCalculo && plantioAtual.preco_referencia_sc
       ? calcularBreakEven(
           custoTotal,
-          safraAtual.area_plantada_ha,
+          plantioAtual.area_plantada_ha,
           produtividadeParaCalculo,
-          safraAtual.preco_referencia_sc
+          plantioAtual.preco_referencia_sc
         )
       : null;
 
@@ -86,22 +86,22 @@ export default async function DashboardPage({
     }, {})
   );
 
-  const { data: todasSafras } = await supabase
-    .from("safras")
+  const { data: todosPlantios } = await supabase
+    .from("plantios")
     .select("fazenda_id, area_plantada_ha, fazendas(nome)");
 
   const comparativoFazendas = await Promise.all(
-    Array.from(new Set((todasSafras ?? []).map((s) => s.fazenda_id))).map(async (fazendaId) => {
-      const safrasDaFazenda = (todasSafras ?? []).filter((s) => s.fazenda_id === fazendaId);
-      const areaTotal = safrasDaFazenda.reduce((acc, s) => acc + Number(s.area_plantada_ha), 0);
-      const { data: safraIds } = await supabase.from("safras").select("id").eq("fazenda_id", fazendaId);
-      const ids = (safraIds ?? []).map((s) => s.id);
+    Array.from(new Set((todosPlantios ?? []).map((p) => p.fazenda_id))).map(async (fazendaId) => {
+      const plantiosDaFazenda = (todosPlantios ?? []).filter((p) => p.fazenda_id === fazendaId);
+      const areaTotal = plantiosDaFazenda.reduce((acc, p) => acc + Number(p.area_plantada_ha), 0);
+      const { data: plantioIds } = await supabase.from("plantios").select("id").eq("fazenda_id", fazendaId);
+      const ids = (plantioIds ?? []).map((p) => p.id);
       const { data: custosFazenda } = ids.length
-        ? await supabase.from("lancamentos_custo").select("valor").in("safra_id", ids)
+        ? await supabase.from("lancamentos_custo").select("valor").in("plantio_id", ids)
         : { data: [] };
       const total = (custosFazenda ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
       return {
-        nome: (safrasDaFazenda[0]?.fazendas as any)?.nome ?? "Fazenda",
+        nome: (plantiosDaFazenda[0]?.fazendas as any)?.nome ?? "Fazenda",
         custoPorHa: custoPorHectare(total, areaTotal),
       };
     })
@@ -113,18 +113,19 @@ export default async function DashboardPage({
         <div>
           <h1 className="text-2xl font-semibold text-green-900">Dashboard</h1>
           <p className="text-sm text-gray-500">
-            {(safraAtual.fazendas as any)?.nome} · {safraAtual.cultura} {safraAtual.ano}
+            {(plantioAtual.fazendas as any)?.nome} · {(plantioAtual.culturas as any)?.nome} —{" "}
+            {(plantioAtual.safras as any)?.nome}
           </p>
         </div>
         <form className="flex items-center gap-2">
           <select
-            name="safraId"
-            defaultValue={safraAtual.id}
+            name="plantioId"
+            defaultValue={plantioAtual.id}
             className="rounded-lg border border-gray-300 px-3 py-2 text-sm"
           >
-            {safras.map((s) => (
-              <option key={s.id} value={s.id}>
-                {(s.fazendas as any)?.nome} — {s.cultura} {s.ano}
+            {plantios.map((p) => (
+              <option key={p.id} value={p.id}>
+                {(p.fazendas as any)?.nome} — {(p.culturas as any)?.nome} {(p.safras as any)?.nome}
               </option>
             ))}
           </select>
@@ -148,7 +149,7 @@ export default async function DashboardPage({
           <p className="text-lg font-semibold text-green-900">
             {cPorSaca !== null ? formatarReais(cPorSaca) : "—"}
           </p>
-          {!safraAtual.producao_colhida_sc && cPorSaca !== null && (
+          {!plantioAtual.producao_colhida_sc && cPorSaca !== null && (
             <p className="text-xs text-gray-400 mt-0.5">estimado</p>
           )}
         </div>

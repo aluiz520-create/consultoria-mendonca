@@ -12,73 +12,74 @@ function formatarReais(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-export default async function CustosPage({
+export default async function OperacoesPage({
   searchParams,
 }: {
-  searchParams: { safraId?: string };
+  searchParams: { plantioId?: string };
 }) {
   const supabase = createClient();
-  const safraId = searchParams.safraId;
+  const plantioId = searchParams.plantioId;
 
-  if (!safraId) {
+  if (!plantioId) {
     return (
       <div>
         <VoltarButton />
         <div className="bg-white rounded-2xl border border-black/5 p-10 text-center text-gray-500">
-        Selecione uma fazenda e uma safra em{" "}
-        <Link href="/app/fazendas" className="text-green-700 font-medium">
-          Fazendas
-        </Link>{" "}
-        para lançar custos, ou{" "}
-        <Link href="/app/custos/rateio" className="text-green-700 font-medium">
-          rateie uma despesa entre várias safras
-        </Link>
-        .
+          Selecione uma fazenda, um talhão e um plantio em{" "}
+          <Link href="/app/fazendas" className="text-green-700 font-medium">
+            Fazendas
+          </Link>{" "}
+          para lançar operações, ou{" "}
+          <Link href="/app/operacoes/rateio" className="text-green-700 font-medium">
+            rateie uma despesa entre vários plantios
+          </Link>
+          .
         </div>
       </div>
     );
   }
 
-  const [{ data: safra }, { data: lancamentos }, { data: categorias }] = await Promise.all([
+  const [{ data: plantio }, { data: lancamentos }, { data: categorias }] = await Promise.all([
     supabase
-      .from("safras")
+      .from("plantios")
       .select(
-        "id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, umidade_colheita, fazendas(nome), talhoes(nome)"
+        "id, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), fazendas(nome), talhoes(nome)"
       )
-      .eq("id", safraId)
+      .eq("id", plantioId)
       .single(),
     supabase
       .from("lancamentos_custo")
       .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome)")
-      .eq("safra_id", safraId)
+      .eq("plantio_id", plantioId)
       .order("data", { ascending: false }),
     supabase.from("categorias_custo").select("id, nome").order("nome"),
   ]);
 
-  if (!safra) {
-    return <p className="text-gray-500">Safra não encontrada.</p>;
+  if (!plantio) {
+    return <p className="text-gray-500">Plantio não encontrado.</p>;
   }
 
   const custoTotal = (lancamentos ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
-  const cPorHa = custoPorHectare(custoTotal, safra.area_plantada_ha);
-  const cPorSaca = safra.producao_colhida_sc
-    ? custoTotal / safra.producao_colhida_sc
-    : safra.produtividade_esperada_sc_ha
-    ? custoPorSaca(custoTotal, safra.area_plantada_ha, safra.produtividade_esperada_sc_ha)
+  const cPorHa = custoPorHectare(custoTotal, plantio.area_plantada_ha);
+  const cPorSaca = plantio.producao_colhida_sc
+    ? custoTotal / plantio.producao_colhida_sc
+    : plantio.produtividade_esperada_sc_ha
+    ? custoPorSaca(custoTotal, plantio.area_plantada_ha, plantio.produtividade_esperada_sc_ha)
     : null;
-  const produtividadeRealizada = safra.producao_colhida_sc
-    ? safra.producao_colhida_sc / safra.area_plantada_ha
+  const produtividadeRealizada = plantio.producao_colhida_sc
+    ? plantio.producao_colhida_sc / plantio.area_plantada_ha
     : null;
 
   return (
     <div>
       <VoltarButton />
       <h1 className="text-2xl font-semibold text-green-900">
-        {safra.cultura} — {safra.ano}
+        {(plantio.culturas as any)?.nome} — {(plantio.safras as any)?.nome}
       </h1>
       <p className="text-sm text-gray-500 mb-6">
-        {(safra.fazendas as any)?.nome}
-        {(safra.talhoes as any)?.nome ? ` · ${(safra.talhoes as any).nome}` : ""} · {safra.area_plantada_ha} ha
+        {(plantio.fazendas as any)?.nome}
+        {(plantio.talhoes as any)?.nome ? ` · ${(plantio.talhoes as any).nome}` : ""} ·{" "}
+        {plantio.area_plantada_ha} ha
       </p>
 
       <div className="grid grid-cols-3 gap-4 mb-6">
@@ -95,7 +96,7 @@ export default async function CustosPage({
           <p className="text-lg font-semibold text-green-900">
             {cPorSaca !== null ? formatarReais(cPorSaca) : "—"}
           </p>
-          {safra.producao_colhida_sc == null && safra.produtividade_esperada_sc_ha && (
+          {plantio.producao_colhida_sc == null && plantio.produtividade_esperada_sc_ha && (
             <p className="text-xs text-gray-400 mt-0.5">estimado (produção ainda não colhida)</p>
           )}
         </div>
@@ -103,20 +104,26 @@ export default async function CustosPage({
 
       <div className="grid sm:grid-cols-2 gap-4 mb-6">
         <RegistrarProducaoForm
-          safraId={safraId}
-          producaoAtual={safra.producao_colhida_sc}
-          umidadeAtual={safra.umidade_colheita}
+          plantioId={plantioId}
+          producaoAtual={plantio.producao_colhida_sc}
+          umidadeAtual={plantio.umidade_colheita}
         />
-        {safra.produtividade_esperada_sc_ha && (
+        {plantio.produtividade_esperada_sc_ha && (
           <div className="bg-white rounded-2xl border border-black/5 p-4">
             <p className="text-xs text-gray-500">Produtividade — esperada × realizada</p>
             <p className="text-lg font-semibold text-green-900">
-              {safra.produtividade_esperada_sc_ha} sc/ha
+              {plantio.produtividade_esperada_sc_ha} sc/ha
               {produtividadeRealizada !== null && (
                 <>
                   {" "}
                   →{" "}
-                  <span className={produtividadeRealizada >= safra.produtividade_esperada_sc_ha ? "text-green-700" : "text-red-600"}>
+                  <span
+                    className={
+                      produtividadeRealizada >= plantio.produtividade_esperada_sc_ha
+                        ? "text-green-700"
+                        : "text-red-600"
+                    }
+                  >
                     {produtividadeRealizada.toFixed(1)} sc/ha
                   </span>
                 </>
@@ -127,16 +134,16 @@ export default async function CustosPage({
       </div>
 
       <div className="mb-6">
-        <NovoLancamentoForm safraId={safraId} categorias={categorias ?? []} />
-        <Link href="/app/custos/rateio" className="text-sm text-green-700 font-medium mt-2 inline-block">
-          Ou ratear uma despesa entre esta e outras safras →
+        <NovoLancamentoForm plantioId={plantioId} categorias={categorias ?? []} />
+        <Link href="/app/operacoes/rateio" className="text-sm text-green-700 font-medium mt-2 inline-block">
+          Ou ratear uma despesa entre este e outros plantios →
         </Link>
       </div>
 
-      <h2 className="text-lg font-semibold text-green-900 mb-3">Lançamentos</h2>
+      <h2 className="text-lg font-semibold text-green-900 mb-3">Operações</h2>
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5">
         {!lancamentos?.length && (
-          <p className="p-5 text-sm text-gray-500">Nenhum lançamento ainda.</p>
+          <p className="p-5 text-sm text-gray-500">Nenhuma operação lançada ainda.</p>
         )}
         {lancamentos?.map((l) => {
           const status = statusPagamento(l.data_vencimento, l.data_pagamento);
@@ -160,7 +167,7 @@ export default async function CustosPage({
                 </span>
                 <p className="font-medium">{formatarReais(Number(l.valor))}</p>
                 {!l.data_pagamento && <MarcarPagoButton id={l.id} />}
-                <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar este lançamento de custo?" />
+                <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar esta operação?" />
               </div>
             </div>
           );

@@ -21,7 +21,7 @@ export default async function FazendaDetalhePage({
 
   const { data: talhoes } = await supabase
     .from("talhoes")
-    .select("id, nome, area_ha, tipo_solo, safras(id)")
+    .select("id, nome, area_ha, tipo_solo, plantios(id)")
     .eq("fazenda_id", params.fazendaId)
     .order("nome");
 
@@ -34,7 +34,7 @@ export default async function FazendaDetalhePage({
         <h1 className="text-2xl font-semibold text-green-900">{fazenda.nome}</h1>
         <DeleteButton
           url={`/api/fazendas/${fazenda.id}`}
-          confirmMessage={`Apagar a fazenda "${fazenda.nome}"? Isso também apaga todos os talhões, safras e custos lançados nela.`}
+          confirmMessage={`Apagar a fazenda "${fazenda.nome}"? Isso também apaga todos os talhões, plantios e custos lançados nela.`}
           label="Apagar fazenda"
           redirectTo="/app/fazendas"
         />
@@ -46,7 +46,7 @@ export default async function FazendaDetalhePage({
 
       <h2 className="text-lg font-semibold text-green-900 mb-3">Talhões</h2>
       <p className="text-sm text-gray-500 mb-4">
-        Cada talhão guarda suas próprias safras, custos e colheita. Se não quiser dividir a fazenda,
+        Cada talhão guarda seus próprios plantios, custos e colheita. Se não quiser dividir a fazenda,
         cadastre um único talhão representando a área toda.
       </p>
 
@@ -63,7 +63,7 @@ export default async function FazendaDetalhePage({
               {t.tipo_solo ? ` · ${t.tipo_solo}` : ""}
             </p>
             <p className="text-xs text-green-700 mt-2">
-              {(t.safras as any[])?.length ?? 0} safra(s) →
+              {(t.plantios as any[])?.length ?? 0} plantio(s) →
             </p>
           </Link>
         ))}

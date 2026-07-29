@@ -14,20 +14,23 @@ const UNIDADE_LABEL: Record<string, string> = { saca: "sc", tonelada: "t", kg: "
 export default async function ContratosVendaPage() {
   const supabase = createClient();
 
-  const [{ data: contratos }, { data: safras }] = await Promise.all([
+  const [{ data: contratos }, { data: plantios }] = await Promise.all([
     supabase
       .from("contratos_venda")
       .select(
         "id, comprador_nome, cultura, quantidade, unidade_medida, preco_unitario, valor_total, forma_pagamento, data_contrato, data_entrega, status"
       )
       .order("data_entrega", { ascending: true, nullsFirst: false }),
-    supabase.from("safras").select("id, cultura, ano, fazendas(nome)").order("created_at", { ascending: false }),
+    supabase
+      .from("plantios")
+      .select("id, culturas(nome), safras(nome), fazendas(nome)")
+      .order("created_at", { ascending: false }),
   ]);
 
-  const safrasOpcoes = (safras ?? []).map((s) => ({
-    id: s.id,
-    cultura: s.cultura,
-    label: `${(s.fazendas as any)?.nome ?? "Fazenda"} — ${s.cultura} ${s.ano}`,
+  const plantiosOpcoes = (plantios ?? []).map((p) => ({
+    id: p.id,
+    cultura: (p.culturas as any)?.nome ?? "",
+    label: `${(p.fazendas as any)?.nome ?? "Fazenda"} — ${(p.culturas as any)?.nome} ${(p.safras as any)?.nome}`,
   }));
 
   return (
@@ -41,7 +44,7 @@ export default async function ContratosVendaPage() {
       </p>
 
       <div className="mb-6">
-        <NovoContratoVendaForm safras={safrasOpcoes} />
+        <NovoContratoVendaForm plantios={plantiosOpcoes} />
       </div>
 
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5">

@@ -7,15 +7,15 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## O que já funciona (MVP)
 
 - Cadastro/login (e-mail e senha) — cada novo usuário ganha automaticamente uma `account` (multi-tenant) via trigger no banco.
-- Hierarquia fazenda → talhão → safra: a fazenda lista os talhões; cada talhão tem sua própria página com suas safras (soja/milho/feijão), custos e colheita. Talhão é obrigatório em toda safra — quem não quer dividir a fazenda cadastra um único talhão representando a área toda.
-- Lançamento de custos por categoria, por safra, com controle de pagamento: marca se já foi pago (à vista) ou informa vencimento (a prazo), com status (Pago / A vencer / Vencido) e botão de marcar como pago.
+- **Hierarquia: Empresa → Safra (ciclo agrícola, ex. "2025/2026") → Fazenda → Cultura → Talhão → Plantio.** Safra e Cultura são cadastros próprios da conta, reutilizados em toda a empresa. Talhão é obrigatório e é o ponto de entrada na fazenda; dentro dele, cada Plantio é a combinação específica de uma Safra + uma Cultura naquele Talhão, e é ali que moram custos (Operações), colheita e resultado. Quem não quer dividir a fazenda cadastra um único talhão representando a área toda.
+- Operações (`/app/operacoes`, por plantio): lançamento de custo por categoria, com controle de pagamento — marca se já foi pago (à vista) ou informa vencimento (a prazo), com status (Pago / A vencer / Vencido) e botão de marcar como pago.
 - Financeiro (`/app/financeiro`): fluxo de pagamento com tudo que está em aberto (ordenado por vencimento, vencidos em destaque), total pendente e total vencido, e histórico dos pagos recentemente.
-- Registro de produção colhida (sacas e umidade) na tela de custos, fechando o ciclo previsto × realizado: custo/saca e margem passam a usar a produção real assim que ela é registrada, em vez da estimativa.
+- Registro de produção colhida (sacas e umidade) na tela de Operações, fechando o ciclo previsto × realizado: custo/saca e margem passam a usar a produção real assim que ela é registrada, em vez da estimativa.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
 - Contratos de venda de produção (comercialização da safra) em `/app/contratos/venda`: comprador, quantidade, preço por saca/tonelada/kg, valor total calculado, forma de pagamento e status de entrega.
-- Rateio de despesas entre fazendas/safras: uma compra que atende mais de uma safra pode ser dividida por percentual em `/app/custos/rateio`, gerando automaticamente um lançamento de custo em cada safra.
-- Auditoria: toda criação, alteração e exclusão em fazendas, safras, custos, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
+- Rateio de despesas entre plantios: uma compra que atende mais de um plantio (fazenda/talhão diferentes) pode ser dividida por percentual em `/app/operacoes/rateio`, gerando automaticamente uma operação em cada plantio.
+- Auditoria: toda criação, alteração e exclusão em fazendas, talhões, culturas, safras, plantios, operações, contratos, aditivos e rateios fica registrada (quem fez, quando, valor anterior x novo), visível em `/app/atividade`.
 - Cobrança recorrente via Asaas (Pix, boleto ou cartão): tela de plano em `/app/configuracoes/plano`, criação/atualização de assinatura, webhook que atualiza o status a cada pagamento e bloqueio automático de acesso (redireciona para a tela de plano) quando a assinatura fica atrasada ou cancelada.
 
 ## O que ainda falta (próximos passos, ver plano de 90 dias)
@@ -28,7 +28,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

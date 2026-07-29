@@ -4,14 +4,14 @@ import { createClient } from "@/lib/supabase/server";
 export async function GET(request: Request) {
   const supabase = createClient();
   const { searchParams } = new URL(request.url);
-  const safraId = searchParams.get("safraId");
+  const plantioId = searchParams.get("plantioId");
 
-  if (!safraId) return NextResponse.json({ error: "Informe safraId." }, { status: 400 });
+  if (!plantioId) return NextResponse.json({ error: "Informe plantioId." }, { status: 400 });
 
   const { data, error } = await supabase
     .from("lancamentos_custo")
     .select("id, descricao, valor, data, data_vencimento, data_pagamento, categorias_custo(nome, grupo)")
-    .eq("safra_id", safraId)
+    .eq("plantio_id", plantioId)
     .order("data", { ascending: false });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
@@ -27,10 +27,10 @@ export async function POST(request: Request) {
   if (!user) return NextResponse.json({ error: "Não autenticado." }, { status: 401 });
 
   const body = await request.json();
-  const { safra_id, categoria_id, descricao, valor, data, data_vencimento, data_pagamento } = body;
+  const { plantio_id, categoria_id, descricao, valor, data, data_vencimento, data_pagamento } = body;
 
-  if (!safra_id || !categoria_id || !valor) {
-    return NextResponse.json({ error: "Preencha safra, categoria e valor." }, { status: 400 });
+  if (!plantio_id || !categoria_id || !valor) {
+    return NextResponse.json({ error: "Preencha plantio, categoria e valor." }, { status: 400 });
   }
 
   const dataLancamento = data || new Date().toISOString().slice(0, 10);
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const { data: lancamento, error } = await supabase
     .from("lancamentos_custo")
     .insert({
-      safra_id,
+      plantio_id,
       categoria_id,
       descricao,
       valor,

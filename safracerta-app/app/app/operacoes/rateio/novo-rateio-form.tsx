@@ -8,25 +8,25 @@ interface Categoria {
   nome: string;
 }
 
-interface SafraOpcao {
+interface PlantioOpcao {
   id: string;
   label: string;
 }
 
 interface Linha {
-  safra_id: string;
+  plantio_id: string;
   percentual: string;
 }
 
-export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]; safras: SafraOpcao[] }) {
+export function NovoRateioForm({ categorias, plantios }: { categorias: Categoria[]; plantios: PlantioOpcao[] }) {
   const router = useRouter();
   const [categoriaId, setCategoriaId] = useState(categorias[0]?.id ?? "");
   const [descricao, setDescricao] = useState("");
   const [valorTotal, setValorTotal] = useState("");
   const [data, setData] = useState(new Date().toISOString().slice(0, 10));
   const [linhas, setLinhas] = useState<Linha[]>([
-    { safra_id: safras[0]?.id ?? "", percentual: "" },
-    { safra_id: safras[1]?.id ?? "", percentual: "" },
+    { plantio_id: plantios[0]?.id ?? "", percentual: "" },
+    { plantio_id: plantios[1]?.id ?? "", percentual: "" },
   ]);
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
@@ -38,7 +38,7 @@ export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]
   }
 
   function adicionarLinha() {
-    setLinhas((prev) => [...prev, { safra_id: safras[0]?.id ?? "", percentual: "" }]);
+    setLinhas((prev) => [...prev, { plantio_id: plantios[0]?.id ?? "", percentual: "" }]);
   }
 
   function removerLinha(index: number) {
@@ -64,7 +64,7 @@ export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]
         descricao,
         valor_total: Number(valorTotal),
         data,
-        rateios: linhas.map((l) => ({ safra_id: l.safra_id, percentual: Number(l.percentual) })),
+        rateios: linhas.map((l) => ({ plantio_id: l.plantio_id, percentual: Number(l.percentual) })),
       }),
     });
 
@@ -79,8 +79,8 @@ export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]
     setDescricao("");
     setValorTotal("");
     setLinhas([
-      { safra_id: safras[0]?.id ?? "", percentual: "" },
-      { safra_id: safras[1]?.id ?? "", percentual: "" },
+      { plantio_id: plantios[0]?.id ?? "", percentual: "" },
+      { plantio_id: plantios[1]?.id ?? "", percentual: "" },
     ]);
     router.refresh();
   }
@@ -135,18 +135,18 @@ export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]
       </div>
 
       <div>
-        <p className="text-sm font-medium mb-2">Como dividir entre as safras</p>
+        <p className="text-sm font-medium mb-2">Como dividir entre os plantios</p>
         <div className="space-y-2">
           {linhas.map((linha, index) => (
             <div key={index} className="flex gap-2 items-center">
               <select
-                value={linha.safra_id}
-                onChange={(e) => atualizarLinha(index, "safra_id", e.target.value)}
+                value={linha.plantio_id}
+                onChange={(e) => atualizarLinha(index, "plantio_id", e.target.value)}
                 className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm"
               >
-                {safras.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.label}
+                {plantios.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.label}
                   </option>
                 ))}
               </select>
@@ -171,7 +171,7 @@ export function NovoRateioForm({ categorias, safras }: { categorias: Categoria[]
           ))}
         </div>
         <button type="button" onClick={adicionarLinha} className="text-sm text-green-700 font-medium mt-2">
-          + adicionar safra
+          + adicionar plantio
         </button>
         <p className={`text-xs mt-2 ${Math.abs(somaPercentuais - 100) > 0.5 ? "text-red-600" : "text-gray-500"}`}>
           Soma dos percentuais: {somaPercentuais.toFixed(1)}%
