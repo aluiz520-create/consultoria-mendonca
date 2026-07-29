@@ -138,6 +138,13 @@ p { margin: 0 0 12px; color: var(--muted); }
   font-size: 1.05rem;
   max-width: 440px;
 }
+.hero-banner-text .badge {
+  position: static;
+  display: inline-flex;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
 .hero-banner-right {
   flex: 1 1 380px;
   position: relative;
