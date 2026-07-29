@@ -43,10 +43,11 @@ alter table plantios add column cultura_id uuid references culturas (id) on dele
 
 update plantios p
 set cultura_id = c.id
-from culturas c
-join talhoes t on t.id = p.talhao_id
-join fazendas f on f.id = t.fazenda_id
-where c.account_id = f.account_id and c.nome = p.cultura;
+from culturas c, talhoes t, fazendas f
+where t.id = p.talhao_id
+  and f.id = t.fazenda_id
+  and c.account_id = f.account_id
+  and c.nome = p.cultura;
 
 alter table plantios alter column cultura_id set not null;
 alter table plantios drop column cultura;
