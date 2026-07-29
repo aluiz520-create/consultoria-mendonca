@@ -15,18 +15,27 @@ export async function POST(request: Request) {
   const body = await request.json();
   const {
     plantio_id,
+    cliente_id,
     comprador_nome,
     cultura,
     quantidade,
     unidade_medida,
     preco_unitario,
+    frete,
+    desconto,
     forma_pagamento,
     data_contrato,
     data_entrega,
     observacoes,
   } = body;
 
-  if (!comprador_nome || !quantidade || !preco_unitario) {
+  let compradorNomeFinal = comprador_nome;
+  if (cliente_id) {
+    const { data: cliente } = await supabase.from("clientes").select("nome").eq("id", cliente_id).single();
+    if (cliente) compradorNomeFinal = cliente.nome;
+  }
+
+  if (!compradorNomeFinal || !quantidade || !preco_unitario) {
     return NextResponse.json(
       { error: "Preencha comprador, quantidade e preço por unidade." },
       { status: 400 }
@@ -45,12 +54,15 @@ export async function POST(request: Request) {
     .insert({
       account_id: perfil.account_id,
       plantio_id: plantio_id || null,
+      cliente_id: cliente_id || null,
       centro_resultado_id: centroComercial?.id ?? null,
-      comprador_nome,
+      comprador_nome: compradorNomeFinal,
       cultura,
       quantidade,
       unidade_medida: unidade_medida || "saca",
       preco_unitario,
+      frete: frete || 0,
+      desconto: desconto || 0,
       forma_pagamento,
       data_contrato: data_contrato || new Date().toISOString().slice(0, 10),
       data_entrega: data_entrega || null,

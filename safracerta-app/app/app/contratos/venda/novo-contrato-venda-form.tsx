@@ -9,21 +9,45 @@ interface PlantioOpcao {
   cultura: string;
 }
 
-export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }) {
+interface ClienteOpcao {
+  id: string;
+  nome: string;
+}
+
+export function NovoContratoVendaForm({
+  plantios,
+  clientes,
+}: {
+  plantios: PlantioOpcao[];
+  clientes: ClienteOpcao[];
+}) {
   const router = useRouter();
   const [aberto, setAberto] = useState(false);
   const [plantioId, setPlantioId] = useState("");
-  const [compradorNome, setCompradorNome] = useState("");
+  const [clienteId, setClienteId] = useState(clientes[0]?.id ?? "");
+  const [criandoCliente, setCriandoCliente] = useState(clientes.length === 0);
+  const [novoClienteNome, setNovoClienteNome] = useState("");
   const [cultura, setCultura] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [unidadeMedida, setUnidadeMedida] = useState("saca");
   const [precoUnitario, setPrecoUnitario] = useState("");
+  const [frete, setFrete] = useState("");
+  const [desconto, setDesconto] = useState("");
   const [formaPagamento, setFormaPagamento] = useState("a_vista");
   const [dataContrato, setDataContrato] = useState(new Date().toISOString().slice(0, 10));
   const [dataEntrega, setDataEntrega] = useState("");
   const [observacoes, setObservacoes] = useState("");
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
+
+  const valorLiquido =
+    quantidade && precoUnitario
+      ? (
+          Number(quantidade) * Number(precoUnitario) -
+          (Number(frete) || 0) -
+          (Number(desconto) || 0)
+        ).toFixed(2)
+      : null;
 
   function handlePlantioChange(id: string) {
     setPlantioId(id);
@@ -36,16 +60,36 @@ export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }
     setErro(null);
     setCarregando(true);
 
+    let clienteIdFinal = clienteId || null;
+
+    if (criandoCliente && novoClienteNome) {
+      const res = await fetch("/api/clientes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome: novoClienteNome }),
+      });
+      if (!res.ok) {
+        setCarregando(false);
+        const { error } = await res.json();
+        setErro(error ?? "Não foi possível criar o cliente.");
+        return;
+      }
+      const { cliente } = await res.json();
+      clienteIdFinal = cliente.id;
+    }
+
     const res = await fetch("/api/contratos-venda", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         plantio_id: plantioId || null,
-        comprador_nome: compradorNome,
+        cliente_id: clienteIdFinal,
         cultura,
         quantidade: Number(quantidade),
         unidade_medida: unidadeMedida,
         preco_unitario: Number(precoUnitario),
+        frete: frete ? Number(frete) : 0,
+        desconto: desconto ? Number(desconto) : 0,
         forma_pagamento: formaPagamento,
         data_contrato: dataContrato,
         data_entrega: dataEntrega || null,
@@ -62,9 +106,10 @@ export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }
     }
 
     setAberto(false);
-    setCompradorNome("");
     setQuantidade("");
     setPrecoUnitario("");
+    setFrete("");
+    setDesconto("");
     setDataEntrega("");
     setObservacoes("");
     router.refresh();
@@ -100,14 +145,48 @@ export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium mb-1">Comprador</label>
-          <input
-            required
-            value={compradorNome}
-            onChange={(e) => setCompradorNome(e.target.value)}
-            placeholder="Ex: Cerealista São João"
-            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-          />
+          <label className="block text-sm font-medium mb-1">Cliente</label>
+          {!criandoCliente ? (
+            <div className="flex gap-2">
+              <select
+                value={clienteId}
+                onChange={(e) => setClienteId(e.target.value)}
+                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              >
+                {clientes.map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.nome}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={() => setCriandoCliente(true)}
+                className="text-xs text-green-700 font-medium whitespace-nowrap"
+              >
+                + novo
+              </button>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <input
+                required
+                value={novoClienteNome}
+                onChange={(e) => setNovoClienteNome(e.target.value)}
+                placeholder="Ex: Cerealista São João"
+                className="flex-1 rounded-lg border border-gray-300 px-3 py-2 text-sm"
+              />
+              {clientes.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setCriandoCliente(false)}
+                  className="text-xs text-gray-500 whitespace-nowrap"
+                >
+                  cancelar
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
@@ -154,6 +233,35 @@ export function NovoContratoVendaForm({ plantios }: { plantios: PlantioOpcao[] }
             onChange={(e) => setPrecoUnitario(e.target.value)}
             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
           />
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-3 gap-3">
+        <div>
+          <label className="block text-sm font-medium mb-1">Frete (R$)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={frete}
+            onChange={(e) => setFrete(e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Desconto (R$)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={desconto}
+            onChange={(e) => setDesconto(e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Valor líquido</label>
+          <div className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
+            {valorLiquido ? `R$ ${valorLiquido}` : "—"}
+          </div>
         </div>
       </div>
 

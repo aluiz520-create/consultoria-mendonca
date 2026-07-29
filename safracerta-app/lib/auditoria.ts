@@ -18,6 +18,8 @@ const TABELA_LABEL: Record<string, string> = {
   operacoes_agricolas: "Operação agrícola",
   armazens: "Armazém",
   colheitas: "Colheita",
+  clientes: "Cliente",
+  recebimentos_venda: "Recebimento de venda",
 };
 
 const ACAO_LABEL: Record<string, string> = {

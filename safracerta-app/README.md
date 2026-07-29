@@ -13,7 +13,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Colheita completa (dentro de `/app/operacoes`, por plantio): cada carga entregue no armazém é registrada com peso líquido, umidade e armazém de destino (cadastro criado na hora, inline); as sacas (base 60kg) e o total do plantio são recalculados sozinhos a partir da soma das cargas, fechando o ciclo previsto × realizado — custo/saca e margem passam a usar a produção real assim que a primeira carga é registrada.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
-- Contratos de venda de produção (comercialização da safra) em `/app/contratos/venda`: comprador, quantidade, preço por saca/tonelada/kg, valor total calculado, forma de pagamento e status de entrega.
+- Venda completa em `/app/contratos/venda`: cadastro de clientes (criado na hora, inline), quantidade, preço por saca/tonelada/kg, frete e desconto (valor líquido calculado automaticamente), forma de pagamento, status de entrega e recebimentos parciais — cada contrato mostra quanto já foi recebido, o saldo e o status (A receber / Parcial / Pago).
 - Rateio de despesas entre plantios: uma compra que atende mais de um plantio (fazenda/talhão diferentes) pode ser dividida por percentual em `/app/operacoes/rateio`, gerando automaticamente uma operação em cada plantio.
 - Centro de Resultado (Produção / Administrativo / Máquinas / Comercial): todo custo e toda receita ficam automaticamente ligados a um centro, herdado da categoria de custo já escolhida (ou do tipo de receita) — sem nenhum campo ou clique extra no formulário.
 - Estoque (`/app/estoque`): cadastro de produtos (sementes, fertilizantes, defensivos, combustíveis...) com saldo calculado a partir das entradas e saídas; a API bloqueia registrar uma saída maior que o saldo disponível.
@@ -33,7 +33,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 4. ✅ Compras (`/app/compras`) — origem obrigatória do custo (gera conta a pagar + entrada em estoque)
 5. ✅ Operações agrícolas por talhão (`/app/operacoes`) — funcionário/máquina/implemento/horas/produtos, com baixa automática de estoque
 6. ✅ Colheita completa (`/app/operacoes`) — peso, umidade, armazém, sacas recalculadas por carga
-7. Venda completa — cliente, contrato, frete, desconto, recebimentos parciais
+7. ✅ Venda completa (`/app/contratos/venda`) — cliente, contrato, frete, desconto, recebimentos parciais
 8. Resultado/DRE completo — lucro bruto/líquido, custos administrativos/arrendamento/financeiro, indicadores por hectare/saca
 
 ## Outras pendências
@@ -46,7 +46,7 @@ O escopo foi ampliado de MVP enxuto para o fluxo operacional completo da safra. 
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`, `0015_colheita.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`, `0007_financeiro.sql`, `0008_talhao_obrigatorio.sql`, `0009_safra_cultura.sql`, `0010_centro_resultado.sql`, `0011_recursos.sql`, `0012_estoque.sql`, `0013_compras.sql`, `0014_operacoes_agricolas.sql`, `0015_colheita.sql`, `0016_venda_completa.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```
