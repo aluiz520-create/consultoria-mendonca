@@ -9,6 +9,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 - Cadastro/login (e-mail e senha) — cada novo usuário ganha automaticamente uma `account` (multi-tenant) via trigger no banco.
 - CRUD de fazendas, talhões (opcional) e safras (soja/milho/feijão) — hierarquia fazenda → talhão → safra.
 - Lançamento de custos por categoria, por safra.
+- Registro de produção colhida (sacas e umidade) na tela de custos, fechando o ciclo previsto × realizado: custo/saca e margem passam a usar a produção real assim que ela é registrada, em vez da estimativa.
 - Dashboard: custo total, custo/ha, custo/saca, margem de break-even, gráfico por categoria, evolução mensal e comparativo de custo/ha entre fazendas.
 - Contratos de arrendamento/parceria com status de vencimento (ativo / vencendo / vencido), aditivos (reajuste, prorrogação, mudança de valor/área) com histórico, e encerramento antecipado com motivo.
 - Contratos de venda de produção (comercialização da safra) em `/app/contratos/venda`: comprador, quantidade, preço por saca/tonelada/kg, valor total calculado, forma de pagamento e status de entrega.
@@ -26,7 +27,7 @@ Stack: Next.js 14 (App Router) + Supabase (Postgres + Auth + RLS) + Tailwind CSS
 ## Configuração local
 
 1. Crie um projeto gratuito em [supabase.com](https://supabase.com).
-2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`.
+2. No SQL Editor do projeto, rode **nesta ordem**: `supabase/migrations/0001_init.sql`, `0002_asaas.sql`, `0003_regras_negocio.sql`, `0004_contratos_venda.sql`, `0005_talhoes.sql`, `0006_producao_colhida.sql`.
 3. Copie `.env.example` para `.env.local` e preencha com as chaves do projeto (Project Settings → API):
 
    ```

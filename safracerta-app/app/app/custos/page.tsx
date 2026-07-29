@@ -4,6 +4,7 @@ import { custoPorHectare, custoPorSaca } from "@/lib/calculos/custoPorHectare";
 import { DeleteButton } from "@/components/delete-button";
 import { VoltarButton } from "@/components/voltar-button";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
+import { RegistrarProducaoForm } from "./registrar-producao-form";
 
 function formatarReais(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -39,7 +40,9 @@ export default async function CustosPage({
   const [{ data: safra }, { data: lancamentos }, { data: categorias }] = await Promise.all([
     supabase
       .from("safras")
-      .select("id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, fazendas(nome), talhoes(nome)")
+      .select(
+        "id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, umidade_colheita, fazendas(nome), talhoes(nome)"
+      )
       .eq("id", safraId)
       .single(),
     supabase
@@ -56,8 +59,13 @@ export default async function CustosPage({
 
   const custoTotal = (lancamentos ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
   const cPorHa = custoPorHectare(custoTotal, safra.area_plantada_ha);
-  const cPorSaca = safra.produtividade_esperada_sc_ha
+  const cPorSaca = safra.producao_colhida_sc
+    ? custoTotal / safra.producao_colhida_sc
+    : safra.produtividade_esperada_sc_ha
     ? custoPorSaca(custoTotal, safra.area_plantada_ha, safra.produtividade_esperada_sc_ha)
+    : null;
+  const produtividadeRealizada = safra.producao_colhida_sc
+    ? safra.producao_colhida_sc / safra.area_plantada_ha
     : null;
 
   return (
@@ -85,7 +93,35 @@ export default async function CustosPage({
           <p className="text-lg font-semibold text-green-900">
             {cPorSaca !== null ? formatarReais(cPorSaca) : "—"}
           </p>
+          {safra.producao_colhida_sc == null && safra.produtividade_esperada_sc_ha && (
+            <p className="text-xs text-gray-400 mt-0.5">estimado (produção ainda não colhida)</p>
+          )}
         </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4 mb-6">
+        <RegistrarProducaoForm
+          safraId={safraId}
+          producaoAtual={safra.producao_colhida_sc}
+          umidadeAtual={safra.umidade_colheita}
+        />
+        {safra.produtividade_esperada_sc_ha && (
+          <div className="bg-white rounded-2xl border border-black/5 p-4">
+            <p className="text-xs text-gray-500">Produtividade — esperada × realizada</p>
+            <p className="text-lg font-semibold text-green-900">
+              {safra.produtividade_esperada_sc_ha} sc/ha
+              {produtividadeRealizada !== null && (
+                <>
+                  {" "}
+                  →{" "}
+                  <span className={produtividadeRealizada >= safra.produtividade_esperada_sc_ha ? "text-green-700" : "text-red-600"}>
+                    {produtividadeRealizada.toFixed(1)} sc/ha
+                  </span>
+                </>
+              )}
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="mb-6">

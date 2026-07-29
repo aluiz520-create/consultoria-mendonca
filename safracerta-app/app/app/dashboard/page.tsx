@@ -21,7 +21,9 @@ export default async function DashboardPage({
 
   const { data: safras } = await supabase
     .from("safras")
-    .select("id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, preco_referencia_sc, fazenda_id, fazendas(nome)")
+    .select(
+      "id, cultura, ano, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, preco_referencia_sc, fazenda_id, fazendas(nome)"
+    )
     .order("created_at", { ascending: false });
 
   if (!safras?.length) {
@@ -44,18 +46,24 @@ export default async function DashboardPage({
     .select("valor, data, categorias_custo(nome)")
     .eq("safra_id", safraAtual.id);
 
+  const produtividadeParaCalculo = safraAtual.producao_colhida_sc
+    ? safraAtual.producao_colhida_sc / safraAtual.area_plantada_ha
+    : safraAtual.produtividade_esperada_sc_ha;
+
   const custoTotal = (lancamentos ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
   const cPorHa = custoPorHectare(custoTotal, safraAtual.area_plantada_ha);
-  const cPorSaca = safraAtual.produtividade_esperada_sc_ha
-    ? custoPorSaca(custoTotal, safraAtual.area_plantada_ha, safraAtual.produtividade_esperada_sc_ha)
+  const cPorSaca = safraAtual.producao_colhida_sc
+    ? custoTotal / safraAtual.producao_colhida_sc
+    : produtividadeParaCalculo
+    ? custoPorSaca(custoTotal, safraAtual.area_plantada_ha, produtividadeParaCalculo)
     : null;
 
   const breakEven =
-    safraAtual.produtividade_esperada_sc_ha && safraAtual.preco_referencia_sc
+    produtividadeParaCalculo && safraAtual.preco_referencia_sc
       ? calcularBreakEven(
           custoTotal,
           safraAtual.area_plantada_ha,
-          safraAtual.produtividade_esperada_sc_ha,
+          produtividadeParaCalculo,
           safraAtual.preco_referencia_sc
         )
       : null;
@@ -140,6 +148,9 @@ export default async function DashboardPage({
           <p className="text-lg font-semibold text-green-900">
             {cPorSaca !== null ? formatarReais(cPorSaca) : "—"}
           </p>
+          {!safraAtual.producao_colhida_sc && cPorSaca !== null && (
+            <p className="text-xs text-gray-400 mt-0.5">estimado</p>
+          )}
         </div>
         <div className="bg-white rounded-2xl border border-black/5 p-4">
           <p className="text-xs text-gray-500">Margem / saca (break-even)</p>
