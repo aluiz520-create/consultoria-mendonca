@@ -24,11 +24,18 @@ export default async function PlanoPage() {
 
   const { data: assinatura } = await supabase
     .from("assinaturas")
-    .select("plano, status, proxima_cobranca")
+    .select("plano, status, proxima_cobranca, created_at")
     .eq("account_id", perfil?.account_id)
     .single();
 
   const status = STATUS_LABEL[assinatura?.status ?? "trial"];
+
+  const trialExpiresAt = assinatura?.created_at
+    ? new Date(new Date(assinatura.created_at).getTime() + 30 * 24 * 60 * 60 * 1000)
+    : null;
+  const diasFaltantes = trialExpiresAt
+    ? Math.ceil((trialExpiresAt.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
+    : null;
 
   return (
     <div>
@@ -55,6 +62,24 @@ export default async function PlanoPage() {
         <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl p-4 mb-6 max-w-md">
           O acesso ao painel fica limitado enquanto a assinatura não é regularizada. Escolha um plano
           abaixo para continuar.
+        </div>
+      )}
+
+      {assinatura?.status === "trial" && diasFaltantes !== null && (
+        <div className={`border rounded-xl p-4 mb-6 max-w-md text-sm ${
+          diasFaltantes <= 0
+            ? "bg-red-50 border-red-200 text-red-700"
+            : diasFaltantes <= 7
+            ? "bg-amber-50 border-amber-200 text-amber-700"
+            : "bg-blue-50 border-blue-200 text-blue-700"
+        }`}>
+          {diasFaltantes <= 0 ? (
+            <span className="font-semibold">Seu trial expirou. Escolha um plano abaixo para continuar usando o SafraCerta.</span>
+          ) : (
+            <span className="font-semibold">
+              Seu trial expira em <strong>{diasFaltantes}</strong> dia{diasFaltantes !== 1 ? "s" : ""}. Escolha um plano para continuar.
+            </span>
+          )}
         </div>
       )}
 

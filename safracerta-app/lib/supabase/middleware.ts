@@ -56,14 +56,30 @@ export async function updateSession(request: NextRequest) {
     if (perfil) {
       const { data: assinatura } = await supabase
         .from("assinaturas")
-        .select("status")
+        .select("status, created_at")
         .eq("account_id", perfil.account_id)
         .single();
 
-      if (assinatura && ["atrasada", "cancelada"].includes(assinatura.status)) {
-        const url = request.nextUrl.clone();
-        url.pathname = "/app/configuracoes/plano";
-        return NextResponse.redirect(url);
+      if (assinatura) {
+        // Redireciona para plano se atrasada ou cancelada
+        if (["atrasada", "cancelada"].includes(assinatura.status)) {
+          const url = request.nextUrl.clone();
+          url.pathname = "/app/configuracoes/plano";
+          return NextResponse.redirect(url);
+        }
+
+        // Redireciona se trial expirou (30 dias)
+        if (assinatura.status === "trial" && assinatura.created_at) {
+          const criadoEm = new Date(assinatura.created_at);
+          const agora = new Date();
+          const diasDecorridos = Math.floor((agora.getTime() - criadoEm.getTime()) / (1000 * 60 * 60 * 24));
+
+          if (diasDecorridos >= 30) {
+            const url = request.nextUrl.clone();
+            url.pathname = "/app/configuracoes/plano";
+            return NextResponse.redirect(url);
+          }
+        }
       }
     }
   }
