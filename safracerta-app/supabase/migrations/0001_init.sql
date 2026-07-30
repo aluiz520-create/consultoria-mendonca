@@ -123,7 +123,8 @@ begin
   insert into categorias_custo (account_id, nome, grupo) values
     (new_account_id, 'Insumos (sementes, fertilizante, defensivo)', 'variavel'),
     (new_account_id, 'Mão de obra', 'variavel'),
-    (new_account_id, 'Maquinário e combustível', 'variavel'),
+    (new_account_id, 'Maquinário', 'variavel'),
+    (new_account_id, 'Combustível', 'variavel'),
     (new_account_id, 'Arrendamento', 'fixo'),
     (new_account_id, 'Administrativo', 'fixo');
 

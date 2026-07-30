@@ -103,7 +103,8 @@ begin
   insert into categorias_custo (account_id, nome, grupo, centro_resultado_id) values
     (new_account_id, 'Insumos (sementes, fertilizante, defensivo)', 'variavel', cr_producao_id),
     (new_account_id, 'Mão de obra', 'variavel', cr_producao_id),
-    (new_account_id, 'Maquinário e combustível', 'variavel', cr_maquinas_id),
+    (new_account_id, 'Maquinário', 'variavel', cr_maquinas_id),
+    (new_account_id, 'Combustível', 'variavel', cr_maquinas_id),
     (new_account_id, 'Arrendamento', 'fixo', cr_administrativo_id),
     (new_account_id, 'Administrativo', 'fixo', cr_administrativo_id);
 
