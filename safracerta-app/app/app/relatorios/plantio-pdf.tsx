@@ -36,7 +36,7 @@ export default async function RelatorioPDF({
       supabase
         .from("plantios")
         .select(
-          "id, area_plantada_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), fazendas(nome), talhoes(nome)"
+          "id, area_plantada_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), talhoes(nome, fazendas(nome))"
         )
         .eq("id", plantioId)
         .single(),
@@ -86,7 +86,7 @@ export default async function RelatorioPDF({
         <div className="grid grid-cols-2 gap-4 text-sm text-gray-600">
           <div>
             <p className="font-semibold text-gray-900">Fazenda</p>
-            <p>{(plantio.fazendas as any)?.nome}</p>
+            <p>{((plantio.talhoes as any)?.fazendas as any)?.nome || "—"}</p>
           </div>
           <div>
             <p className="font-semibold text-gray-900">Talhão</p>
