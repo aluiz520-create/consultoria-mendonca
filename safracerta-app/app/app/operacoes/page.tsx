@@ -3,13 +3,13 @@ import { createClient } from "@/lib/supabase/server";
 import { custoPorHectare, custoPorSaca } from "@/lib/calculos/custoPorHectare";
 import { DeleteButton } from "@/components/delete-button";
 import { VoltarButton } from "@/components/voltar-button";
-import { MarcarPagoButton } from "@/components/marcar-pago-button";
-import { statusPagamento } from "@/lib/status-pagamento";
 import { calcularSaldos } from "@/lib/estoque";
 import { labelTipoOperacao } from "@/lib/operacoes-agricolas";
 import { NovoLancamentoForm } from "./novo-lancamento-form";
 import { NovaOperacaoForm } from "./nova-operacao-form";
 import { NovaColheitaForm } from "./nova-colheita-form";
+import { ColheitaItem } from "./colheita-item";
+import { LancamentoItem } from "./lancamento-item";
 
 function formatarReais(valor: number) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -192,18 +192,7 @@ export default async function OperacoesPage({
             <p className="p-4 text-sm text-gray-500">Nenhuma carga de colheita registrada ainda.</p>
           )}
           {colheitas?.map((c) => (
-            <div key={c.id} className="flex items-center justify-between px-4 py-2.5 text-sm">
-              <div>
-                <p className="font-medium text-green-900">
-                  {Number(c.sacas).toFixed(1)} sc — {(c.armazens as any)?.nome ?? "Sem armazém"}
-                </p>
-                <p className="text-gray-500 text-xs">
-                  {new Date(c.data).toLocaleDateString("pt-BR")}
-                  {c.umidade != null ? ` · umidade ${c.umidade}%` : ""} · {c.peso_liquido_kg} kg
-                </p>
-              </div>
-              <DeleteButton url={`/api/colheitas/${c.id}`} confirmMessage="Apagar esta carga de colheita?" />
-            </div>
+            <ColheitaItem key={c.id} colheita={c} armazens={armazens ?? []} />
           ))}
         </div>
       </div>
@@ -269,34 +258,9 @@ export default async function OperacoesPage({
         {!lancamentos?.length && (
           <p className="p-5 text-sm text-gray-500">Nenhuma operação lançada ainda.</p>
         )}
-        {lancamentos?.map((l) => {
-          const status = statusPagamento(l.data_vencimento, l.data_pagamento);
-          return (
-            <div key={l.id} className="flex items-center justify-between px-5 py-3 text-sm">
-              <div>
-                <p className="font-medium text-green-900">
-                  {(l.categorias_custo as any)?.nome}
-                  {l.descricao ? ` — ${l.descricao}` : ""}
-                </p>
-                <p className="text-gray-500">
-                  {new Date(l.data).toLocaleDateString("pt-BR")}
-                  {(l.centros_resultado as any)?.nome ? ` · ${(l.centros_resultado as any).nome}` : ""}
-                  {l.data_vencimento && !l.data_pagamento
-                    ? ` · vencimento ${new Date(l.data_vencimento).toLocaleDateString("pt-BR")}`
-                    : ""}
-                </p>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${status.className}`}>
-                  {status.label}
-                </span>
-                <p className="font-medium">{formatarReais(Number(l.valor))}</p>
-                {!l.data_pagamento && <MarcarPagoButton id={l.id} />}
-                <DeleteButton url={`/api/custos/${l.id}`} confirmMessage="Apagar esta operação?" />
-              </div>
-            </div>
-          );
-        })}
+        {lancamentos?.map((l) => (
+          <LancamentoItem key={l.id} lancamento={l} categorias={categorias ?? []} />
+        ))}
       </div>
     </div>
   );
