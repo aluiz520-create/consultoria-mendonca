@@ -45,27 +45,13 @@ export default async function RelatoriosPage() {
               </p>
             </div>
 
-            <div className="flex gap-2">
-              <Link
-                href={`/app/relatorios/plantio-pdf?plantioId=${plantio.id}`}
-                target="_blank"
-                className="flex-1 rounded-lg bg-green-600 text-white text-sm font-medium px-4 py-2 hover:bg-green-700 text-center"
-              >
-                Visualizar Relatório
-              </Link>
-              <button
-                onClick={() => {
-                  const url = `/app/relatorios/plantio-pdf?plantioId=${plantio.id}`;
-                  window.open(url, "_blank");
-                  setTimeout(() => {
-                    window.print();
-                  }, 500);
-                }}
-                className="rounded-lg bg-blue-600 text-white text-sm font-medium px-4 py-2 hover:bg-blue-700"
-              >
-                Imprimir/PDF
-              </button>
-            </div>
+            <Link
+              href={`/app/relatorios/plantio-pdf?plantioId=${plantio.id}`}
+              target="_blank"
+              className="block rounded-lg bg-green-600 text-white text-sm font-medium px-4 py-2 hover:bg-green-700 text-center"
+            >
+              Visualizar / Imprimir Relatório
+            </Link>
           </div>
         ))}
       </div>

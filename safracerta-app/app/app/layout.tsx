@@ -18,14 +18,22 @@ const NAV_ITEMS = [
 ];
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
-  const supabase = createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let perfil: any = null;
+  let erroLayout: string | null = null;
 
-  const { data: perfil } = user
-    ? await supabase.from("users").select("nome, account_id, accounts(nome, plano)").eq("id", user.id).single()
-    : { data: null };
+  try {
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    const { data } = user
+      ? await supabase.from("users").select("nome, account_id, accounts(nome, plano)").eq("id", user.id).single()
+      : { data: null };
+    perfil = data;
+  } catch (e: any) {
+    erroLayout = e?.message ?? String(e);
+  }
 
   return (
     <div className="min-h-screen flex">
@@ -63,7 +71,14 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           </form>
         </div>
       </aside>
-      <main className="flex-1 bg-[#f7f5ef] p-8">{children}</main>
+      <main className="flex-1 bg-[#f7f5ef] p-8">
+        {erroLayout && (
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-4 text-sm text-red-700">
+            Erro ao carregar dados do usuário: {erroLayout}
+          </div>
+        )}
+        {children}
+      </main>
     </div>
   );
 }

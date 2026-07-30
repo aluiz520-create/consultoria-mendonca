@@ -17,6 +17,24 @@ export default async function DashboardPage({
 }: {
   searchParams: { plantioId?: string };
 }) {
+  try {
+    return await DashboardInner({ searchParams });
+  } catch (e: any) {
+    return (
+      <div className="bg-red-50 border border-red-200 rounded-2xl p-8">
+        <h2 className="text-lg font-semibold text-red-700 mb-2">Erro ao carregar o dashboard</h2>
+        <p className="text-sm text-red-600 mb-4">{e?.message ?? String(e)}</p>
+        <pre className="text-xs text-gray-500 whitespace-pre-wrap overflow-auto max-h-64">{e?.stack}</pre>
+      </div>
+    );
+  }
+}
+
+async function DashboardInner({
+  searchParams,
+}: {
+  searchParams: { plantioId?: string };
+}) {
   const supabase = createClient();
 
   const { data: plantios } = await supabase

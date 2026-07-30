@@ -208,17 +208,14 @@ export default async function RelatorioPDF({
           <p>SafraCerta - Sistema de Gestão Agrícola</p>
         </div>
 
-        <style jsx>{`
+        <style>{`
           @media print {
             body {
               margin: 0;
               padding: 0;
             }
             .no-print {
-              display: none;
-            }
-            div {
-              page-break-inside: avoid;
+              display: none !important;
             }
             table {
               page-break-inside: avoid;
