@@ -8,3 +8,29 @@ export async function DELETE(_request: Request, { params }: { params: { id: stri
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
   return NextResponse.json({ ok: true });
 }
+
+export async function PATCH(request: Request, { params }: { params: { id: string } }) {
+  const supabase = createClient();
+  const body = await request.json();
+  const { nome, funcao, custo_hora, ativo } = body as {
+    nome?: string;
+    funcao?: string;
+    custo_hora?: number;
+    ativo?: boolean;
+  };
+
+  const updates: Record<string, any> = {};
+  if (nome) updates.nome = nome;
+  if (funcao !== undefined) updates.funcao = funcao;
+  if (custo_hora !== undefined) updates.custo_hora = custo_hora;
+  if (ativo !== undefined) updates.ativo = ativo;
+
+  if (Object.keys(updates).length === 0) {
+    return NextResponse.json({ error: "Nenhum campo para atualizar." }, { status: 400 });
+  }
+
+  const { error } = await supabase.from("funcionarios").update(updates).eq("id", params.id);
+
+  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  return NextResponse.json({ ok: true });
+}
