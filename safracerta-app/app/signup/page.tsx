@@ -10,6 +10,7 @@ export default function SignupPage() {
   const [nomeConta, setNomeConta] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [aceiteTermos, setAceiteTermos] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [enviado, setEnviado] = useState(false);
   const [carregando, setCarregando] = useState(false);
@@ -55,6 +56,9 @@ export default function SignupPage() {
   return (
     <main className="min-h-screen flex items-center justify-center px-4">
       <div className="w-full max-w-sm bg-white rounded-2xl shadow-sm border border-black/5 p-8">
+        <div className="flex justify-center mb-4">
+          <img src="/logo.svg" alt="Consultoria Mendonça" className="h-12 w-12" />
+        </div>
         <h1 className="text-xl font-semibold text-green-900 mb-1">Criar conta no SafraCerta</h1>
         <p className="text-sm text-gray-500 mb-6">30 dias grátis, sem cartão de crédito.</p>
 
@@ -111,11 +115,36 @@ export default function SignupPage() {
             />
           </div>
 
+          <div className="flex items-start gap-2">
+            <input
+              id="aceiteTermos"
+              type="checkbox"
+              required
+              checked={aceiteTermos}
+              onChange={(e) => setAceiteTermos(e.target.checked)}
+              className="mt-0.5 h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+            />
+            <label htmlFor="aceiteTermos" className="text-sm text-gray-600">
+              Li e aceito os{" "}
+              <Link href="/termos-de-uso" className="text-green-700 font-medium" target="_blank">
+                Termos de Uso
+              </Link>{" "}
+              e a{" "}
+              <Link
+                href="/politica-de-privacidade"
+                className="text-green-700 font-medium"
+                target="_blank"
+              >
+                Política de Privacidade
+              </Link>
+            </label>
+          </div>
+
           {erro && <p className="text-sm text-red-600">{erro}</p>}
 
           <button
             type="submit"
-            disabled={carregando}
+            disabled={carregando || !aceiteTermos}
             className="w-full rounded-lg bg-green-600 text-white py-2 text-sm font-medium hover:bg-green-700 disabled:opacity-60"
           >
             {carregando ? "Criando..." : "Criar conta"}
@@ -127,6 +156,15 @@ export default function SignupPage() {
           <Link href="/login" className="text-green-700 font-medium">
             Entrar
           </Link>
+        </p>
+
+        <p className="text-xs text-gray-400 mt-4 text-center">
+          <a
+            href="https://aluiz520-create.github.io/consultoria-mendonca/"
+            className="hover:text-gray-600"
+          >
+            Voltar ao site
+          </a>
         </p>
       </div>
     </main>
