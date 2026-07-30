@@ -31,33 +31,30 @@ export default async function RelatorioPDF({
     );
   }
 
-  const [{ data: plantio }, { data: lancamentos }, { data: operacoes }, { data: colheitas }] =
-    await Promise.all([
-      supabase
-        .from("plantios")
-        .select(
-          "id, area_plantada_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), talhoes(nome, fazendas(nome))"
-        )
-        .eq("id", plantioId)
-        .single(),
-      supabase
-        .from("lancamentos_custo")
-        .select("id, descricao, valor, data, categorias_custo(nome), centros_resultado(nome)")
-        .eq("plantio_id", plantioId)
-        .order("data", { ascending: false }),
-      supabase
-        .from("operacoes_agricolas")
-        .select(
-          "id, tipo, data, area_executada_ha, horas, funcionarios(nome), maquinas(nome), implementos(nome)"
-        )
-        .eq("plantio_id", plantioId)
-        .order("data", { ascending: false }),
-      supabase
-        .from("colheitas")
-        .select("id, data, peso_liquido_kg, umidade, sacas, armazens(nome)")
-        .eq("plantio_id", plantioId)
-        .order("data", { ascending: false }),
-    ]);
+  const plantioResult = await supabase
+    .from("plantios")
+    .select(
+      "id, area_plantada_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), talhoes(nome, fazendas(nome))"
+    )
+    .eq("id", plantioId)
+    .single();
+
+  const plantio = plantioResult.data;
+  const lancamentos = (await supabase
+    .from("lancamentos_custo")
+    .select("id, descricao, valor, data, categorias_custo(nome), centros_resultado(nome)")
+    .eq("plantio_id", plantioId)
+    .order("data", { ascending: false })).data ?? [];
+  const operacoes = (await supabase
+    .from("operacoes_agricolas")
+    .select("id, tipo, data, area_executada_ha, horas, funcionarios(nome), maquinas(nome), implementos(nome)")
+    .eq("plantio_id", plantioId)
+    .order("data", { ascending: false })).data ?? [];
+  const colheitas = (await supabase
+    .from("colheitas")
+    .select("id, data, peso_liquido_kg, umidade, sacas, armazens(nome)")
+    .eq("plantio_id", plantioId)
+    .order("data", { ascending: false })).data ?? [];
 
   if (!plantio) {
     return <p className="text-gray-500 p-8">Plantio não encontrado.</p>;
