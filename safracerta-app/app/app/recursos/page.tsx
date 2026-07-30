@@ -1,13 +1,11 @@
 import { createClient } from "@/lib/supabase/server";
-import { DeleteButton } from "@/components/delete-button";
 import { VoltarButton } from "@/components/voltar-button";
 import { NovoFuncionarioForm } from "./novo-funcionario-form";
 import { NovaMaquinaForm } from "./nova-maquina-form";
 import { NovoImplementoForm } from "./novo-implemento-form";
-
-function formatarReais(valor: number) {
-  return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-}
+import { FuncionarioItem } from "./funcionario-item";
+import { MaquinaItem } from "./maquina-item";
+import { ImplementoItem } from "./implemento-item";
 
 export default async function RecursosPage() {
   const supabase = createClient();
@@ -30,19 +28,7 @@ export default async function RecursosPage() {
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5 mb-4 max-w-2xl">
         {!funcionarios?.length && <p className="p-5 text-sm text-gray-500">Nenhum funcionário cadastrado ainda.</p>}
         {funcionarios?.map((f) => (
-          <div key={f.id} className="flex items-center justify-between px-5 py-3 text-sm">
-            <div>
-              <p className="font-medium text-green-900">{f.nome}</p>
-              <p className="text-gray-500">
-                {f.funcao ?? "—"}
-                {f.custo_hora ? ` · ${formatarReais(Number(f.custo_hora))}/h` : ""}
-              </p>
-            </div>
-            <DeleteButton
-              url={`/api/funcionarios/${f.id}`}
-              confirmMessage={`Apagar o funcionário "${f.nome}"?`}
-            />
-          </div>
+          <FuncionarioItem key={f.id} funcionario={f} />
         ))}
       </div>
       <div className="mb-8">
@@ -53,16 +39,7 @@ export default async function RecursosPage() {
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5 mb-4 max-w-2xl">
         {!maquinas?.length && <p className="p-5 text-sm text-gray-500">Nenhuma máquina cadastrada ainda.</p>}
         {maquinas?.map((m) => (
-          <div key={m.id} className="flex items-center justify-between px-5 py-3 text-sm">
-            <div>
-              <p className="font-medium text-green-900">{m.nome}</p>
-              <p className="text-gray-500">
-                {m.tipo ?? "—"}
-                {m.custo_hora ? ` · ${formatarReais(Number(m.custo_hora))}/h` : ""}
-              </p>
-            </div>
-            <DeleteButton url={`/api/maquinas/${m.id}`} confirmMessage={`Apagar a máquina "${m.nome}"?`} />
-          </div>
+          <MaquinaItem key={m.id} maquina={m} />
         ))}
       </div>
       <div className="mb-8">
@@ -73,16 +50,7 @@ export default async function RecursosPage() {
       <div className="bg-white rounded-2xl border border-black/5 divide-y divide-black/5 mb-4 max-w-2xl">
         {!implementos?.length && <p className="p-5 text-sm text-gray-500">Nenhum implemento cadastrado ainda.</p>}
         {implementos?.map((i) => (
-          <div key={i.id} className="flex items-center justify-between px-5 py-3 text-sm">
-            <div>
-              <p className="font-medium text-green-900">{i.nome}</p>
-              <p className="text-gray-500">
-                {i.tipo ?? "—"}
-                {i.custo_hora ? ` · ${formatarReais(Number(i.custo_hora))}/h` : ""}
-              </p>
-            </div>
-            <DeleteButton url={`/api/implementos/${i.id}`} confirmMessage={`Apagar o implemento "${i.nome}"?`} />
-          </div>
+          <ImplementoItem key={i.id} implemento={i} />
         ))}
       </div>
       <NovoImplementoForm />
