@@ -8,6 +8,7 @@ export function NovoImplementoForm() {
   const [aberto, setAberto] = useState(false);
   const [nome, setNome] = useState("");
   const [tipo, setTipo] = useState("");
+  const [custoHora, setCustoHora] = useState("");
   const [erro, setErro] = useState<string | null>(null);
   const [carregando, setCarregando] = useState(false);
 
@@ -19,7 +20,11 @@ export function NovoImplementoForm() {
     const res = await fetch("/api/implementos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome, tipo: tipo || null }),
+      body: JSON.stringify({
+        nome,
+        tipo: tipo || null,
+        custo_hora: custoHora ? Number(custoHora) : null,
+      }),
     });
 
     setCarregando(false);
@@ -33,6 +38,7 @@ export function NovoImplementoForm() {
     setAberto(false);
     setNome("");
     setTipo("");
+    setCustoHora("");
     router.refresh();
   }
 
@@ -59,13 +65,26 @@ export function NovoImplementoForm() {
           className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
         />
       </div>
-      <div>
-        <label className="block text-sm font-medium mb-1">Tipo (opcional)</label>
-        <input
-          value={tipo}
-          onChange={(e) => setTipo(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
-        />
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label className="block text-sm font-medium mb-1">Tipo</label>
+          <input
+            value={tipo}
+            onChange={(e) => setTipo(e.target.value)}
+            placeholder="Ex: Grade"
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">Custo/hora (R$)</label>
+          <input
+            type="number"
+            step="0.01"
+            value={custoHora}
+            onChange={(e) => setCustoHora(e.target.value)}
+            className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          />
+        </div>
       </div>
 
       {erro && <p className="text-sm text-red-600">{erro}</p>}
