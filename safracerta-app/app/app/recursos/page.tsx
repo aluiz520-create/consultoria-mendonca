@@ -15,7 +15,7 @@ export default async function RecursosPage() {
   const [{ data: funcionarios }, { data: maquinas }, { data: implementos }] = await Promise.all([
     supabase.from("funcionarios").select("id, nome, funcao, custo_hora").order("nome"),
     supabase.from("maquinas").select("id, nome, tipo, custo_hora").order("nome"),
-    supabase.from("implementos").select("id, nome, tipo").order("nome"),
+    supabase.from("implementos").select("id, nome, tipo, custo_hora").order("nome"),
   ]);
 
   return (
@@ -76,7 +76,10 @@ export default async function RecursosPage() {
           <div key={i.id} className="flex items-center justify-between px-5 py-3 text-sm">
             <div>
               <p className="font-medium text-green-900">{i.nome}</p>
-              {i.tipo && <p className="text-gray-500">{i.tipo}</p>}
+              <p className="text-gray-500">
+                {i.tipo ?? "—"}
+                {i.custo_hora ? ` · ${formatarReais(Number(i.custo_hora))}/h` : ""}
+              </p>
             </div>
             <DeleteButton url={`/api/implementos/${i.id}`} confirmMessage={`Apagar o implemento "${i.nome}"?`} />
           </div>
