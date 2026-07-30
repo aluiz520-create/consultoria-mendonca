@@ -5,14 +5,7 @@ import { DeleteButton } from "@/components/delete-button";
 import { EditarColheitaForm } from "./editar-colheita-form";
 
 interface ColheitaItemProps {
-  colheita: {
-    id: string;
-    data: string;
-    peso_liquido_kg: number;
-    umidade: number | null;
-    sacas: number;
-    armazens: { nome: string } | null;
-  };
+  colheita: any;
   armazens: { id: string; nome: string }[];
 }
 

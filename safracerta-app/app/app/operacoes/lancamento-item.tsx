@@ -7,17 +7,7 @@ import { statusPagamento } from "@/lib/status-pagamento";
 import { EditarLancamentoForm } from "./editar-lancamento-form";
 
 interface LancamentoItemProps {
-  lancamento: {
-    id: string;
-    descricao: string | null;
-    valor: number;
-    data: string;
-    data_vencimento: string | null;
-    data_pagamento: string | null;
-    categoria_id: string;
-    categorias_custo: { nome: string } | null;
-    centros_resultado: { nome: string } | null;
-  };
+  lancamento: any;
   categorias: { id: string; nome: string }[];
 }
 
