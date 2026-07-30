@@ -36,7 +36,7 @@ export default async function RelatorioPDF({
       supabase
         .from("plantios")
         .select(
-          "id, area_plantada_ha, produtividade_esperada_sc_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), fazendas(nome), talhoes(nome)"
+          "id, area_plantada_ha, producao_colhida_sc, umidade_colheita, culturas(nome), safras(nome), fazendas(nome), talhoes(nome)"
         )
         .eq("id", plantioId)
         .single(),
@@ -65,11 +65,7 @@ export default async function RelatorioPDF({
 
   const custoTotal = (lancamentos ?? []).reduce((acc, l) => acc + Number(l.valor), 0);
   const custoPorHectare = plantio.area_plantada_ha ? custoTotal / plantio.area_plantada_ha : 0;
-  const custoPorSaca = plantio.producao_colhida_sc
-    ? custoTotal / plantio.producao_colhida_sc
-    : plantio.produtividade_esperada_sc_ha
-      ? custoTotal / (plantio.area_plantada_ha * plantio.produtividade_esperada_sc_ha)
-      : 0;
+  const custoPorSaca = plantio.producao_colhida_sc ? custoTotal / plantio.producao_colhida_sc : 0;
 
   const custosPorCategoria = (lancamentos ?? []).reduce(
     (acc, l) => {
