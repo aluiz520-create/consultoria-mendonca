@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: "/app/operacoes", label: "Operações", icon: "💰" },
   { href: "/app/contratos", label: "Contratos", icon: "📄" },
   { href: "/app/financeiro", label: "Financeiro", icon: "🧾" },
+  { href: "/app/relatorios", label: "Relatórios", icon: "📋" },
   { href: "/app/dashboard", label: "Dashboard", icon: "📊" },
   { href: "/app/resultado", label: "Resultado (DRE)", icon: "📈" },
   { href: "/app/atividade", label: "Atividade", icon: "🕒" },
