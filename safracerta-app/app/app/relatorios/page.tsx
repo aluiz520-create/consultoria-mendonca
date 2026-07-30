@@ -8,7 +8,7 @@ export default async function RelatoriosPage() {
   const { data: plantios } = await supabase
     .from("plantios")
     .select(
-      "id, area_plantada_ha, culturas(nome), safras(nome), fazendas(nome), talhoes(nome)"
+      "id, area_plantada_ha, culturas(nome), safras(nome), talhoes(nome, fazenda_id)"
     )
     .order("created_at", { ascending: false });
 
@@ -40,9 +40,8 @@ export default async function RelatoriosPage() {
                 {(plantio.culturas as any)?.nome} — {(plantio.safras as any)?.nome}
               </h3>
               <p className="text-sm text-gray-500">
-                {(plantio.fazendas as any)?.nome}
-                {(plantio.talhoes as any)?.nome ? ` · ${(plantio.talhoes as any).nome}` : ""} ·{" "}
-                {plantio.area_plantada_ha} ha
+                {(plantio.talhoes as any)?.nome || "—"}
+                {plantio.area_plantada_ha ? ` · ${plantio.area_plantada_ha} ha` : ""}
               </p>
             </div>
 
