@@ -21,11 +21,23 @@ export async function POST(request: Request) {
 
   if (!nome) return NextResponse.json({ error: "Informe o nome da safra (ex: 2025/2026)." }, { status: 400 });
 
+  // Verifica se safra já existe
+  const { data: safraExistente } = await supabase
+    .from("safras")
+    .select("id, nome")
+    .eq("account_id", perfil.account_id)
+    .ilike("nome", nome.trim())
+    .single();
+
+  if (safraExistente) {
+    return NextResponse.json({ safra: safraExistente }, { status: 200 });
+  }
+
   const { data, error } = await supabase
     .from("safras")
     .insert({
       account_id: perfil.account_id,
-      nome,
+      nome: nome.trim(),
       data_inicio: data_inicio || null,
       data_fim: data_fim || null,
     })

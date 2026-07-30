@@ -17,9 +17,23 @@ export async function POST(request: Request) {
 
   if (!nome) return NextResponse.json({ error: "Informe o nome da cultura." }, { status: 400 });
 
+  const nomeLower = nome.trim().toUpperCase();
+
+  // Verifica se cultura já existe
+  const { data: culturaExistente } = await supabase
+    .from("culturas")
+    .select("id, nome")
+    .eq("account_id", perfil.account_id)
+    .ilike("nome", nomeLower)
+    .single();
+
+  if (culturaExistente) {
+    return NextResponse.json({ cultura: culturaExistente }, { status: 200 });
+  }
+
   const { data, error } = await supabase
     .from("culturas")
-    .insert({ account_id: perfil.account_id, nome })
+    .insert({ account_id: perfil.account_id, nome: nomeLower })
     .select()
     .single();
 
