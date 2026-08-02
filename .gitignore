@@ -1,0 +1,4 @@
+node_modules/
+automacao/.env
+automacao/.slide.tmp.html
+automacao/metricas-ultima-coleta.json

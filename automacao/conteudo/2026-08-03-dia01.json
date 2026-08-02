@@ -1,0 +1,134 @@
+{
+  "data": "2026-08-03",
+  "horario": "07:00",
+  "dia_calendario": 1,
+  "semana": 1,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "objetivo": "Ser o perfil que acerta a nuance que o mercado inteiro está errando (PF adiado x PJ obrigado). Meta: salvamento e compartilhamento com contadores.",
+  "arroba": "@controllerdoagro",
+  "titulo": "A partir de hoje a sua nota pode ser rejeitada — mas não pra todo mundo",
+  "palavra_direct": "REFORMA",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "03 · Agosto · 2026",
+      "titulo": "HOJE A SUA NOTA PODE SER *REJEITADA*.",
+      "sub": "Mas não pra todo mundo. E quase ninguém está explicando a diferença."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "O que muda hoje",
+      "titulo": "Acabou o *opcional*.",
+      "texto": "Até *02/08* preencher IBS e CBS na NF-e era facultativo.\nA partir de *03/08* a nota sem esses campos é *rejeitada*.",
+      "sub": "Nota Técnica 2025.002 v1.40 — regra de validação UB12-10."
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "A parte que ninguém separou",
+      "titulo": "Vale pra você?",
+      "rotuloErrado": "Adiado",
+      "rotuloCerto": "Obrigado agora",
+      "errado": "Produtor rural *pessoa física*: o Decreto 13.075/2026 adiou para *01/01/2027* a inscrição no CNPJ e a emissão nas novas regras.",
+      "certo": "Quem opera como *pessoa jurídica*, no regime regular: a exigência é *hoje*. Sem exceção."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que a nota precisa ter",
+      "titulo": "Três campos.",
+      "itens": [
+        {
+          "texto": "*CST* — o código que diz COMO o produto é tributado"
+        },
+        {
+          "texto": "*cClassTrib* — o código que diz QUAL REGRA da nova lei se aplica"
+        },
+        {
+          "texto": "*Alíquotas de teste* — IBS 0,1% e CBS 0,9%, cálculo só informativo"
+        }
+      ]
+    },
+    {
+      "tipo": "numero",
+      "kicker": "A rejeição mais comum",
+      "numero": "3",
+      "titulo": "Os três primeiros dígitos.",
+      "texto": "O erro que mais derruba nota hoje: os 3 primeiros dígitos do cClassTrib não batem com o CST informado. É a marca do ERP parametrizado às pressas."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Por que isso é caro",
+      "titulo": "Rejeição não é *papelada*.",
+      "texto": "É caminhão parado na balança. É carga que não sai. É janela de recebimento do comprador que fecha.",
+      "sub": "E não se resolve na hora da emissão — se resolve no cadastro, antes."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que fazer",
+      "titulo": "Revise três cadastros.",
+      "itens": [
+        {
+          "texto": "*Cadastro de produto* — NCM, CST e cClassTrib de cada item"
+        },
+        {
+          "texto": "*Natureza de operação* — venda, remessa, transferência, industrialização"
+        },
+        {
+          "texto": "*Regra tributária* do sistema — o \"de-para\" que amarra tudo"
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Teste de 40 segundos",
+      "titulo": "Abra a sua *última nota*.",
+      "texto": "Procure o *cClassTrib*.\n\nVazio e você é PJ? Sua próxima nota não autoriza.\nPreenchido? Confira se os 3 primeiros dígitos batem com o CST.",
+      "sub": "Se você é produtor PF, você tem até janeiro. Use o tempo — não o ignore."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Salvou? *Manda pro seu contador.*"
+    }
+  ],
+  "legenda": "Hoje a sua nota fiscal pode ser rejeitada. Mas não a de todo mundo — e é aí que o mercado inteiro está errando a mão.\n\nO que mudou: até 02/08 preencher os campos de IBS e CBS na NF-e era opcional. A partir de 03/08 a nota sem esses campos é rejeitada. Isso está na Nota Técnica 2025.002, versão 1.40, na regra de validação UB12-10.\n\nAgora a parte que quase ninguém separou:\n\n→ Se você opera como PESSOA JURÍDICA, no regime regular, a exigência é hoje.\n→ Se você é PRODUTOR RURAL PESSOA FÍSICA, o Decreto 13.075/2026 adiou para 01/01/2027 a inscrição no CNPJ e a emissão nas novas regras.\n\nOu seja: metade dos posts que você viu essa semana dizendo \"sua nota vai ser rejeitada\" está falando com a pessoa errada.\n\nO que a nota precisa ter, pra quem está obrigado:\n\nCST — o código que diz COMO o produto é tributado.\ncClassTrib — o código que diz QUAL REGRA da nova lei se aplica.\nAlíquotas de teste — IBS 0,1% e CBS 0,9%, com cálculo apenas informativo.\n\nE a rejeição mais comum hoje? Os 3 primeiros dígitos do cClassTrib não batem com o CST informado. É a assinatura do ERP parametrizado às pressas.\n\nRejeição no agro não é papelada. É caminhão parado na balança, carga que não sai, janela de recebimento que fecha. E não se resolve na emissão — se resolve no cadastro, antes.\n\nFaz o teste: abre a sua última nota e procura o cClassTrib.\n\nSalva esse post e manda pro seu contador — pergunta se ele já conferiu o par CST + cClassTrib de vocês.\n\nSe quiser que eu olhe a sua operação, manda REFORMA no direct. Eu te digo em 15 minutos onde está o risco.",
+  "hashtags": "#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #siagri #tributarioagro #sefaz #goias #agrobrasil",
+  "cta": "Salva esse post e manda pro seu contador.",
+  "chamada_direct": "Manda REFORMA no direct que eu te digo se a obrigação de hoje vale pra sua operação ou se você caiu no adiamento de janeiro.",
+  "stories": [
+    {
+      "tipo": "imagem",
+      "texto": "Passou batido?",
+      "detalhe": "Print do calendário com 01/08 circulado em dourado"
+    },
+    {
+      "tipo": "video",
+      "texto": "3 coisas mudaram na sua nota",
+      "detalhe": "15s falando na câmera + sticker 'Ver mais' para o post"
+    },
+    {
+      "tipo": "enquete",
+      "texto": "Sua nota já sai com cClassTrib?",
+      "opcoes": [
+        "Sim",
+        "Não",
+        "Não sei o que é isso"
+      ]
+    },
+    {
+      "tipo": "imagem",
+      "texto": "É esse campo aqui",
+      "detalhe": "Print de nota com dados borrados e seta dourada apontando o cClassTrib"
+    },
+    {
+      "tipo": "cta",
+      "texto": "Manda REFORMA no direct",
+      "detalhe": "Sticker de link para o simulador"
+    }
+  ],
+  "fontes": [
+    "Nota Técnica 2025.002 v1.40 (regra UB12-10)",
+    "Decreto 13.075/2026, publicado no DOU em 22/07/2026",
+    "Ato Conjunto RFB/CGIBS nº 1/2025"
+  ]
+}
