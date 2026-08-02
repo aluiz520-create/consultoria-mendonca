@@ -761,3 +761,152 @@ p { margin: 0 0 12px; color: var(--muted); }
   .quiz-options { flex-direction: column; align-items: stretch; }
   .quiz-option-btn { max-width: none; }
 }
+
+/* ==========================================================================
+   v2 — Componentes adicionados na reformulação de posicionamento (ago/2026)
+   Ver marca/01-AUDITORIA-SITE.md
+   ========================================================================== */
+
+/* --- Barra de urgência (prazo legal ativo) --- */
+.urgency-bar {
+  background: var(--green-900);
+  color: var(--cream);
+  font-size: 0.88rem;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 2px solid var(--gold-500);
+}
+.urgency-bar .container { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.urgency-bar strong { color: #fff; }
+.urgency-bar a { color: var(--gold-500); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.urgency-bar a:hover { text-decoration: underline; }
+.urgency-pulse {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--gold-500); flex-shrink: 0;
+  animation: urgency-pulse 2s ease-in-out infinite;
+}
+@keyframes urgency-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.78); }
+}
+@media (prefers-reduced-motion: reduce) { .urgency-pulse { animation: none; } }
+
+/* --- Menu mobile --- */
+.nav-burger { display: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+.nav-burger span { display: block; width: 24px; height: 2px; background: var(--green-900); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+.nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .nav-burger { display: flex; order: 3; }
+  .header-inner { flex-wrap: wrap; }
+  .nav {
+    display: none; order: 4; width: 100%;
+    flex-direction: column; align-items: flex-start;
+    gap: 2px; padding: 12px 0 4px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-toggle:checked ~ .nav { display: flex; }
+  .nav a { padding: 10px 2px; width: 100%; }
+  .nav-cta { order: 2; }
+}
+
+/* --- Lista dentro dos cards de serviço --- */
+.card-list { list-style: none; padding: 0; margin: 0 0 14px; }
+.card-list li {
+  position: relative; padding-left: 20px; margin-bottom: 6px;
+  font-size: 0.9rem; color: var(--muted); line-height: 1.45;
+}
+.card-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.55em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold-500);
+}
+.card-featured .card-list li { color: var(--ink); }
+
+/* --- Caixa de diagnóstico (CTA principal do funil) --- */
+.diag-box {
+  margin-top: 40px; padding: 36px 32px; border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+  color: #fff; text-align: center;
+}
+.diag-box h3 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
+.diag-box p { color: rgba(255,255,255,.86); max-width: 620px; margin: 0 auto 22px; }
+
+/* --- Grade de provas / números --- */
+.proof-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px; margin-top: 32px;
+}
+.proof-item {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px 18px; text-align: center;
+}
+.proof-num {
+  display: block; font-size: 2.4rem; font-weight: 800; line-height: 1;
+  color: var(--gold-500); margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.proof-label { display: block; font-size: 0.82rem; color: var(--muted); line-height: 1.35; }
+.about-lead { font-size: 1.12rem; color: var(--ink); }
+
+/* --- FAQ --- */
+.faq-list { max-width: 780px; margin: 0 auto; }
+.faq-item {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: #fff; margin-bottom: 12px; overflow: hidden;
+}
+.faq-item summary {
+  cursor: pointer; padding: 18px 22px; font-weight: 600;
+  color: var(--green-900); list-style: none; position: relative; padding-right: 48px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+  font-size: 1.4rem; color: var(--gold-500); font-weight: 400; line-height: 1;
+}
+.faq-item[open] summary::after { content: "\2212"; }
+.faq-item[open] summary { border-bottom: 1px solid var(--border); }
+.faq-item p { padding: 16px 22px 20px; margin: 0; }
+
+/* --- Card escuro do SafraCerta (substitui os estilos inline da v1) --- */
+.ebook-card-dark {
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+  color: #fff; border: none; margin-bottom: 3rem;
+}
+.ebook-card-dark .ebook-cover,
+.ebook-card-dark h3 { color: #fff; }
+.ebook-card-dark .ebook-cover p,
+.ebook-card-dark .ebook-body ul,
+.ebook-card-dark .ebook-note { color: rgba(255,255,255,.88); }
+.ebook-card-dark .ebook-kicker {
+  background: rgba(201,162,75,.18); color: var(--gold-500); border: 1px solid var(--gold-500);
+}
+.ebook-card-dark .ebook-body { border-top: 1px solid rgba(255,255,255,.2); }
+.ebook-card-dark .ebook-price { color: var(--gold-500); font-size: 1.3rem; }
+.ebook-card-dark .ebook-price-note { font-size: .8rem; color: rgba(255,255,255,.78); font-weight: 400; }
+.ebook-card-dark .btn-outline-light { color: #fff; border-color: #fff; }
+
+/* --- Rodapé --- */
+.footer-inner { text-align: center; }
+.footer-brand { color: #fff; font-weight: 700; font-size: 1.05rem; margin-bottom: 2px; }
+.footer-tag { color: rgba(255,255,255,.72); font-size: .88rem; margin: 0; }
+.footer-links {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px;
+  margin: 22px 0 18px;
+}
+.footer-links a { color: rgba(255,255,255,.82); font-size: .88rem; text-decoration: none; }
+.footer-links a:hover { color: var(--gold-500); text-decoration: underline; }
+.footer-copy { color: rgba(255,255,255,.55); font-size: .78rem; margin: 0; }
+
+/* --- Botão flutuante de WhatsApp --- */
+.whats-float {
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: #fff; font-size: 1.6rem;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,.24);
+  transition: transform .15s ease;
+}
+.whats-float:hover { transform: scale(1.08); }
+@media (max-width: 520px) { .whats-float { width: 50px; height: 50px; font-size: 1.4rem; } }
