@@ -3,3 +3,5 @@ automacao/.env
 automacao/.slide.tmp.html
 automacao/metricas-ultima-coleta.json
 automacao/.perfil.tmp.html
+automacao/artes/*/.frames/
+automacao/.reel.tmp.html
