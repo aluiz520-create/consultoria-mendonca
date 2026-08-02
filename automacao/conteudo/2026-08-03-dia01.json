@@ -1,0 +1,98 @@
+{
+  "data": "2026-08-03",
+  "horario": "07:00",
+  "dia_calendario": 1,
+  "semana": 1,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "objetivo": "Ser o primeiro perfil a explicar a mudança de forma clara. Meta: salvamento e compartilhamento com contadores.",
+  "arroba": "@controllerdoagro",
+  "titulo": "Desde sábado a sua nota fiscal mudou",
+  "palavra_direct": "REFORMA",
+
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "01 · Agosto · 2026",
+      "titulo": "DESDE SÁBADO A SUA *NOTA FISCAL* MUDOU.",
+      "sub": "E provavelmente ninguém te avisou."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "O que aconteceu",
+      "titulo": "Virou *obrigatório*.",
+      "texto": "Desde *01/08/2026*, o destaque de *IBS* e *CBS* na nota fiscal eletrônica passou a ser exigido.",
+      "sub": "Não é aviso. Não é fase de adaptação opcional. É a regra valendo."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que a nota precisa ter agora",
+      "titulo": "Três coisas.",
+      "itens": [
+        { "texto": "*CST* — o código que diz COMO o produto é tributado" },
+        { "texto": "*cClassTrib* — o código que diz QUAL REGRA da nova lei se aplica" },
+        { "texto": "*Alíquotas de teste* de CBS e IBS destacadas no documento" }
+      ]
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "Na prática",
+      "titulo": "A diferença entre carregar e parar.",
+      "rotuloErrado": "Rejeita",
+      "rotuloCerto": "Autoriza",
+      "errado": "Produto cadastrado sem cClassTrib, ou com CST que não conversa com o NCM.",
+      "certo": "NCM → CST → cClassTrib coerentes entre si e com a natureza da operação."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Por que isso é caro",
+      "numero": "0",
+      "titulo": "Nota rejeitada não é papelada.",
+      "texto": "É caminhão parado na balança. É carga que não sai. É janela de recebimento do comprador que fecha."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que fazer esta semana",
+      "titulo": "Revise três cadastros.",
+      "itens": [
+        { "texto": "*Cadastro de produto* — NCM, CST e cClassTrib de cada item que você vende" },
+        { "texto": "*Natureza de operação* — venda interna, interestadual, remessa, transferência" },
+        { "texto": "*Regra tributária* do sistema — o \"de-para\" que amarra tudo isso" }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Quem sofre mais",
+      "titulo": "Quem tem mais de uma *inscrição estadual*.",
+      "texto": "Cada IE tem o seu enquadramento. O erro não acontece uma vez — ele se multiplica por quantas você tiver.",
+      "sub": "Grupos multi-fazenda, armazéns com filiais e cerealistas: atenção redobrada."
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Teste de 40 segundos",
+      "titulo": "Abra a sua *última nota emitida*.",
+      "texto": "Procure o campo *cClassTrib*.\n\nVazio? Você já está emitindo fora do padrão.\nPreenchido? Confira se conversa com o CST e com o NCM.",
+      "sub": "Faça isso hoje. Não na hora da próxima carga."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Salvou? *Manda pro seu contador.*"
+    }
+  ],
+
+  "legenda": "A sua nota fiscal mudou no sábado e provavelmente ninguém te avisou.\n\nDesde 01/08/2026, o destaque de IBS e CBS na nota fiscal eletrônica passou a ser obrigatório. Junto com ele vieram dois campos que a maioria dos cadastros do agro ainda não tem preenchido: o CST e o cClassTrib.\n\nTraduzindo:\n\n→ CST é o código que diz COMO aquele produto é tributado.\n→ cClassTrib é o código que diz QUAL REGRA da nova lei se aplica a ele.\n\nSe esses dois não estiverem coerentes com o NCM do produto e com a natureza da operação, a nota é rejeitada. E nota rejeitada no agro não é papelada — é caminhão parado na balança, é carga que não sai, é venda que não fecha.\n\nQuem tem mais de uma inscrição estadual sente o dobro: cada IE tem seu enquadramento, e o erro se multiplica por quantas você tiver.\n\nFaz esse teste agora, leva 40 segundos:\nabre a sua última nota emitida e procura o campo cClassTrib.\n\nEstá vazio? Então você já está emitindo fora do padrão.\nEstá preenchido? Ótimo — mas confere se ele conversa com o CST e com o NCM.\n\nSalva esse post. Você vai voltar aqui.\nE manda pro seu contador — pergunta se ele já revisou o cadastro de produtos de vocês.\n\nSe quiser que eu olhe a sua operação, manda REFORMA no direct.\nEu te digo em 15 minutos onde está o risco.",
+
+  "hashtags": "#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #siagri #tributarioagro #safra #goias #agrobrasil",
+
+  "cta": "Salva esse post e manda pro seu contador.",
+  "chamada_direct": "Manda REFORMA no direct que eu te mando o checklist dos 7 campos que precisam estar certos na sua nota a partir de agora.",
+
+  "stories": [
+    { "tipo": "imagem", "texto": "Passou batido?", "detalhe": "Print do calendário com 01/08 circulado em dourado" },
+    { "tipo": "video", "texto": "3 coisas mudaram na sua nota", "detalhe": "15s falando na câmera + sticker 'Ver mais' para o post" },
+    { "tipo": "enquete", "texto": "Sua nota já sai com cClassTrib?", "opcoes": ["Sim", "Não", "Não sei o que é isso"] },
+    { "tipo": "imagem", "texto": "É esse campo aqui", "detalhe": "Print de nota com dados borrados e seta dourada apontando o cClassTrib" },
+    { "tipo": "cta", "texto": "Manda REFORMA no direct", "detalhe": "Sticker de link para o simulador" }
+  ]
+}
