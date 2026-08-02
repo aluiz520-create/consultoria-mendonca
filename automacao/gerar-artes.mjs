@@ -35,6 +35,7 @@ const COR = {
 const DIM = {
   carrossel: { w: 1080, h: 1350 },
   story: { w: 1080, h: 1920 },
+  reel: { w: 1080, h: 1920 }, // capa + cartelas de texto para a edição do vídeo
 };
 
 const fonte = (arquivo) => `file://${join(FONTES, arquivo)}`;
@@ -193,7 +194,7 @@ function corpoSlide(s) {
           <h2>${realce(s.titulo)}</h2>
           <table>
             <tr>${(s.colunas || []).map((c) => `<th>${c}</th>`).join("")}</tr>
-            ${(s.linhas || []).map((l) => `<tr>${l.map((c, i) => `<td class="${i ? "mono" : ""}">${c}</td>`).join("")}</tr>`).join("")}
+            ${(s.linhas || []).map((l) => `<tr>${l.map((c, i) => `<td class="${i && ehCodigo(c) ? "mono" : ""}">${realce(c)}</td>`).join("")}</tr>`).join("")}
           </table>
         </div>`;
 
@@ -215,6 +216,10 @@ function corpoSlide(s) {
   }
 }
 
+// Celula de tabela so vai em monoespaçada se for codigo/numero curto —
+// PlexMono e para dado, nao para frase (marca/02-MANUAL-DA-MARCA.md §4).
+const ehCodigo = (t = "") => String(t).length <= 14 && /^[\w\d.,%/º°-]+$/u.test(String(t).trim());
+
 // *palavra* vira destaque dourado
 const realce = (t = "") =>
   String(t).replace(/\*([^*]+)\*/g, '<span class="destaque">$1</span>').replace(/\n/g, "<br>");
@@ -229,12 +234,12 @@ html,body{width:${w}px;height:${h}px}
 ${formato === "story" ? "body{padding:150px 76px 120px}h1{font-size:96px}" : ""}
 </style></head>
 <body class="${slide.fundo === "claro" ? "claro " : ""}${ehAssinatura ? "assinatura" : ""}">
-${!ehAssinatura ? `<div class="trilha"><i style="height:${progresso}%"></i></div>` : ""}
+${!ehAssinatura && formato === "carrossel" ? `<div class="trilha"><i style="height:${progresso}%"></i></div>` : ""}
 ${corpoSlide(slide)}
 ${!ehAssinatura ? `<div class="rodape">
   <span class="arroba">${arroba}</span>
-  <span class="passo">${String(idx + 1).padStart(2, "0")}/${String(total).padStart(2, "0")}</span>
-  ${idx < total - 1 ? '<span class="seta">→</span>' : "<span></span>"}
+  ${formato === "carrossel" ? `<span class="passo">${String(idx + 1).padStart(2, "0")}/${String(total).padStart(2, "0")}</span>
+  ${idx < total - 1 ? '<span class="seta">→</span>' : "<span></span>"}` : ""}
 </div>` : ""}
 </body></html>`;
 }
@@ -247,7 +252,7 @@ ${!ehAssinatura ? `<div class="rodape">
 
 async function processar(navegador, caminhoJson) {
   const dados = JSON.parse(readFileSync(caminhoJson, "utf8"));
-  const formato = dados.formato === "story" ? "story" : "carrossel";
+  const formato = DIM[dados.formato] ? dados.formato : "carrossel";
   const arroba = dados.arroba || "@controllerdoagro";
   const slides = dados.slides || [];
   const nome = basename(caminhoJson).replace(/\.json$/, "");

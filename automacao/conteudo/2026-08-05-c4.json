@@ -1,0 +1,121 @@
+{
+  "data": "2026-08-05",
+  "horario": "12:00",
+  "dia_calendario": 3,
+  "semana": 1,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "Produtor pessoa fisica: o que fazer com os 5 meses que voce ganhou",
+  "objetivo": "Servir o publico majoritario (PF) com utilidade real. Alto salvamento e comentario JANEIRO.",
+  "palavra_direct": "JANEIRO",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Produtor pessoa física",
+      "titulo": "VOCÊ GANHOU *5 MESES*. NÃO DESPERDICE.",
+      "sub": "O que fazer entre agora e 01/01/2027."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "O que foi adiado",
+      "titulo": "Decreto *13.075/2026*.",
+      "texto": "Publicado no DOU em *22/07/2026*. Adiou para *01/01/2027* a inscrição no CNPJ e a emissão de documento fiscal nas novas regras, para pessoa física.",
+      "sub": "Se você opera como PJ, isso não é com você — o seu prazo já venceu."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que NÃO foi adiado",
+      "titulo": "Três coisas continuam valendo.",
+      "itens": [
+        {
+          "texto": "O que o seu *comprador* vai exigir de você em janeiro"
+        },
+        {
+          "texto": "A necessidade de saber o seu *custo real* — isso nunca teve prazo"
+        },
+        {
+          "texto": "A decisão de *migrar ou não para PJ*, que leva meses para maturar"
+        }
+      ]
+    },
+    {
+      "tipo": "tabela",
+      "kicker": "Cronograma sugerido",
+      "titulo": "Mês a mês até janeiro.",
+      "colunas": [
+        "Mês",
+        "O que resolver"
+      ],
+      "linhas": [
+        [
+          "Agosto",
+          "Levantar NCM de tudo que você vende"
+        ],
+        [
+          "Setembro",
+          "Definir enquadramento: seguir PF ou abrir PJ"
+        ],
+        [
+          "Outubro",
+          "Escolher e contratar o sistema emissor"
+        ],
+        [
+          "Novembro",
+          "Parametrizar e testar em homologação"
+        ],
+        [
+          "Dezembro",
+          "Emitir em paralelo, conferindo"
+        ],
+        [
+          "Janeiro",
+          "Entrar valendo, sem susto"
+        ]
+      ]
+    },
+    {
+      "tipo": "numero",
+      "kicker": "O erro previsível",
+      "numero": "12",
+      "titulo": "Semanas é o que some.",
+      "texto": "Entre decidir migrar para PJ e ter a primeira nota autorizada, o caminho médio é de três meses. Quem começar em dezembro não chega."
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "A decisão que pesa",
+      "titulo": "Continuar PF ou abrir PJ?",
+      "rotuloErrado": "Sinais de que PF ainda serve",
+      "rotuloCerto": "Sinais de que PJ compensa",
+      "errado": "Faturamento menor, poucas operações, um comprador só, estrutura simples e sem sócios.",
+      "certo": "Faturamento alto, várias fazendas, venda para indústria, necessidade de crédito maior e planejamento sucessório."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "O que fazer esta semana",
+      "titulo": "Comece pelo *mais chato*.",
+      "texto": "Liste todos os produtos que você vende e o *NCM* de cada um.\n\nParece burocracia. É a base de tudo que vem depois — CST, cClassTrib, alíquota, benefício.",
+      "sub": "Sem essa lista, nenhuma parametrização começa."
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "A conta que importa",
+      "titulo": "5 meses é *tempo*. Ou é *nada*.",
+      "texto": "Quem trata como fôlego, chega em janeiro tranquilo.\nQuem trata como adiamento, repete em dezembro a correria que a PJ viveu essa semana.",
+      "sub": "A escolha é hoje, não em novembro."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Comenta *JANEIRO* que eu mando o cronograma."
+    }
+  ],
+  "legenda": "Se você é produtor rural pessoa física, você acabou de ganhar cinco meses. E é bem possível que ninguém tenha te contado direito.\n\nO Decreto 13.075/2026, publicado no Diário Oficial em 22 de julho, adiou para 1º de janeiro de 2027 a obrigação de pessoa física se inscrever no CNPJ e emitir documento fiscal eletrônico nas novas regras.\n\nAgora, o que NÃO foi adiado:\n\n→ Se você opera por pessoa jurídica, o seu prazo já venceu. Vale desde 03/08.\n→ O que o seu comprador vai exigir de você em janeiro começa a ser construído agora.\n→ A necessidade de saber o seu custo real. Essa nunca teve prazo.\n\nO cronograma que eu sugiro:\n\nAGOSTO — levantar o NCM de tudo que você vende\nSETEMBRO — definir se segue PF ou abre PJ\nOUTUBRO — escolher e contratar o sistema emissor\nNOVEMBRO — parametrizar e testar em homologação\nDEZEMBRO — emitir em paralelo, conferindo\nJANEIRO — entrar valendo, sem susto\n\nPor que começar agora e não em novembro? Porque entre decidir migrar para PJ e ter a primeira nota autorizada, o caminho médio é de três meses. Quem começar em dezembro não chega.\n\nE se você quer fazer uma única coisa esta semana: liste todos os produtos que você vende e o NCM de cada um. Parece burocracia. É a base de tudo que vem depois.\n\nCinco meses é tempo. Ou é nada. Depende do que você fizer com eles.\n\nSalva esse post. Comenta JANEIRO que eu mando o cronograma completo.",
+  "hashtags": "#produtorrural #pessoafisica #reformatributaria #cnpj #ibs #cbs #agronegocio #agro #fiscalagro #gestaoagro #contabilidaderural #planejamentotributario #safra #fazenda #cerealista #cooperativa #goias #decreto",
+  "cta": "Salva e comenta JANEIRO.",
+  "chamada_direct": "Comenta JANEIRO que eu mando o cronograma completo do que fazer mes a mes ate 2027.",
+  "fontes": [
+    "Decreto 13.075/2026 (DOU 22/07/2026)",
+    "Nota Técnica 2025.002 v1.40"
+  ]
+}

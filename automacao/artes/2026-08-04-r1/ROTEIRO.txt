@@ -1,0 +1,33 @@
+METADE DOS POSTS FALOU COM A PESSOA ERRADA
+Duração: 40s  ·  Pilar: ALARMAR
+Objetivo: Alcance frio maximo. Meta: 60% do alcance vindo de nao-seguidores.
+
+[0-4s]
+  IMAGEM: Close, sério, direto na câmera
+  FALA:   Metade dos posts sobre nota fiscal essa semana falou com a pessoa errada. Inclusive gente grande.
+
+[4-12s]
+  IMAGEM: Tela com prints de manchetes
+  FALA:   Todo mundo publicou: sua nota vai ser rejeitada em agosto. Está certo. Pela metade.
+
+[12-22s]
+  IMAGEM: Tela dividida PF / PJ
+  FALA:   Se você opera como pessoa jurídica, no regime regular: vale desde 3 de agosto. Nota sem IBS e CBS é rejeitada.
+
+[22-32s]
+  IMAGEM: Lado PF destacado em dourado
+  FALA:   Agora, se você é produtor rural pessoa física: o Decreto 13.075 adiou pra primeiro de janeiro de 2027.
+
+[32-40s]
+  IMAGEM: Você, depois assinatura
+  FALA:   Não é detalhe. É a diferença entre correr hoje ou planejar direito. Manda REFORMA no direct. Consultoria Mendonça, número no lugar certo.
+
+CTA: Compartilha com quem te mandou o post errado essa semana.
+DIRECT: Manda REFORMA no direct que eu te digo em qual dos dois casos a sua operação está.
+
+PRODUÇÃO
+- 9:16, 1080x1920 · legenda queimada em Inter 700, Areia com contorno escuro
+- Palavras-chave em Ouro Safra #C9A24B
+- Corte a cada 2-3s · trilha instrumental a 8% de volume
+- Use as cartelas PNG desta pasta como cut-ins na edição
+- Capa do Reel: 01.png

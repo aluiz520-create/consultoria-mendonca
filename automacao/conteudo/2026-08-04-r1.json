@@ -1,0 +1,84 @@
+{
+  "data": "2026-08-04",
+  "horario": "07:30",
+  "dia_calendario": 2,
+  "semana": 1,
+  "formato": "reel",
+  "pilar": "ALARMAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "Metade dos posts falou com a pessoa errada",
+  "objetivo": "Alcance frio maximo. Meta: 60% do alcance vindo de nao-seguidores.",
+  "palavra_direct": "REFORMA",
+  "duracao": "40s",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Reel · capa",
+      "titulo": "METADE DOS POSTS FALOU COM A *PESSOA ERRADA*.",
+      "sub": "Inclusive gente grande."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Cartela 1 · 4s",
+      "titulo": "A manchete que todo mundo repetiu:",
+      "texto": "\"Sua nota vai ser *rejeitada* em agosto.\"",
+      "sub": "Está certo. Pela metade."
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "Cartela 2 · 12s",
+      "titulo": "Depende de quem você é.",
+      "rotuloErrado": "Adiado",
+      "rotuloCerto": "Obrigado",
+      "errado": "Produtor rural *pessoa física*: adiado para *01/01/2027* pelo Decreto 13.075/2026.",
+      "certo": "*Pessoa jurídica*, regime regular: vale desde *03/08/2026*."
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Cartela 3 · 32s",
+      "titulo": "Não é detalhe.",
+      "texto": "É a diferença entre *correr hoje* ou *planejar direito*.",
+      "sub": "Manda REFORMA no direct."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "*Número no lugar certo.*"
+    }
+  ],
+  "roteiro": [
+    {
+      "tempo": "0-4s",
+      "imagem": "Close, sério, direto na câmera",
+      "fala": "Metade dos posts sobre nota fiscal essa semana falou com a pessoa errada. Inclusive gente grande."
+    },
+    {
+      "tempo": "4-12s",
+      "imagem": "Tela com prints de manchetes",
+      "fala": "Todo mundo publicou: sua nota vai ser rejeitada em agosto. Está certo. Pela metade."
+    },
+    {
+      "tempo": "12-22s",
+      "imagem": "Tela dividida PF / PJ",
+      "fala": "Se você opera como pessoa jurídica, no regime regular: vale desde 3 de agosto. Nota sem IBS e CBS é rejeitada."
+    },
+    {
+      "tempo": "22-32s",
+      "imagem": "Lado PF destacado em dourado",
+      "fala": "Agora, se você é produtor rural pessoa física: o Decreto 13.075 adiou pra primeiro de janeiro de 2027."
+    },
+    {
+      "tempo": "32-40s",
+      "imagem": "Você, depois assinatura",
+      "fala": "Não é detalhe. É a diferença entre correr hoje ou planejar direito. Manda REFORMA no direct. Consultoria Mendonça, número no lugar certo."
+    }
+  ],
+  "legenda": "Metade dos posts sobre nota fiscal que você viu essa semana falou com a pessoa errada.\n\nA manchete foi a mesma em todo lugar: \"sua nota vai ser rejeitada em agosto\". Está certa. Pela metade.\n\nO que quase ninguém separou:\n\n→ PESSOA JURÍDICA, regime regular: a rejeição vale desde 03/08/2026. Nota Técnica 2025.002 v1.40, regra UB12-10.\n→ PRODUTOR RURAL PESSOA FÍSICA: o Decreto 13.075/2026 adiou para 01/01/2027 a inscrição no CNPJ e a emissão nas novas regras.\n\nOu seja: se você é produtor pessoa física e passou a semana em pânico, respira. Você tem cinco meses.\n\nE se você opera por PJ e achou que tinha tempo, não tem. É agora.\n\nEsse tipo de confusão não é inocente. Ela faz gente correr atrás da solução errada, gastar com o que não precisa e deixar de fazer o que precisa.\n\nCompartilha com quem te mandou o post errado essa semana.\n\nE se você não sabe em qual dos dois casos está, manda REFORMA no direct. Eu te digo em 15 minutos.",
+  "hashtags": "#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #sefaz #goias #tributarioagro",
+  "cta": "Compartilha com quem te mandou o post errado essa semana.",
+  "chamada_direct": "Manda REFORMA no direct que eu te digo em qual dos dois casos a sua operação está.",
+  "fontes": [
+    "Nota Técnica 2025.002 v1.40 (regra UB12-10)",
+    "Decreto 13.075/2026 (DOU 22/07/2026)"
+  ]
+}
