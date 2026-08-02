@@ -156,4 +156,6 @@ reter cliente com SafraCerta e suporte mensal.**
 |---|---|---|
 | 02/08/2026 | Categoria muda de "consultoria de parametrização SIAGRI" para "Controladoria e Inteligência Fiscal para o Agro" | SIAGRI é ferramenta de um fornecedor só; limita mercado e não é o que o diretor procura. Ver `01-AUDITORIA-SITE.md` §2 |
 | 02/08/2026 | Serviços abaixo de R$ 900 saem da vitrine principal do site | Âncora de preço baixo destrói percepção de valor no B2B. Ver auditoria §4 |
-| 02/08/2026 | Wedge de 2026 = Reforma Tributária (obrigatoriedade de destaque IBS/CBS na NF-e desde 01/08/2026) | Dor aguda, prazo legal, universal no público-alvo |
+| 02/08/2026 | Wedge de 2026 = Reforma Tributária | Dor aguda, prazo legal, universal no público-alvo |
+| 02/08/2026 | **CORREÇÃO factual.** A data correta é **03/08/2026** (não 01/08) e vale só para **regime regular / PJ**. Produtor rural **PF foi adiado para 01/01/2027** pelo Decreto 13.075/2026 | Fontes: Nota Técnica 2025.002 v1.40 (regra UB12-10); Ato Conjunto RFB/CGIBS nº 1/2025; Decreto 13.075/2026 (DOU 22/07/2026). Corrigido no site (barra de urgência, FAQ, schema) e no carrossel do Dia 1 |
+| 02/08/2026 | Ângulo editorial de agosto passa a ser **"PF adiado × PJ obrigado"**, não a manchete genérica de rejeição | O mercado inteiro publicou a manchete sem a nuance. Acertar o que os outros erram é o caminho mais curto para autoridade técnica |
