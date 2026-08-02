@@ -88,7 +88,19 @@ link na bio, porque não sai do app.
 
 ## 4. Foto de perfil
 
-**Recomendação: seu rosto. Não o logo.**
+> ### ⏳ Situação atual (02/08/2026)
+> **Em uso: `automacao/perfil/C-monograma-invertido.png`** — monograma "CM" em Verde
+> Cerrado sobre Ouro Safra. Escolhido por legibilidade a 32px e por destacar num feed
+> do agro que é predominantemente verde.
+>
+> **É solução temporária.** A foto do rosto continua sendo a recomendação — ver abaixo.
+> Substituir assim que a foto profissional existir.
+>
+> As opções descartadas (`B`, `D`, `E`, com a espiga) falharam no teste de 32px: traço
+> fino vira borrão. Mesmo defeito do `assets/logo.svg` atual, que usa traço de 3px.
+> Se um dia o logo for redesenhado, **traço mínimo de 8px na proporção 120×120**.
+
+**Recomendação de longo prazo: seu rosto. Não o logo.**
 
 Motivo: no agro, contrata-se **pessoa**, não empresa. Perfis com rosto humano têm taxa
 de seguir consistentemente maior em nichos de consultoria. O logo você já tem no site,
