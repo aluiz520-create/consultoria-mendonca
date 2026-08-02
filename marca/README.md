@@ -13,6 +13,7 @@ Tudo que define **como a marca fala, aparece, cresce e vende**. Criado em 02/08/
 | **[04-CALENDARIO-365.md](04-CALENDARIO-365.md)** | 365 dias mapeados + 14 dias totalmente escritos como modelo | Toda sexta, para planejar a semana |
 | **[05-PLANO-CRESCIMENTO.md](05-PLANO-CRESCIMENTO.md)** | De 0 a 100 mil seguidores, fase por fase, com meta de receita | Ao decidir onde investir tempo e dinheiro |
 | **[06-PAINEL-DE-CONTROLE.md](06-PAINEL-DE-CONTROLE.md)** | Métricas semanais, diagnóstico de problemas, protocolo de autocrítica | Todo domingo |
+| **[07-PLANO-DE-ENGAJAMENTO.md](07-PLANO-DE-ENGAJAMENTO.md)** | Rotina diária de 20 min para conquistar os primeiros 500 seguidores: mapa de alvos, modelos de comentário, script de colaboração | Todo dia útil, de manhã |
 
 ## O motor de conteúdo
 
