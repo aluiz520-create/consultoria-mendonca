@@ -116,18 +116,24 @@ for (const [i, c] of cenas.entries()) {
 await pag.close(); await nav.close();
 try { rmSync(arqTmp); } catch {}
 
-/* Cada cena: zoom lento (Ken Burns) + crossfade de 0,4s entre elas. */
+/* Cada cena vira um trecho de duração fixa; crossfade de 0,4s entre elas.
+ *
+ * Sem zoompan de propósito: com `-loop 1` o parâmetro `d=` do zoompan é
+ * aplicado a CADA quadro de entrada, e a saída sai ~10x mais longa que o
+ * previsto (32s viraram 5min18s). O `trim` abaixo fixa a duração de forma
+ * determinística, e para Reel de texto o corte seco funciona igual ou melhor.
+ */
 const FADE = 0.4;
 const entradas = [], filtros = [];
 cenas.forEach((c, i) => {
-  const dur = c.dur || 4;
-  entradas.push("-loop", "1", "-t", String(dur + FADE), "-i", join(tmp, `c${String(i).padStart(2, "0")}.png`));
-  const nf = Math.round((dur + FADE) * FPS);
+  const dur = (c.dur || 4) + FADE;
+  entradas.push("-loop", "1", "-t", String(dur), "-i", join(tmp, `c${String(i).padStart(2, "0")}.png`));
   filtros.push(
-    // 1,25x basta para o zoom não pixelizar; 2x quadruplica o custo do render
-    `[${i}:v]scale=${Math.round(W * 1.25)}:${Math.round(H * 1.25)},` +
-    `zoompan=z='min(zoom+0.0008,1.09)':d=${nf}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=${W}x${H}:fps=${FPS},` +
-    `setsar=1[v${i}]`
+    // Ordem importa: o `fps` precisa vir DEPOIS do trim/setpts, senão o
+    // xfade recebe taxa variável e recusa ("inputs needs to be a constant
+    // frame rate; current rate of 1/0 is invalid").
+    `[${i}:v]trim=duration=${dur.toFixed(2)},setpts=PTS-STARTPTS,` +
+    `fps=${FPS},format=yuv420p,setsar=1[v${i}]`
   );
 });
 
