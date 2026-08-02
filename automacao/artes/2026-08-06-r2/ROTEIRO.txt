@@ -1,0 +1,33 @@
+TRES DIGITOS SEPARAM AUTORIZADO DE REJEITADO
+Duração: 35s  ·  Pilar: ENSINAR
+Objetivo: Utilidade tecnica de alto salvamento. Provar dominio fino do assunto.
+
+[0-3s]
+  IMAGEM: Close, tom de alerta
+  FALA:   Três dígitos separam a sua carga de sair ou de ficar parada na balança.
+
+[3-12s]
+  IMAGEM: Tela com CST e cClassTrib lado a lado
+  FALA:   A rejeição de nota mais comum hoje não é campo vazio. É incoerência: os três primeiros dígitos do cClassTrib não batem com o CST informado.
+
+[12-22s]
+  IMAGEM: Zoom nos códigos, seta dourada
+  FALA:   Porque o cClassTrib nasce do CST. Quando um foi digitado à mão e o outro veio da regra do sistema, eles divergem. E a SEFAZ cruza.
+
+[22-30s]
+  IMAGEM: Você, tom seco
+  FALA:   Isso tem assinatura. É ERP parametrizado às pressas. Dá pra ver de longe.
+
+[30-35s]
+  IMAGEM: Assinatura
+  FALA:   Abre a sua última nota e confere. Comenta KIT que eu mando a tabela pronta.
+
+CTA: Salva esse post e comenta KIT.
+DIRECT: Comenta KIT que eu mando a tabela de CST x cClassTrib dos principais produtos do agro.
+
+PRODUÇÃO
+- 9:16, 1080x1920 · legenda queimada em Inter 700, Areia com contorno escuro
+- Palavras-chave em Ouro Safra #C9A24B
+- Corte a cada 2-3s · trilha instrumental a 8% de volume
+- Use as cartelas PNG desta pasta como cut-ins na edição
+- Capa do Reel: 01.png

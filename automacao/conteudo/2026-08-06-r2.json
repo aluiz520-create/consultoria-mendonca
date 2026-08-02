@@ -1,0 +1,83 @@
+{
+  "data": "2026-08-06",
+  "horario": "07:30",
+  "dia_calendario": 4,
+  "semana": 1,
+  "formato": "reel",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "Tres digitos separam autorizado de rejeitado",
+  "objetivo": "Utilidade tecnica de alto salvamento. Provar dominio fino do assunto.",
+  "palavra_direct": "KIT",
+  "duracao": "35s",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Reel · capa",
+      "titulo": "*3 DÍGITOS* SEPARAM A SUA CARGA DE SAIR OU PARAR.",
+      "sub": "A rejeição mais comum da NF-e hoje."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Cartela 1 · 5s",
+      "numero": "3",
+      "titulo": "Os três primeiros dígitos.",
+      "texto": "Do *cClassTrib*. Eles precisam bater com o *CST* informado na mesma nota."
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "Cartela 2 · 15s",
+      "titulo": "Por que diverge?",
+      "rotuloErrado": "O que acontece",
+      "rotuloCerto": "O que deveria",
+      "errado": "CST cadastrado *à mão*, cClassTrib vindo da *regra do sistema*. Os dois não conversam.",
+      "certo": "O cClassTrib *nasce* do CST. Mesma origem, mesma lógica, sem digitação avulsa."
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Cartela 3 · 28s",
+      "titulo": "Tem *assinatura*.",
+      "texto": "Isso é ERP parametrizado às pressas nas últimas semanas.",
+      "sub": "E a SEFAZ cruza os dois campos na hora da emissão."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Comenta *KIT* que eu mando a tabela."
+    }
+  ],
+  "roteiro": [
+    {
+      "tempo": "0-3s",
+      "imagem": "Close, tom de alerta",
+      "fala": "Três dígitos separam a sua carga de sair ou de ficar parada na balança."
+    },
+    {
+      "tempo": "3-12s",
+      "imagem": "Tela com CST e cClassTrib lado a lado",
+      "fala": "A rejeição de nota mais comum hoje não é campo vazio. É incoerência: os três primeiros dígitos do cClassTrib não batem com o CST informado."
+    },
+    {
+      "tempo": "12-22s",
+      "imagem": "Zoom nos códigos, seta dourada",
+      "fala": "Porque o cClassTrib nasce do CST. Quando um foi digitado à mão e o outro veio da regra do sistema, eles divergem. E a SEFAZ cruza."
+    },
+    {
+      "tempo": "22-30s",
+      "imagem": "Você, tom seco",
+      "fala": "Isso tem assinatura. É ERP parametrizado às pressas. Dá pra ver de longe."
+    },
+    {
+      "tempo": "30-35s",
+      "imagem": "Assinatura",
+      "fala": "Abre a sua última nota e confere. Comenta KIT que eu mando a tabela pronta."
+    }
+  ],
+  "legenda": "Três dígitos separam a sua carga de sair ou de ficar parada na balança.\n\nA rejeição de NF-e mais comum hoje não é campo em branco. É incoerência: os três primeiros dígitos do cClassTrib não batem com o CST informado na mesma nota.\n\nPor que isso acontece tanto?\n\nPorque o cClassTrib nasce do CST. Quando um foi cadastrado à mão, por alguém com pressa, e o outro veio da regra tributária do sistema, os dois divergem. E a SEFAZ cruza os dois na hora da emissão.\n\nIsso tem uma assinatura: é ERP parametrizado às pressas nas últimas semanas.\n\nO teste leva 40 segundos. Abre a sua última nota autorizada, olha o CST do item e olha o cClassTrib. Os três primeiros dígitos precisam conversar.\n\nNão conversam? Você não tem um problema de nota. Tem um problema de cadastro — e ele vai se repetir em toda emissão até alguém arrumar a origem.\n\nSalva esse post.\n\nE comenta KIT que eu mando a tabela de CST x cClassTrib dos principais produtos do agro.",
+  "hashtags": "#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #sefaz #goias #tributarioagro",
+  "cta": "Salva esse post e comenta KIT.",
+  "chamada_direct": "Comenta KIT que eu mando a tabela de CST x cClassTrib dos principais produtos do agro.",
+  "fontes": [
+    "Nota Técnica 2025.002 v1.40 (regra UB12-10)"
+  ]
+}

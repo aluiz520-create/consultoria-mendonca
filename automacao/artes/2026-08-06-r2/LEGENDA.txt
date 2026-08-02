@@ -1,0 +1,19 @@
+Três dígitos separam a sua carga de sair ou de ficar parada na balança.
+
+A rejeição de NF-e mais comum hoje não é campo em branco. É incoerência: os três primeiros dígitos do cClassTrib não batem com o CST informado na mesma nota.
+
+Por que isso acontece tanto?
+
+Porque o cClassTrib nasce do CST. Quando um foi cadastrado à mão, por alguém com pressa, e o outro veio da regra tributária do sistema, os dois divergem. E a SEFAZ cruza os dois na hora da emissão.
+
+Isso tem uma assinatura: é ERP parametrizado às pressas nas últimas semanas.
+
+O teste leva 40 segundos. Abre a sua última nota autorizada, olha o CST do item e olha o cClassTrib. Os três primeiros dígitos precisam conversar.
+
+Não conversam? Você não tem um problema de nota. Tem um problema de cadastro — e ele vai se repetir em toda emissão até alguém arrumar a origem.
+
+Salva esse post.
+
+E comenta KIT que eu mando a tabela de CST x cClassTrib dos principais produtos do agro.
+
+#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #sefaz #goias #tributarioagro
