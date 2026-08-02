@@ -9,7 +9,7 @@
   "titulo": "Metade dos posts falou com a pessoa errada",
   "objetivo": "Alcance frio maximo. Meta: 60% do alcance vindo de nao-seguidores.",
   "palavra_direct": "REFORMA",
-  "duracao": "40s",
+  "duracao": "32s",
   "slides": [
     {
       "tipo": "capa",
@@ -80,5 +80,64 @@
   "fontes": [
     "Nota Técnica 2025.002 v1.40 (regra UB12-10)",
     "Decreto 13.075/2026 (DOU 22/07/2026)"
-  ]
+  ],
+  "cenas": [
+    {
+      "kicker": "03 · Agosto · 2026",
+      "titulo": "METADE DOS POSTS FALOU COM A *PESSOA ERRADA*.",
+      "grande": true,
+      "dur": 4
+    },
+    {
+      "kicker": "A manchete de todo mundo",
+      "titulo": "\"Sua nota vai ser *rejeitada* em agosto.\"",
+      "dur": 4
+    },
+    {
+      "titulo": "Está certo.",
+      "texto": "*Pela metade.*",
+      "dur": 3
+    },
+    {
+      "tag": {
+        "tipo": "v",
+        "texto": "Obrigado agora"
+      },
+      "kicker": "Pessoa jurídica · regime regular",
+      "titulo": "Vale desde *03/08*.",
+      "texto": "Nota sem IBS e CBS é rejeitada na emissão.",
+      "dur": 5
+    },
+    {
+      "tag": {
+        "tipo": "x",
+        "texto": "Adiado"
+      },
+      "kicker": "Produtor rural pessoa física",
+      "titulo": "Foi para *01/01/2027*.",
+      "texto": "Decreto 13.075/2026, publicado no DOU em 22/07.",
+      "dur": 5
+    },
+    {
+      "kicker": "A rejeição mais comum",
+      "numero": "3",
+      "titulo": "dígitos.",
+      "texto": "Os 3 primeiros do *cClassTrib* precisam bater com o *CST*.",
+      "dur": 4
+    },
+    {
+      "fundo": "claro",
+      "kicker": "A pergunta que importa",
+      "titulo": "Em qual dos dois *você está*?",
+      "texto": "Se não souber, é aí que mora o risco.",
+      "dur": 4
+    },
+    {
+      "kicker": "Consultoria Mendonça",
+      "titulo": "*Número* no lugar certo.",
+      "texto": "Manda *REFORMA* no direct.",
+      "dur": 3
+    }
+  ],
+  "formato_video": "reel de texto animado, sem câmera"
 }
