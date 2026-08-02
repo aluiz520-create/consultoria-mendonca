@@ -89,15 +89,41 @@ Todas gratuitas no Google Fonts.
 
 ## 5. Logotipo
 
-**Atual:** `assets/logo.svg` + `assets/logo.png`.
+**Marca oficial (desde 02/08/2026):** `assets/logo-original.png`
 
-**Regras de uso:**
-- Área de respiro mínima: altura da letra "M" em todos os lados.
-- Tamanho mínimo: 24px de altura em digital.
-- Versões necessárias (**produzir**): full color, monocromático branco, monocromático
-  Verde Cerrado, e **símbolo isolado** (para foto de perfil e favicon).
-- ❌ Não distorcer, não rotacionar, não aplicar sombra, não usar sobre foto sem
-  fundo sólido/overlay, não recolorir fora da paleta.
+Monograma **C + M** com barras de gráfico e folha — a leitura é exatamente a da marca:
+**dado + agro**. Substituiu a espiga anterior (`assets/logo.svg`), que tinha traço de 3px
+e não sobrevivia a tamanhos pequenos.
+
+### Arquivos gerados
+
+| Arquivo | Uso |
+|---|---|
+| `assets/logo-original.png` | Master. Lockup completo sobre fundo escuro |
+| `assets/logo-completo.png` | Lockup sobre Verde Cerrado, para documentos e OG |
+| `assets/logo-simbolo.png` | Símbolo em badge quadrado 512px — **cabeçalho do site** |
+| `assets/logo-simbolo-transparente.png` | Símbolo com fundo transparente, só para fundo escuro |
+| `assets/logo-perfil.png` | Círculo 1080px — **foto de perfil do Instagram** |
+| `assets/favicon-32.png` · `favicon-192.png` · `apple-touch-icon.png` | Ícones do navegador |
+
+### Regras de uso
+- **Nunca** aplicar o símbolo sobre fundo claro sem o badge Verde Cerrado. O verde escuro
+  do "M" some sobre creme.
+- **Nunca** re-recortar do master: o recorte já está calibrado (símbolo entre y 118 e 637).
+- Tamanho mínimo do símbolo: **40px**. Abaixo disso o gráfico de barras vira ruído.
+- Área de respiro: 13% do lado do badge — já embutida nos arquivos gerados.
+
+### ⚠️ Limite conhecido
+A **32px** — tamanho do avatar em comentários e no feed do Instagram — o símbolo perde
+definição e lê como mancha dourada. A versão de perfil usa recorte fechado (margem de 2%)
+para mitigar. É trade-off consciente: consistência de marca venceu legibilidade extrema.
+A alternativa testada e descartada foi o monograma "CM" chapado
+(`automacao/perfil/C-monograma-invertido.png`), legível a 32px mas sem o DNA da marca.
+
+**Legado:** `assets/logo.svg` e `assets/logo.png` — não usar.
+
+**Nunca:** distorcer, rotacionar, aplicar sombra extra, recolorir fora da paleta,
+ou usar sobre foto sem overlay sólido.
 
 ## 6. Estilo visual (grid do Instagram)
 
