@@ -18,7 +18,7 @@
 | Base | Itaberaí – GO (atende Goiânia, Centro-Oeste e remoto no Brasil todo) |
 | CNPJ / Pix | 52.394.324/0001-55 |
 | WhatsApp | (64) 99222-6766 |
-| E-mail | aluiz520@gmail.com |
+| E-mail | controllerdoagro@gmail.com |
 | Site | https://aluiz520-create.github.io/consultoria-mendonca/ |
 
 ## 2. Frase de posicionamento (decorar)
