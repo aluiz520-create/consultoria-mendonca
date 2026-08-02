@@ -2,31 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/</loc>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/simulador/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/saas/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/blog/</loc>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/blog/nfpe-obrigatoria-produtor-rural.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/blog/tabela-cbenef-goias.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/blog/reforma-tributaria-agronegocio-2026.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/blog/ibs-cbs-agro-aliquotas.html</loc>
+    <lastmod>2026-07-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
