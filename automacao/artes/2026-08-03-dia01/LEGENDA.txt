@@ -1,0 +1,28 @@
+Hoje a sua nota fiscal pode ser rejeitada. Mas não a de todo mundo — e é aí que o mercado inteiro está errando a mão.
+
+O que mudou: até 02/08 preencher os campos de IBS e CBS na NF-e era opcional. A partir de 03/08 a nota sem esses campos é rejeitada. Isso está na Nota Técnica 2025.002, versão 1.40, na regra de validação UB12-10.
+
+Agora a parte que quase ninguém separou:
+
+→ Se você opera como PESSOA JURÍDICA, no regime regular, a exigência é hoje.
+→ Se você é PRODUTOR RURAL PESSOA FÍSICA, o Decreto 13.075/2026 adiou para 01/01/2027 a inscrição no CNPJ e a emissão nas novas regras.
+
+Ou seja: metade dos posts que você viu essa semana dizendo "sua nota vai ser rejeitada" está falando com a pessoa errada.
+
+O que a nota precisa ter, pra quem está obrigado:
+
+CST — o código que diz COMO o produto é tributado.
+cClassTrib — o código que diz QUAL REGRA da nova lei se aplica.
+Alíquotas de teste — IBS 0,1% e CBS 0,9%, com cálculo apenas informativo.
+
+E a rejeição mais comum hoje? Os 3 primeiros dígitos do cClassTrib não batem com o CST informado. É a assinatura do ERP parametrizado às pressas.
+
+Rejeição no agro não é papelada. É caminhão parado na balança, carga que não sai, janela de recebimento que fecha. E não se resolve na emissão — se resolve no cadastro, antes.
+
+Faz o teste: abre a sua última nota e procura o cClassTrib.
+
+Salva esse post e manda pro seu contador — pergunta se ele já conferiu o par CST + cClassTrib de vocês.
+
+Se quiser que eu olhe a sua operação, manda REFORMA no direct. Eu te digo em 15 minutos onde está o risco.
+
+#reformatributaria #cbs #ibs #cclasstrib #notafiscal #nfe #agronegocio #produtorrural #gestaoagro #fiscalagro #contabilidaderural #agro #armazemgeral #cerealista #cooperativa #siagri #tributarioagro #sefaz #goias #agrobrasil
