@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Textos do perfil — Consultoria Mendonça</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<style>
+  :root{--cerrado:#0E241A;--ouro:#C9A24B;--areia:#F5F1E6;--neblina:#8A9A91;--ok:#4F9563}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Roboto,-apple-system,sans-serif;background:var(--cerrado);
+       color:var(--areia);line-height:1.5;padding:24px 16px 60px}
+  .wrap{max-width:640px;margin:0 auto}
+  h1{font-size:1.3rem;margin-bottom:6px}
+  .sub{color:var(--neblina);font-size:.9rem;margin-bottom:28px}
+  .campo{background:rgba(245,241,230,.05);border:1px solid rgba(245,241,230,.14);
+         border-radius:14px;padding:16px;margin-bottom:18px}
+  .rot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+  .rot h2{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ouro);font-weight:700}
+  .onde{color:var(--neblina);font-size:.74rem;margin-bottom:10px}
+  pre{white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:.95rem;
+      background:rgba(0,0,0,.28);border-radius:10px;padding:14px;color:#fff}
+  button{background:var(--ouro);color:var(--cerrado);border:0;border-radius:9px;
+         padding:9px 16px;font-weight:700;font-size:.82rem;cursor:pointer;white-space:nowrap}
+  button.ok{background:var(--ok);color:#fff}
+  .dica{background:rgba(201,162,75,.1);border-left:3px solid var(--ouro);
+        border-radius:0 10px 10px 0;padding:14px 16px;margin:26px 0;font-size:.88rem}
+  .dica b{color:var(--ouro)}
+  footer{text-align:center;color:var(--neblina);font-size:.76rem;margin-top:34px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Textos do perfil</h1>
+  <p class="sub">Toque em <b>Copiar</b> e cole no Instagram. Um campo de cada vez.</p>
+
+  <div class="campo">
+    <div class="rot"><h2>Nome</h2><button data-alvo="t1">Copiar</button></div>
+    <p class="onde">Editar perfil &rarr; Nome</p>
+    <pre id="t1">Mendonça · Controller do Agro</pre>
+  </div>
+
+  <div class="campo">
+    <div class="rot"><h2>Bio</h2><button data-alvo="t2">Copiar</button></div>
+    <p class="onde">Editar perfil &rarr; Bio</p>
+    <pre id="t2">IBS/CBS na nota sem rejeição + custo real por saca.
+🌾 Produtor • Armazém • Cerealista • Cooperativa
+🧾 SIAGRI • Power BI • Controladoria
+👇 Teste se sua fazenda está pronta</pre>
+  </div>
+
+  <div class="campo">
+    <div class="rot"><h2>Link do site</h2><button data-alvo="t3">Copiar</button></div>
+    <p class="onde">Editar perfil &rarr; Links &rarr; Adicionar link externo</p>
+    <pre id="t3">https://aluiz520-create.github.io/consultoria-mendonca/link/</pre>
+  </div>
+
+  <div class="campo">
+    <div class="rot"><h2>Título do link</h2><button data-alvo="t4">Copiar</button></div>
+    <p class="onde">No mesmo lugar, campo "Título do link"</p>
+    <pre id="t4">Diagnóstico gratuito e simulador CBS/IBS</pre>
+  </div>
+
+  <div class="campo">
+    <div class="rot"><h2>Resposta padrão no Direct</h2><button data-alvo="t5">Copiar</button></div>
+    <p class="onde">Use quando alguém mandar REFORMA, CUSTO ou DIAGNÓSTICO</p>
+    <pre id="t5">Boa, tudo bem? Pra eu te dar uma resposta útil e não genérica:
+
+1. Você é produtor, armazém, cooperativa ou revenda?
+2. Quantas inscrições estaduais / fazendas?
+3. Qual sistema usa hoje? (SIAGRI, TOTVS, planilha...)
+
+Me responde essas três que eu já te falo onde normalmente está o vazamento numa operação do seu porte.</pre>
+  </div>
+
+  <div class="dica">
+    <b>Se o Instagram não aceitar a colagem na Bio:</b> cole primeiro no aplicativo de
+    Notas do celular, confira, e copie de lá. Alguns teclados bloqueiam colagem direta
+    em campos com quebra de linha.<br><br>
+    <b>Se a quebra de linha sumir:</b> digite linha por linha e use a tecla Enter do
+    teclado ao fim de cada uma. A Bio aceita até 150 caracteres.
+  </div>
+
+  <footer>Consultoria Mendonça &middot; página interna, não indexada</footer>
+</div>
+
+<script>
+document.querySelectorAll("button[data-alvo]").forEach(function (b) {
+  b.addEventListener("click", async function () {
+    var txt = document.getElementById(b.dataset.alvo).textContent;
+    try { await navigator.clipboard.writeText(txt); }
+    catch (e) {
+      var ta = document.createElement("textarea");
+      ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      document.execCommand("copy"); document.body.removeChild(ta);
+    }
+    b.textContent = "Copiado!"; b.classList.add("ok");
+    setTimeout(function () { b.textContent = "Copiar"; b.classList.remove("ok"); }, 2000);
+  });
+});
+</script>
+</body>
+</html>
