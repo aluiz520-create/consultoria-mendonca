@@ -1,7 +1,7 @@
 [
   {
-    "id_publicacao": null,
-    "permalink": null,
+    "id_publicacao": "DbieYOEEZbK",
+    "permalink": "https://www.instagram.com/p/DbieYOEEZbK/",
     "arquivo": "2026-08-02-vespera",
     "data_publicacao": "2026-08-02T17:43:50",
     "data_planejada": "2026-08-02",
@@ -17,8 +17,8 @@
     "publicado_por": "manual",
     "marco": "PRIMEIRO POST DO PERFIL",
     "pendencias": [
-      "permalink a preencher",
       "metricas a coletar em 48-72h"
-    ]
+    ],
+    "shortcode": "DbieYOEEZbK"
   }
 ]
