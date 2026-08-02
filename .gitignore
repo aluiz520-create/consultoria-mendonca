@@ -5,3 +5,6 @@ automacao/metricas-ultima-coleta.json
 automacao/.perfil.tmp.html
 automacao/artes/*/.frames/
 automacao/.reel.tmp.html
+# Videos de Reel: pesados demais para versionar. Sao entregues direto ao usuario
+# e podem ser regerados com automacao/gerar-reel.mjs a partir do JSON de conteudo.
+automacao/artes/*/reel.mp4
