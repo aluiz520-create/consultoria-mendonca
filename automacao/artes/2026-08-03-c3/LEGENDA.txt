@@ -1,0 +1,28 @@
+A regra entrou em vigor hoje. Estes são os 5 erros que mais derrubam nota no agro.
+
+1. cClassTrib em branco
+O mais banal e o mais comum. O produto foi cadastrado antes da regra e ninguém voltou para preencher.
+
+2. Os 3 primeiros dígitos não batem com o CST
+O cClassTrib nasce do CST. Quando um foi digitado à mão e o outro veio da regra do sistema, eles divergem. E a SEFAZ cruza os dois na emissão.
+
+3. NCM que não conversa com o produto
+Soja em grão lançada com NCM de farelo. Milho com NCM de semente. O código puxa a regra tributária errada e a nota cai.
+
+4. Natureza de operação errada
+Remessa para armazenagem lançada como venda. Transferência entre inscrições lançada como saída comum. O Fisco lê o código, não a sua intenção.
+
+5. Inscrição estadual com enquadramento desatualizado
+Quem tem mais de uma IE precisa do enquadramento correto em cada uma. O erro não acontece uma vez — ele se multiplica.
+
+A ordem de conferência é essa: NCM, depois CST, depois cClassTrib, depois natureza de operação. Cada um depende do anterior.
+
+E o ponto que quase todo mundo erra: isso não se resolve na emissão. Se resolve no cadastro, antes. Quem tenta corrigir com o caminhão na balança já perdeu a janela de carregamento.
+
+Se você é produtor pessoa física, o Decreto 13.075/2026 te deu até 01/01/2027. Use o tempo — não o ignore.
+
+Salva esse post. E manda pro seu contador.
+
+Se quiser que eu olhe a sua parametrização, manda REFORMA no direct.
+
+#reformatributaria #cclasstrib #cst #ncm #notafiscal #nfe #sefaz #agronegocio #produtorrural #fiscalagro #gestaoagro #contabilidaderural #armazemgeral #cerealista #cooperativa #siagri #agro #goias

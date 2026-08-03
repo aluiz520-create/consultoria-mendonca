@@ -1,0 +1,99 @@
+{
+  "data": "2026-08-03",
+  "horario": "07:00",
+  "dia_calendario": 1,
+  "semana": 1,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "5 motivos que fazem a SEFAZ rejeitar a sua nota hoje",
+  "objetivo": "Utilidade imediata no primeiro dia de vigência. Meta: salvamento alto e compartilhamento com quem emite nota.",
+  "palavra_direct": "REFORMA",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Vale a partir de hoje",
+      "titulo": "5 MOTIVOS QUE FAZEM A SEFAZ *REJEITAR* A SUA NOTA.",
+      "sub": "A regra entrou em vigor hoje. Estes são os erros que mais aparecem."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Motivo 1",
+      "numero": "01",
+      "titulo": "cClassTrib em branco.",
+      "texto": "O mais banal e o mais comum. O produto foi cadastrado antes da regra e ninguém voltou para preencher.",
+      "sub": "Sem esse campo, a nota não passa da validação."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Motivo 2",
+      "numero": "02",
+      "titulo": "Os 3 primeiros dígitos não batem.",
+      "texto": "O *cClassTrib* nasce do *CST*. Se um foi digitado à mão e o outro veio da regra do sistema, eles divergem — e a SEFAZ cruza os dois.",
+      "sub": "É a assinatura de ERP parametrizado às pressas."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Motivo 3",
+      "numero": "03",
+      "titulo": "NCM que não conversa com o produto.",
+      "texto": "Soja em grão lançada com NCM de farelo. Milho com NCM de semente. O código puxa a regra tributária errada e derruba a nota.",
+      "sub": "Erro que vem de cadastro antigo, copiado de outro produto."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Motivo 4",
+      "numero": "04",
+      "titulo": "Natureza de operação errada.",
+      "texto": "Remessa para armazenagem lançada como venda. Transferência entre inscrições lançada como saída comum.",
+      "sub": "O Fisco lê a operação pelo código, não pela sua intenção."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Motivo 5",
+      "numero": "05",
+      "titulo": "Inscrição estadual desatualizada.",
+      "texto": "Quem tem mais de uma IE precisa do enquadramento correto em *cada uma*. O erro não acontece uma vez — ele se multiplica.",
+      "sub": "Grupos multi-fazenda, armazéns com filiais e cerealistas: atenção redobrada."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "Antes da próxima emissão",
+      "titulo": "Confira nesta ordem.",
+      "itens": [
+        {
+          "texto": "*NCM* de cada produto que você vende"
+        },
+        {
+          "texto": "*CST* coerente com o NCM"
+        },
+        {
+          "texto": "*cClassTrib* com os 3 primeiros dígitos batendo com o CST"
+        },
+        {
+          "texto": "*Natureza de operação* de cada tipo de saída"
+        }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "O ponto que quase todo mundo erra",
+      "titulo": "Isso não se resolve *na emissão*.",
+      "texto": "Se resolve no cadastro, antes.\n\nQuem tenta corrigir com o caminhão na balança já perdeu a janela de carregamento.",
+      "sub": "Produtor pessoa física: você tem até 01/01/2027. Use o tempo."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Salvou? *Manda pro seu contador.*"
+    }
+  ],
+  "legenda": "A regra entrou em vigor hoje. Estes são os 5 erros que mais derrubam nota no agro.\n\n1. cClassTrib em branco\nO mais banal e o mais comum. O produto foi cadastrado antes da regra e ninguém voltou para preencher.\n\n2. Os 3 primeiros dígitos não batem com o CST\nO cClassTrib nasce do CST. Quando um foi digitado à mão e o outro veio da regra do sistema, eles divergem. E a SEFAZ cruza os dois na emissão.\n\n3. NCM que não conversa com o produto\nSoja em grão lançada com NCM de farelo. Milho com NCM de semente. O código puxa a regra tributária errada e a nota cai.\n\n4. Natureza de operação errada\nRemessa para armazenagem lançada como venda. Transferência entre inscrições lançada como saída comum. O Fisco lê o código, não a sua intenção.\n\n5. Inscrição estadual com enquadramento desatualizado\nQuem tem mais de uma IE precisa do enquadramento correto em cada uma. O erro não acontece uma vez — ele se multiplica.\n\nA ordem de conferência é essa: NCM, depois CST, depois cClassTrib, depois natureza de operação. Cada um depende do anterior.\n\nE o ponto que quase todo mundo erra: isso não se resolve na emissão. Se resolve no cadastro, antes. Quem tenta corrigir com o caminhão na balança já perdeu a janela de carregamento.\n\nSe você é produtor pessoa física, o Decreto 13.075/2026 te deu até 01/01/2027. Use o tempo — não o ignore.\n\nSalva esse post. E manda pro seu contador.\n\nSe quiser que eu olhe a sua parametrização, manda REFORMA no direct.",
+  "hashtags": "#reformatributaria #cclasstrib #cst #ncm #notafiscal #nfe #sefaz #agronegocio #produtorrural #fiscalagro #gestaoagro #contabilidaderural #armazemgeral #cerealista #cooperativa #siagri #agro #goias",
+  "cta": "Salva e manda pro seu contador.",
+  "chamada_direct": "Manda REFORMA no direct que eu reviso a sua parametrização e te digo qual dos 5 está te pegando.",
+  "fontes": [
+    "Nota Técnica 2025.002 v1.40 (regra UB12-10)",
+    "Decreto 13.075/2026 (DOU 22/07/2026)"
+  ]
+}
