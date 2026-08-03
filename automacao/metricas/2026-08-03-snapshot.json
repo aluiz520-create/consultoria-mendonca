@@ -1,0 +1,23 @@
+{
+  "coletado_em": "2026-08-03",
+  "fonte": "Instagram Graph API via Windsor.ai",
+  "conta": { "id": "17841441686725871", "username": "controllerdoagro" },
+  "perfil": {
+    "followers_count": 978,
+    "follows_count": 38,
+    "media_count": 3,
+    "website": null,
+    "observacao": "978 hoje contra 1128 observados em print de 02/08 as 18h08 — queda de ~150 em menos de 24h"
+  },
+  "posts": [
+    { "tipo": "REELS", "publicado": "2026-08-02T20:12Z", "permalink": "https://www.instagram.com/reel/DbjPOHQK2Vz/",
+      "alcance": 109, "views": 113, "curtidas": 1, "salvamentos": 0, "compartilhamentos": 0, "comentarios": 0 },
+    { "tipo": "CAROUSEL_ALBUM", "publicado": "2026-08-02T13:01Z", "permalink": "https://www.instagram.com/p/DbieYOEEZbK/",
+      "alcance": 15, "views": 17, "curtidas": 97, "salvamentos": 0, "compartilhamentos": 0, "comentarios": 0,
+      "anomalia": "97 curtidas com alcance de 15 — impossivel organicamente" },
+    { "tipo": "CAROUSEL_ALBUM", "publicado": "2026-08-03T11:42Z", "permalink": "https://www.instagram.com/p/Dbk6HBfkWBr/",
+      "alcance": 3, "views": 5, "curtidas": 1, "salvamentos": 0, "compartilhamentos": 0, "comentarios": 0,
+      "observacao": "publicado ha ~1h no momento da coleta, cedo para conclusao" }
+  ],
+  "totais": { "salvamentos": 0, "compartilhamentos": 0, "comentarios": 0 }
+}
