@@ -4,6 +4,13 @@ Como saber se a estratégia está funcionando — e o que fazer quando não esti
 
 ---
 
+> ## ⚠️ Régua suspensa até ~24/08/2026
+> A base de seguidores está poluída (ver `09-LIMPEZA-DA-BASE.md`). Enquanto a limpeza
+> não terminar, **ignore qualquer percentual** — o denominador mente.
+>
+> Meça em **número absoluto**: salvamentos, compartilhamentos, comentários reais e
+> Directs qualificados. Conta falsa não salva post. **Todo salvamento é real.**
+
 ## 1. Placar semanal (preencher todo domingo, 10 minutos)
 
 | Métrica | Onde ver | Meta fase 0–1 | Meta fase 2–3 | Semana atual |
