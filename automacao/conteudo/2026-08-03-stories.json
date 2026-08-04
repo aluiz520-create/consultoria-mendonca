@@ -1,0 +1,39 @@
+{
+  "data": "2026-08-03",
+  "horario": "ao longo do dia",
+  "formato": "story",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "Stories de segunda — os 5 motivos de rejeicao",
+  "objetivo": "Levar trafego ao carrossel do dia e abrir Direct pela enquete.",
+  "palavra_direct": "REFORMA",
+  "slides": [
+    {
+      "tipo": "texto",
+      "kicker": "Story 1 · logo apos o post",
+      "titulo": "O erro *nº 1* de hoje.",
+      "texto": "Os 3 primeiros dígitos do *cClassTrib* não batem com o *CST*.",
+      "sub": "É a assinatura de cadastro feito às pressas.\n\n↑ Arraste pra cima ou toque no post"
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Story 2 · fundo da enquete",
+      "titulo": "Você já teve nota *rejeitada*?",
+      "texto": "",
+      "sub": "Cole o sticker de enquete aqui embaixo:\nSim · Não · Não sei"
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Story 3 · fechamento",
+      "titulo": "Qual dos *5* está te pegando?",
+      "texto": "Manda *REFORMA* no direct que eu reviso a sua parametrização e te digo.",
+      "sub": "Resposta em até 2 horas, no horário comercial."
+    }
+  ],
+  "legenda": "(stories não usam legenda)",
+  "hashtags": "",
+  "cta": "Arraste para o post · responda a enquete · manda REFORMA no direct",
+  "chamada_direct": "Manda REFORMA no direct que eu reviso a sua parametrização.",
+  "status": "NAO CONFIRMADO — usuario relata que nada foi publicado em 03/08; a Graph API registrou o carrossel Dbk6HBfkWBr as 11h42 UTC. Pendente de verificacao."
+}

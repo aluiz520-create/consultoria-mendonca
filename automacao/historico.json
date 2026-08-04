@@ -20,5 +20,31 @@
       "metricas a coletar em 48-72h"
     ],
     "shortcode": "DbieYOEEZbK"
+  },
+  {
+    "id_publicacao": "Dbk6HBfkWBr",
+    "shortcode": "Dbk6HBfkWBr",
+    "permalink": "https://www.instagram.com/p/Dbk6HBfkWBr/",
+    "arquivo": "2026-08-03-c3",
+    "data_publicacao": "2026-08-03T11:42:46+0000",
+    "data_planejada": "2026-08-03",
+    "horario_planejado": "07:00",
+    "tipo": "carrossel",
+    "pilar": "ENSINAR",
+    "objetivo": "Utilidade imediata no primeiro dia de vigência. Meta: salvamento alto e compartilhamento com quem emite nota.",
+    "cta": "Salva e manda pro seu contador.",
+    "chamada_direct": "Manda REFORMA no direct que eu reviso a sua parametrização e te digo qual dos 5 está te pegando.",
+    "palavra_direct": "REFORMA",
+    "n_imagens": 9,
+    "n_hashtags": 18,
+    "publicado_por": "manual",
+    "metricas_1h": {
+      "alcance": 3,
+      "views": 5,
+      "curtidas": 1,
+      "salvamentos": 0,
+      "compartilhamentos": 0
+    },
+    "status_verificacao": "CONTESTADO — usuario afirma nao ter publicado em 03/08. Registro veio da Graph API. Conferir se o permalink ainda resolve."
   }
 ]
