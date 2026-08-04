@@ -45,6 +45,6 @@
       "salvamentos": 0,
       "compartilhamentos": 0
     },
-    "status_verificacao": "CONTESTADO — usuario afirma nao ter publicado em 03/08. Registro veio da Graph API. Conferir se o permalink ainda resolve."
+    "observacao": "Publicado em 03/08 (segunda). Divergencia anterior foi erro de data do assistente, nao do registro."
   }
 ]
