@@ -14,9 +14,16 @@ cooperativa e escritório contábil do agro em GO e no Brasil.
 
 Busque sempre os números do dia — nunca reaproveite valores antigos:
 
-1. **Cotações CEPEA/ESALQ** (mercado físico), saca de 60 kg / arroba:
-   - Soja, Milho, Boi gordo. Fonte primária: `cepea.org.br`. Alternativas: Notícias Agrícolas, Canal Rural.
-   - Anote o preço e a data do último fechamento, e a tendência (alta/baixa/estável) da semana.
+1. **Cotações — preço da praça em DESTAQUE + nacional como referência.**
+   - **Praça principal: Sudoeste Goiano (Rio Verde / Jataí).** É o preço que o produtor de GO
+     realmente recebe. Fontes: Grão Direto (`graodireto.com.br/ofertas/`), Notícias Agrícolas
+     (praças), Agrolink regional, milhosoja.com.br, rioverderural.com.br.
+     - Soja (sc 60 kg) e Milho (sc 60 kg) na praça Rio Verde-GO.
+     - Boi gordo (arroba) — indicador de **Goiás** (Scot Consultoria / Notícias Agrícolas por estado).
+   - **Referência nacional (só p/ comparar): CEPEA/ESALQ** — Soja (Paranaguá), Milho (Campinas),
+     Boi gordo (SP/B3). Fonte: `cepea.org.br`.
+   - Para cada produto, anote **preço regional**, **preço nacional** e a **tendência** da semana.
+     A diferença regional−nacional é o frete até o porto — vale destacar quando for grande.
 2. **Dólar** USD/BRL — cotação e se está subindo/caindo (impacta exportação e insumo).
 3. **Tempo em Goiás** (Itaberaí e Goiânia) — condição, temperatura, chuva (mm), vento, umidade.
    Fonte: Climatempo/AccuWeather. Destaque qualquer alerta (chuva fora de época, vento forte,
@@ -36,7 +43,9 @@ Título: `🌱 Boletim Agro · Controller do Agro — DD/MM/AAAA (dia da semana)
 Seções, nesta ordem:
 
 1. **🌦️ Tempo — Goiás** — condição + números + 1 frase de impacto prático no campo.
-2. **🌾 Cotações CEPEA** — tabela Soja / Milho / Boi gordo (preço + unidade) + tendência.
+2. **🌾 Cotações — Sudoeste Goiano** — tabela Soja / Milho / Boi gordo com o **preço da praça
+   goiana em destaque** e a coluna **"Ref. nacional"** (CEPEA) mais discreta ao lado. Fechar com
+   1 frase explicando que a diferença é o frete até o porto (o regional é o que entra no caixa).
 3. **💵 Dólar** — USD/BRL + 1 frase de impacto.
 4. **📅 Radar fiscal** — 2–3 bullets com o que está valendo e a ação da semana.
 5. **💡 Gancho do dia** — 1 ideia curta de Story/Reels que conecta um fato do dia
