@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<!-- Google Analytics 4 -->
+<script async src="../assets/ga.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simulador: Sua Fazenda Está Pronta pro CBS/IBS? | Consultoria Mendonça</title>
 <meta name="description" content="Responda 6 perguntas rápidas e descubra o nível de prontidão fiscal da sua fazenda para a Reforma Tributária (CBS/IBS). Simulador gratuito.">
@@ -146,6 +148,15 @@
 
     quizCard.hidden = true;
     quizResult.hidden = false;
+
+    // GA4: conclusão do simulador (mede a ponta do funil link->simulador)
+    if (typeof gtag === "function") {
+      gtag("event", "simulador_concluido", {
+        pontuacao: pontuacao,
+        pontuacao_maxima: pontuacaoMaxima,
+        resultado: resultado.titulo,
+      });
+    }
   }
 
   quizOptions.addEventListener("click", (e) => {
@@ -160,6 +171,13 @@
     } else {
       quizProgressBar.style.width = "100%";
       mostrarResultado();
+    }
+  });
+
+  // GA4: clique no CTA de WhatsApp após o simulador (lead quente)
+  document.getElementById("quizWhatsappBtn").addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "clique_whatsapp_simulador", { pontuacao: pontuacao });
     }
   });
 
