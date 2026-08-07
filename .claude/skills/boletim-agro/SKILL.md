@@ -52,10 +52,21 @@ Seções, nesta ordem:
 
 ## Passo 4 — Entrega
 
-Conforme o modo em que a skill foi disparada:
-- **Sessão agendada / manual:** imprima o boletim no chat e envie PushNotification com o
-  resumo de 1 linha (tempo + destaque de preço) se o usuário estiver ausente.
-- **Se o usuário pedir para publicar no site:** salve como `boletim/AAAA-MM-DD.html` seguindo
-  o estilo de `styles.css`, atualize `boletim/index.html` (lista das últimas edições) e comite.
-- **Se o usuário pedir para virar post:** entregue também a versão Story (formato do §5).
+**Padrão (sessão agendada diária): PUBLICAR NO SITE + notificar.** Faça as duas coisas:
+
+1. **Publicar no site** (a seção `boletim/` já existe; use a edição de 07/08 como modelo):
+   - Crie `boletim/AAAA-MM-DD.html` copiando a estrutura de `boletim/2026-08-07.html`
+     (mesmo header/nav, blocos Tempo/Cotações/Dólar/Radar/Gancho, CTA para o simulador e
+     WhatsApp no fim, tag do GA4 via `../assets/ga.js`). Troque só o conteúdo e a data.
+   - Em `boletim/index.html`, insira o novo item **logo após** o marcador
+     `<!-- BOLETIM:INICIO ... -->` (a edição mais nova fica no topo), no mesmo formato
+     `<a class="blog-list-item" ...>` das existentes.
+   - Adicione a URL da nova edição em `sitemap.xml` e atualize o `lastmod` da seção `boletim/`.
+   - Comite e faça push para o `main` (`git add boletim sitemap.xml && git commit && git push origin main`).
+     O GitHub Pages republica sozinho. Não abra PR — é conteúdo diário.
+2. **Notificar:** imprima o boletim no chat e envie um PushNotification com o resumo de 1 linha
+   (tempo + destaque de preço). Inclua o link da edição publicada.
+
+Sob demanda (usuário digitou "BOLETIM"): só imprima no chat; publique/comite apenas se pedido.
+Se o usuário pedir versão Story, entregue também o formato do §5.
 ```
