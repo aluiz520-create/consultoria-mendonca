@@ -46,7 +46,7 @@ no chat. Ele não está no repositório de propósito — o repositório é púb
 
 ## Na Kiwify
 
-Entre em `kiwify.com.br` → login → **Produtos** → **Criar produto** → tipo **Digital**.
+Entre em **`https://dashboard.kiwify.com/`** → login → **Produtos** → **Criar produto** → tipo **Digital**.
 
 ### Campos, prontos para copiar
 
@@ -154,10 +154,71 @@ dinheiro para retirada. Isso não afeta a automação, mas afeta o seu fluxo de 
 
 ---
 
-## O outro produto — o de R$ 19,90 do site de finanças
+## Produto 2 — Plano de 90 dias, R$ 19,90 (site de finanças)
 
-**Não crie ainda.** O conteúdo do plano de 90 dias não foi escrito, e por isso o botão está
-desabilitado no site, escrito *"Plano completo em breve"*.
+**Agora existe.** São **dois arquivos**, entregues a você no chat:
 
-Vender algo que não existe é o único jeito garantido de queimar a reputação dos dois projetos
-de uma vez. Quando o texto existir, o processo é idêntico ao de cima.
+- `plano-90-dias.md` → vira o PDF
+- `Plano-90-dias-planilha.xlsx` → sobe como está, sem conversão
+
+O processo é o mesmo do produto 1. O que muda:
+
+**Nome**
+```
+Plano de 90 dias — para sair do vermelho
+```
+
+**Preço**
+```
+19,90
+```
+
+**Descrição**
+```
+Você já sabe o tamanho do buraco. Este é o caminho de saída.
+
+O diagnóstico gratuito mostra em que dia o seu dinheiro acaba. O plano mostra o que fazer com
+essa informação, semana a semana, durante 90 dias.
+
+O que vem junto:
+
+• A ordem de corte — qual corte fazer primeiro, calculado por quanto libera dividido pela
+  dificuldade. Não é lista de dicas: é uma ordem, e ela contraria o que a maioria faz.
+• Qual dívida pagar primeiro — a hierarquia que vem antes de qualquer método (conta essencial,
+  dívida com garantia, rotativo), e só depois a comparação entre avalanche e bola de neve.
+• As 12 semanas, uma a uma, com tarefa marcável.
+• Roteiro de renegociação — o que falar, em que ordem, e as 5 armadilhas comuns em acordo de
+  dívida, incluindo o parcelamento que aumenta o total.
+• Planilha com 3 abas: suas dívidas ordenadas pelos dois métodos, simulador de cenários de
+  corte e acompanhamento das 12 semanas.
+
+O capítulo 6 trata do caso que quase nenhum material trata: quando cortar não resolve porque o
+problema é de renda, não de gasto. Ele aponta os caminhos gratuitos — Procon, Defensoria
+Pública, CRAS — e explica a Lei do Superendividamento.
+
+Material educativo. Não é consultoria financeira individualizada, não recomenda investimento
+nem crédito e não garante resultado.
+```
+
+**E-mail de entrega**
+```
+Assunto: Seu Plano de 90 dias chegou
+
+Olá!
+
+Estão anexados dois arquivos: o plano em PDF e a planilha.
+
+Comece pela planilha, aba 1: liste as suas dívidas. Leva 15 minutos e é o passo que destrava
+todo o resto. Depois leia o capítulo 2 do PDF, que é a ordem de corte.
+
+Não tente fazer as 12 semanas de uma vez. A semana 1 é só enxergar.
+
+Se em algum momento as contas não fecharem de jeito nenhum, leia o capítulo 6 antes de assinar
+qualquer acordo novo. Ele existe justamente para esse caso.
+```
+
+**Depois de criar:** copie o link e cole em `site-dinheiro/app.js`, na linha `var CHECKOUT`.
+O botão sai de *"Plano completo em breve"* e vira *"Quero o plano completo"* sozinho.
+
+> Enquanto `CHECKOUT` e `WHATSAPP` estiverem vazios, o botão continua desabilitado — que é o
+> comportamento certo até o produto existir na plataforma.

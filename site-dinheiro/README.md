@@ -84,9 +84,16 @@ Enquanto as duas linhas estiverem vazias, o botão do plano fica desabilitado e 
 *"Plano completo em breve"*. Ninguém consegue pagar por algo que não existe — e é assim que
 deve ficar até o material estar escrito.
 
-O plano de 90 dias prometido na página (ordem de corte, ordem de quitação, simulador de
-cenários, roteiro de renegociação, planilha) **ainda não foi escrito**. Me peça quando quiser
-que eu escreva.
+O plano de 90 dias prometido na página **já foi escrito** (08/08/2026). São dois arquivos,
+entregues ao proprietário fora do Git porque este repositório é público:
+
+- `plano-90-dias.md` — 6 capítulos: ordem de corte, ordem de quitação, as 12 semanas, roteiro
+  de renegociação, e o capítulo sobre quando cortar não resolve
+- `Plano-90-dias-planilha.xlsx` — 3 abas: dívidas ordenadas por avalanche e bola de neve,
+  simulador de cenários de corte, e acompanhamento das 12 semanas
+
+Falta só criar o produto na plataforma e colar o link em `CHECKOUT`. Passo a passo com os
+campos prontos em `NEGOCIO/produto/KIWIFY-PASSO-A-PASSO.md`.
 
 ---
 
