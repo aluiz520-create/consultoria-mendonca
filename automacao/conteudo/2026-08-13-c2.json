@@ -1,0 +1,93 @@
+{
+  "data": "2026-08-13",
+  "horario": "07:30",
+  "dia_calendario": 11,
+  "semana": 2,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "CST x cClassTrib: o par que precisa fechar",
+  "objetivo": "Peca de consulta. E o conteudo com maior potencial de salvamento do mes: serve na hora de emitir.",
+  "palavra_direct": "VALIDACAO",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Conferência antes de emitir",
+      "titulo": "CST × cClassTrib: O *PAR* QUE PRECISA FECHAR.",
+      "sub": "O erro mais comum do agro tem assinatura. Salva pra hora de emitir."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Traduzindo",
+      "titulo": "O que é *CST*.",
+      "texto": "É o código que diz a *situação tributária* da operação — se ela é tributada, isenta, imune, com alíquota reduzida, e assim por diante.",
+      "sub": "Responde: qual é a natureza tributária do que estou fazendo?"
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Traduzindo",
+      "titulo": "O que é *cClassTrib*.",
+      "texto": "É o Código de Classificação Tributária. Ele *detalha qual regra* daquela situação se aplica ao seu caso concreto.",
+      "sub": "Responde: dentro daquela situação, qual regra específica é a minha?"
+    },
+    {
+      "tipo": "numero",
+      "kicker": "A regra que ninguém conta",
+      "numero": "3",
+      "titulo": "Dígitos precisam bater.",
+      "texto": "A rejeição mais comum é o cClassTrib cujos três primeiros dígitos não correspondem ao CST informado. É a assinatura de ERP parametrizado às pressas."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "Teste de 5 segundos",
+      "titulo": "Faça isso na próxima nota.",
+      "itens": [
+        { "texto": "Abra o item da nota e localize o *CST*" },
+        { "texto": "Localize o *cClassTrib* do mesmo item" },
+        { "texto": "Compare os *três primeiros dígitos*. Bateu?" },
+        { "texto": "Não bateu? O par não fecha — pare antes de emitir" }
+      ]
+    },
+    {
+      "tipo": "tabela",
+      "kicker": "A ordem de conferência",
+      "titulo": "Fora dela, você não acha o erro.",
+      "colunas": ["Ordem", "O que conferir"],
+      "linhas": [
+        ["1º", "NCM — é a raiz de tudo"],
+        ["2º", "CST — reflete a operação real?"],
+        ["3º", "cClassTrib — o par fecha?"],
+        ["4º", "CFOP e natureza da operação"],
+        ["5º", "Homologação antes de produção"],
+        ["6º", "Ler a mensagem de retorno"]
+      ]
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Onde isso quebra no agro",
+      "titulo": "A mesma carga, *várias figuras*.",
+      "texto": "A mesma soja sai como venda, como remessa para armazenagem e como retorno. Cada figura tem tratamento próprio — e o cadastro costuma ter um padrão só.",
+      "sub": "Mapeie quais figuras de saída você usa. Costumam ser entre quatro e seis."
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "Atenção",
+      "titulo": "As validações estão *adiadas*.",
+      "texto": "Desde 31/07/2026, a ausência desses campos não derruba a sua nota. Mas o par errado continua sendo gravado, repetindo em toda emissão.\n\nPassar não é o mesmo que estar certo.",
+      "sub": "Quando a régua ligar, quem conferiu agora segue emitindo."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Salva pra hora de emitir. Direct: *VALIDAÇÃO*."
+    }
+  ],
+  "legenda": "CST e cClassTrib: o par que precisa fechar.\n\nO CST diz a situação tributária da operação. O cClassTrib (o código que detalha qual regra daquela situação se aplica) complementa.\n\nO detalhe que derruba mais nota no agro: não basta cada um estar certo sozinho. A validação testa a COMBINAÇÃO.\n\nE o erro mais comum tem assinatura: os três primeiros dígitos do cClassTrib não batem com o CST informado. É o retrato de ERP parametrizado às pressas.\n\nTeste de cinco segundos: abre a nota, olha os três primeiros dígitos. Bateu? Não bateu?\n\nImportante, porque muita gente entendeu errado essa semana: desde 31/07/2026 as validações estão adiadas, então a ausência desses campos não derruba a sua nota hoje. Só que o par errado continua sendo gravado e repetindo em toda emissão. Passar não é o mesmo que estar certo.\n\nSalva esse post. Na noite antes de emitir, você vai querer isso na mão.\n\nManda VALIDAÇÃO no direct que eu olho a sua parametrização antes da próxima emissão.\n\nConteúdo educativo, com base na legislação vigente em agosto de 2026. Não substitui a análise da sua operação nem o trabalho do seu contador responsável.",
+  "hashtags": "#cclasstrib #cst #ibs #cbs #reformatributaria #notafiscal #nfe #ncm #fiscalagro #agronegocio #produtorrural #contabilidaderural #siagri #erpagricola #armazemgeral #cerealista #sefaz #goias #agro #gestaorural",
+  "cta": "Salva pra hora de emitir e manda VALIDACAO no direct.",
+  "chamada_direct": "Manda VALIDACAO no direct que eu olho a sua parametrizacao antes da proxima emissao.",
+  "fontes": [
+    "Nota Tecnica 2025.002 (NF-e/NFC-e) — grupos e regras de validacao de IBS/CBS",
+    "Ato Tecnico Conjunto CGIBS/RFB no 1, de 31/07/2026"
+  ]
+}
