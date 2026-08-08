@@ -10,10 +10,10 @@
   // Medição. Deixe vazio para não medir nada.
   var ID_ANALYTICS = "";
 
-  // Checkout do plano de R$ 19,90.
-  // ATENÇÃO: só preencha depois que o conteúdo do plano existir de verdade.
-  // Enquanto estiver vazio, o botão abre uma conversa — ninguém paga por nada.
-  var CHECKOUT = "";
+  // Checkout do plano de R$ 19,90 — ativo desde 08/08/2026.
+  // O produto existe: PDF de 9 páginas + planilha de 3 abas, entregues pela Kiwify.
+  // Se esvaziar, o botão volta a ficar desabilitado sozinho.
+  var CHECKOUT = "https://pay.kiwify.com.br/BhOeiGG";
 
   // Conversa de apoio quando não há checkout. Vazio esconde o botão de pagamento.
   var WHATSAPP = "";
