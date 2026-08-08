@@ -11,4 +11,7 @@ automacao/artes/*/reel.mp4
 
 # Produto pago — nao versionar (repositorio publico)
 NEGOCIO/produto/*.md
+# Documentacao operacional nao e conteudo pago: entra no repo por excecao explicita.
+# O padrao continua sendo ignorar, para nenhum master de produto vazar por descuido.
 !NEGOCIO/produto/README.md
+!NEGOCIO/produto/KIWIFY-PASSO-A-PASSO.md
