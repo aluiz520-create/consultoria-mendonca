@@ -324,6 +324,27 @@ body{
 /* Paginas sem a barra fixa nao precisam da folga de rodape */
 body.sem-barra{padding-bottom:0}
 
+/* Atalho para o plano pago, sempre visivel — o bloco principal da oferta
+   só aparece depois do diagnóstico, e sem isto quem chega na página não
+   descobre que existe um produto. */
+.atalho-plano{
+  margin:34px 0 10px;padding:24px 20px;border-radius:var(--raio);
+  background:var(--carta);border:1px solid var(--linha);border-left:4px solid var(--ambar);
+  box-shadow:var(--sombra);text-align:center
+}
+.atalho-plano .chapeu{
+  font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;
+  font-weight:700;color:var(--ambar);margin-bottom:6px
+}
+.atalho-plano h3{
+  font-family:'Titulo',system-ui,sans-serif;font-weight:900;font-size:1.25rem;
+  letter-spacing:-.02em;margin-bottom:9px;color:var(--tinta);text-wrap:balance
+}
+.atalho-plano p{color:var(--suave);max-width:30em;margin:0 auto 4px}
+.atalho-plano strong{color:var(--tinta)}
+.atalho-plano .acoes{margin:16px 0 0}
+.atalho-nota{font-size:.82rem;margin-top:12px !important}
+
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }

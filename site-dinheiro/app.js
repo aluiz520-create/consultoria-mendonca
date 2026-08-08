@@ -408,6 +408,27 @@
   });
 
   var btnPago = document.getElementById("btnPago");
+  var btnAtalho = document.getElementById("btnPagoAtalho");
+
+  // O atalho do fim do texto usa o mesmo destino do bloco principal.
+  if (btnAtalho) {
+    if (CHECKOUT || WHATSAPP) {
+      btnAtalho.href = CHECKOUT || ("https://wa.me/" + WHATSAPP + "?text=" +
+        encodeURIComponent("Olá! Quero o plano completo de 90 dias."));
+      btnAtalho.target = "_blank";
+      btnAtalho.rel = "noopener";
+      btnAtalho.addEventListener("click", function () {
+        medir("clique_plano", { preco: 19.9, origem: "atalho", via: CHECKOUT ? "checkout" : "whatsapp" });
+      });
+    } else {
+      btnAtalho.textContent = "Plano completo em breve";
+      btnAtalho.setAttribute("aria-disabled", "true");
+      btnAtalho.style.opacity = ".62";
+      btnAtalho.style.cursor = "default";
+      btnAtalho.addEventListener("click", function (e) { e.preventDefault(); });
+    }
+  }
+
   if (CHECKOUT) {
     btnPago.href = CHECKOUT;
     btnPago.target = "_blank";
