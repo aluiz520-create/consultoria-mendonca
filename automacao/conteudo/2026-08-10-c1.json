@@ -1,0 +1,88 @@
+{
+  "data": "2026-08-10",
+  "horario": "07:00",
+  "dia_calendario": 8,
+  "semana": 2,
+  "formato": "carrossel",
+  "pilar": "ENSINAR",
+  "arroba": "@controllerdoagro",
+  "titulo": "A regua foi desligada. A regra nao.",
+  "objetivo": "Ser o perfil que separa os dois atos que o mercado publicou como um so. Salvamento maximo e Direct VALIDACAO.",
+  "palavra_direct": "VALIDACAO",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "31/07/2026",
+      "titulo": "A *RÉGUA* FOI DESLIGADA. A *REGRA* NÃO.",
+      "sub": "Duas notícias saíram em 15 dias. O mercado publicou como se fosse uma."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Ato 1 — julho",
+      "titulo": "Decreto que fala de *quem emite*.",
+      "texto": "Alterou o Decreto *12.955/2026* e prorrogou para *01/01/2027* a exigência de inscrição no CNPJ para o produtor rural *pessoa física* emitir documento fiscal.",
+      "sub": "Vale só para a pessoa física. Não alcança quem já opera como PJ."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "Ato 2 — 31/07",
+      "titulo": "Ato Técnico Conjunto *CGIBS/RFB nº 1*.",
+      "texto": "Adiou o início das *regras de validação* de IBS e CBS nos documentos fiscais eletrônicos: NF-e, NFC-e, CT-e, BP-e, NF3e e NFCom.",
+      "sub": "Na prática: a ausência desses campos não derruba a sua nota hoje."
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "Onde quase todo mundo errou",
+      "titulo": "O que circulou × o que mudou.",
+      "rotuloErrado": "O que circulou",
+      "errado": "\"Foi tudo suspenso, pode relaxar.\"\n\nNão foi. A obrigação de preencher os campos de IBS e CBS *continua valendo*.",
+      "rotuloCerto": "O que de fato mudou",
+      "certo": "Só o *início das validações* foi adiado.\n\nA nota não é derrubada por ausência — mas o campo segue obrigatório."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "O que a RFB e o CGIBS disseram",
+      "titulo": "O cronograma *permanece válido*.",
+      "texto": "Não houve suspensão da obrigação de destacar e informar CBS e IBS. O cronograma de implementação segue integralmente válido e sem alteração.\n\nO que foi adiado é a *exigibilidade operacional*.",
+      "sub": "Foi adiada a régua. Não a regra."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "O risco que sobrou",
+      "numero": "0",
+      "titulo": "Notas rejeitadas por ausência.",
+      "texto": "E é justamente isso que engana. Com a régua desligada, a nota com campo errado é autorizada do mesmo jeito — e o dado errado entra na sua escrituração."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "Por que corrigir agora",
+      "titulo": "Três motivos concretos.",
+      "itens": [
+        { "texto": "Nota *autorizada* não é nota *certa*" },
+        { "texto": "O seu dado vira *crédito de quem comprou* de você" },
+        { "texto": "Trading e cooperativa conferem *antes do Fisco*" }
+      ]
+    },
+    {
+      "tipo": "texto",
+      "fundo": "claro",
+      "kicker": "A conta que importa",
+      "titulo": "Não é folga. É *janela*.",
+      "texto": "Quem usar essa janela para revisar cadastro e parametrização segue emitindo quando a régua ligar.\nQuem entendeu \"cancelado\" descobre tudo de uma vez — todos os produtos, no mesmo dia.",
+      "sub": "E ninguém publicou quanto tempo ela dura."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Salva. Manda *VALIDAÇÃO* no direct."
+    }
+  ],
+  "legenda": "A régua foi desligada. A regra não.\n\nDuas coisas diferentes aconteceram em quinze dias, e o mercado publicou como se fossem uma:\n\n1. Decreto de julho: prorrogou para 1º de janeiro de 2027 a exigência de CNPJ para o produtor rural pessoa física emitir documento fiscal.\n\n2. Ato Técnico Conjunto CGIBS/RFB nº 1, de 31/07: adiou o início das regras de validação de IBS e CBS.\n\nA primeira fala de QUEM emite. A segunda fala de QUANDO a nota é derrubada.\n\nO que continua valendo: a obrigação de preencher os campos. A Receita Federal e o CGIBS foram explícitos — o cronograma permanece integralmente válido.\n\nFoi adiada a régua. Não a regra.\n\nE aí mora o problema: com a régua desligada, sua nota passa mesmo com o campo errado. Esse dado entra na sua escrituração e vira crédito de quem comprou de você. Trading e cooperativa conferem isso antes do Fisco.\n\nSalva esse post. É a explicação que seu contador vai te pedir.\n\nManda VALIDAÇÃO no direct que eu te digo o que conferir primeiro na sua operação.\n\nConteúdo educativo, com base na legislação vigente em agosto de 2026. Não substitui a análise da sua operação nem o trabalho do seu contador responsável.",
+  "hashtags": "#reformatributaria #ibs #cbs #cclasstrib #cst #notafiscal #nfe #agronegocio #produtorrural #fiscalagro #contabilidaderural #gestaorural #armazemgeral #cerealista #cooperativa #sefaz #tributarioagro #agro #goias #safra",
+  "cta": "Salva e manda VALIDACAO no direct.",
+  "chamada_direct": "Manda VALIDACAO no direct que eu te digo o que conferir primeiro na sua operacao.",
+  "fontes": [
+    "Ato Tecnico Conjunto CGIBS/RFB no 1, de 31/07/2026",
+    "Decreto que altera o Decreto 12.955/2026 (DOU julho/2026)",
+    "Comunicados da Receita Federal e do CGIBS sobre o adiamento das regras de validacao"
+  ]
+}

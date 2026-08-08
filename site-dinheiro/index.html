@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#5b2a55">
+<title>Para Onde Foi Meu Dinheiro? Descubra em Que Dia o Seu Salário Acaba</title>
+<meta name="description" content="Coloque quem mora na sua casa e o que sai todo mês. Em 1 minuto você descobre em que dia do mês o seu salário acaba, quanto cada pessoa custa por dia e quanto precisaria ganhar para sobrar.">
+<link rel="stylesheet" href="estilo.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235b2a55'/%3E%3Ctext x='16' y='23' font-family='system-ui,sans-serif' font-size='19' font-weight='900' text-anchor='middle' fill='%23d97f22'%3E%3F%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Em que dia o seu salário acaba?">
+<meta property="og:description" content="Coloque seus números. Em 1 minuto você descobre quanto a sua vida custa e em que dia do mês o dinheiro termina.">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Em que dia do mês o meu salário acaba?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Divida o custo total da sua vida por 30 para achar o custo por dia. Depois divida a sua renda líquida por esse custo diário: o resultado é aproximadamente quantos dias do mês a sua renda cobre. Se der 23, significa que a partir do dia 23 você está gastando o que não tem — por isso o cartão e o cheque especial entram na conta todo mês."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Quanto uma família de quatro pessoas gasta por mês?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Não existe número único, porque custo de moradia varia muito por cidade e por composição da família. Comparar famílias de tamanhos diferentes só faz sentido usando adulto-equivalente: conta-se 1 para o primeiro adulto, 0,5 para cada adulto a mais e 0,3 para cada criança, seguindo a escala de equivalência modificada da OCDE. Esta ferramenta faz essa conta e mostra o custo por pessoa e por dia da sua casa."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Por que meu salário acaba antes do fim do mês mesmo quando aumenta?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Porque na maior parte dos orçamentos apertados o dinheiro já está comprometido antes de qualquer escolha do dia: moradia, transporte e parcelas consomem a maior fatia no primeiro dia do mês. Quando a renda sobe e o compromisso fixo sobe junto, o que sobra continua zero."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Meus dados ficam guardados?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Não. O cálculo inteiro acontece dentro do seu próprio navegador. Nenhum valor é enviado para servidor, não existe cadastro e não é pedido e-mail nem telefone."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="folha">
+
+  <header class="capa">
+    <p class="marca">Para onde foi meu dinheiro?</p>
+    <h1>Em que dia do mês o seu <span>salário acaba</span>?</h1>
+    <p class="linha-fina">Não é mais uma calculadora de "50/30/20". Coloque quem mora na sua casa e
+    o que sai todo mês — a conta é feita ao contrário.</p>
+    <div class="selos">
+      <span class="selo">⏱ cerca de 1 minuto</span>
+      <span class="selo">🔒 nada sai do seu celular</span>
+      <span class="selo">✋ sem cadastro</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">01</span><h2>Quem mora na casa</h2></div>
+      <p class="nota">Isso muda tudo. Custo de família de duas pessoas não se compara com o de cinco —
+      e quase nenhuma calculadora pergunta.</p>
+      <div class="pessoas">
+        <div class="pessoa">
+          <span class="rot">Adultos<small>Você, cônjuge, filho maior, avós</small></span>
+          <div class="contador" data-conta="adultos">
+            <button type="button" data-passo="-1" aria-label="Menos um adulto">−</button>
+            <span class="qtd" id="qtdAdultos" aria-live="polite">1</span>
+            <button type="button" data-passo="1" aria-label="Mais um adulto">+</button>
+          </div>
+        </div>
+        <div class="pessoa">
+          <span class="rot">Crianças até 6 anos<small>Fralda, creche, leite</small></span>
+          <div class="contador" data-conta="pequenas">
+            <button type="button" data-passo="-1" aria-label="Menos uma criança pequena">−</button>
+            <span class="qtd" id="qtdPequenas" aria-live="polite">0</span>
+            <button type="button" data-passo="1" aria-label="Mais uma criança pequena">+</button>
+          </div>
+        </div>
+        <div class="pessoa">
+          <span class="rot">Crianças de 7 a 17<small>Escola, material, transporte</small></span>
+          <div class="contador" data-conta="grandes">
+            <button type="button" data-passo="-1" aria-label="Menos uma criança">−</button>
+            <span class="qtd" id="qtdGrandes" aria-live="polite">0</span>
+            <button type="button" data-passo="1" aria-label="Mais uma criança">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">02</span><h2>O que entra</h2></div>
+      <p class="nota">O que realmente cai na conta, já descontado.</p>
+      <div class="linha-valor">
+        <span class="rot">Sua renda<small>Salário líquido, aposentadoria, pró-labore</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" id="renda" placeholder="0" data-renda></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Outra renda da casa<small>Cônjuge, bico, aluguel recebido, benefício</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" id="renda2" placeholder="0" data-renda></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">03</span><h2>A casa</h2></div>
+      <p class="nota">O grupo que come a maior fatia na maioria das famílias.</p>
+      <div class="linha-valor">
+        <span class="rot">Aluguel ou financiamento</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Aluguel/financiamento" data-grupo="Moradia"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Condomínio e IPTU<small>Some o IPTU dividido por 12</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Condomínio e IPTU" data-grupo="Moradia"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Luz</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Luz" data-grupo="Contas de casa"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Água e gás</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Água e gás" data-grupo="Contas de casa"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Internet e TV</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Internet e TV" data-grupo="Contas de casa"></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">04</span><h2>O dia a dia</h2></div>
+      <p class="nota">Chute redondo já serve. O susto é o mesmo.</p>
+      <div class="linha-valor">
+        <span class="rot">Mercado<small>Compra do mês, feira, açougue</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Mercado" data-grupo="Alimentação"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Comida fora<small>Almoço no trabalho, delivery, lanche</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Comida fora" data-grupo="Alimentação"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Transporte<small>Combustível, ônibus, app, prestação do carro</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Transporte" data-grupo="Transporte"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Farmácia e saúde<small>Remédio de uso contínuo, consulta</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Farmácia e saúde" data-grupo="Saúde"></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">05</span><h2>Os compromissos</h2></div>
+      <p class="nota">O que já está decidido antes de o mês começar.</p>
+      <div class="linha-valor">
+        <span class="rot">Parcelas do cartão<small>O parcelado que cai todo mês</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Parcelas do cartão" data-grupo="Dívidas"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Empréstimo e crediário<small>Consignado, financeira, carnê</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Empréstimo e crediário" data-grupo="Dívidas"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Escola e creche</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Escola e creche" data-grupo="Filhos e educação"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Plano de saúde</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Plano de saúde" data-grupo="Saúde"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Celular e assinaturas<small>Plano, streaming, academia, apps</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Celular e assinaturas" data-grupo="Assinaturas"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Outros<small>Qualquer coisa fixa que ficou de fora</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-gasto="Outros" data-grupo="Outros"></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">06</span><h2>O custo invisível</h2></div>
+      <p class="nota">Se sobrou saldo no cartão, parte do seu dinheiro some todo mês em juros
+      <strong>sem abater o que você deve</strong>. É o gasto que ninguém anota.</p>
+      <div class="linha-valor">
+        <span class="rot">Saldo que ficou no cartão<small>O que você não conseguiu pagar da fatura</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" id="rotativo" placeholder="0"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Cheque especial usado</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" id="especial" placeholder="0"></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Juros ao mês<small>Está na sua fatura. Não sabe? deixe como está</small></span>
+        <div class="caixa-valor pct"><span class="moeda">%</span>
+          <input type="text" inputmode="decimal" id="taxa" value="14"></div>
+      </div>
+    </section>
+
+    <div id="resultado" hidden>
+
+      <div class="veredito" id="veredito">
+        <p class="chapeu" id="rChapeu">O seu salário acaba no dia</p>
+        <p class="estrela" id="rEstrela">—</p>
+        <p class="frase" id="rFrase"></p>
+        <div class="calendario" id="rCalendario" aria-hidden="true"></div>
+        <p class="calendario-leg" id="rCalendarioLeg"></p>
+      </div>
+
+      <div class="grade">
+        <div class="ficha">
+          <p class="rot">A sua vida custa</p>
+          <p class="val ambar" id="fCusto">—</p>
+          <p id="fCustoNota"></p>
+        </div>
+        <div class="ficha">
+          <p class="rot">Sobra ou falta no mês</p>
+          <p class="val" id="fSaldo">—</p>
+          <p id="fSaldoNota"></p>
+        </div>
+      </div>
+
+      <div class="grade tres">
+        <div class="ficha">
+          <p class="rot">Por pessoa<br>ao mês</p>
+          <p class="val" id="fPessoaMes">—</p>
+        </div>
+        <div class="ficha">
+          <p class="rot">Por pessoa<br>ao dia</p>
+          <p class="val" id="fPessoaDia">—</p>
+        </div>
+        <div class="ficha">
+          <p class="rot">Comida por<br>pessoa/dia</p>
+          <p class="val" id="fComidaDia">—</p>
+        </div>
+      </div>
+
+      <div class="ficha" style="margin-bottom:14px">
+        <p class="rot">Para sobrar 10% no fim do mês, a casa precisaria receber</p>
+        <p class="val ambar" id="fPreciso">—</p>
+        <p id="fPrecisoNota"></p>
+      </div>
+
+      <div class="ficha oficial" style="margin-bottom:14px">
+        <p class="rot">O piso oficial para uma casa como a sua</p>
+        <p class="val" id="fDieese">—</p>
+        <p id="fDieeseNota"></p>
+        <p class="fonte-oficial">Calculado pela metodologia do <b>DIEESE</b>: cesta básica mais
+        cara entre as capitais × 3 × número de adultos-equivalentes, com criança contando 0,4.
+        Base de <span id="fDieeseMes">junho de 2026</span>, quando o instituto apontou
+        <b>R$ 8.110,92</b> para a família de referência de 2 adultos e 2 crianças.</p>
+      </div>
+
+      <div class="bloco">
+        <div class="bloco-topo"><h2>Para onde foi</h2></div>
+        <p class="nota">A barra é a fatia da renda da casa. Ao lado, uma referência comum de
+        planejamento — é bússola, não regra.</p>
+        <div id="trilhas"></div>
+      </div>
+
+      <div class="bloco" id="blocoJuros" hidden>
+        <div class="bloco-topo"><h2>O que some em juros</h2></div>
+        <div class="grade" style="margin-bottom:0">
+          <div class="ficha">
+            <p class="rot">Por mês</p>
+            <p class="val ruim" id="jMes">—</p>
+            <p id="jNota"></p>
+          </div>
+          <div class="ficha">
+            <p class="rot">Em 12 meses</p>
+            <p class="val ruim" id="jAno">—</p>
+            <p>Se o saldo não for quitado e a taxa não mudar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="destaque-vilao" id="vilao">
+        <h3 id="vTitulo"></h3>
+        <p id="vTexto"></p>
+      </div>
+
+      <div class="pago">
+        <p class="chapeu">Modo completo</p>
+        <h3>Você já sabe o tamanho do buraco. Falta o caminho de saída.</h3>
+        <p class="intro">O diagnóstico acima é gratuito e continua seu. O plano é o que transforma
+        o número em decisão — aplicado aos valores que você acabou de colocar.</p>
+
+        <div class="travados">
+          <div class="travado"><span class="ic">🔒</span><span><b>Plano de 90 dias, semana a semana</b>
+            <span>A ordem de corte que libera mais dinheiro na sua situação — não uma lista genérica de dicas.</span></span></div>
+          <div class="travado"><span class="ic">🔒</span><span><b>A ordem de quitação das suas dívidas</b>
+            <span>Qual pagar primeiro, comparando o método da maior taxa com o da menor dívida nos seus números.</span></span></div>
+          <div class="travado"><span class="ic">🔒</span><span><b>Simulador de cenários</b>
+            <span>Quanto sobra se você cortar cada categoria. Veja antes de decidir.</span></span></div>
+          <div class="travado"><span class="ic">🔒</span><span><b>Roteiro de renegociação</b>
+            <span>O que falar com o banco, em que ordem, e o que não aceitar.</span></span></div>
+          <div class="travado"><span class="ic">🔒</span><span><b>Planilha de acompanhamento</b>
+            <span>Para saber, mês a mês, se o plano está funcionando.</span></span></div>
+        </div>
+
+        <p class="preco">R$ 19,90<small>pagamento único · sem assinatura · sem renovação automática</small></p>
+        <div class="acoes">
+          <a class="btn btn-forte" id="btnPago">Quero o plano completo</a>
+        </div>
+      </div>
+
+      <div class="acoes">
+        <button type="button" class="btn btn-vazio" id="btnCopiar">Copiar meu diagnóstico</button>
+        <a class="btn btn-vazio" id="btnZap" target="_blank" rel="noopener">Mandar pra alguém da casa</a>
+      </div>
+
+      <p class="legal">
+        <strong>Isto é conteúdo educativo e não é recomendação de investimento nem de crédito.</strong>
+        Os números vêm do que você digitou. As referências percentuais são médias de planejamento
+        usadas como bússola e não valem igual para todo mundo — sua situação depende de coisas que
+        uma conta de um minuto não vê: estabilidade da renda, dívidas com garantia, saúde, contratos
+        já assinados e custo de vida da sua cidade.
+        <br><br>
+        A comparação entre famílias de tamanhos diferentes usa a <strong>escala de equivalência
+        modificada da OCDE</strong>: 1 para o primeiro adulto, 0,5 para cada adulto a mais e 0,3 para
+        cada criança.
+        <br><br>
+        <strong>Está com dívida em atraso?</strong> Existe atendimento gratuito de orientação e
+        renegociação no Brasil — procure o Procon da sua cidade ou os mutirões de renegociação
+        promovidos por Procons e pela Febraban. Você não precisa pagar nada para ser orientado.
+        <br><br>
+        <strong>Seus números não foram enviados a lugar nenhum.</strong> A conta inteira aconteceu
+        dentro do seu navegador. Feche a página e não sobra nada.
+      </p>
+    </div>
+
+    <section class="artigo">
+      <h2>Por que o salário acaba mesmo quando aumenta</h2>
+      <p>Quase todo mundo procura o vilão nos gastos pequenos — o lanche, o aplicativo, o cafezinho.
+      Só que, em orçamento apertado, a conta já está decidida <strong>antes de qualquer escolha do
+      dia</strong>: moradia, transporte e parcelas consomem a maior fatia no primeiro dia do mês.</p>
+      <p>É por isso que ganhar mais muitas vezes não resolve. Se o compromisso fixo cresce junto —
+      carro melhor, aluguel maior, parcela nova — o que sobra continua igual a zero.</p>
+
+      <h2>A conta que ninguém faz</h2>
+      <p>As calculadoras de orçamento fazem a conta na direção prescritiva: "com a sua renda, você
+      deveria gastar tanto em cada coisa". É útil para quem tem folga e não responde nada para quem
+      não tem.</p>
+      <p>A pergunta que aperta é a inversa: <strong>quanto eu precisaria receber para a vida que eu
+      já tenho caber no que entra?</strong> Essa diferença, em reais, é o número mais honesto do seu
+      orçamento.</p>
+
+      <h2>Por que perguntamos quem mora na casa</h2>
+      <p>Porque R$ 1.200 de mercado significa uma coisa para quem mora sozinho e outra
+      completamente diferente para uma família de cinco. Sem saber quantas pessoas dividem esse
+      valor, qualquer comparação é enganosa — e é exatamente por isso que "gasto médio de família
+      brasileira" nunca serve para o seu caso.</p>
+
+      <h2>Existe um número oficial para comparar</h2>
+      <p>O DIEESE calcula todo mês quanto uma família precisaria ganhar para cobrir com dignidade
+      o que a Constituição lista. Em junho de 2026 esse valor foi de <strong>R$ 8.110,92</strong>
+      para uma família de dois adultos e duas crianças — cinco vezes o piso vigente. O diagnóstico
+      acima aplica a mesma fórmula à composição da <em>sua</em> casa.</p>
+      <p><a href="quanto-precisa-ganhar/">Entenda de onde vem esse número e veja a tabela por
+      tamanho de família →</a></p>
+
+      <h2>O custo que não aparece em lugar nenhum</h2>
+      <p>Quando parte da fatura fica para trás, o valor pago de juros <strong>não abate</strong> o
+      que você deve — ele só mantém a dívida de pé. É dinheiro que sai da sua renda todo mês sem
+      contrapartida. Por isso ele tem um espaço próprio no diagnóstico.</p>
+    </section>
+  </main>
+
+  <p class="pe">Ferramenta gratuita · nenhum dado coletado · nenhum cadastro</p>
+</div>
+
+<div class="barra-fixa" id="barraFixa">
+  <div class="barra-inner">
+    <div class="barra-texto">
+      <p class="barra-rot" id="barraRot">Comece pela renda</p>
+      <p class="barra-num" id="barraNum">R$ 0</p>
+    </div>
+    <div class="aro">
+      <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+        <circle cx="23" cy="23" r="19" fill="none" stroke="var(--linha)" stroke-width="5"></circle>
+        <circle id="aroTraco" cx="23" cy="23" r="19" fill="none" stroke="var(--ambar)" stroke-width="5"
+                stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4"></circle>
+      </svg>
+      <span class="aro-txt" id="aroTxt">0%</span>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

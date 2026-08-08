@@ -1,0 +1,77 @@
+{
+  "data": "2026-08-14",
+  "horario": "11:00",
+  "dia_calendario": 12,
+  "semana": 2,
+  "formato": "carrossel",
+  "pilar": "VENDER",
+  "arroba": "@controllerdoagro",
+  "titulo": "Guia Anti-Rejeicao — R$ 29",
+  "objetivo": "Primeira venda. Oferta de baixo ticket com entrega imediata, apontando para o link (nao para o Direct).",
+  "palavra_direct": "",
+  "slides": [
+    {
+      "tipo": "capa",
+      "kicker": "Guia Anti-Rejeição",
+      "titulo": "A JANELA ESTÁ *ABERTA*. NINGUÉM DISSE QUANTO DURA.",
+      "sub": "As validações foram adiadas. A obrigação, não."
+    },
+    {
+      "tipo": "texto",
+      "kicker": "A situação",
+      "titulo": "Sua nota passa. *Com o erro dentro*.",
+      "texto": "Com as regras de validação adiadas desde 31/07, uma nota com CST ou cClassTrib errado é autorizada do mesmo jeito.\n\nO dado errado entra na sua escrituração — e no crédito de quem comprou de você.",
+      "sub": "Quem confere primeiro não é o Fisco. É a trading."
+    },
+    {
+      "tipo": "lista",
+      "kicker": "O que tem dentro",
+      "titulo": "Não é teoria. É conferência.",
+      "itens": [
+        { "texto": "A *ordem exata*: NCM → CST → cClassTrib → CFOP → homologação" },
+        { "texto": "O *tradutor* de mensagem de rejeição da SEFAZ" },
+        { "texto": "As *7 causas* mais comuns no agro" },
+        { "texto": "O que muda por *tipo de operação*, separado" },
+        { "texto": "A camada do *cBenef* em Goiás" }
+      ]
+    },
+    {
+      "tipo": "lista",
+      "kicker": "E mais",
+      "titulo": "Para usar, não para guardar.",
+      "itens": [
+        { "texto": "*Folha de conferência imprimível* pro lado do monitor" },
+        { "texto": "*Calendário* de agosto a janeiro, mês a mês" },
+        { "texto": "Os *5 sinais* de que o problema não é a nota" }
+      ]
+    },
+    {
+      "tipo": "comparativo",
+      "kicker": "Seja honesto comigo",
+      "titulo": "Para quem serve — e para quem não.",
+      "rotuloErrado": "Não compre se",
+      "errado": "Você quer um *código pronto* para colar na sua nota.\n\nO guia não faz isso. Ninguém honesto faria sem ver a sua escrituração.",
+      "rotuloCerto": "Compre se",
+      "certo": "Você *emite ou confere* nota e quer achar o erro sozinho — e conversar com o seu contador de igual para igual."
+    },
+    {
+      "tipo": "numero",
+      "kicker": "Preço",
+      "numero": "R$ 29",
+      "titulo": "Entrega imediata.",
+      "texto": "Menos que uma hora do seu auxiliar fiscal. E bem menos que uma carga parada esperando nota."
+    },
+    {
+      "tipo": "assinatura",
+      "cta": "Link na bio. Salva se ainda não é a hora."
+    }
+  ],
+  "legenda": "A janela está aberta. Ninguém disse quanto tempo ela dura.\n\nAs validações de IBS e CBS foram adiadas em 31/07. A obrigação de preencher, não.\n\nQuem usar essa janela para revisar cadastro e parametrização vai seguir emitindo quando a régua ligar. Quem entendeu \"cancelado\" descobre tudo de uma vez — todos os produtos, todas as operações, no mesmo dia.\n\nO Guia Anti-Rejeição é a sequência de conferência, não a teoria da Reforma:\n\n- A ordem exata: NCM, CST, cClassTrib, CFOP, homologação, leitura da mensagem\n- O tradutor de mensagem de rejeição\n- As 7 causas mais comuns no agro\n- O que muda por tipo de operação: produtor PJ, armazém, cerealista, revenda, cooperativa\n- A camada do cBenef em Goiás\n- Folha de conferência imprimível\n- Calendário de agosto a janeiro\n\nE o que ele NÃO faz: não te dá um código pronto pra colar. Ninguém honesto faria isso sem ver a sua escrituração.\n\nR$ 29. Entrega imediata.\n\nSalva se ainda não é a hora de comprar.\n\nLink na bio.\n\nMaterial educativo. Não constitui consultoria tributária individualizada nem substitui a análise da sua operação por profissional responsável.",
+  "hashtags": "#reformatributaria #ibs #cbs #cclasstrib #cst #notafiscal #nfe #fiscalagro #agronegocio #produtorrural #contabilidaderural #armazemgeral #cerealista #cooperativa #revendaagricola #siagri #sefaz #gestaorural #agro #goias",
+  "cta": "Link na bio para o guia. Salva se ainda nao e a hora.",
+  "chamada_direct": "",
+  "fontes": [
+    "Ato Tecnico Conjunto CGIBS/RFB no 1, de 31/07/2026",
+    "Nota Tecnica 2025.002 (NF-e/NFC-e)"
+  ]
+}

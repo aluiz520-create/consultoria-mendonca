@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<!-- Google Analytics 4 -->
+<script async src="../assets/ga.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Você já está obrigado ao IBS/CBS? Teste de 40 segundos | Consultoria Mendonça</title>
+<meta name="description" content="A obrigação de IBS/CBS começou em 03/08/2026, mas as validações foram adiadas e a nota ainda passa. Responda 6 perguntas e descubra exatamente onde a sua operação está.">
+<link rel="canonical" href="https://aluiz520-create.github.io/consultoria-mendonca/obrigado-ibs-cbs/">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Consultoria Mendonça">
+<meta property="og:title" content="Você já está obrigado ao IBS/CBS? Descubra em 40 segundos">
+<meta property="og:description" content="A imprensa disse 2026. Depois disse 2027. Depende de qual é o seu caso. Responda 6 perguntas e descubra o seu.">
+<meta property="og:url" content="https://aluiz520-create.github.io/consultoria-mendonca/obrigado-ibs-cbs/">
+<meta property="og:image" content="https://aluiz520-create.github.io/consultoria-mendonca/assets/banner-photo.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Produtor rural precisa de CNPJ em 2026 ou em 2027?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do caso. Para o produtor rural pessoa física, a exigência de inscrição no CNPJ para emissão de documentos fiscais foi prorrogada para 1º de janeiro de 2027, por decreto publicado em julho de 2026 que alterou o Decreto 12.955/2026. Já quem opera como pessoa jurídica no regime regular precisa emitir documento fiscal com os campos de IBS e CBS desde 3 de agosto de 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A nota fiscal está sendo rejeitada por falta de IBS e CBS desde 3 de agosto de 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. O Ato Técnico Conjunto CGIBS/RFB nº 1, de 31 de julho de 2026, adiou o início das regras de validação, de modo que a ausência de informações de IBS e CBS não resulta em rejeição automática dos documentos fiscais eletrônicos neste momento. A obrigação de preencher os campos, no entanto, não foi suspensa: a Receita Federal e o CGIBS afirmaram que o cronograma permanece integralmente válido. O que foi adiado é a exigibilidade operacional, não a obrigação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Se a nota passa mesmo com campo errado, por que corrigir agora?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque nota autorizada não é nota correta. Com as validações desligadas, o documento é autorizado mesmo com informação errada, e esse dado entra na escrituração do emitente e no crédito de quem comprou. Compradores maiores, como tradings e cooperativas, costumam exigir o documento correto antes mesmo de o Fisco validar. Além disso, as regras de validação voltam a valer sem prazo longo de aviso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quem fatura menos de R$ 3,6 milhões por ano é contribuinte do IBS e da CBS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O produtor rural com receita bruta anual dentro do limite previsto na Lei Complementar 214/2025 pode não ser contribuinte do IBS e da CBS, embora ainda participe da nova base cadastral e possa optar pelo regime regular. O enquadramento precisa ser confirmado caso a caso com o contador responsável."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html#top" class="logo">
+      <img src="../assets/logo-simbolo.png" alt="" class="logo-icon">
+      <span class="logo-text">Consultoria <span class="accent">Mendonça</span></span>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#servicos">Serviços</a>
+      <a href="../index.html#ebook">Materiais</a>
+      <a href="../blog/index.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+    </nav>
+    <a href="https://wa.me/5564992226766" class="btn btn-whatsapp nav-cta" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="quiz-intro">
+      <h1>Você já está obrigado ao IBS/CBS?</h1>
+      <p class="quiz-intro-sub">Metade do mercado publicou &ldquo;sua nota será rejeitada&rdquo;. A outra metade publicou
+      &ldquo;foi suspenso, relaxa&rdquo;. <strong>As duas estão erradas.</strong> Responda 6 perguntas e descubra
+      exatamente onde a sua operação está.</p>
+      <p class="tool-meta">40 segundos &middot; sem cadastro &middot; sem e-mail</p>
+    </div>
+
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="quizProgressBar"></div></div>
+      <p class="quiz-step" id="quizStep">Pergunta 1 de 6</p>
+      <h2 class="quiz-question" id="quizQuestion"></h2>
+      <div class="quiz-options quiz-options-stack" id="quizOptions"></div>
+      <button type="button" class="tool-back" id="quizBackBtn" hidden>&larr; voltar uma pergunta</button>
+    </div>
+
+    <div class="quiz-card quiz-result" id="quizResult" hidden>
+      <div class="quiz-result-icon" id="quizResultIcon"></div>
+      <h2 class="quiz-result-title" id="quizResultTitle"></h2>
+      <p class="tool-deadline" id="quizResultDeadline"></p>
+      <p class="quiz-result-desc" id="quizResultDesc"></p>
+
+      <div class="tool-roteiro">
+        <h3>O seu roteiro de conferência</h3>
+        <p class="tool-roteiro-sub">A ordem exata para checar antes de emitir. De graça, sem pegadinha.</p>
+        <ol id="quizRoteiro"></ol>
+        <button type="button" class="btn btn-outline btn-small" id="quizCopiarBtn">Copiar roteiro</button>
+      </div>
+
+      <div class="tool-oferta" id="quizOferta" hidden>
+        <p class="tool-oferta-kicker">Use a janela antes que ela feche</p>
+        <h3>Guia Anti-Rejeição — IBS/CBS na nota do agro</h3>
+        <p>A sequência completa de conferência, as causas de rejeição traduzidas do
+        &ldquo;fiscalês&rdquo;, a folha imprimível para deixar do lado do monitor e o calendário
+        até janeiro de 2027. Feito para você chegar pronto quando as validações ligarem — e para
+        não deixar dado errado passando enquanto elas estão desligadas.</p>
+        <p class="tool-oferta-preco">R$ 29 &middot; entrega imediata</p>
+        <a href="../produtos/guia-anti-rejeicao/" class="btn btn-primary" id="quizOfertaBtn">Quero o guia</a>
+      </div>
+
+      <div class="quiz-result-actions">
+        <a id="quizWhatsappBtn" class="btn btn-whatsapp" target="_blank" rel="noopener">Falar sobre a minha operação</a>
+        <button type="button" class="btn btn-outline" id="quizRestartBtn">Refazer o teste</button>
+      </div>
+
+      <p class="tool-aviso">Conteúdo educativo, baseado na legislação vigente na data desta página.
+      Não substitui a análise da sua operação específica nem o trabalho do seu contador responsável.
+      O enquadramento correto depende de fatos que só a sua escrituração mostra.</p>
+    </div>
+
+    <div class="article-body tool-explica">
+      <h2>Duas notícias diferentes, misturadas em uma só</h2>
+      <p>Em julho e agosto de 2026 saíram <strong>dois</strong> atos, sobre coisas diferentes. Quase
+      todo mundo publicou os dois como se fossem o mesmo — e é daí que vem a confusão.</p>
+
+      <p><strong>Ato 1 — decreto de julho/2026</strong>, que alterou o Decreto 12.955/2026 e
+      prorrogou para <strong>1º de janeiro de 2027</strong> a exigência de inscrição no CNPJ pelo
+      produtor rural <em>pessoa física</em> para emitir documento fiscal. Vale só para a pessoa
+      física. Não alcança quem já opera como PJ.</p>
+
+      <p><strong>Ato 2 — Ato Técnico Conjunto CGIBS/RFB nº 1, de 31/07/2026</strong>, que adiou o
+      início das <strong>regras de validação</strong> de IBS e CBS nos documentos eletrônicos. Ou
+      seja: a ausência desses campos <strong>não gera rejeição automática</strong> agora.</p>
+
+      <h2>O que isso quer dizer na prática</h2>
+      <p>A Receita Federal e o CGIBS foram explícitos: <strong>o cronograma permanece válido e sem
+      alteração.</strong> A obrigação de destacar IBS e CBS não foi suspensa. O que foi adiado é a
+      <em>exigibilidade operacional</em> — a régua que derrubaria a nota.</p>
+
+      <p>Metade do mercado publicou &ldquo;sua nota será rejeitada dia 3&rdquo;. A outra metade
+      publicou &ldquo;foi suspenso, pode relaxar&rdquo;. As duas leituras estão erradas, e a
+      segunda é a mais cara: <strong>nota autorizada não é nota certa.</strong></p>
+
+      <h2>Por que passar não é o mesmo que estar certo</h2>
+      <p>Com as validações desligadas, uma nota com campo errado <strong>é autorizada do mesmo
+      jeito</strong>. O documento passa, mas o dado errado entra na sua escrituração — e entra
+      também no crédito de quem comprou de você.</p>
+      <p>É por aí que a cobrança costuma chegar primeiro: não pela SEFAZ, e sim pela trading, pela
+      cooperativa ou pelo comprador grande que precisa do documento correto para se creditar. Esse
+      não espera a validação ligar.</p>
+      <p>E quando ela ligar — sem prazo público definido até agora —, quem usou a janela para
+      parametrizar segue emitindo. Quem entendeu &ldquo;cancelado&rdquo; descobre tudo de uma vez,
+      com o caminhão na balança.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Consultoria Mendonça &middot; CNPJ 52.394.324/0001-55</p>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var perguntas = [
+    {
+      id: "figura",
+      texto: "Hoje, as suas notas de venda saem no CPF ou no CNPJ?",
+      opcoes: [
+        { rotulo: "No CNPJ (sou PJ)", valor: "pj" },
+        { rotulo: "No CPF (produtor pessoa física)", valor: "pf" },
+        { rotulo: "Ainda não emito nota", valor: "nenhum" }
+      ]
+    },
+    {
+      id: "atividade",
+      texto: "Qual dessas descreve melhor a sua operação?",
+      opcoes: [
+        { rotulo: "Produtor rural", valor: "produtor" },
+        { rotulo: "Armazém geral ou cerealista", valor: "armazem" },
+        { rotulo: "Revenda agrícola", valor: "revenda" },
+        { rotulo: "Cooperativa", valor: "cooperativa" },
+        { rotulo: "Sou contador ou assessoro produtores", valor: "contador" }
+      ]
+    },
+    {
+      id: "faturamento",
+      texto: "A receita bruta anual da atividade passa de R$ 3,6 milhões?",
+      opcoes: [
+        { rotulo: "Passa", valor: "acima" },
+        { rotulo: "Não passa", valor: "abaixo" },
+        { rotulo: "Não sei dizer", valor: "nao_sei" }
+      ]
+    },
+    {
+      id: "emissao",
+      texto: "Você já emitiu alguma nota depois de 3 de agosto de 2026?",
+      opcoes: [
+        { rotulo: "Já, e passou sem rejeição", valor: "ok" },
+        { rotulo: "Já, e teve nota rejeitada", valor: "rejeitou" },
+        { rotulo: "Ainda não emiti nesse período", valor: "nao" }
+      ]
+    },
+    {
+      id: "sistema",
+      texto: "O seu sistema já está com cClassTrib e CST parametrizados para IBS/CBS?",
+      opcoes: [
+        { rotulo: "Está, e foi testado", valor: "sim" },
+        { rotulo: "Não está", valor: "nao" },
+        { rotulo: "Não sei / quem cuida é outra pessoa", valor: "nao_sei" }
+      ]
+    },
+    {
+      id: "uf",
+      texto: "A operação é em Goiás?",
+      opcoes: [
+        { rotulo: "É em Goiás", valor: "go" },
+        { rotulo: "É em outro estado", valor: "outra" }
+      ]
+    }
+  ];
+
+  var ROTEIRO_BASE = [
+    "Confira o NCM do produto na nota — é dele que decorre todo o resto.",
+    "Verifique o CST que o sistema aplicou para a operação.",
+    "Confira o cClassTrib e veja se ele é compatível com o CST escolhido. O par precisa fechar.",
+    "Confira a natureza da operação e o CFOP: venda, remessa, retorno e industrialização não usam a mesma regra.",
+    "Emita primeiro em homologação e leia a mensagem de retorno antes de emitir em produção.",
+    "Guarde a mensagem de rejeição quando houver — é ela que diz qual campo está errado."
+  ];
+
+  var ROTEIRO_GO = "Em Goiás, confira também o cBenef quando houver benefício fiscal aplicável (IN 1.518/2022).";
+
+  var PERFIS = {
+    pj_obrigado: {
+      icone: "⚠️",
+      titulo: "Você está obrigado — mas a nota ainda passa",
+      prazo: "Obrigação desde 3/8/2026 · validações adiadas",
+      descricao: "Você emite no regime regular, então a obrigação de preencher os campos de IBS e CBS já vale para você. O que mudou de última hora: o Ato Técnico Conjunto CGIBS/RFB nº 1, de 31/07/2026, adiou o início das regras de validação. Traduzindo: a ausência dos campos não derruba a sua nota hoje. Isso não é folga, é janela — e ela fecha sem aviso de meses.",
+      oferta: true
+    },
+    pj_obrigado_rejeitou: {
+      icone: "🚨",
+      titulo: "Rejeição com as validações adiadas? A causa é outra",
+      prazo: "Obrigação desde 3/8/2026 · validações adiadas",
+      descricao: "Aqui tem uma informação que vale a sua atenção: as validações que rejeitariam a nota por ausência de IBS/CBS foram adiadas em 31/07/2026. Se a sua nota está sendo rejeitada mesmo assim, a causa é outra — dado inconsistente, NCM, CFOP ou regra estadual. Guarde a mensagem exata de rejeição: é ela que diz qual campo está errado, e sem ela ninguém acerta o diagnóstico.",
+      oferta: true
+    },
+    pf_contribuinte: {
+      icone: "⚠️",
+      titulo: "Você tem prazo, mas tem lição de casa",
+      prazo: "Inscrição no CNPJ para emissão: 1º de janeiro de 2027",
+      descricao: "Como pessoa física, a exigência de inscrição no CNPJ para emitir documento fiscal foi prorrogada para 2027. Mas, pelo porte que você indicou, a sua operação tende a ficar dentro do regime regular de IBS e CBS — o que significa que a preparação precisa começar antes do prazo, não em cima dele. E tem um detalhe que pega muita gente: quem compra de você precisa do documento correto para o crédito dele. Essa cobrança chega antes do Fisco.",
+      oferta: true
+    },
+    pf_2027: {
+      icone: "🗓️",
+      titulo: "Você tem até janeiro de 2027",
+      prazo: "1º de janeiro de 2027",
+      descricao: "Pela sua resposta, você é produtor pessoa física dentro do limite de receita da Lei Complementar 214/2025. A exigência de CNPJ para emissão de documento fiscal foi prorrogada para 2027, e o seu enquadramento como contribuinte ou não contribuinte precisa ser confirmado com o seu contador. O que não muda: quem compra de você já está se adequando, e vai cobrar isso.",
+      oferta: false
+    },
+    contador: {
+      icone: "📌",
+      titulo: "Depende de cada cliente da sua carteira",
+      prazo: "3 de agosto de 2026 (PJ) · 1º de janeiro de 2027 (produtor PF)",
+      descricao: "Você atende operações diferentes, então convivem duas datas na mesma carteira. Os clientes PJ no regime regular já estão obrigados; os produtores pessoa física ganharam prazo até 2027. Na prática, a fila de urgência da sua carteira é: primeiro quem emite no CNPJ, depois quem fatura mais.",
+      oferta: true
+    },
+    indefinido: {
+      icone: "❓",
+      titulo: "Não dá para responder sem olhar a sua operação",
+      prazo: "Depende do enquadramento",
+      descricao: "Faltou informação para cravar o seu caso — e cravar sem base seria irresponsável da minha parte. O que define a sua data é a figura que emite a nota e o regime em que você está enquadrado. Isso aparece na sua última nota emitida e no cadastro da inscrição estadual.",
+      oferta: false
+    }
+  };
+
+  var respostas = {};
+  var indice = 0;
+  var perfilAtual = "indefinido";
+
+  var elCard = document.getElementById("quizCard");
+  var elResult = document.getElementById("quizResult");
+  var elStep = document.getElementById("quizStep");
+  var elQuestion = document.getElementById("quizQuestion");
+  var elBar = document.getElementById("quizProgressBar");
+  var elOptions = document.getElementById("quizOptions");
+  var elBack = document.getElementById("quizBackBtn");
+  var elOferta = document.getElementById("quizOferta");
+  var iniciouEnviado = false;
+
+  function ga(evento, params) {
+    if (typeof gtag === "function") gtag("event", evento, params || {});
+  }
+
+  function render() {
+    var p = perguntas[indice];
+    elStep.textContent = "Pergunta " + (indice + 1) + " de " + perguntas.length;
+    elQuestion.textContent = p.texto;
+    elBar.style.width = (indice / perguntas.length) * 100 + "%";
+    elBack.hidden = indice === 0;
+
+    elOptions.innerHTML = "";
+    p.opcoes.forEach(function (opcao) {
+      var botao = document.createElement("button");
+      botao.type = "button";
+      botao.className = "quiz-option-btn quiz-option-choice";
+      botao.textContent = opcao.rotulo;
+      botao.dataset.valor = opcao.valor;
+      elOptions.appendChild(botao);
+    });
+  }
+
+  function definirPerfil() {
+    var figura = respostas.figura;
+    var atividade = respostas.atividade;
+    var faturamento = respostas.faturamento;
+    var emissao = respostas.emissao;
+
+    if (atividade === "contador") return "contador";
+
+    // Armazém, cerealista, revenda e cooperativa operam como PJ no regime regular.
+    var pjPorAtividade = atividade === "armazem" || atividade === "revenda" || atividade === "cooperativa";
+
+    if (figura === "pj" || pjPorAtividade) {
+      return emissao === "rejeitou" ? "pj_obrigado_rejeitou" : "pj_obrigado";
+    }
+
+    if (figura === "pf") {
+      if (faturamento === "acima") return "pf_contribuinte";
+      if (faturamento === "abaixo") return "pf_2027";
+      return "indefinido";
+    }
+
+    return "indefinido";
+  }
+
+  function montarRoteiro() {
+    var passos = ROTEIRO_BASE.slice();
+    if (respostas.uf === "go") passos.push(ROTEIRO_GO);
+    if (respostas.sistema === "nao" || respostas.sistema === "nao_sei") {
+      passos.push("Antes de tudo: descubra quem é o responsável pela parametrização do seu sistema. Sem isso, os passos acima não têm onde ser corrigidos.");
+    }
+    return passos;
+  }
+
+  function mostrarResultado() {
+    perfilAtual = definirPerfil();
+    var perfil = PERFIS[perfilAtual];
+
+    document.getElementById("quizResultIcon").textContent = perfil.icone;
+    document.getElementById("quizResultTitle").textContent = perfil.titulo;
+    document.getElementById("quizResultDeadline").textContent = perfil.prazo;
+    document.getElementById("quizResultDesc").textContent = perfil.descricao;
+
+    var lista = document.getElementById("quizRoteiro");
+    lista.innerHTML = "";
+    montarRoteiro().forEach(function (passo) {
+      var item = document.createElement("li");
+      item.textContent = passo;
+      lista.appendChild(item);
+    });
+
+    elOferta.hidden = !perfil.oferta;
+    if (perfil.oferta) ga("oferta_exibida", { perfil: perfilAtual });
+
+    var mensagem = "Olá! Fiz o teste do IBS/CBS no site e o meu resultado foi: " +
+      perfil.titulo + " (" + perfil.prazo + "). Quero falar sobre a minha operação.";
+    document.getElementById("quizWhatsappBtn").href =
+      "https://wa.me/5564992226766?text=" + encodeURIComponent(mensagem);
+
+    elCard.hidden = true;
+    elResult.hidden = false;
+    elResult.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    ga("ferramenta_concluida", {
+      perfil: perfilAtual,
+      figura: respostas.figura,
+      atividade: respostas.atividade,
+      uf: respostas.uf
+    });
+  }
+
+  elOptions.addEventListener("click", function (e) {
+    var botao = e.target.closest(".quiz-option-btn");
+    if (!botao) return;
+
+    if (!iniciouEnviado) {
+      ga("ferramenta_iniciada");
+      iniciouEnviado = true;
+    }
+
+    respostas[perguntas[indice].id] = botao.dataset.valor;
+    indice += 1;
+
+    if (indice < perguntas.length) {
+      render();
+    } else {
+      elBar.style.width = "100%";
+      mostrarResultado();
+    }
+  });
+
+  elBack.addEventListener("click", function () {
+    if (indice === 0) return;
+    indice -= 1;
+    delete respostas[perguntas[indice].id];
+    render();
+  });
+
+  document.getElementById("quizOfertaBtn").addEventListener("click", function () {
+    ga("clique_oferta_guia", { perfil: perfilAtual, preco: 29 });
+  });
+
+  document.getElementById("quizWhatsappBtn").addEventListener("click", function () {
+    ga("clique_whatsapp", { perfil: perfilAtual, origem: "ferramenta_ibs_cbs" });
+  });
+
+  document.getElementById("quizCopiarBtn").addEventListener("click", function () {
+    var botao = this;
+    var texto = "ROTEIRO DE CONFERÊNCIA — IBS/CBS\n\n" +
+      montarRoteiro().map(function (passo, i) { return (i + 1) + ". " + passo; }).join("\n") +
+      "\n\nConsultoria Mendonça — o Controller do Agro\n" +
+      "https://aluiz520-create.github.io/consultoria-mendonca/obrigado-ibs-cbs/";
+
+    function feedback(ok) {
+      botao.textContent = ok ? "Copiado!" : "Não foi possível copiar";
+      setTimeout(function () { botao.textContent = "Copiar roteiro"; }, 2200);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(texto).then(function () {
+        feedback(true);
+        ga("roteiro_copiado", { perfil: perfilAtual });
+      }, function () { feedback(false); });
+    } else {
+      feedback(false);
+    }
+  });
+
+  document.getElementById("quizRestartBtn").addEventListener("click", function () {
+    respostas = {};
+    indice = 0;
+    elResult.hidden = true;
+    elCard.hidden = false;
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
