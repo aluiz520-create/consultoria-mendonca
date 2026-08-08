@@ -6,16 +6,36 @@ enquanto mora nesta pasta.
 
 ```
 site-dinheiro/
-├── index.html                    a ferramenta
+├── index.html                    a ferramenta principal (diagnóstico da casa)
+├── qual-divida-pagar-primeiro/   calculadora avalanche x bola de neve
+├── juros-do-cartao-de-credito/   o que o rotativo vira em 3, 6 e 12 meses
+├── quanto-posso-gastar-ganhando/ tetos por faixa de renda + piso do DIEESE
+├── como-sair-das-dividas/        pilar: as 5 decisões, na ordem
 ├── quanto-precisa-ganhar/        artigo de SEO (piso do DIEESE)
 ├── estilo.css                    CSS próprio, com a fonte de título embutida em base64
-├── app.js                        toda a lógica do diagnóstico
-├── robots.txt                    pronto para quando estiver em domínio próprio
+├── app.js                        lógica do diagnóstico da página inicial
+├── medir.js                      medição, compartilhada por todas as páginas
+├── capa.png                      imagem de compartilhamento (Open Graph, 1200×630)
+├── robots.txt                    vale quando o site estiver em domínio próprio
 └── sitemap.xml                   idem
 ```
 
 **Nenhum arquivo aponta para fora da pasta.** Isso é de propósito: mover o site é copiar a
-pasta, não reescrever.
+pasta, não reescrever. As únicas URLs absolutas estão nas tags `canonical`/`og:url` de cada
+página, no `sitemap.xml` e no `robots.txt` — é a lista de troca ao migrar de domínio.
+
+### Como as páginas se ligam
+
+Toda página aponta para a ferramenta principal e para pelo menos duas irmãs, pelo bloco
+`.trilhos`. Nenhuma página é órfã — há um teste disso no relatório de tráfego.
+
+```
+                    ┌─ qual-divida-pagar-primeiro/ ─┐
+index.html ─────────┼─ juros-do-cartao-de-credito/ ─┼──→ plano de R$ 19,90
+(diagnóstico)       ├─ quanto-posso-gastar-ganhando/│
+                    ├─ como-sair-das-dividas/ ──────┘
+                    └─ quanto-precisa-ganhar/
+```
 
 ---
 
@@ -48,41 +68,54 @@ qualquer endereço sem edição.
 
 ## O que você precisa configurar
 
-Tudo fica no topo do `app.js`, em três linhas:
+### 1. Medição — `medir.js`
+
+A medição está **ligada** desde 08/08/2026, em uma linha só no topo de `medir.js`:
 
 ```js
-var ID_ANALYTICS = "";   // ex.: "G-XXXXXXXXXX"
-var CHECKOUT     = "";   // link de checkout do plano de R$ 19,90
-var WHATSAPP     = "";   // ex.: "5564999999999"
+var ID_ANALYTICS = "G-GQLS60YM9Y";
 ```
 
-### 1. `ID_ANALYTICS` — medição
+⚠️ **Isto contraria a decisão original de não reaproveitar a propriedade da consultoria**, e a
+troca foi consciente: a alternativa era continuar sem nenhum dado. Sem medição não dá para
+saber se alguém chega, se alguém usa e se alguém compra — e sem isso não há o que otimizar.
 
-Vazio significa **nenhuma medição** e nenhum script de terceiro carregado.
+A separação dos dados está garantida de duas formas: todas as páginas vivem sob
+`/site-dinheiro/`, então filtrar por caminho de página isola o projeto em qualquer relatório;
+e o `config` manda `content_group: "site-dinheiro"`, que aparece como dimensão no GA4.
 
-Crie uma propriedade **nova** no Google Analytics para este site (não reaproveite a da
-consultoria — misturar os dados atrapalha a leitura dos dois). Cole o `G-...` aqui.
+**Quando existir uma propriedade dedicada**, troque só essa linha. Nada mais muda.
 
-Eventos que passam a ser registrados:
+Eventos registrados:
 
-| Evento | Quando | Para que serve |
+| Evento | Página | Para que serve |
 |---|---|---|
-| `diagnostico_pronto` | resultado aparece | taxa de conclusão, e **quantos fecham no vermelho** |
-| `copiou_diagnostico` | copia o resultado | utilidade real |
-| `compartilhou` | manda pra alguém | é o motor de crescimento deste projeto |
-| `clique_plano` | clica no plano pago | intenção de compra |
+| `comecou_diagnostico` | inicial | primeiro campo preenchido — degrau entre visita e uso |
+| `diagnostico_pronto` | inicial | taxa de conclusão, e **quantos fecham no vermelho** |
+| `copiou_diagnostico` | inicial | utilidade real |
+| `compartilhou` | inicial | é o motor de crescimento deste projeto |
+| `plano_dividas_pronto` | qual dívida pagar primeiro | uso da segunda ferramenta |
+| `copiou_plano_dividas` | qual dívida pagar primeiro | utilidade real |
+| `rotativo_calculado` | juros do cartão | uso da terceira ferramenta |
+| `tetos_calculados` | quanto posso gastar | uso da quarta ferramenta |
+| `escolheu_faixa` | quanto posso gastar | qual faixa de renda o público tem |
+| `clique_plano` | todas | intenção de compra, com `origem` para saber qual página vende |
+| `rolagem` | todas | 25/50/75/100% — separa quem leu de quem bateu e saiu |
 
 O `diagnostico_pronto` carrega `situacao`, `dia_que_acaba`, `pessoas` e `comprometimento`. É
 o dado que responde a pergunta que decide o futuro do projeto: **existe alguém aqui com
 capacidade de pagar?**
 
-### 2. `CHECKOUT` e `WHATSAPP` — o plano pago
+Nenhum evento carrega valor digitado: só faixas, contagens e classificações.
+
+### 2. `CHECKOUT` — o plano pago
+
+O link do checkout está repetido no topo de `app.js`, de `qual-divida-pagar-primeiro/dividas.js`
+e no script embutido de `como-sair-das-dividas/`. Se ele mudar, troque nos três — esvaziar
+qualquer um deles devolve o botão ao estado *"Plano completo em breve"*, desabilitado.
 
 ⚠️ **Não preencha `CHECKOUT` antes de o conteúdo do plano existir de verdade.**
-
-Enquanto as duas linhas estiverem vazias, o botão do plano fica desabilitado e escrito
-*"Plano completo em breve"*. Ninguém consegue pagar por algo que não existe — e é assim que
-deve ficar até o material estar escrito.
+Ninguém deve conseguir pagar por algo que não existe.
 
 O plano de 90 dias prometido na página **já foi escrito** (08/08/2026). São dois arquivos,
 entregues ao proprietário fora do Git porque este repositório é público:

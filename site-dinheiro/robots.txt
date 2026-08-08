@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
-# Troque pelo endereco real quando o site estiver em dominio proprio.
-Sitemap: https://SEU-DOMINIO/sitemap.xml
+# Atenção: em GitHub Pages de projeto, o Google só lê o robots.txt da raiz do
+# domínio (aluiz520-create.github.io/robots.txt). Este arquivo só passa a valer
+# quando o site estiver em domínio próprio — até lá, quem vale é o robots.txt da
+# raiz do repositório, que já aponta para o sitemap que inclui estas páginas.
+Sitemap: https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/sitemap.xml

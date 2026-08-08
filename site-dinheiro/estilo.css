@@ -352,3 +352,74 @@ body.sem-barra{padding-bottom:0}
 @media (min-width:480px){
   .caixa-valor{flex:0 0 148px}
 }
+
+/* ---------- Trilhos de navegação interna ---------- */
+.trilhos{display:grid;gap:10px;margin:16px 0 8px}
+.trilhos a{
+  display:block;padding:15px 16px;border-radius:var(--raio-p);
+  background:var(--carta);border:1px solid var(--linha);border-left:3px solid var(--ameixa);
+  text-decoration:none;color:inherit;transition:border-color .15s,transform .15s
+}
+.trilhos a:hover,.trilhos a:focus-visible{border-left-color:var(--ambar);transform:translateX(2px)}
+.trilhos b{display:block;font-weight:700;color:var(--tinta);margin-bottom:3px}
+.trilhos span{display:block;font-size:.88rem;color:var(--suave);line-height:1.45}
+
+/* ---------- Migalhas ---------- */
+.migalhas{font-size:.8rem;color:var(--suave);margin-bottom:14px}
+.migalhas a{color:var(--ameixa)}
+.migalhas span{opacity:.6;margin:0 5px}
+
+/* ---------- Linhas de entrada repetíveis (dívidas) ---------- */
+.divida{
+  display:grid;grid-template-columns:1fr;gap:8px;padding:14px;margin-bottom:10px;
+  background:var(--carta);border:1px solid var(--linha);border-radius:var(--raio-p)
+}
+.divida-topo{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.divida-topo b{font-size:.9rem;color:var(--suave);font-weight:700}
+.divida-remover{
+  background:none;border:none;color:var(--ruim);font-size:.82rem;
+  cursor:pointer;padding:4px 6px;border-radius:6px
+}
+.divida-remover:hover{background:var(--ruim-fundo)}
+.divida-campos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.divida-campos .campo{display:flex;flex-direction:column;gap:4px}
+.divida-campos label{font-size:.76rem;color:var(--suave)}
+.divida-nome{grid-column:1/-1}
+.divida input{
+  width:100%;padding:10px 12px;font-size:1rem;font-family:inherit;
+  background:var(--papel);color:var(--tinta);
+  border:1px solid var(--linha);border-radius:8px
+}
+.divida input:focus{outline:2px solid var(--ameixa);outline-offset:1px}
+
+/* ---------- Ordem de quitação ---------- */
+.ordem{counter-reset:passo;margin:12px 0 0;padding:0;list-style:none}
+.ordem li{
+  counter-increment:passo;position:relative;padding:12px 12px 12px 46px;
+  border-bottom:1px solid var(--linha)
+}
+.ordem li:last-child{border-bottom:none}
+.ordem li::before{
+  content:counter(passo);position:absolute;left:10px;top:12px;
+  width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  background:var(--ameixa);color:#fff;font-size:.82rem;font-weight:700
+}
+.ordem b{display:block;color:var(--tinta)}
+.ordem span{display:block;font-size:.86rem;color:var(--suave);margin-top:2px}
+
+/* ---------- Comparação de dois métodos ---------- */
+.duelo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.duelo .lado{padding:14px;border-radius:var(--raio-p);background:var(--carta);border:1px solid var(--linha)}
+.duelo .lado.vence{border-color:var(--bom);background:var(--bom-fundo)}
+.duelo .lado p.rot{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);margin-bottom:6px}
+.duelo .lado .val{font-family:'Titulo',system-ui,sans-serif;font-weight:900;font-size:1.3rem;color:var(--tinta)}
+.duelo .lado small{display:block;font-size:.8rem;color:var(--suave);margin-top:4px}
+@media (max-width:420px){.duelo{grid-template-columns:1fr}.divida-campos{grid-template-columns:1fr}}
+
+/* ---------- Seletor de faixa (renda) ---------- */
+.faixas{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.faixas button{
+  padding:9px 14px;border-radius:999px;font-size:.92rem;font-family:inherit;cursor:pointer;
+  background:var(--carta);color:var(--tinta);border:1px solid var(--linha)
+}
+.faixas button[aria-pressed="true"]{background:var(--ameixa);color:#fff;border-color:var(--ameixa)}

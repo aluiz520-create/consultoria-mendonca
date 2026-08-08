@@ -7,8 +7,7 @@
 
   /* ---------- Configuração do proprietário ---------- */
 
-  // Medição. Deixe vazio para não medir nada.
-  var ID_ANALYTICS = "";
+  // A medição vive em medir.js, carregado antes deste arquivo em todas as páginas.
 
   // Checkout do plano de R$ 19,90 — ativo desde 08/08/2026.
   // O produto existe: PDF de 9 páginas + planilha de 3 abas, entregues pela Kiwify.
@@ -71,7 +70,7 @@
   /* ---------- Utilidades ---------- */
 
   function medir(nome, params) {
-    if (typeof window.gtag === "function") window.gtag("event", nome, params || {});
+    if (typeof window.medir === "function") window.medir(nome, params);
   }
 
   // O ponto é ambíguo em pt-BR: em "1.800" é milhar, em "1200.50" é decimal.
@@ -459,16 +458,14 @@
   atualizarContadores();
   calcular();
 
-  /* ---------- Medição opcional ---------- */
-
-  if (ID_ANALYTICS) {
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID_ANALYTICS;
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag("js", new Date());
-    window.gtag("config", ID_ANALYTICS);
-  }
+  /* Primeiro campo preenchido: separa quem tentou usar de quem só olhou.
+     É o degrau do funil entre "visita" e "diagnóstico pronto". */
+  var jaComecou = false;
+  elRendas.concat(elGastos).forEach(function (el) {
+    el.addEventListener("input", function () {
+      if (jaComecou || numero(el.value) <= 0) return;
+      jaComecou = true;
+      medir("comecou_diagnostico");
+    });
+  });
 })();

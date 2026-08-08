@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Troque SEU-DOMINIO pelo endereco real quando o site estiver em dominio proprio. -->
+<!-- Endereço público atual. Ao migrar para domínio próprio, troque o prefixo aqui,
+     no robots.txt e nas tags <link rel="canonical"> de cada página. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://SEU-DOMINIO/</loc>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/</loc>
     <lastmod>2026-08-08</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://SEU-DOMINIO/quanto-precisa-ganhar/</loc>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/qual-divida-pagar-primeiro/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/juros-do-cartao-de-credito/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/quanto-posso-gastar-ganhando/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/como-sair-das-dividas/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/quanto-precisa-ganhar/</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
