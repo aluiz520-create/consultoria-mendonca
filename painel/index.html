@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel do Proprietário — Consultoria Mendonça</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
+<style>
+  .painel-head { max-width: 860px; margin: 0 auto 28px; text-align: center; }
+  .painel-head h1 { font-size: 1.9rem; margin-bottom: 8px; }
+  .painel-fonte { font-size: .84rem; color: var(--muted); }
+  .painel-bloco { max-width: 900px; margin: 0 auto 36px; }
+  .painel-bloco > h2 {
+    font-size: .82rem; text-transform: uppercase; letter-spacing: .12em;
+    text-align: left; color: var(--muted); border-bottom: 1px solid var(--border);
+    padding-bottom: 8px; margin-bottom: 18px;
+  }
+  .painel-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+  .painel-item {
+    background: #fff; border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 16px; text-align: center;
+  }
+  .painel-num { font-size: 1.8rem; font-weight: 700; color: var(--green-900); line-height: 1.2; }
+  .painel-num.vazio { color: #b9b2a2; font-weight: 400; }
+  .painel-num.alerta { color: #b3402c; }
+  .painel-rot { font-size: .8rem; color: var(--muted); margin-top: 5px; }
+  .painel-nota {
+    background: #fff8e6; border: 1px solid var(--gold-500); border-radius: var(--radius);
+    padding: 14px 18px; font-size: .88rem; color: var(--ink); margin-top: 14px;
+  }
+  .painel-tabela { width: 100%; border-collapse: collapse; background: #fff;
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .painel-tabela th { background: var(--green-900); color: #fff; padding: 10px 14px; text-align: left; font-size: .85rem; }
+  .painel-tabela td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--muted); font-size: .92rem; }
+  .painel-tabela tr:last-child td { border-bottom: none; }
+  .meta-linha { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+  .meta-nome { flex: 0 0 130px; font-weight: 700; color: var(--green-900); font-size: .92rem; }
+  .meta-barra { flex: 1; height: 10px; background: #e9e3d5; border-radius: 999px; overflow: hidden; }
+  .meta-preenchida { height: 100%; background: var(--green-600); }
+  .meta-valor { flex: 0 0 110px; text-align: right; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html#top" class="logo">
+      <img src="../assets/logo-simbolo.png" alt="" class="logo-icon">
+      <span class="logo-text">Consultoria <span class="accent">Mendonça</span></span>
+    </a>
+    <nav class="nav"><a href="../index.html">Site</a><a href="../obrigado-ibs-cbs/">Ferramenta</a></nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div class="painel-head">
+      <h1>Painel do proprietário</h1>
+      <p class="painel-fonte" id="painelFonte">carregando…</p>
+    </div>
+    <div id="painelConteudo"></div>
+    <noscript><p style="text-align:center">Este painel precisa de JavaScript para ler os dados.</p></noscript>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container"><p>© <span id="year"></span> Consultoria Mendonça</p></div>
+</footer>
+
+<script src="../script.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var alvo = document.getElementById("painelConteudo");
+
+  // Um valor ausente é mostrado como "—", nunca como zero.
+  // Zero medido e "não medido" são coisas diferentes e o painel precisa distinguir.
+  function num(valor, prefixo) {
+    if (valor === null || valor === undefined) {
+      return '<div class="painel-num vazio">—</div>';
+    }
+    var classe = valor === 0 ? "painel-num alerta" : "painel-num";
+    var texto = (prefixo || "") + valor.toLocaleString("pt-BR");
+    return '<div class="' + classe + '">' + texto + "</div>";
+  }
+
+  function item(valor, rotulo, prefixo) {
+    return '<div class="painel-item">' + num(valor, prefixo) +
+           '<div class="painel-rot">' + rotulo + "</div></div>";
+  }
+
+  function escapar(texto) {
+    var d = document.createElement("div");
+    d.textContent = texto;
+    return d.innerHTML;
+  }
+
+  function render(d) {
+    document.getElementById("painelFonte").textContent =
+      "Atualizado em " + d.atualizado_em + " · " + d.fonte;
+
+    var html = "";
+
+    // ---- NEGÓCIO ----
+    var n = d.negocio;
+    html += '<div class="painel-bloco"><h2>Negócio · ' + escapar(n.periodo_referencia) + "</h2>";
+    html += '<div class="painel-grade">';
+    html += item(n.visitantes, "Visitantes");
+    html += item(n.sessoes, "Sessões");
+    html += item(n.paginas_vistas, "Páginas vistas");
+    html += item(n.leads, "Leads");
+    html += item(n.vendas, "Vendas");
+    html += item(n.receita, "Receita", "R$ ");
+    html += item(n.taxa_conversao, "Conversão");
+    html += item(n.ticket_medio, "Ticket médio", "R$ ");
+    html += item(n.receita_acumulada, "Receita acumulada", "R$ ");
+    html += "</div>";
+    html += '<div class="painel-nota"><strong>Leads:</strong> ' + escapar(n.observacao_leads) +
+            "<br><strong>Vendas:</strong> " + escapar(n.observacao_vendas) + "</div></div>";
+
+    // ---- AQUISIÇÃO ----
+    html += '<div class="painel-bloco"><h2>Aquisição — de onde vem o tráfego</h2>';
+    html += '<table class="painel-tabela"><thead><tr><th>Canal</th><th>Sessões</th><th>Usuários</th></tr></thead><tbody>';
+    d.aquisicao.forEach(function (c) {
+      html += "<tr><td>" + escapar(c.canal) + "</td><td>" + c.sessoes + "</td><td>" + c.usuarios + "</td></tr>";
+    });
+    html += "</tbody></table></div>";
+
+    // ---- PRODUTO ----
+    var p = d.produto;
+    html += '<div class="painel-bloco"><h2>Produto</h2>';
+    html += '<table class="painel-tabela"><tbody>';
+    html += "<tr><td><strong>Página mais acessada</strong></td><td>" +
+            escapar(p.pagina_mais_acessada.pagina) + " — " + p.pagina_mais_acessada.visualizacoes + " visualizações</td></tr>";
+    html += "<tr><td><strong>Ferramenta mais usada</strong></td><td>" +
+            (p.ferramenta_mais_usada ? escapar(p.ferramenta_mais_usada) : "— sem dados") + "</td></tr>";
+    html += "<tr><td><strong>Oferta mais vendida</strong></td><td>" +
+            (p.oferta_mais_vendida ? escapar(p.oferta_mais_vendida) : "— nenhuma venda ainda") + "</td></tr>";
+    html += "<tr><td><strong>Taxa de abandono</strong></td><td>" +
+            (p.taxa_abandono !== null ? p.taxa_abandono : "— sem amostra") + "</td></tr>";
+    html += "</tbody></table>";
+    html += '<div class="painel-nota">' + escapar(p.observacao) + "</div></div>";
+
+    // ---- INSTAGRAM ----
+    var i = d.instagram;
+    html += '<div class="painel-bloco"><h2>Instagram — @controllerdoagro</h2><div class="painel-grade">';
+    html += item(i.seguidores, "Seguidores");
+    html += item(i.posts_publicados, "Posts publicados");
+    html += item(i.dias_sem_publicar, "Dias sem publicar");
+    html += item(i.alcance_ultimo_dia, "Alcance no último dia");
+    html += item(i.cliques_no_link_30d, "Cliques no link (30d)");
+    html += item(i.salvamentos_30d, "Salvamentos (30d)");
+    html += item(i.compartilhamentos_30d, "Compartilhamentos (30d)");
+    html += "</div></div>";
+
+    // ---- METAS ----
+    html += '<div class="painel-bloco"><h2>Metas</h2>';
+    d.metas.forEach(function (m) {
+      var pct = m.alvo > 0 ? Math.min(100, (m.atual / m.alvo) * 100) : 0;
+      var valor = m.unidade === "reais"
+        ? "R$ " + m.atual.toLocaleString("pt-BR") + " / R$ " + m.alvo.toLocaleString("pt-BR")
+        : m.atual + " / " + m.alvo;
+      html += '<div class="meta-linha"><div class="meta-nome">' + escapar(m.marco) + "</div>" +
+              '<div class="meta-barra"><div class="meta-preenchida" style="width:' + pct + '%"></div></div>' +
+              '<div class="meta-valor">' + valor + "</div></div>";
+    });
+    html += "</div>";
+
+    alvo.innerHTML = html;
+  }
+
+  fetch("dados.json", { cache: "no-store" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(render)
+    .catch(function (erro) {
+      document.getElementById("painelFonte").textContent = "";
+      alvo.innerHTML = '<div class="painel-nota" style="max-width:640px;margin:0 auto">' +
+        "Não consegui carregar <code>dados.json</code> (" + escapar(erro.message) + "). " +
+        "Se você abriu este arquivo direto do disco, o navegador bloqueia a leitura — " +
+        "abra pela URL do site publicado.</div>";
+    });
+})();
+</script>
+</body>
+</html>

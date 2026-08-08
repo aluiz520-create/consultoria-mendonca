@@ -910,3 +910,126 @@ p { margin: 0 0 12px; color: var(--muted); }
 }
 .whats-float:hover { transform: scale(1.08); }
 @media (max-width: 520px) { .whats-float { width: 50px; height: 50px; font-size: 1.4rem; } }
+
+/* --- Ferramenta "Você já está obrigado ao IBS/CBS?" --- */
+.tool-meta {
+  font-size: .9rem;
+  color: var(--muted);
+  letter-spacing: .02em;
+  margin-bottom: 0;
+}
+.quiz-options-stack {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+.quiz-option-choice {
+  flex: 1 1 auto;
+  max-width: none;
+  background: #fff;
+  border-color: var(--border);
+  color: var(--green-900);
+  font-size: 1.02rem;
+  padding: 15px 20px;
+  text-align: left;
+}
+.quiz-option-choice:hover {
+  background: #f1ece0;
+  border-color: var(--green-600);
+}
+.tool-back {
+  margin-top: 18px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: .9rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.tool-back:hover { color: var(--green-700); }
+.tool-deadline {
+  display: inline-block;
+  margin: 0 auto 14px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: var(--green-900);
+  color: #fff;
+  font-weight: 700;
+  font-size: .92rem;
+}
+.tool-roteiro {
+  margin: 28px 0 0;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--cream);
+  text-align: left;
+}
+.tool-roteiro h3 { font-size: 1.15rem; margin-bottom: 4px; }
+.tool-roteiro-sub { font-size: .92rem; margin-bottom: 14px; }
+.tool-roteiro ol { margin: 0 0 18px; padding-left: 20px; }
+.tool-roteiro li { color: var(--muted); margin-bottom: 9px; }
+.tool-oferta {
+  margin-top: 24px;
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+  color: #fff;
+  text-align: center;
+}
+.tool-oferta h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+.tool-oferta p { color: rgba(255,255,255,.88); }
+.tool-oferta-kicker {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--gold-500) !important;
+  margin-bottom: 6px;
+}
+.tool-oferta-preco {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-500) !important;
+  margin: 16px 0 18px;
+}
+.tool-aviso {
+  margin: 22px auto 0;
+  max-width: 560px;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.tool-explica {
+  margin-top: 56px;
+}
+
+/* --- Tabelas dentro de artigos --- */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: .95rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.article-body th,
+.article-body td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.article-body th {
+  background: var(--green-900);
+  color: #fff;
+  font-weight: 700;
+}
+.article-body td { color: var(--muted); }
+.article-body tbody tr:last-child td { border-bottom: none; }
+.article-body tbody tr:nth-child(even) td { background: #faf7f0; }
+@media (max-width: 620px) {
+  .article-body table { display: block; overflow-x: auto; white-space: nowrap; }
+}

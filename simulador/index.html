@@ -63,6 +63,15 @@
       <h2 class="quiz-result-title" id="quizResultTitle"></h2>
       <p class="quiz-result-desc" id="quizResultDesc"></p>
       <p class="quiz-score" id="quizResultScore"></p>
+
+      <div class="tool-oferta" id="quizOferta" hidden>
+        <p class="tool-oferta-kicker">O primeiro passo, hoje mesmo</p>
+        <h3>Guia Anti-Rejeição — IBS/CBS na nota do agro</h3>
+        <p>A ordem exata de conferência antes de emitir, as causas de rejeição traduzidas do
+        &ldquo;fiscalês&rdquo;, a folha imprimível e o calendário até janeiro de 2027.</p>
+        <p class="tool-oferta-preco">R$ 29 &middot; entrega imediata</p>
+        <a href="../produtos/guia-anti-rejeicao/" class="btn btn-primary" id="quizOfertaBtn">Quero o guia</a>
+      </div>
       <div class="quiz-result-actions">
         <a id="quizWhatsappBtn" class="btn btn-whatsapp" target="_blank" rel="noopener">Quero o diagnóstico completo no WhatsApp</a>
         <button type="button" class="btn btn-outline" id="quizRestartBtn">Refazer o simulador</button>
@@ -146,6 +155,11 @@
     const mensagem = `Olá! Fiz o simulador de prontidão fiscal e meu resultado foi: ${resultado.mensagem} (${pontuacao}/${pontuacaoMaxima} pontos). Quero saber mais.`;
     document.getElementById("quizWhatsappBtn").href = `https://wa.me/5564992226766?text=${encodeURIComponent(mensagem)}`;
 
+    // A oferta só aparece para quem o resultado apontou lacuna real.
+    // Quem pontuou alto não tem a dor — oferecer ali só queima a confiança.
+    const temLacuna = pontuacao < 9;
+    document.getElementById("quizOferta").hidden = !temLacuna;
+
     quizCard.hidden = true;
     quizResult.hidden = false;
 
@@ -156,6 +170,9 @@
         pontuacao_maxima: pontuacaoMaxima,
         resultado: resultado.titulo,
       });
+      if (temLacuna) {
+        gtag("event", "oferta_exibida", { origem: "simulador", pontuacao: pontuacao });
+      }
     }
   }
 
@@ -171,6 +188,13 @@
     } else {
       quizProgressBar.style.width = "100%";
       mostrarResultado();
+    }
+  });
+
+  // GA4: clique na oferta de baixo ticket (o degrau que faltava no funil)
+  document.getElementById("quizOfertaBtn").addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "clique_oferta_guia", { origem: "simulador", preco: 29, pontuacao: pontuacao });
     }
   });
 
