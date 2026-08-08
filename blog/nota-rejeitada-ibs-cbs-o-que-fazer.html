@@ -6,7 +6,7 @@
 <script async src="../assets/ga.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nota Fiscal Rejeitada por Causa do IBS/CBS: O Que Fazer | Consultoria Mendonça</title>
-<meta name="description" content="Nota rejeitada quase nunca é erro de digitação — é parametrização. Entenda como ler a mensagem de rejeição e a ordem certa de conferir: NCM, CST, cClassTrib, CFOP e cBenef.">
+<meta name="description" content="As validações de IBS/CBS foram adiadas em 31/07/2026: a nota passa mesmo com campo errado. Entenda por que isso não é folga e a ordem certa de conferir NCM, CST, cClassTrib, CFOP e cBenef.">
 <link rel="canonical" href="https://aluiz520-create.github.io/consultoria-mendonca/blog/nota-rejeitada-ibs-cbs-o-que-fazer.html">
 <link rel="stylesheet" href="../styles.css">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
@@ -17,7 +17,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Consultoria Mendonça">
 <meta property="og:title" content="Nota fiscal rejeitada por causa do IBS/CBS: o que fazer">
-<meta property="og:description" content="Se rejeitou duas vezes no mesmo produto, pare de corrigir a nota. O problema está atrás dela.">
+<meta property="og:description" content="As validações foram adiadas. Sua nota passa — com o dado errado dentro. Por que isso cobra depois.">
 <meta property="og:url" content="https://aluiz520-create.github.io/consultoria-mendonca/blog/nota-rejeitada-ibs-cbs-o-que-fazer.html">
 <meta property="og:image" content="https://aluiz520-create.github.io/consultoria-mendonca/assets/banner-photo.png">
 
@@ -61,9 +61,27 @@
     </div>
 
     <div class="article-body">
-      <p>Rejeição de nota não é multa. É pior no dia a dia: <strong>é o caminhão parado na
-      balança.</strong> A carga não sai, o comprador não recebe, o pagamento não entra. E, quando
-      a causa é a que quase sempre é, o problema volta na próxima nota.</p>
+      <div class="article-note">
+        <p><strong>Atualização de 08/08/2026 — leia antes do resto.</strong> O
+        <strong>Ato Técnico Conjunto CGIBS/RFB nº 1, de 31/07/2026</strong> adiou o início das
+        regras de validação de IBS e CBS. Na prática: <strong>a ausência desses campos não gera
+        rejeição automática hoje.</strong> A obrigação de preenchê-los continua valendo — a Receita
+        Federal e o CGIBS afirmaram que o cronograma permanece integralmente válido. O que foi
+        adiado é a régua, não a regra.</p>
+      </div>
+
+      <p>Então, se a sua nota <em>está</em> sendo rejeitada agora, a causa é outra — e este artigo
+      serve justamente para achar qual. E se ela <em>não</em> está sendo rejeitada, ele serve para
+      um problema mais silencioso: <strong>nota autorizada não é nota certa.</strong></p>
+
+      <h2>Passar não é o mesmo que estar certo</h2>
+      <p>Com as validações desligadas, uma nota com CST ou cClassTrib errado <strong>é autorizada do
+      mesmo jeito</strong>. Não trava nada hoje. Só que o dado errado entra na sua escrituração — e
+      entra no crédito de quem comprou de você.</p>
+      <p>É por aí que a cobrança costuma chegar primeiro: pela trading, pela cooperativa ou pelo
+      comprador grande que precisa do documento correto para se creditar. Esse não espera a
+      validação ligar. E quando ela ligar, quem usou a janela continua emitindo; quem entendeu
+      &ldquo;cancelado&rdquo; descobre tudo de uma vez.</p>
 
       <h2>A primeira coisa a entender: digitação × parametrização</h2>
       <p>Existem dois tipos de erro, e eles se comportam de forma completamente diferente:</p>
@@ -77,15 +95,19 @@
       <p><strong>Regra prática:</strong> rejeitou duas vezes no mesmo produto ou na mesma operação?
       Pare de corrigir a nota. O problema está atrás dela.</p>
 
-      <h2>Por que o novo modelo rejeita mais</h2>
+      <h2>O par que derruba a nota quando a régua liga</h2>
       <p>Além do que já carregava, a nota agora precisa informar <em>como aquela operação se
       classifica</em> perante o IBS e a CBS. Isso aparece em dois campos que precisam conversar
       entre si: o <strong>CST</strong>, que indica a situação tributária, e o
       <strong>cClassTrib</strong>, que detalha qual regra daquela situação se aplica.</p>
 
-      <p>E aqui está o detalhe que derruba a maioria das notas: <strong>não basta cada campo estar
-      certo isoladamente — o par precisa ser válido.</strong> A validação testa a combinação. Um
-      CST correto com um cClassTrib incompatível é rejeição na certa.</p>
+      <p>E aqui está o detalhe: <strong>não basta cada campo estar certo isoladamente — o par
+      precisa ser válido.</strong> A validação testa a combinação, e a incompatibilidade mais
+      comum é o cClassTrib cujos primeiros dígitos não batem com o CST informado — assinatura de
+      ERP parametrizado às pressas.</p>
+
+      <p>Com as validações adiadas, esse par errado <strong>não derruba a nota hoje</strong>. Ele só
+      fica gravado, repetindo em toda emissão, esperando o dia em que a régua ligar.</p>
 
       <h2>A ordem de conferência</h2>
       <p>A sequência importa. Conferir fora de ordem é o motivo mais comum de alguém “conferir
