@@ -26,6 +26,22 @@
   var EQ_ADULTO_EXTRA = 0.5;
   var EQ_CRIANCA = 0.3;
 
+  /* Piso oficial — metodologia do DIEESE.
+     O instituto calcula o salário mínimo necessário como:
+       cesta básica mais cara entre as capitais × 3 (alimentação = 1/3 do orçamento, art. 7º da
+       Constituição) × adultos-equivalentes, contando cada criança como 0,4 de adulto.
+     A família de referência é 2 adultos + 2 crianças, ou seja 2,8 equivalentes.
+     Ancoramos no número publicado para que a família de referência devolva exatamente ele.
+     Para atualizar: troque os três valores abaixo quando sair a pesquisa do mês. */
+  var DIEESE = {
+    mes: "junho de 2026",
+    necessario_familia_referencia: 8110.92,
+    equivalentes_referencia: 2.8,
+    cesta_media_capitais: 779.95
+  };
+  var DIEESE_POR_EQUIVALENTE = DIEESE.necessario_familia_referencia / DIEESE.equivalentes_referencia;
+  var EQ_CRIANCA_DIEESE = 0.4;
+
   // Referências de planejamento, em % da renda da casa. Bússola, não regra.
   var REFERENCIA = {
     "Moradia": 30,
@@ -245,6 +261,18 @@
         ((diferenca / renda) * 100).toFixed(0) + "% de aumento."
       : "A casa já recebe isso. A folga existe; falta destino para ela.";
 
+    /* --- Piso oficial do DIEESE para esta composição de casa --- */
+    var eqDieese = casa.adultos + EQ_CRIANCA_DIEESE * (casa.pequenas + casa.grandes);
+    var pisoDieese = DIEESE_POR_EQUIVALENTE * eqDieese;
+    document.getElementById("fDieese").textContent = BRL.format(pisoDieese);
+    document.getElementById("fDieeseMes").textContent = DIEESE.mes;
+
+    var faltaPiso = pisoDieese - renda;
+    document.getElementById("fDieeseNota").textContent = faltaPiso > 0
+      ? "A casa recebe " + BRL.format(Math.abs(faltaPiso)) + " menos que esse piso — " +
+        ((renda / pisoDieese) * 100).toFixed(0) + "% dele."
+      : "A renda da casa já passa desse piso em " + BRL.format(Math.abs(faltaPiso)) + ".";
+
     /* --- Trilhas por grupo --- */
     var porGrupo = {};
     itens.forEach(function (i) {
@@ -356,6 +384,7 @@
     linhas.push(document.getElementById("rChapeu").textContent + " " +
       document.getElementById("rEstrela").textContent);
     linhas.push("Para sobrar 10%: " + document.getElementById("fPreciso").textContent);
+    linhas.push("Piso do DIEESE p/ esta casa: " + document.getElementById("fDieese").textContent);
     linhas.push("");
     linhas.push("Faça o seu: " + location.href.split("#")[0]);
     return linhas.join("\n");

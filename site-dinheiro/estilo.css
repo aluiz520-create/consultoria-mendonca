@@ -210,11 +210,16 @@ body{
 .calendario i.vazio{background:var(--linha);opacity:1}
 .calendario-leg{font-size:.76rem;color:var(--suave);text-align:center}
 
-.grade{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
-.grade.tres{grid-template-columns:1fr 1fr 1fr}
+/* minmax(0,...) evita o estouro de grade: com 1fr puro a largura minima do
+   conteudo pode passar da coluna e o cartao vaza para fora da tela. */
+.grade{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.grade.tres{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.grade.tres .ficha{padding:13px 9px}
+.grade.tres .val{font-size:1.12rem;letter-spacing:-.03em}
+.grade.tres .rot{font-size:.67rem;letter-spacing:.05em}
 .ficha{
   background:var(--carta);border:1px solid var(--linha);border-radius:var(--raio-p);
-  padding:15px 13px;box-shadow:var(--sombra)
+  padding:15px 13px;box-shadow:var(--sombra);min-width:0;overflow-wrap:anywhere
 }
 .ficha .rot{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);line-height:1.25}
 .ficha .val{
@@ -223,6 +228,13 @@ body{
 }
 .ficha .val.ambar{color:var(--ambar)} .ficha .val.ruim{color:var(--ruim)}
 .ficha p{font-size:.79rem;color:var(--suave);margin-top:5px;line-height:1.4}
+
+.ficha.oficial{border-left:4px solid var(--ameixa)}
+.fonte-oficial{
+  font-size:.75rem;color:var(--suave);margin-top:9px;line-height:1.45;
+  border-top:1px solid var(--linha);padding-top:8px
+}
+.fonte-oficial b{color:var(--tinta);font-weight:600}
 
 .trilha{margin-bottom:15px}
 .trilha-topo{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;margin-bottom:5px}
@@ -293,6 +305,24 @@ body{
 .artigo p{color:var(--suave);margin-bottom:12px;text-wrap:pretty}
 .artigo p strong{color:var(--tinta)}
 .pe{text-align:center;padding:40px 0 34px;color:var(--suave);font-size:.83rem}
+
+/* ---------- Tabelas de artigo ---------- */
+.artigo table{
+  width:100%;border-collapse:collapse;margin:16px 0 10px;font-size:.9rem;
+  background:var(--carta);border:1px solid var(--linha);border-radius:var(--raio-p);overflow:hidden
+}
+.artigo th,.artigo td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--linha)}
+.artigo th{background:var(--ameixa);color:#fff;font-size:.8rem;font-weight:700}
+.artigo td{color:var(--suave);font-variant-numeric:tabular-nums}
+.artigo td b{color:var(--tinta)}
+.artigo tbody tr:last-child td{border-bottom:none}
+.artigo ol,.artigo ul{margin:0 0 14px 20px;color:var(--suave)}
+.artigo li{margin-bottom:7px}
+.artigo li strong,.artigo li b{color:var(--tinta)}
+.rolagem{overflow-x:auto}
+
+/* Paginas sem a barra fixa nao precisam da folga de rodape */
+body.sem-barra{padding-bottom:0}
 
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}

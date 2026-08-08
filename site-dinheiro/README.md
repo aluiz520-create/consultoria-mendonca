@@ -6,11 +6,12 @@ enquanto mora nesta pasta.
 
 ```
 site-dinheiro/
-├── index.html     a ferramenta (única página)
-├── estilo.css     CSS próprio, com a fonte de título embutida em base64
-├── app.js         toda a lógica do diagnóstico
-├── robots.txt     pronto para quando estiver em domínio próprio
-└── sitemap.xml    idem
+├── index.html                    a ferramenta
+├── quanto-precisa-ganhar/        artigo de SEO (piso do DIEESE)
+├── estilo.css                    CSS próprio, com a fonte de título embutida em base64
+├── app.js                        toda a lógica do diagnóstico
+├── robots.txt                    pronto para quando estiver em domínio próprio
+└── sitemap.xml                   idem
 ```
 
 **Nenhum arquivo aponta para fora da pasta.** Isso é de propósito: mover o site é copiar a
@@ -102,6 +103,36 @@ que eu escreva.
 | **Resto em fonte do sistema** | Em celular, velocidade é parte do produto |
 | **Tema claro e escuro** | Segue o aparelho da pessoa |
 | **Sem afiliado de crédito** | É a monetização óbvia do nicho e é lucrar com o problema que a ferramenta diz resolver. Fora de questão |
+
+### O piso oficial do DIEESE
+
+O diagnóstico compara os números da pessoa com o **salário mínimo necessário** calculado pelo
+DIEESE, aplicando a fórmula do próprio instituto:
+
+```
+piso = cesta básica mais cara entre as capitais × 3 × adultos-equivalentes
+       (cada adulto = 1 · cada criança = 0,4)
+```
+
+A família de referência do DIEESE é 2 adultos + 2 crianças = 2,8 equivalentes. Em **junho de
+2026** o instituto publicou **R$ 8.110,92**, e a fórmula reproduz esse valor a partir da cesta
+de São Paulo (R$ 965,47 × 3 × 2,8). Como a fórmula depende só da composição, o site calcula o
+piso para **qualquer** configuração de casa — o que o DIEESE não publica.
+
+**Para atualizar quando sair a pesquisa do mês**, mexa só no bloco `DIEESE` no topo do
+`app.js` e nos números citados no artigo `quanto-precisa-ganhar/`:
+
+```js
+var DIEESE = {
+  mes: "junho de 2026",
+  necessario_familia_referencia: 8110.92,
+  equivalentes_referencia: 2.8,
+  cesta_media_capitais: 779.95
+};
+```
+
+O valor por equivalente é derivado do número **publicado**, não recalculado da cesta — assim a
+família de referência devolve exatamente o número oficial, sem diferença de arredondamento.
 
 ### A conta do "dia em que o salário acaba"
 
