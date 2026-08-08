@@ -1,0 +1,206 @@
+palavra_chave,intencao,problema_real,publico,dificuldade_1a5,potencial_1a5,tipo_de_conteudo,pagina_alvo,cta_recomendado,status
+em que dia meu salario acaba,PROBLEMA,Nao sabe quanto tempo a renda cobre,Assalariado apertado,2,5,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+meu salario acaba antes do fim do mes,PROBLEMA,Falta dinheiro na ultima semana,Assalariado apertado,3,5,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+o salario nao dura ate o fim do mes o que fazer,PROBLEMA,Deficit mensal recorrente,Assalariado apertado,3,4,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+por que meu salario nunca sobra,PROBLEMA,Nao identifica o vilao do orcamento,Classe C,3,4,Artigo,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+para onde vai meu dinheiro,PROBLEMA,Falta visibilidade dos gastos,Geral,3,4,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+calculadora de gastos mensais,TRANSACAO,Quer uma ferramenta pronta,Geral,3,4,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+quanto minha familia gasta por mes,INFORMACAO,Quer se comparar,Familia,3,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+quanto gasto por pessoa por mes,INFORMACAO,Nao sabe o custo per capita,Familia,2,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+custo de vida por pessoa no brasil,INFORMACAO,Quer referencia,Geral,3,2,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto custa manter uma familia de 4 pessoas,INFORMACAO,Planejamento familiar,Familia,3,3,Artigo + tabela,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto custa manter uma familia de 3 pessoas,INFORMACAO,Planejamento familiar,Familia,2,3,Artigo + tabela,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto custa morar sozinho,INFORMACAO,Vai sair da casa dos pais,Jovem adulto,3,3,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto uma familia precisa ganhar para viver bem,INFORMACAO,Quer referencia oficial,Familia,3,3,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+salario minimo necessario dieese,INFORMACAO,Busca o dado oficial,Interessado em economia,3,2,Artigo + tabela,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+salario minimo ideal dieese 2026,INFORMACAO,Busca o dado do mes,Interessado em economia,3,2,Artigo atualizado,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto e o salario minimo necessario hoje,INFORMACAO,Busca o dado do mes,Geral,3,2,Artigo atualizado,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+cesta basica quanto custa 2026,INFORMACAO,Sente o preco da comida,Geral,4,2,Artigo atualizado,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto posso gastar ganhando 2000,PROBLEMA,Nao sabe os tetos da faixa,Renda baixa,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto posso gastar ganhando 2500,PROBLEMA,Nao sabe os tetos da faixa,Renda baixa,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto posso gastar ganhando 3000,PROBLEMA,Nao sabe os tetos da faixa,Classe C,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto posso gastar ganhando 4000,PROBLEMA,Nao sabe os tetos da faixa,Classe C,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto posso gastar ganhando 5000,PROBLEMA,Nao sabe os tetos da faixa,Classe media,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto posso gastar ganhando um salario minimo,PROBLEMA,Renda no piso,Renda baixa,3,3,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+como organizar salario de 2000,PROBLEMA,Nao consegue dividir,Renda baixa,3,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+como organizar salario de 2500,PROBLEMA,Nao consegue dividir,Renda baixa,3,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+como organizar salario de 3000,PROBLEMA,Nao consegue dividir,Classe C,3,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+como dividir o salario para pagar as contas,PROBLEMA,Contas maiores que a renda,Classe C,4,3,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+regra 50 30 20 funciona para renda baixa,PROBLEMA,Regra nao cabe no caso dele,Renda baixa,2,4,Artigo critico,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+50 30 20 nao da certo pra mim,PROBLEMA,Regra nao cabe no caso dele,Renda baixa,1,4,Artigo critico,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto do salario pode ir para o aluguel,PROBLEMA,Vai alugar e nao sabe o teto,Locatario,3,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto de aluguel posso pagar ganhando 3000,PROBLEMA,Decisao de moradia,Locatario,2,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto do salario pode ir para parcelas,PROBLEMA,Vai assumir credito,Classe C,3,5,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+qual o limite de comprometimento de renda,INFORMACAO,Vai pedir credito,Classe C,3,4,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto por cento do salario para mercado,PROBLEMA,Comida pesando demais,Familia,3,3,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+quanto gastar de mercado por mes para 4 pessoas,PROBLEMA,Comida pesando demais,Familia,3,3,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+qual divida pagar primeiro,PROBLEMA,Varias dividas ao mesmo tempo,Endividado,3,5,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+tenho varias dividas por onde comeco,PROBLEMA,Paralisia por excesso de dividas,Endividado,2,5,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+metodo bola de neve ou avalanche,INFORMACAO,Escolhendo estrategia,Endividado informado,3,4,Ferramenta comparativa,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+metodo avalanche dividas,INFORMACAO,Quer entender o metodo,Endividado informado,3,4,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+metodo bola de neve dividas,INFORMACAO,Quer entender o metodo,Endividado informado,3,4,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+calculadora para sair das dividas,TRANSACAO,Quer ferramenta pronta,Endividado,3,5,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+simulador de quitacao de dividas,TRANSACAO,Quer ver o prazo,Endividado,3,5,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+pagar a divida maior ou a menor primeiro,PROBLEMA,Duvida direta de ordem,Endividado,2,5,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+quanto tempo vou levar para quitar minhas dividas,PROBLEMA,Quer prazo realista,Endividado,2,4,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+como sair das dividas,PROBLEMA,Endividamento geral,Endividado,5,4,Pilar,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+como sair das dividas sozinho,PROBLEMA,Nao quer pagar consultoria,Endividado,3,4,Pilar,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+como sair das dividas ganhando pouco,PROBLEMA,Renda baixa e divida,Renda baixa endividada,3,5,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+como sair das dividas do cartao de credito,PROBLEMA,Divida concentrada no cartao,Endividado,4,5,Artigo + ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+como sair do vermelho,PROBLEMA,Conta negativa recorrente,Endividado,4,4,Pilar,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+por onde comecar a quitar dividas,PROBLEMA,Nao sabe a primeira acao,Endividado,3,5,Pilar,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+plano para sair das dividas em 90 dias,TRANSACAO,Quer plano estruturado,Endividado decidido,2,5,Oferta,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,PUBLICADA
+juros do cartao de credito quanto e,INFORMACAO,Nao sabe a taxa,Usuario de cartao,4,4,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+quanto vou pagar de juros no cartao,PROBLEMA,Ficou no rotativo,Endividado,3,5,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+calculadora juros rotativo cartao,TRANSACAO,Quer ferramenta pronta,Endividado,2,5,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+o que acontece se eu pagar so o minimo do cartao,PROBLEMA,Pagando minimo ha meses,Endividado,3,5,Ferramenta + artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+pagar o minimo do cartao e ruim,PROBLEMA,Duvida sobre a pratica,Usuario de cartao,3,4,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+rotativo do cartao como funciona,INFORMACAO,Nao entende o mecanismo,Usuario de cartao,4,3,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+quanto tempo posso ficar no rotativo,INFORMACAO,Quer saber o direito,Endividado,3,4,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+teto de juros do cartao de credito 100%,INFORMACAO,Quer saber o direito,Endividado informado,3,4,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+e melhor parcelar a fatura ou pagar o minimo,PROBLEMA,Decisao imediata,Endividado,2,5,Artigo + ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+parcelamento da fatura vale a pena,PROBLEMA,Decisao imediata,Endividado,3,5,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+divida de cartao de 5000 como pagar,PROBLEMA,Valor especifico,Endividado,2,5,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+divida de cartao de 10000 como pagar,PROBLEMA,Valor especifico,Endividado,2,5,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+divida de cartao de 3000 como pagar,PROBLEMA,Valor especifico,Endividado,2,5,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+juros de 14 por cento ao mes da quanto ao ano,INFORMACAO,Nao entende juros compostos,Endividado,2,4,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,PUBLICADA
+como converter juros ao mes para ao ano,INFORMACAO,Duvida de calculo,Geral,3,2,Artigo + ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+cheque especial juros quanto custa,PROBLEMA,Usando cheque especial,Endividado,4,4,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+como sair do cheque especial,PROBLEMA,Conta sempre negativa,Endividado,4,4,Artigo + ferramenta,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+vale a pena pegar emprestimo para pagar o cartao,PROBLEMA,Decisao de troca de divida,Endividado,3,5,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+trocar divida cara por barata como fazer,PROBLEMA,Decisao de troca de divida,Endividado informado,2,5,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+consignado vale a pena para quitar cartao,PROBLEMA,Decisao de troca de divida,Endividado com margem,3,5,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+como negociar divida com o banco,PROBLEMA,Vai ligar para o banco,Endividado,4,4,Artigo roteiro,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,PUBLICADA
+o que falar na negociacao de divida,PROBLEMA,Medo da ligacao,Endividado,2,5,Artigo roteiro,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,PUBLICADA
+qual desconto pedir na negociacao de divida,PROBLEMA,Nao sabe quanto pedir,Endividado,2,5,Artigo roteiro,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+acordo de divida vale a pena,PROBLEMA,Recebeu proposta,Endividado,3,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+proposta de acordo do banco e boa,PROBLEMA,Recebeu proposta,Endividado,2,5,Artigo + checklist,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+lei do superendividamento como funciona,INFORMACAO,Busca direito,Endividado informado,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+minimo existencial divida o que e,INFORMACAO,Busca direito,Endividado informado,3,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+lei 14181 o que garante ao consumidor,INFORMACAO,Busca direito,Endividado informado,3,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,PUBLICADA
+procon renegociacao de divida como funciona,PROBLEMA,Quer ajuda gratuita,Endividado,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+mutirao de renegociacao de dividas quando e,INFORMACAO,Aguarda oportunidade,Endividado,4,3,Artigo sazonal,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+nome negativado o que fazer,PROBLEMA,Nome sujo,Endividado,5,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+como limpar o nome sem pagar empresa,PROBLEMA,Desconfia de intermediario,Endividado,3,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+empresa que limpa nome e golpe,PROBLEMA,Recebeu oferta suspeita,Endividado,2,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida prescrita ainda preciso pagar,INFORMACAO,Divida antiga,Endividado,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de 5 anos caduca mesmo,INFORMACAO,Divida antiga,Endividado,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+quanto tempo a divida fica no serasa,INFORMACAO,Preocupado com registro,Endividado,5,2,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+como priorizar contas quando falta dinheiro,PROBLEMA,Nao da para pagar tudo,Endividado,2,5,Artigo + ferramenta,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+qual conta pagar primeiro quando falta dinheiro,PROBLEMA,Nao da para pagar tudo,Renda baixa,2,5,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+posso atrasar qual conta,PROBLEMA,Escolha de qual atrasar,Renda baixa,2,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+contas atrasadas por onde comecar,PROBLEMA,Varias contas em atraso,Endividado,3,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+o que acontece se eu atrasar a luz,INFORMACAO,Risco de corte,Renda baixa,4,2,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+como parar de gastar dinheiro a toa,PROBLEMA,Gasto impulsivo,Geral,4,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+por que nao consigo guardar dinheiro,PROBLEMA,Nunca sobra,Classe C,4,4,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+ganho bem mas nao sobra nada,PROBLEMA,Inflacao de estilo de vida,Classe media,3,4,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+aumentei de salario e continuo sem dinheiro,PROBLEMA,Inflacao de estilo de vida,Classe media,2,4,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como cortar gastos sem sofrer,PROBLEMA,Precisa cortar,Geral,4,3,Artigo,/site-dinheiro/,Comprar o plano,CRIAR
+onde cortar gastos primeiro,PROBLEMA,Nao sabe a ordem de corte,Endividado,3,5,Artigo + ferramenta,/site-dinheiro/,Comprar o plano,CRIAR
+quais assinaturas cancelar para economizar,PROBLEMA,Assinaturas esquecidas,Classe C,3,3,Artigo + checklist,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto da para economizar cortando delivery,PROBLEMA,Comida fora pesando,Jovem adulto,2,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto gasto por ano com delivery,PROBLEMA,Nao ve o acumulado,Jovem adulto,2,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto gasto por ano com cafe,INFORMACAO,Curiosidade de acumulado,Geral,2,2,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto gasto com cigarro por ano,INFORMACAO,Curiosidade de acumulado,Fumante,3,2,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto custa manter um carro por mes,PROBLEMA,Custo escondido do carro,Motorista,4,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+vale a pena ter carro ou usar aplicativo,PROBLEMA,Decisao de transporte,Urbano,4,3,Ferramenta comparativa,/site-dinheiro/,Fazer o diagnostico,CRIAR
+financiamento de carro vale a pena,PROBLEMA,Vai comprar carro,Classe C,4,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto de entrada preciso para financiar um carro,INFORMACAO,Vai comprar carro,Classe C,4,3,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+posso comprar um carro ganhando 3000,PROBLEMA,Decisao de compra grande,Classe C,3,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+posso financiar um imovel ganhando 3000,PROBLEMA,Decisao de compra grande,Classe C,4,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+aluguel ou financiamento o que compensa,PROBLEMA,Decisao de moradia,Classe C,4,3,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto preciso ganhar para financiar um apartamento,PROBLEMA,Decisao de moradia,Classe C,4,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto preciso ganhar para viver sozinho,PROBLEMA,Vai morar sozinho,Jovem adulto,3,3,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+quanto preciso ganhar para sustentar 2 filhos,PROBLEMA,Planejamento familiar,Familia,3,3,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+quanto custa criar um filho por mes,INFORMACAO,Planejamento familiar,Casal,4,3,Artigo + ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+quanto custa um bebe no primeiro ano,INFORMACAO,Planejamento familiar,Gestante,4,3,Artigo + ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+reserva de emergencia quanto preciso ter,INFORMACAO,Quer se proteger,Classe C,5,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como montar reserva de emergencia ganhando pouco,PROBLEMA,Nao sobra para guardar,Renda baixa,3,3,Artigo,/site-dinheiro/,Comprar o plano,CRIAR
+quanto guardar por mes ganhando 2000,PROBLEMA,Quer comecar a guardar,Renda baixa,3,3,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+como guardar dinheiro todo mes de verdade,PROBLEMA,Tenta e nao consegue,Classe C,4,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como fazer um orcamento domestico,INFORMACAO,Quer se organizar,Familia,5,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+planilha de gastos mensais gratis,TRANSACAO,Quer ferramenta pronta,Geral,5,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+controle financeiro pessoal por onde comecar,PROBLEMA,Nunca controlou,Geral,5,3,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+aplicativo ou planilha para controlar gastos,PROBLEMA,Escolhendo metodo,Geral,4,2,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como anotar gastos sem esquecer,PROBLEMA,Desiste de anotar,Geral,3,2,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+renda extra para pagar dividas,PROBLEMA,Renda insuficiente,Endividado,5,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+como aumentar a renda ganhando pouco,PROBLEMA,Renda insuficiente,Renda baixa,5,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+vender o que tenho para pagar divida vale a pena,PROBLEMA,Considera vender bens,Endividado,2,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+usar o fgts para pagar divida vale a pena,PROBLEMA,Tem FGTS disponivel,Trabalhador CLT,4,4,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+usar a reserva para quitar divida ou investir,PROBLEMA,Tem dinheiro guardado,Classe media,3,4,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+vale mais quitar divida ou investir,PROBLEMA,Decisao de alocacao,Classe media,4,4,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+13 salario pagar divida ou guardar,PROBLEMA,Recebeu extra,Trabalhador CLT,3,4,Artigo sazonal,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+o que fazer com o 13 salario,PROBLEMA,Recebeu extra,Trabalhador CLT,4,3,Artigo sazonal,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+o que fazer com a restituicao do imposto de renda,PROBLEMA,Recebeu extra,Declarante,4,3,Artigo sazonal,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+como sobreviver ate o proximo pagamento,PROBLEMA,Dinheiro acabou hoje,Renda baixa,2,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+acabou o dinheiro e faltam 10 dias para o pagamento,PROBLEMA,Dinheiro acabou hoje,Renda baixa,1,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+emprestimo ou vender algo qual e melhor,PROBLEMA,Emergencia de caixa,Renda baixa,2,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+emprestimo pessoal urgente vale a pena,PROBLEMA,Emergencia de caixa,Renda baixa,5,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+qual o emprestimo mais barato,PROBLEMA,Vai contratar credito,Classe C,5,4,Artigo comparativo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+taxa de juros do consignado quanto e,INFORMACAO,Vai contratar credito,Trabalhador CLT,5,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+quanto custa um emprestimo de 5000,INFORMACAO,Vai contratar credito,Classe C,4,4,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+quanto custa um emprestimo de 10000,INFORMACAO,Vai contratar credito,Classe C,4,4,Ferramenta,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+cet o que e e por que importa,INFORMACAO,Comparando propostas,Classe C informada,3,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+como comparar duas propostas de emprestimo,PROBLEMA,Comparando propostas,Classe C,3,4,Ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+parcelar em quantas vezes sem juros vale a pena,PROBLEMA,Decisao de compra,Geral,3,3,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+comprar a vista com desconto ou parcelar,PROBLEMA,Decisao de compra,Geral,3,3,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+quanto do meu salario ja esta comprometido,PROBLEMA,Nao sabe o comprometimento,Endividado,2,5,Ferramenta,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+como calcular comprometimento de renda,INFORMACAO,Vai pedir credito,Classe C,3,4,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,PUBLICADA
+meu salario esta todo comprometido o que fazer,PROBLEMA,Comprometimento alto,Endividado,2,5,Artigo + ferramenta,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+banco nao aprova credito por comprometimento,PROBLEMA,Credito negado,Endividado,3,4,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+score baixo como aumentar,PROBLEMA,Credito negado,Endividado,5,2,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+quanto uma pessoa sozinha precisa ganhar,INFORMACAO,Referencia para 1 pessoa,Solteiro,3,3,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto um casal precisa ganhar por mes,INFORMACAO,Referencia para casal,Casal,3,3,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quanto ganha a classe media no brasil,INFORMACAO,Quer se situar,Geral,4,2,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+eu sou classe media ou baixa,INFORMACAO,Quer se situar,Geral,4,2,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+custo de vida medio no brasil 2026,INFORMACAO,Quer referencia,Geral,4,2,Artigo atualizado,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+custo de vida em sao paulo por mes,INFORMACAO,Vai se mudar,Migrante,4,3,Artigo + ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+quanto preciso ganhar para morar em sao paulo,PROBLEMA,Vai se mudar,Migrante,4,3,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+cesta basica mais cara do brasil qual capital,INFORMACAO,Curiosidade regional,Geral,3,2,Artigo atualizado,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+quantas horas preciso trabalhar para comprar a cesta basica,INFORMACAO,Curiosidade de impacto,Geral,3,2,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,CRIAR
+quanto do salario minimo vai para comida,INFORMACAO,Curiosidade de impacto,Renda baixa,3,2,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+escala de equivalencia ocde o que e,INFORMACAO,Metodologia,Estudante e pesquisador,2,1,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+como comparar gastos de familias de tamanhos diferentes,INFORMACAO,Metodologia,Analitico,2,2,Artigo,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+adulto equivalente como calcular,INFORMACAO,Metodologia,Analitico,2,1,Ferramenta,/site-dinheiro/quanto-precisa-ganhar/,Calcular o meu,PUBLICADA
+divida de agua e luz negociacao,PROBLEMA,Conta essencial atrasada,Renda baixa,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de iptu como parcelar,PROBLEMA,Imposto atrasado,Proprietario,4,2,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de condominio o que acontece,PROBLEMA,Condominio atrasado,Morador,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de financiamento de carro atrasada,PROBLEMA,Risco de busca e apreensao,Motorista endividado,4,4,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+divida de financiamento de casa atrasada,PROBLEMA,Risco de perder o imovel,Mutuario,4,4,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+divida com garantia ou sem garantia qual pagar antes,PROBLEMA,Ordem de prioridade,Endividado informado,2,5,Artigo + ferramenta,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,PUBLICADA
+divida de estudante fies como negociar,PROBLEMA,FIES atrasado,Ex-estudante,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de imposto de renda como parcelar,PROBLEMA,IR atrasado,Declarante,4,2,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+divida de cartao de loja como negociar,PROBLEMA,Crediario atrasado,Renda baixa,3,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+crediario e mais caro que cartao,INFORMACAO,Comparando credito,Renda baixa,3,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+comprar fiado na loja vale a pena,PROBLEMA,Decisao de credito,Renda baixa,3,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+como sair das dividas em 90 dias,TRANSACAO,Quer prazo definido,Endividado decidido,2,5,Oferta,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,PUBLICADA
+plano financeiro personalizado quanto custa,TRANSACAO,Buscando servico,Endividado decidido,3,5,Oferta,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+consultoria financeira vale a pena,PROBLEMA,Avaliando ajuda paga,Classe media,4,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Comprar o plano,CRIAR
+educacao financeira por onde comecar,INFORMACAO,Quer aprender,Geral,5,2,Pilar,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+por que ganhar mais nao resolve as dividas,PROBLEMA,Aumentou renda e nao mudou,Classe media,2,4,Artigo,/site-dinheiro/,Fazer o diagnostico,PUBLICADA
+inflacao do estilo de vida o que e,INFORMACAO,Quer nomear o problema,Classe media,3,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como parar de usar o cartao de credito,PROBLEMA,Dependencia do cartao,Endividado,3,4,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+devo cancelar meu cartao de credito,PROBLEMA,Decisao sobre o cartao,Endividado,3,3,Artigo,/site-dinheiro/juros-do-cartao-de-credito/,Calcular meu rotativo,CRIAR
+uso o cartao para pagar mercado e errado,PROBLEMA,Cartao cobrindo deficit,Renda baixa,2,5,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+estou usando o cartao para pagar contas,PROBLEMA,Cartao cobrindo deficit,Renda baixa,2,5,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+sinais de que estou endividado demais,PROBLEMA,Nao sabe se e grave,Classe C,3,4,Ferramenta diagnostica,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como saber se estou superendividado,PROBLEMA,Nao sabe se e grave,Endividado,3,4,Ferramenta diagnostica,/site-dinheiro/,Fazer o diagnostico,CRIAR
+divida saudavel qual o limite,INFORMACAO,Quer referencia,Classe media,3,4,Artigo + ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+ansiedade financeira o que fazer,PROBLEMA,Sofrimento com dinheiro,Endividado,4,3,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+briga por dinheiro no casamento,PROBLEMA,Conflito conjugal,Casal endividado,4,3,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como conversar com o parceiro sobre dividas,PROBLEMA,Conflito conjugal,Casal endividado,3,3,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como dividir as contas da casa entre o casal,PROBLEMA,Divisao injusta,Casal,3,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+dividir contas proporcional ao salario,PROBLEMA,Divisao injusta,Casal,2,3,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como controlar gastos morando com a familia,PROBLEMA,Divisao de custos,Jovem adulto,3,2,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+quanto dar de ajuda em casa morando com os pais,PROBLEMA,Divisao de custos,Jovem adulto,2,2,Ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+orcamento para autonomo com renda variavel,PROBLEMA,Renda instavel,Autonomo,3,4,Artigo + ferramenta,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como se organizar com renda variavel,PROBLEMA,Renda instavel,Autonomo,3,4,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+mei quanto tirar de pro labore,PROBLEMA,Mistura PJ e PF,MEI,4,3,Ferramenta,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+separar dinheiro da empresa e o pessoal,PROBLEMA,Mistura PJ e PF,MEI,3,3,Artigo,/site-dinheiro/quanto-posso-gastar-ganhando/,Ver os tetos,CRIAR
+aposentado com divida o que fazer,PROBLEMA,Renda fixa e divida,Aposentado,3,4,Artigo,/site-dinheiro/como-sair-das-dividas/,Fazer o diagnostico,CRIAR
+consignado do inss margem quanto e,INFORMACAO,Vai contratar credito,Aposentado,5,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+emprestimo consignado para aposentado vale a pena,PROBLEMA,Vai contratar credito,Aposentado,5,3,Artigo,/site-dinheiro/qual-divida-pagar-primeiro/,Montar minha ordem,CRIAR
+como organizar as contas do mes passo a passo,PROBLEMA,Quer metodo,Geral,4,3,Artigo,/site-dinheiro/,Comprar o plano,CRIAR
+metodo dos envelopes funciona,INFORMACAO,Buscando metodo,Geral,3,2,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+desafio das 52 semanas vale a pena,INFORMACAO,Buscando metodo,Geral,3,2,Artigo,/site-dinheiro/,Fazer o diagnostico,CRIAR
+como fazer o dinheiro render mais ganhando pouco,PROBLEMA,Renda baixa,Renda baixa,4,3,Artigo,/site-dinheiro/,Comprar o plano,CRIAR
