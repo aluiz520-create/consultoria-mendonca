@@ -1,6 +1,13 @@
 # RELATÓRIO 04 — "PARA ONDE FOI MEU DINHEIRO?"
 
-**Data:** 08/08/2026 · **Status:** ferramenta construída e no ar
+**Data:** 08/08/2026 · **Status:** v2 — site autônomo, ferramenta reconstruída
+
+> **Atualização v2 (08/08).** A pedido do proprietário: marca removida do rodapé, ferramenta
+> muito mais detalhada e mobile-first, e **projeto separado do site da consultoria**. O que
+> estava em `/dinheiro/` foi apagado e reescrito do zero em `site-dinheiro/`, autônomo.
+> As seções 3 e 7 abaixo foram substituídas pelo `site-dinheiro/README.md`, que é agora a
+> documentação técnica do projeto. O diagnóstico de mercado, a monetização e os critérios de
+> morte (seções 1, 2, 4, 5 e 6) continuam valendo sem alteração.
 
 ---
 
