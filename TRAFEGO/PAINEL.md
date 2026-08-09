@@ -54,7 +54,7 @@ de busca ainda — esperado, e é exatamente o que este trabalho existe para mud
 minutos em [`SEARCH-CONSOLE.md`](SEARCH-CONSOLE.md). É o item que mais muda a qualidade das
 decisões a partir da semana 2.
 
-Já está pronto do lado do site: sitemap com as 6 URLs, canonical em todas as páginas, 0 links
+Já está pronto do lado do site: sitemap com as 8 URLs, canonical em todas as páginas, 0 links
 quebrados, 0 páginas órfãs.
 
 ---
@@ -69,6 +69,8 @@ quebrados, 0 páginas órfãs.
 | Usaram a calculadora de dívidas | `plano_dividas_pronto` | 0 ¹ |
 | Usaram a calculadora do rotativo | `rotativo_calculado` | 0 ¹ |
 | Usaram os tetos por renda | `tetos_calculados` | 0 ¹ |
+| Ordenaram as contas do mês | `ordem_contas_pronta` | 0 ¹ |
+| Calcularam o comprometimento | `comprometimento_calculado` | 0 ¹ |
 | Compartilharam | `compartilhou` + `copiou_*` | 0 ¹ |
 | Clicaram na oferta | `clique_plano` | 0 ¹ |
 | **Compraram** | extrato Kiwify | **0** ² |
@@ -100,7 +102,7 @@ diagnóstico é sempre de baixo para cima.
 
 | Métrica | Valor |
 |---|---|
-| Páginas publicadas | **6** (2 antes de hoje, 4 novas) |
+| Páginas publicadas | **8** (2 antes de hoje, 6 novas) |
 | Conteúdos sociais escritos | **30** + 20 ganchos + 12 títulos + 9 CTAs |
 | Conteúdos sociais publicados | **0** — depende do proprietário |
 | Melhor conteúdo | não medido |
@@ -117,6 +119,8 @@ diagnóstico é sempre de baixo para cima.
 | `/juros-do-cartao-de-credito/` | ✅ rotativo 3/6/12 meses | 08/08 |
 | `/quanto-posso-gastar-ganhando/` | ✅ tetos por faixa | 08/08 |
 | `/como-sair-das-dividas/` | pilar | 08/08 |
+| `/qual-conta-pagar-primeiro/` | ✅ ordem pelo custo do atraso | 08/08 |
+| `/meu-salario-esta-comprometido/` | ✅ comprometimento de renda | 08/08 |
 
 ---
 
@@ -126,12 +130,12 @@ diagnóstico é sempre de baixo para cima.
 |---|---|
 | Links internos quebrados | **0** |
 | Páginas órfãs | **0** |
-| Páginas com canonical | 6 de 6 |
-| Páginas com Open Graph completo | 6 de 6 |
-| Páginas no sitemap da raiz | 6 de 6 |
-| Páginas com dados estruturados | 6 de 6 |
+| Páginas com canonical | 8 de 8 |
+| Páginas com Open Graph completo | 8 de 8 |
+| Páginas no sitemap da raiz | 8 de 8 |
+| Páginas com dados estruturados | 8 de 8 |
 | Erro de sintaxe em JS | **0** |
-| Calculadoras testadas em navegador real | 4 de 4 ✅ |
+| Calculadoras testadas em navegador real | 6 de 6 ✅ |
 
 ---
 

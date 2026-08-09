@@ -45,6 +45,18 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/meu-salario-esta-comprometido/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/qual-conta-pagar-primeiro/</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
   <url>
     <loc>https://aluiz520-create.github.io/consultoria-mendonca/simulador/</loc>

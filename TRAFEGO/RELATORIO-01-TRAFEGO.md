@@ -115,7 +115,7 @@ Estes não são elogios de cortesia. São os ativos em que a estratégia inteira
 (`usuario.github.io/repositorio/`), o Google só lê o `robots.txt` da **raiz do domínio**:
 `aluiz520-create.github.io/robots.txt`. O arquivo dentro de `/consultoria-mendonca/` é
 ignorado, e o de dentro de `/site-dinheiro/` mais ainda. Por isso a correção que realmente
-importa não foi arrumar o `robots.txt` da pasta — foi **colocar as seis URLs no
+importa não foi arrumar o `robots.txt` da pasta — foi **colocar as oito URLs no
 `sitemap.xml` da raiz**, que é o que o robots.txt do domínio referencia.
 
 Não encontrei: links internos quebrados (0), páginas órfãs (0, depois das correções), imagens
@@ -128,9 +128,9 @@ sem `alt` (o site não usa `<img>`), problemas de viewport ou de contraste.
 | # | Problema | Situação |
 |---|---|---|
 | S1 | Título da home começava pelo nome da marca, não pela busca do usuário | **Corrigido** — agora "Em Que Dia o Seu Salário Acaba? Calculadora Grátis, Sem Cadastro" |
-| S2 | Duas páginas cobrindo duas intenções, num mercado de centenas | **Em andamento** — 4 páginas novas publicadas, 20 mapeadas |
+| S2 | Duas páginas cobrindo duas intenções, num mercado de centenas | **Em andamento** — 6 páginas novas publicadas, 20 mapeadas |
 | S3 | Nenhum link interno entre páginas além de um link solto | **Corrigido** — bloco `.trilhos` em todas |
-| S4 | Nenhuma cobertura das buscas de maior intenção comercial (dívida, cartão, faixa de renda) | **Corrigido para as 4 principais** |
+| S4 | Nenhuma cobertura das buscas de maior intenção comercial (dívida, cartão, faixa de renda, comprometimento) | **Corrigido para as 6 principais** |
 | S5 | Nenhuma página de resposta direta a pergunta longa (long tail) | **Em andamento** |
 | S6 | Sem imagem de compartilhamento: link colado no WhatsApp aparecia sem nada | **Corrigido** — `capa.png` 1200×630 |
 | S7 | Sem Search Console: nenhuma visibilidade de impressão, clique, CTR e posição | **Depende do proprietário** — passo a passo pronto |
@@ -261,8 +261,8 @@ Ordem por (intenção comercial × facilidade de ranquear), com as 5 já publica
 | 3 | `/quanto-posso-gastar-ganhando/` ✅ | Tetos por faixa + piso do DIEESE | 14 |
 | 4 | `/como-sair-das-dividas/` ✅ | Pilar das 5 decisões, liga as ferramentas | 9 |
 | 5 | `/` ✅ (melhorada) | Diagnóstico da casa | 10 |
-| 6 | `/meu-salario-esta-comprometido/` | Calculadora de comprometimento com o teto de 30% dos bancos | 5 |
-| 7 | `/qual-conta-pagar-primeiro/` | Ordenador de contas por consequência do atraso (corte, multa, juro, perda do bem) | 6 |
+| 6 | `/meu-salario-esta-comprometido/` ✅ | Calculadora de comprometimento, com os dois números: o do banco e o da vida | 5 |
+| 7 | `/qual-conta-pagar-primeiro/` ✅ | Ordenador de contas por consequência do atraso (perda do bem, corte, multa, registro) | 6 |
 | 8 | `/divida-de-cartao/` | Hub por valor: 3.000 / 5.000 / 10.000, cada um com prazo e juros reais | 8 |
 | 9 | `/como-sair-das-dividas-ganhando-pouco/` | O caso em que cortar não resolve; foco em renegociação e priorização | 5 |
 | 10 | `/onde-cortar-gastos-primeiro/` | Simulador de corte: quanto sobra ao cortar cada categoria | 6 |
@@ -315,8 +315,8 @@ meses. Um financia a paciência do outro.
 - Medição instalada com funil completo
 
 ### Dias 4–7 — Estrutura e primeiras páginas ✅ **feito hoje, adiantado**
-- 4 páginas novas com ferramenta própria, publicadas
-- Links internos ligando as 6 páginas
+- 6 páginas novas publicadas, 5 delas com calculadora própria
+- Links internos ligando as 8 páginas
 - Sitemap e Open Graph corretos
 - **Falta ao proprietário:** ligar o Search Console (15 min — ver seção 13)
 
@@ -347,11 +347,11 @@ meses. Um financia a paciência do outro.
 Commit `ccb4efa` na branch `claude/traffic-audit-optimization-n2k843`.
 
 **Correções técnicas**
-- `canonical`, `og:url`, `og:image`, `og:site_name`, Twitter cards em todas as 6 páginas
+- `canonical`, `og:url`, `og:image`, `og:site_name`, Twitter cards em todas as 8 páginas
 - `meta robots` com `max-image-preview:large`
 - Schema: `WebApplication`, `BreadcrumbList`, `HowTo`, `FAQPage` conforme a página
 - `sitemap.xml` da pasta com URLs reais
-- As 6 URLs no `sitemap.xml` da raiz (a correção que de fato importa)
+- As 8 URLs no `sitemap.xml` da raiz (a correção que de fato importa)
 - `capa.png` 1200×630 para compartilhamento
 - Migalhas de navegação visíveis
 
@@ -362,19 +362,21 @@ Commit `ccb4efa` na branch `claude/traffic-audit-optimization-n2k843`.
   `clique_plano` **com `origem`**, e profundidade de rolagem
 - Nenhum valor digitado é enviado: só faixas, contagens e classificações
 
-**Páginas novas, todas com ferramenta funcionando**
+**Páginas novas**
 - `/qual-divida-pagar-primeiro/` — simula avalanche e bola de neve e mostra a diferença em reais
 - `/juros-do-cartao-de-credito/` — o que o saldo vira em 3, 6 e 12 meses
 - `/quanto-posso-gastar-ganhando/` — tetos por faixa com o piso do DIEESE
-- `/como-sair-das-dividas/` — pilar que organiza as quatro ferramentas
+- `/qual-conta-pagar-primeiro/` — ordena as contas do mês pelo que o atraso custa de verdade
+- `/meu-salario-esta-comprometido/` — o comprometimento que o banco vê e o que a vida sente
+- `/como-sair-das-dividas/` — pilar que organiza as ferramentas na ordem de uso
 
 **Links internos**
-- Bloco `.trilhos` em todas as páginas; teste automatizado confirma **0 páginas órfãs e 0 links
-  internos quebrados**
+- Bloco `.trilhos` em todas as 8 páginas; teste automatizado confirma **0 páginas órfãs e 0
+  links internos quebrados**
 
 **Verificação**
 - Sintaxe de todos os JS conferida
-- As 4 calculadoras testadas no Chromium com valores reais — todas produzem resultado correto
+- As 6 calculadoras testadas no Chromium com valores reais — todas produzem resultado correto
 - Matemática das simulações conferida separadamente (avalanche × bola de neve; juros compostos)
 
 ---

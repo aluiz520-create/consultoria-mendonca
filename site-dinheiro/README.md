@@ -10,6 +10,8 @@ site-dinheiro/
 ├── qual-divida-pagar-primeiro/   calculadora avalanche x bola de neve
 ├── juros-do-cartao-de-credito/   o que o rotativo vira em 3, 6 e 12 meses
 ├── quanto-posso-gastar-ganhando/ tetos por faixa de renda + piso do DIEESE
+├── qual-conta-pagar-primeiro/    ordena as contas do mês pelo custo do atraso
+├── meu-salario-esta-comprometido/ comprometimento de renda: o do banco e o da vida
 ├── como-sair-das-dividas/        pilar: as 5 decisões, na ordem
 ├── quanto-precisa-ganhar/        artigo de SEO (piso do DIEESE)
 ├── estilo.css                    CSS próprio, com a fonte de título embutida em base64
@@ -30,10 +32,12 @@ Toda página aponta para a ferramenta principal e para pelo menos duas irmãs, p
 `.trilhos`. Nenhuma página é órfã — há um teste disso no relatório de tráfego.
 
 ```
-                    ┌─ qual-divida-pagar-primeiro/ ─┐
-index.html ─────────┼─ juros-do-cartao-de-credito/ ─┼──→ plano de R$ 19,90
-(diagnóstico)       ├─ quanto-posso-gastar-ganhando/│
-                    ├─ como-sair-das-dividas/ ──────┘
+                    ┌─ qual-divida-pagar-primeiro/ ──┐
+                    ├─ juros-do-cartao-de-credito/ ──┤
+index.html ─────────┼─ qual-conta-pagar-primeiro/ ───┼──→ plano de R$ 19,90
+(diagnóstico)       ├─ meu-salario-esta-comprometido/│
+                    ├─ quanto-posso-gastar-ganhando/ │
+                    ├─ como-sair-das-dividas/ ───────┘
                     └─ quanto-precisa-ganhar/
 ```
 
@@ -99,6 +103,8 @@ Eventos registrados:
 | `rotativo_calculado` | juros do cartão | uso da terceira ferramenta |
 | `tetos_calculados` | quanto posso gastar | uso da quarta ferramenta |
 | `escolheu_faixa` | quanto posso gastar | qual faixa de renda o público tem |
+| `ordem_contas_pronta` | qual conta pagar primeiro | uso da quinta ferramenta |
+| `comprometimento_calculado` | meu salário está comprometido | uso da sexta ferramenta |
 | `clique_plano` | todas | intenção de compra, com `origem` para saber qual página vende |
 | `rolagem` | todas | 25/50/75/100% — separa quem leu de quem bateu e saiu |
 
@@ -110,8 +116,9 @@ Nenhum evento carrega valor digitado: só faixas, contagens e classificações.
 
 ### 2. `CHECKOUT` — o plano pago
 
-O link do checkout está repetido no topo de `app.js`, de `qual-divida-pagar-primeiro/dividas.js`
-e no script embutido de `como-sair-das-dividas/`. Se ele mudar, troque nos três — esvaziar
+O link do checkout está repetido no topo de `app.js`, de `qual-divida-pagar-primeiro/dividas.js`,
+de `meu-salario-esta-comprometido/comprometimento.js` e no script embutido de
+`como-sair-das-dividas/`. Se ele mudar, troque nos quatro — esvaziar
 qualquer um deles devolve o botão ao estado *"Plano completo em breve"*, desabilitado.
 
 ⚠️ **Não preencha `CHECKOUT` antes de o conteúdo do plano existir de verdade.**

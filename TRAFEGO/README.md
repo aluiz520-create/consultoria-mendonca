@@ -54,10 +54,11 @@ completo e o que já foi implementado.
 ## Estado em 08/08/2026
 
 **Feito:** auditoria completa · 10 correções técnicas · medição instalada com funil de 6
-degraus · 4 páginas novas com calculadora própria · links internos ligando as 6 páginas ·
-205 termos mapeados · 30 conteúdos sociais escritos.
+degraus · 6 páginas novas, sendo 5 com calculadora própria · links internos ligando as 8
+páginas · 205 termos mapeados · 30 conteúdos sociais escritos.
 
 **Bloqueado em você:** Search Console (15 min) · publicação social (login).
 
-**Próximo sem depender de você:** páginas 6, 7 e 8 do mapa —
-`/meu-salario-esta-comprometido/`, `/qual-conta-pagar-primeiro/`, `/divida-de-cartao/`.
+**Próximo sem depender de você:** `/divida-de-cartao/` (hub por valor),
+`/onde-cortar-gastos-primeiro/` (simulador de corte) e
+`/proposta-de-acordo-e-boa/` (checklist de avaliação de acordo).

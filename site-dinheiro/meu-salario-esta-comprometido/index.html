@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#5b2a55">
+<title>Quanto do Meu Salário Está Comprometido? Calculadora Grátis</title>
+<meta name="description" content="Some as suas parcelas e descubra qual porcentagem da sua renda já está prometida antes do mês começar, quanto sobra por dia e o que muda quando você passa dos 30%. Sem cadastro.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="stylesheet" href="../estilo.css">
+<link rel="canonical" href="https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/meu-salario-esta-comprometido/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235b2a55'/%3E%3Ctext x='16' y='23' font-family='system-ui,sans-serif' font-size='19' font-weight='900' text-anchor='middle' fill='%23d97f22'%3E%3F%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Para onde foi meu dinheiro?">
+<meta property="og:url" content="https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/meu-salario-esta-comprometido/">
+<meta property="og:title" content="Quanto do seu salário já está comprometido?">
+<meta property="og:description" content="Some as parcelas e veja quanto da sua renda já estava prometida antes do mês começar.">
+<meta property="og:image" content="https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/capa.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quanto do seu salário já está comprometido?">
+<meta name="twitter:description" content="Some as parcelas e veja quanto da sua renda já estava prometida antes do mês começar.">
+<meta name="twitter:image" content="https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/capa.png">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Para onde foi meu dinheiro?","item":"https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/"},
+    {"@type":"ListItem","position":2,"name":"Quanto do meu salário está comprometido"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"Como calcular o comprometimento de renda?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Some tudo o que sai todo mês de forma obrigatória — parcelas de empréstimo, financiamentos, crediário, cartão parcelado e mensalidades fixas — e divida pela sua renda líquida mensal. O resultado em porcentagem é o comprometimento da renda. Ele mede quanto do seu dinheiro já estava prometido antes de você tomar qualquer decisão no mês."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Qual o limite de comprometimento de renda aceito pelos bancos?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Instituições financeiras costumam trabalhar com um teto próximo de 30% da renda para conceder novo crédito, e no consignado existe margem definida em regra própria. É importante entender que 30% é o limite de risco que o banco aceita assumir ao emprestar — não é uma indicação de que 30% da renda em parcelas é confortável para quem paga."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"O que acontece quando o comprometimento passa de 30%?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Duas coisas ao mesmo tempo: fica mais difícil conseguir crédito novo, porque os bancos passam a recusar ou a cobrar taxas maiores, e o orçamento perde a capacidade de absorver imprevistos. A partir daí qualquer despesa inesperada tende a virar parcelamento novo, o que aumenta o comprometimento de novo — é o mecanismo que transforma aperto em endividamento."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Comprometimento de renda inclui aluguel e conta de luz?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Na análise de crédito dos bancos, o comprometimento costuma considerar as dívidas e parcelas registradas, não as despesas de consumo. Mas para entender o seu próprio orçamento, aluguel e contas de casa pesam exatamente como uma parcela: são obrigatórios e chegam todo mês. Por isso esta ferramenta separa os dois números — o que o banco vê e o que a sua vida sente."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body class="sem-barra">
+
+<div class="folha">
+
+  <header class="capa">
+    <p class="migalhas"><a href="../">Para onde foi meu dinheiro?</a><span>›</span>Quanto do meu salário está comprometido</p>
+    <h1>Quanto do seu salário <span>já estava prometido</span>?</h1>
+    <p class="linha-fina">Antes de você decidir qualquer coisa no mês, uma parte da renda já
+    tinha destino. Esta conta mostra o tamanho dela.</p>
+    <div class="selos">
+      <span class="selo">⏱ 40 segundos</span>
+      <span class="selo">🔒 nada sai do seu celular</span>
+      <span class="selo">✋ sem cadastro</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">01</span><h2>O que entra</h2></div>
+      <div class="linha-valor">
+        <span class="rot">Renda líquida do mês<small>O que cai na conta, já descontado</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" id="renda" placeholder="0"></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">02</span><h2>As parcelas</h2></div>
+      <p class="nota">O que o banco enxerga: dívida e crédito com parcela fixa todo mês.</p>
+      <div class="linha-valor">
+        <span class="rot">Empréstimo pessoal ou consignado</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-divida></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Financiamento de veículo</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-divida></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Financiamento do imóvel</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-divida></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Cartão parcelado<small>O que cai todo mês do parcelado</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-divida></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Crediário e carnê de loja</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-divida></div>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <div class="bloco-topo"><span class="bloco-num">03</span><h2>O resto do obrigatório</h2></div>
+      <p class="nota">O que o banco não conta na análise, mas chega igual todo mês.</p>
+      <div class="linha-valor">
+        <span class="rot">Aluguel ou condomínio</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-fixo></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Contas de casa<small>Luz, água, gás, internet</small></span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-fixo></div>
+      </div>
+      <div class="linha-valor">
+        <span class="rot">Escola, creche, plano de saúde</span>
+        <div class="caixa-valor"><span class="moeda">R$</span>
+          <input type="text" inputmode="numeric" placeholder="0" data-fixo></div>
+      </div>
+    </section>
+
+    <div id="resultado" hidden>
+
+      <div class="veredito" id="veredito">
+        <p class="chapeu">O seu salário está comprometido em</p>
+        <p class="estrela" id="rEstrela">—</p>
+        <p class="frase" id="rFrase"></p>
+      </div>
+
+      <div class="grade">
+        <div class="ficha">
+          <p class="rot">Comprometimento que o banco vê</p>
+          <p class="val" id="fBanco">—</p>
+          <p id="fBancoNota"></p>
+        </div>
+        <div class="ficha">
+          <p class="rot">Comprometimento que a sua vida sente</p>
+          <p class="val ambar" id="fReal">—</p>
+          <p id="fRealNota"></p>
+        </div>
+      </div>
+
+      <div class="ficha" style="margin-bottom:14px">
+        <p class="rot">O que sobra para viver, por dia</p>
+        <p class="val" id="fDia">—</p>
+        <p id="fDiaNota"></p>
+      </div>
+
+      <div class="bloco">
+        <div class="bloco-topo"><h2>Onde você está</h2></div>
+        <div id="trilhas"></div>
+      </div>
+
+      <div class="destaque-vilao">
+        <h3 id="vTitulo"></h3>
+        <p id="vTexto"></p>
+      </div>
+
+      <div class="acoes">
+        <button type="button" class="btn btn-vazio" id="btnCopiar">Copiar este número</button>
+      </div>
+
+      <div class="atalho-plano">
+        <p class="chapeu">Já sabe o número. E agora?</p>
+        <h3>Comprometimento alto se resolve por dois caminhos</h3>
+        <p>Reduzir o valor das parcelas — renegociando prazo e taxa — ou liberar dinheiro
+        cortando na ordem certa. O plano de 90 dias trabalha os dois, aplicados aos seus
+        números. <strong>R$ 19,90</strong>, entrega imediata.</p>
+        <div class="acoes">
+          <a class="btn btn-forte" id="btnPago">Ver o plano completo</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="artigo">
+      <h2>Os dois comprometimentos, e por que eles não são o mesmo</h2>
+      <p>Quando um banco analisa o seu crédito, ele soma as <strong>parcelas de dívida</strong> e
+      divide pela renda. Aluguel e conta de luz normalmente não entram nessa conta.</p>
+      <p>Só que aluguel e luz chegam todo mês do mesmo jeito que uma parcela. Para o banco, uma
+      pessoa que gasta 45% da renda em aluguel tem 0% de comprometimento se não tiver dívida —
+      e ela pode estar em situação muito pior que alguém com 25% em parcelas e casa própria.</p>
+      <p>Por isso esta página mostra os dois números. O primeiro diz se você consegue crédito.
+      <strong>O segundo diz se você consegue viver.</strong></p>
+
+      <h2>O que os 30% realmente significam</h2>
+      <p>O número de 30% que circula por toda parte é um limite de <strong>concessão de
+      crédito</strong>. Ele responde à pergunta do banco — "até quanto eu empresto sem risco
+      excessivo?" — e não à sua: "até quanto eu aguento pagar?"</p>
+      <p>São perguntas diferentes com respostas diferentes. Para quem ganha R$ 10.000, 30% em
+      parcelas deixa R$ 7.000 para viver. Para quem ganha R$ 2.000, os mesmos 30% deixam
+      R$ 1.400 — e a diferença entre as duas situações não aparece em nenhuma porcentagem.</p>
+      <p>É por isso que a ferramenta acima mostra também <strong>quanto sobra por dia</strong>.
+      Esse número, ao contrário do percentual, não engana.</p>
+
+      <h2>As faixas, e o que fazer em cada uma</h2>
+      <ul>
+        <li><strong>Até 10%</strong> — há folga real. O trabalho aqui é dar destino à sobra antes
+        que ela vire gasto sem lembrança.</li>
+        <li><strong>De 10% a 30%</strong> — funciona enquanto nada dá errado. Vale construir
+        reserva antes de assumir qualquer parcela nova.</li>
+        <li><strong>De 30% a 50%</strong> — o orçamento perdeu a capacidade de absorver
+        imprevisto. Qualquer despesa inesperada vira parcelamento novo, que aumenta o
+        comprometimento — é assim que aperto vira endividamento.</li>
+        <li><strong>Acima de 50%</strong> — cortar gasto de consumo dificilmente resolve, porque
+        o problema está nos compromissos já assinados. O caminho é renegociar prazo e taxa.
+        <a href="../como-sair-das-dividas/">A Lei 14.181/2021 garante repactuação preservando o
+        mínimo existencial</a>, e a orientação no Procon é gratuita.</li>
+      </ul>
+
+      <h2>Reduzir o comprometimento: as três alavancas</h2>
+      <ol>
+        <li><strong>Alongar prazo</strong> reduz a parcela e aumenta o total pago. É a alavanca
+        certa quando o problema é caixa mensal, não custo total.</li>
+        <li><strong>Reduzir taxa</strong> — trocando dívida cara por barata — reduz parcela
+        <em>e</em> total. É sempre a melhor, quando existe a opção.</li>
+        <li><strong>Quitar a dívida certa antes</strong> tira uma parcela inteira do mês. Qual
+        quitar primeiro depende dos seus números:
+        <a href="../qual-divida-pagar-primeiro/">a calculadora responde isso</a>.</li>
+      </ol>
+
+      <h2>Continue pelo seu caso</h2>
+      <nav class="trilhos" aria-label="Outras ferramentas e guias">
+        <a href="../qual-divida-pagar-primeiro/">
+          <b>Qual dívida pagar primeiro?</b>
+          <span>Qual delas, quitada antes, libera mais parcela — comparando os dois métodos.</span>
+        </a>
+        <a href="../">
+          <b>Em que dia o seu salário acaba</b>
+          <span>O diagnóstico completo da casa, incluindo o que não é parcela.</span>
+        </a>
+        <a href="../quanto-posso-gastar-ganhando/">
+          <b>Quanto posso gastar ganhando o que eu ganho</b>
+          <span>Os tetos por faixa de renda, incluindo o de parcelas.</span>
+        </a>
+        <a href="../como-sair-das-dividas/">
+          <b>Como sair das dívidas</b>
+          <span>As cinco decisões em ordem e o que a lei garante na renegociação.</span>
+        </a>
+      </nav>
+
+      <p class="legal">
+        <strong>Isto é conteúdo educativo e não é recomendação de crédito nem de investimento.</strong>
+        Os critérios de comprometimento variam por instituição, por linha de crédito e por perfil;
+        o cálculo desta página é uma referência para o seu entendimento, não uma simulação de
+        análise bancária. As faixas descritas são referências de planejamento amplamente usadas,
+        não normas.
+        <br><br>
+        <strong>Seus números não foram enviados a lugar nenhum.</strong> A conta aconteceu dentro
+        do seu navegador.
+      </p>
+    </section>
+  </main>
+
+  <p class="pe"><a href="../" style="color:inherit">Para onde foi meu dinheiro?</a> · ferramenta gratuita · nenhum dado coletado</p>
+</div>
+
+<script src="../medir.js"></script>
+<script src="comprometimento.js"></script>
+</body>
+</html>

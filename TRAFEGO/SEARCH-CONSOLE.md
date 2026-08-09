@@ -66,8 +66,8 @@ sitemap.xml
 
 3. Clique em **Enviar**.
 
-O status deve ficar **"Sucesso"** em alguns minutos, com **21 URLs descobertos** (15 do site
-da consultoria + 6 do site do dinheiro).
+O status deve ficar **"Sucesso"** em alguns minutos, com **23 URLs descobertos** (15 do site
+da consultoria + 8 do site do dinheiro).
 
 > Este é o sitemap que importa. Em GitHub Pages de projeto, o Google só lê o `robots.txt` da
 > raiz do domínio, então é este sitemap — o da raiz do repositório — que carrega as páginas do
@@ -77,7 +77,7 @@ da consultoria + 6 do site do dinheiro).
 
 ## Passo 4 — Pedir indexação das páginas novas
 
-Isso acelera bastante a primeira aparição. Para cada uma das 6 URLs abaixo:
+Isso acelera bastante a primeira aparição. Para cada uma das 8 URLs abaixo:
 
 1. Cole a URL na **barra de busca do topo** do Search Console.
 2. Espere a análise ("URL não está no Google" é o esperado agora).
@@ -91,6 +91,8 @@ https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/juros-do-ca
 https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/quanto-posso-gastar-ganhando/
 https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/como-sair-das-dividas/
 https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/quanto-precisa-ganhar/
+https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/qual-conta-pagar-primeiro/
+https://aluiz520-create.github.io/consultoria-mendonca/site-dinheiro/meu-salario-esta-comprometido/
 ```
 
 **Ordem de prioridade se você só tiver tempo para duas:** a primeira e a
