@@ -12,7 +12,18 @@ cooperativa e escritório contábil do agro em GO e no Brasil.
 
 ## Passo 1 — Buscar dados frescos (obrigatório, via WebSearch/WebFetch)
 
-Busque sempre os números do dia — nunca reaproveite valores antigos:
+> ⚠️ **Rede:** nas sessões em nuvem o proxy de egresso bloqueia WebFetch para `cepea.org.br`,
+> `graodireto.com.br`, `noticiasagricolas.com.br`, `otempo.com.br` e a maioria dos portais de
+> cotação (`EGRESS_BLOCKED`). **Use WebSearch como canal principal** — ele funciona e devolve os
+> números. WebFetch é complemento; se bloquear, siga com WebSearch e não interrompa a rotina.
+>
+> ⚠️ **Data:** confirme o dia da semana com `date` (fuso `America/Sao_Paulo`) antes de escrever o
+> título. Já saiu edição com o dia da semana errado. Em fim de semana e feriado não há pregão —
+> use o último fechamento e diga isso no texto.
+
+Busque sempre os números do dia — nunca reaproveite valores antigos. Compare com a edição
+anterior em `boletim/`: se algum valor vier idêntico ao de ontem, confirme com uma segunda busca
+antes de publicar. Anote a data de cada número e cite-a no rodapé de fontes.
 
 1. **Cotações — preço da praça em DESTAQUE + nacional como referência.**
    - **Praça principal: Sudoeste Goiano (Rio Verde / Jataí).** É o preço que o produtor de GO
@@ -64,7 +75,7 @@ Seções, nesta ordem:
 **Padrão (sessão agendada diária): PUBLICAR NO SITE + notificar.** Faça as duas coisas:
 
 1. **Publicar no site** (a seção `boletim/` já existe; use a edição de 07/08 como modelo):
-   - Crie `boletim/AAAA-MM-DD.html` copiando a estrutura de `boletim/2026-08-07.html`
+   - Crie `boletim/AAAA-MM-DD.html` copiando a estrutura de `boletim/2026-08-08.html`
      (mesmo header/nav, blocos Tempo/Cotações/Dólar/Radar/Gancho, CTA para o simulador e
      WhatsApp no fim, tag do GA4 via `../assets/ga.js`). Troque só o conteúdo e a data.
    - Em `boletim/index.html`, insira o novo item **logo após** o marcador
