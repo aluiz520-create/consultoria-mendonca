@@ -1,0 +1,68 @@
+name: Publica o Boletim Agro
+
+# A rotina diária gera o boletim numa branch `claude/` e abre um PR, porque
+# sessões de rotina não conseguem empurrar direto para o `main` — o `main`
+# carrega commits de autoria do agente, e isso faz o push ser recusado.
+# Este workflow mescla esse PR sozinho, para o boletim não depender de alguém
+# apertar o botão toda manhã.
+#
+# Só mescla o que passa nos três filtros: título, autor e arquivos tocados.
+# Qualquer PR fora disso é ignorado em silêncio e segue esperando revisão.
+#
+# Para desligar: Actions > Publica o Boletim Agro > Disable workflow.
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  mesclar:
+    if: >-
+      startsWith(github.event.pull_request.title, 'Boletim Agro') &&
+      github.event.pull_request.user.login == github.repository_owner &&
+      github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere o escopo e mescla
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+
+            const arquivos = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+            });
+
+            const permitido = (caminho) =>
+              caminho.startsWith('boletim/') || caminho === 'sitemap.xml';
+
+            const fora = arquivos
+              .filter((a) => !permitido(a.filename))
+              .map((a) => a.filename);
+
+            if (fora.length > 0) {
+              core.info(
+                `PR #${pr.number} toca arquivos fora do boletim, deixando para revisão manual: ${fora.join(', ')}`
+              );
+              return;
+            }
+
+            if (arquivos.length === 0) {
+              core.info(`PR #${pr.number} não altera arquivo nenhum, nada a mesclar.`);
+              return;
+            }
+
+            await github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              merge_method: 'merge',
+            });
+
+            core.info(`PR #${pr.number} mesclado: ${arquivos.length} arquivo(s) do boletim.`);
