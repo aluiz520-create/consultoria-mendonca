@@ -81,3 +81,26 @@ footer.site{padding:32px 0 40px}
 footer.site .wrap{border-top:1px solid rgba(246,244,239,.16);padding-top:32px;display:flex;gap:32px;justify-content:space-between;flex-wrap:wrap;align-items:flex-end}
 .hide{display:none}
 @media print{header.site,.topbar{position:static}}
+/* --- artigo / prosa (blog e boletim) --- */
+.art{max-width:760px;margin:0 auto}
+.crumb{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;color:var(--mut);margin-bottom:20px}
+.art h1{font-size:clamp(30px,5vw,48px);margin-bottom:18px}
+.art .meta{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.08em;color:var(--mut);border-top:1px solid var(--line);padding-top:16px;margin-top:24px}
+.prose{font-size:18px;line-height:1.65;color:var(--ink2)}
+.prose>*+*{margin-top:20px}
+.prose h2{font-size:clamp(23px,3vw,28px);line-height:1.2;letter-spacing:-.02em;color:var(--ink);margin-top:48px}
+.prose h3{font-size:20px;color:var(--ink);margin-top:36px}
+.prose strong{color:var(--ink);font-weight:600}
+.prose ul,.prose ol{padding-left:22px;list-style:disc}
+.prose ol{list-style:decimal}
+.prose li{margin-top:10px}
+.prose li::marker{color:var(--grn)}
+.note{border-left:2px solid var(--amb);background:var(--paper2);padding:20px 22px;font-size:16px;line-height:1.6}
+.prose table{width:100%;border-collapse:collapse;font-size:15px;display:block;overflow-x:auto}
+.prose th{text-align:left;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;color:var(--mut);font-weight:400;border-bottom:1px solid var(--line);padding:10px 14px 10px 0}
+.prose td{border-bottom:1px solid var(--line);padding:12px 14px 12px 0;vertical-align:top}
+.artcta{max-width:760px;margin:clamp(48px,6vw,72px) auto 0;border:1px solid var(--line);background:#fff;padding:clamp(24px,3.5vw,36px)}
+.postlist li{border-top:1px solid var(--line)}
+.postlist a{display:block;padding:26px 0;color:var(--ink)}
+.postlist a:hover{color:var(--grn)}
+.postlist h2{font-size:clamp(20px,2.6vw,25px);margin-bottom:8px}
