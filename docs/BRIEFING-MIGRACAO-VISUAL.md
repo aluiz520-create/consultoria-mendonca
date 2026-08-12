@@ -1,32 +1,34 @@
 # Briefing — migração visual para o formato v2
 
 **Para:** quem for fazer o design das páginas que ainda estão no formato antigo
-**Atualizado em:** 12/08/2026, depois da migração do blog
+**Atualizado em:** 12/08/2026, depois da migração do boletim
+**Placar:** 13 páginas em v2 · 12 em v1 · 3 fora dos dois
 **Site no ar:** https://aluiz520-create.github.io/consultoria-mendonca/
 
 ---
 
-## 0. Regra número 1 — parta dos arquivos do repositório
+## 0. Como entregar
 
-**Sempre leia o arquivo que está no repositório antes de reescrevê-lo.** Não parta de uma
-versão gerada numa conversa anterior.
+**Entregue só os arquivos que você realmente alterou**, e leia cada um no repositório
+antes de reescrever. Não parta de uma versão gerada numa conversa anterior.
 
-Na última entrega isso custou caro: o pacote trouxe 11 arquivos, e 5 deles (`index.html`,
-`app-v2.js`, `sitemap.xml`, `solucoes/index.html`, `agroaudit/index.html`) vieram na versão
-original de dois dias antes. Se tivessem sido copiados por cima, teriam apagado:
+Isso já custou uma rodada: um pacote trouxe 11 arquivos, e 5 deles vinham na versão de dois
+dias antes. Se tivessem sido copiados por cima, teriam apagado o JSON-LD da home, o
+`LEAD_ENDPOINT` do AgroAudit, 14 URLs do `sitemap.xml` e a normalização das URLs internas.
+A entrega do boletim já veio no formato certo — pasta só com o que mudou, nada para
+descartar. É esse o padrão.
 
-- os dois blocos de JSON-LD da home (`ProfessionalService` e `FAQPage`)
-- o `LEAD_ENDPOINT` do formulário do AgroAudit
-- 14 URLs do `sitemap.xml` (todos os artigos do blog e todos os boletins)
-- a normalização das URLs internas para a forma de diretório
+**Preserve o conteúdo.** Texto, número, preço e link de pagamento são decisão de negócio.
+Se algo precisa mudar, sinalize — não altere no meio de um trabalho de layout.
 
-Foram descartados um a um na conferência. Para não repetir: **entregue no pacote só os
-arquivos que você realmente alterou.** Se um arquivo não faz parte do trabalho daquela
-rodada, deixe-o de fora.
+### A técnica que funcionou no boletim
 
-Segunda regra, do mesmo espírito: **preserve o conteúdo.** Se um texto, um número, um link
-de pagamento ou um bloco inteiro vai mudar, isso é decisão de negócio — sinalize em vez de
-alterar silenciosamente no meio de um trabalho de layout.
+Ao migrar uma página com muito dado, **transponha os blocos de conteúdo inteiros em vez de
+redigitar.** No boletim, cada bloco v1 foi movido como está para dentro da casca v2, e
+depois cada edição foi conferida número a número contra a versão anterior: 156 valores no
+total, nenhum perdido, nenhum inventado. Cotação, umidade, número de decreto e data de
+fonte não podem sofrer um dígito de desvio — e a única forma de garantir isso é não
+retocá-los à mão.
 
 ---
 
@@ -41,19 +43,20 @@ alterar silenciosamente no meio de um trabalho de layout.
 | Materiais | `materiais/index.html` |
 | AgroAudit | `agroaudit/index.html` |
 | Índice do blog | `blog/index.html` |
-| **Artigo-piloto** | `blog/nota-rejeitada-ibs-cbs-o-que-fazer.html` |
+| **Artigo-modelo** | `blog/nota-rejeitada-ibs-cbs-o-que-fazer.html` |
+| Boletim — índice | `boletim/index.html` |
+| Boletim — 6 edições | `boletim/2026-08-07.html` … `2026-08-12.html` |
 
 São a **referência**. Não redesenhar: copiar delas.
 
 ### Ainda no formato antigo — `styles.css` + `script.js`
 
-| Grupo | Arquivos | Observação |
+| Página | Arquivo | Observação |
 |---|---|---|
-| **Artigos do blog** | 6 restantes | **próxima tarefa** — ver seção 4 |
-| Boletim | `boletim/index.html` + 6 diários | gerado automaticamente, ver seção 6 |
+| **6 artigos do blog** | ver seção 4 | **próxima tarefa** |
+| SafraCerta | `saas/index.html` | página de venda do ERP |
 | Quiz IBS/CBS | `obrigado-ibs-cbs/index.html` | 292 linhas de JS próprio |
 | Simulador | `simulador/index.html` | 129 linhas de JS próprio |
-| SafraCerta | `saas/index.html` | página de venda do ERP |
 | Guia Anti-Rejeição | `produtos/guia-anti-rejeicao/index.html` | página de venda, R$ 29 |
 | Pagamento | `pagamento.html` | botão de copiar Pix |
 | Painel | `painel/index.html` | uso interno, prioridade baixa |
@@ -85,7 +88,8 @@ rótulo e número.**
 
 ## 3. O design system v2
 
-Tudo em `estilo-v2.css`. Não crie CSS novo sem checar se a classe já existe.
+Tudo em `estilo-v2.css`. Não crie CSS novo sem checar se a classe já existe — e **nada de
+bloco `<style>` na página.**
 
 ### Tokens
 
@@ -112,13 +116,14 @@ Cores de estado: verde `#4FA97F` = certo · âmbar `#C8862A` = atenção · verm
 | `.cards` | grade com separação de 1px |
 | `.box` `.panel` `.dash` | caixa contornada / painel tinta / borda tracejada |
 | `.kv` | item de lista com linha em cima |
-| `.tag` | rótulo mono pequeno |
+| `.tag` | rótulo mono pequeno — **escreva o texto em maiúsculas** |
+| `.hd` | cabeçalho de bloco com rótulo à esquerda e nota à direita |
 | `.bars` `.track` | barras de índice |
 | `.faq` `.faqq` · `.tabs` `.tab` | acordeão · filtros |
 | `.field` `.chip` | formulário em bloco escuro |
 | `.hide` | esconder |
 
-### Artigo e prosa — use nos textos longos
+### Artigo e prosa — para textos longos
 
 | Classe | Para quê |
 |---|---|
@@ -126,9 +131,9 @@ Cores de estado: verde `#4FA97F` = certo · âmbar `#C8862A` = atenção · verm
 | `.crumb` | migalha mono (`BLOG / TÍTULO`) |
 | `.art .meta` | linha de autoria e tempo de leitura |
 | `.prose` | corpo do texto (h2, h3, ul, ol, strong, table já estilizados) |
-| `.note` | caixa de destaque com barra âmbar (atualização, aviso legal) |
+| `.note` | caixa de destaque com barra âmbar (atualização, alerta, aviso legal) |
 | `.artcta` | bloco de material relacionado no fim do artigo |
-| `.postlist` | lista de artigos do índice |
+| `.postlist` | lista de artigos ou de edições |
 
 ### Esqueleto de página
 
@@ -139,7 +144,7 @@ Cores de estado: verde `#4FA97F` = certo · âmbar `#C8862A` = atenção · verm
   <header class="site"> … logo + nav.main + a.cta …
   <main>
     <article class="wrap sec">
-      <div class="art">     crumb + h1 + meta
+      <div class="art">        crumb + h1 + meta
       <div class="art prose">  o texto
       <div class="artcta">     material relacionado
     <section class="dark sec">  bloco de fechamento com CTA
@@ -153,9 +158,9 @@ Header e footer são **idênticos** em todas as páginas v2 — copie sem altera
 
 ---
 
-## 4. Próxima tarefa: os 6 artigos restantes
+## 4. Próxima tarefa: os 6 artigos do blog
 
-`blog/nota-rejeitada-ibs-cbs-o-que-fazer.html` é o **molde**. Replique nestes:
+`blog/nota-rejeitada-ibs-cbs-o-que-fazer.html` é o **modelo**. Replique nestes:
 
 - `blog/validacoes-ibs-cbs-adiadas-o-que-muda.html`
 - `blog/cnpj-produtor-rural-2026-ou-2027.html`
@@ -164,21 +169,20 @@ Header e footer são **idênticos** em todas as páginas v2 — copie sem altera
 - `blog/reforma-tributaria-agronegocio-2026.html`
 - `blog/ibs-cbs-agro-aliquotas.html`
 
-Para cada um: **leia o arquivo atual, preserve o texto e as tabelas, troque só a casca.**
+Para cada um: **leia o arquivo atual, transponha o texto e as tabelas, troque só a casca.**
 Mantenha `canonical`, `og:*` e `description` que já existem, e acrescente o JSON-LD de
-`Article` no padrão do piloto. O índice do blog já lista os 7 e não precisa mudar.
+`Article` no padrão do modelo. O índice do blog já lista os 7 e não precisa mudar.
 
-Enquanto não terminar, quem clica num artigo não migrado cai no visual antigo — por isso
-vale fazer os 6 numa rodada só.
+É a fatia mais valiosa que resta: o índice do blog já é v2, então hoje quem clica num
+artigo cai no visual antigo. Vale fazer os 6 numa rodada só.
 
 ### Depois disso
 
-1. **Boletim** (7 páginas) — mesma lógica de artigo, ler seção 6 antes
-2. **SafraCerta** (`saas/`) — página de venda, merece atenção de conversão
-3. **Quiz** e **Simulador** — layout simples, cuidado com o JS (seção 5)
-4. **Guia Anti-Rejeição** e **Pagamento**
-5. **Painel** — uso interno, pode ficar por último
-6. **Linktree** — só alinhar cor e tipografia
+1. **SafraCerta** (`saas/`) — página de venda, merece atenção de conversão, não só de cor
+2. **Quiz** e **Simulador** — layout simples, cuidado com o JS (seção 5)
+3. **Guia Anti-Rejeição** e **Pagamento**
+4. **Painel** — uso interno, pode ficar por último
+5. **Linktree** — só alinhar cor e tipografia
 
 ---
 
@@ -205,7 +209,7 @@ links são o que alimenta o GA4. Ao reescrever um bloco, leve os atributos junto
 
 **SEO** — preserve `canonical`, `og:*` e `twitter:card` de cada página. URLs internas na
 forma de diretório (`/blog/`, `/saas/`, `/simulador/`, `/boletim/`), igual ao canonical —
-não volte para `/blog/index.html`. URL nova precisa entrar no `sitemap.xml`.
+não use `/blog/index.html`. URL nova precisa entrar no `sitemap.xml`.
 
 **Menu** — as páginas v1 já foram religadas às novas. Ao migrar, use o `nav.main` do v2.
 
@@ -226,14 +230,18 @@ Pix: CNPJ 52.394.324/0001-55.
 
 ---
 
-## 6. O boletim se regenera sozinho
+## 6. O boletim: feito, e por que ele exigia cuidado extra
 
-`boletim/AAAA-MM-DD.html` é criado todo dia pela skill `boletim-agro`
-(`.claude/skills/boletim-agro/SKILL.md`), que manda **copiar a estrutura de
-`boletim/2026-08-08.html`**.
+Migrado por inteiro — índice e as 6 edições. Fica registrado o motivo de ele ser diferente
+das outras seções: **`boletim/AAAA-MM-DD.html` é criado todo dia** pela skill `boletim-agro`
+(`.claude/skills/boletim-agro/SKILL.md`), copiando a edição de referência.
 
-Ao migrar o boletim: migre `boletim/2026-08-08.html` **e** atualize a instrução da skill
-para apontar para a nova referência. Sem isso, o boletim do dia seguinte nasce em v1 de novo.
+A skill já foi atualizada para apontar para `boletim/2026-08-08.html` em v2. **Se algum dia
+o formato do boletim mudar de novo, a skill precisa mudar junto** — senão a edição do dia
+seguinte nasce no formato velho e a migração se desfaz sozinha.
+
+O índice tem os marcadores `<!-- BOLETIM:INICIO -->` e `<!-- BOLETIM:FIM -->`, entre os
+quais a rotina insere a edição mais nova. **Não remova nem renomeie.**
 
 ---
 
@@ -245,6 +253,7 @@ para apontar para a nova referência. Sem isso, o boletim do dia seguinte nasce 
 4. **Zero erro no console**
 5. JSON-LD válido como JSON; `sitemap.xml` válido como XML
 6. **Diff contra o arquivo do repositório** — confira que só mudou o que devia mudar
+7. Em página com dados, **compare os números um a um** com a versão anterior
 
 ---
 
