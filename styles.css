@@ -125,6 +125,14 @@ p { margin: 0 0 12px; color: var(--muted); }
   position: relative;
   z-index: 2;
 }
+/* O corte na diagonal e o recuo negativo existem para encaixar na coluna da
+   imagem. Sem ela, sobravam 90px para fora da tela e a página rolava na
+   horizontal. */
+.hero-banner-top > .hero-banner-left:only-child {
+  clip-path: none;
+  margin-right: 0;
+  padding-right: 48px;
+}
 .hero-banner-text h1 {
   color: #fff;
   font-size: 2.1rem;
