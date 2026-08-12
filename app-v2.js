@@ -1,5 +1,23 @@
 (function(){
 var W='https://wa.me/5564992226766?text=';
+
+// ---------------------------------------------------------------------------
+// ONDE OS CADASTROS DO AGROAUDIT SÃO GRAVADOS
+//
+// Cole aqui a URL do formulário (Formspree, Google Apps Script ou qualquer
+// endpoint que aceite um POST em JSON). Ex.:
+//   var LEAD_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
+//
+// Enquanto estiver vazio, o cadastro NÃO é gravado em lugar nenhum: o lead só
+// existe se a pessoa clicar em "Confirmar pelo WhatsApp" na tela seguinte.
+// ---------------------------------------------------------------------------
+var LEAD_ENDPOINT='';
+
+function enviarLead(dados){
+if(!LEAD_ENDPOINT)return;
+try{fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(dados)})
+.catch(function(){track('lead_falhou',{origem:dados.origem});});}catch(e){}
+}
 function track(n,p){try{window.dataLayer=window.dataLayer||[];var o={event:n};for(var k in p)o[k]=p[k];window.dataLayer.push(o);if(window.gtag)window.gtag('event',n,p||{});}catch(e){}}
 document.addEventListener('click',function(e){var a=e.target.closest('[data-ev]');if(a)track(a.getAttribute('data-ev'),{origem:a.getAttribute('data-origem')||'','indice':a.getAttribute('data-indice')||undefined});});
 
@@ -83,6 +101,9 @@ var nome=g('aa-nome'),emp=g('aa-empresa'),wpp=g('aa-wpp'),mail=g('aa-email');
 var note=document.getElementById('aa-note');
 if(!nome||!wpp){note.textContent='Precisamos ao menos do seu nome e do WhatsApp para te avisar.';note.style.color='#E08A72';return;}
 track('lista_agroaudit_enviada',{tipo_operacao:tipo||'nao_informado'});
+enviarLead({origem:'agroaudit_lista',_subject:'AgroAudit — novo cadastro: '+nome,
+nome:nome,empresa:emp,whatsapp:wpp,email:mail,tipo_operacao:tipo||'a definir',
+enviado_em:new Date().toISOString()});
 document.getElementById('aa-ok-name').textContent=nome.split(' ')[0];
 document.getElementById('aa-ok-wa').href=W+encodeURIComponent('Olá! Quero entrar na lista dos primeiros testes do AgroAudit.\n\nNome: '+nome+'\nEmpresa: '+emp+'\nWhatsApp: '+wpp+'\nE-mail: '+mail+'\nTipo de operação que gostaria de auditar: '+(tipo||'a definir'));
 f.classList.add('hide');document.getElementById('aa-ok').classList.remove('hide');});}
