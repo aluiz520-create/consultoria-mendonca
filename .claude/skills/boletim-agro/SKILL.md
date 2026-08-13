@@ -82,6 +82,10 @@ Seções, nesta ordem:
        `<style>` na página** (as classes `.art`, `.prose`, `.note`, `.tag`, `.crumb`, `.dark`,
        `.btn`, `.btn2`, `.row` já existem; não crie CSS novo);
      - fontes Archivo + IBM Plex Mono via Google Fonts (copiar as tags do modelo);
+     - `<a class="skip" href="#top">Ir para o conteúdo</a>` como **primeiro elemento do
+       `<body>`**, e o `<main>` com `id="top"` — é o atalho de teclado do site inteiro;
+     - as meta tags `twitter:title`, `twitter:description`, `twitter:image`, `og:image:alt`
+       e `theme-color` (copiar do modelo, trocando só o que for da edição);
      - `header class="site"` com `nav.main` e `footer class="site dark"` **idênticos** ao modelo;
      - `<script defer src="/consultoria-mendonca/app-v2.js">` no lugar de `script.js`
        — **e sem `<span id="year">`**, que era dependência do script antigo;

@@ -267,7 +267,7 @@ quais a rotina insere a edição mais nova. **Não remova nem renomeie.**
 
 ---
 
-## 8. Dois pendentes que não são de design
+## 8. Pendentes que não são de design
 
 **~~Card errado na home.~~ Resolvido.** O card do Guia Anti-Rejeição na seção de conteúdos
 do `index.html` estava descrito como *"Parametrização fiscal no SIAGRI para o agro"* — que é
@@ -277,3 +277,37 @@ o outro produto, o de R$ 147. Agora descreve o guia de IBS/CBS, alinhado com `/m
 Enquanto estiver assim, o cadastro só existe se a pessoa clicar em "Confirmar pelo
 WhatsApp" — a tela de sucesso não significa que algo foi guardado. Falta colar um endpoint
 (Formspree ou equivalente). Não é trabalho de design, mas convém saber.
+
+---
+
+## 9. Rodada 2 da auditoria: acessibilidade e contraste
+
+Aplicada primeiro na home e depois propagada para o resto do v2. **O que agora é padrão de
+página** — quem criar página nova no v2 precisa incluir os três primeiros itens:
+
+1. **`<a class="skip" href="#top">Ir para o conteúdo</a>` como primeiro elemento do
+   `<body>`**, com `id="top"` no `<main>`. É o atalho que pula o cabeçalho no teclado.
+2. **Meta tags completas** — `twitter:title`, `twitter:description`, `twitter:image`,
+   `og:image:alt` e `theme-color` (`#0E1512`), além do `og:` que já existia.
+3. **Piso de contraste**: texto claro sobre fundo escuro não desce de **`.62`**
+   (`rgba(246,244,239,.62)` ou `opacity:.62`). Os `.4`, `.45` e `.5` que existiam foram
+   levantados. O `.55` do rodapé e da lista de contato ficou como está — é o piso aceito
+   para dado secundário em fundo claro.
+4. **Glifo decorativo é `aria-hidden="true"`** — os `□ ■ + −` dos botões de dor e do FAQ
+   viravam ruído no leitor de tela. O texto ao lado já diz tudo.
+5. **Estado que muda sozinho é anunciado** — a barra do quiz é `role="progressbar"` com
+   `aria-valuenow` atualizado a cada pergunta; o enunciado e o resultado são `aria-live`.
+6. **Foco sempre visível** — `:focus-visible` com contorno verde está no `estilo-v2.css`,
+   vale para o site inteiro, não mexa.
+
+**No celular o cabeçalho recolhe.** Ele ocupava ~22% da tela em 360px. Agora some ao
+descer e volta ao subir, via classe `.recolhido` (CSS no `estilo-v2.css`, listener no fim
+do `app-v2.js`). Só abaixo de 700px.
+
+**Fora do escopo:** `/simulador/`, `/link/` e `/obrigado-ibs-cbs/` não carregam o
+`estilo-v2.css` — continuam no formato antigo, então a classe `.skip` nem existe lá. Quando
+forem migradas, entram nos 6 itens acima.
+
+**A skill do boletim foi atualizada junto** (`.claude/skills/boletim-agro/SKILL.md`), e a
+edição de referência `boletim/2026-08-08.html` também — é dela que a rotina diária copia.
+Sem isso, a edição de amanhã nasceria sem o skip link.
