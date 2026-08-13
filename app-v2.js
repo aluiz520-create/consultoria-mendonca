@@ -67,7 +67,8 @@ function show(a,b,c){idle.classList.toggle('hide',!a);run.classList.toggle('hide
 function paintQ(){var q=Q[i];document.getElementById('q-num').textContent=i+1;
 document.getElementById('q-area').textContent=q[1].toUpperCase();
 document.getElementById('q-text').textContent=q[0];
-document.getElementById('q-prog').style.width=Math.round(i/Q.length*100)+'%';}
+document.getElementById('q-prog').style.width=Math.round(i/Q.length*100)+'%';
+var tk=document.getElementById('q-track');if(tk)tk.setAttribute('aria-valuenow',i);}
 function finish(){
 var acc={};DIM.forEach(function(d){acc[d[0]]=[];});
 ans.forEach(function(v,k){if(v==null)return;var q=Q[k];acc[q[1]].push(q[2]?1-v:v);});
@@ -107,4 +108,11 @@ enviado_em:new Date().toISOString()});
 document.getElementById('aa-ok-name').textContent=nome.split(' ')[0];
 document.getElementById('aa-ok-wa').href=W+encodeURIComponent('Olá! Quero entrar na lista dos primeiros testes do AgroAudit.\n\nNome: '+nome+'\nEmpresa: '+emp+'\nWhatsApp: '+wpp+'\nE-mail: '+mail+'\nTipo de operação que gostaria de auditar: '+(tipo||'a definir'));
 f.classList.add('hide');document.getElementById('aa-ok').classList.remove('hide');});}
+// --- cabeçalho recolhe ao descer no celular
+(function(){var h=document.querySelector('header.site');if(!h)return;var ult=0;
+window.addEventListener('scroll',function(){
+if(window.innerWidth>700){h.classList.remove('recolhido');return;}
+var y=window.pageYOffset||document.documentElement.scrollTop;
+h.classList.toggle('recolhido',y>240&&y>ult+4);
+ult=y;},{passive:true});})();
 })();
