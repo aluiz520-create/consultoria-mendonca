@@ -269,10 +269,9 @@ quais a rotina insere a edição mais nova. **Não remova nem renomeie.**
 
 ## 8. Dois pendentes que não são de design
 
-**Card errado na home.** Na seção de conteúdos do `index.html`, o card do Guia
-Anti-Rejeição está descrito como *"Parametrização fiscal no SIAGRI para o agro"* — que é o
-outro produto, o de R$ 147. A descrição certa é a do guia de IBS/CBS, como já está em
-`/materiais/`.
+**~~Card errado na home.~~ Resolvido.** O card do Guia Anti-Rejeição na seção de conteúdos
+do `index.html` estava descrito como *"Parametrização fiscal no SIAGRI para o agro"* — que é
+o outro produto, o de R$ 147. Agora descreve o guia de IBS/CBS, alinhado com `/materiais/`.
 
 **Lead do AgroAudit não é gravado.** O `LEAD_ENDPOINT` no topo do `app-v2.js` está vazio.
 Enquanto estiver assim, o cadastro só existe se a pessoa clicar em "Confirmar pelo
