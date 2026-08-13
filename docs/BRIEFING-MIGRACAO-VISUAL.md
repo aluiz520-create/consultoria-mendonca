@@ -18,6 +18,17 @@ dias antes. Se tivessem sido copiados por cima, teriam apagado o JSON-LD da home
 As entregas do boletim e do SafraCerta já vieram no formato certo — pasta só com o que
 mudou, nada para descartar. É esse o padrão.
 
+**Aconteceu de novo na rodada 3 da auditoria.** O pacote trouxe `index.html`, `app-v2.js` e
+`estilo-v2.css`; os dois últimos vinham idênticos ao repositório, e o `index.html` tinha
+sido gerado a partir de `963108b` — um commit atrás do repositório. Copiado por cima, teria
+desfeito a correção do card do Guia Anti-Rejeição, que voltava a descrever o produto errado.
+A rodada 2 sobreviveu porque estava naquele commit; a correção do card, não.
+
+**Como pegar isso em um minuto:** antes de copiar, rode `diff` de cada arquivo do pacote
+contra o do repositório e leia **todos** os hunks. Os que você não pediu são os suspeitos —
+um deles vai ser uma correção sua sendo desfeita. `git log -S "<trecho>"` diz em qual commit
+o trecho entrou e se ele é mais novo que o pacote.
+
 **Preserve o conteúdo.** Texto, número, preço e link de pagamento são decisão de negócio.
 Se algo precisa mudar, sinalize — não altere no meio de um trabalho de layout.
 
