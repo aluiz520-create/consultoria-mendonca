@@ -24,6 +24,15 @@ sido gerado a partir de `963108b` — um commit atrás do repositório. Copiado 
 desfeito a correção do card do Guia Anti-Rejeição, que voltava a descrever o produto errado.
 A rodada 2 sobreviveu porque estava naquele commit; a correção do card, não.
 
+**E de novo na rodada 4** — mesma linha, mesmo card. Aí ficou clara a causa: o auditor não
+relê o repositório entre as rodadas, ele **continua editando a própria cópia**. Então toda
+correção feita aqui e não feita lá volta desfeita no pacote seguinte, indefinidamente.
+A rodada 4 tinha 3 hunks: 2 pedidos e 1 desfazendo a correção do card.
+
+Isso se resolve na origem, não aqui: **quem monta o pacote precisa baixar o arquivo do
+repositório imediatamente antes de trabalhar.** Enquanto isso não acontecer, a conferência
+abaixo é obrigatória em toda rodada.
+
 **Como pegar isso em um minuto:** antes de copiar, rode `diff` de cada arquivo do pacote
 contra o do repositório e leia **todos** os hunks. Os que você não pediu são os suspeitos —
 um deles vai ser uma correção sua sendo desfeita. `git log -S "<trecho>"` diz em qual commit
