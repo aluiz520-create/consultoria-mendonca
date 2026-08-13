@@ -1,8 +1,8 @@
 # Briefing — migração visual para o formato v2
 
 **Para:** quem for fazer o design das páginas que ainda estão no formato antigo
-**Atualizado em:** 12/08/2026, depois da migração do boletim
-**Placar:** 13 páginas em v2 · 12 em v1 · 3 fora dos dois
+**Atualizado em:** 12/08/2026, depois da migração do SafraCerta
+**Placar:** 14 páginas em v2 · 11 em v1 · 3 fora dos dois
 **Site no ar:** https://aluiz520-create.github.io/consultoria-mendonca/
 
 ---
@@ -15,8 +15,8 @@ antes de reescrever. Não parta de uma versão gerada numa conversa anterior.
 Isso já custou uma rodada: um pacote trouxe 11 arquivos, e 5 deles vinham na versão de dois
 dias antes. Se tivessem sido copiados por cima, teriam apagado o JSON-LD da home, o
 `LEAD_ENDPOINT` do AgroAudit, 14 URLs do `sitemap.xml` e a normalização das URLs internas.
-A entrega do boletim já veio no formato certo — pasta só com o que mudou, nada para
-descartar. É esse o padrão.
+As entregas do boletim e do SafraCerta já vieram no formato certo — pasta só com o que
+mudou, nada para descartar. É esse o padrão.
 
 **Preserve o conteúdo.** Texto, número, preço e link de pagamento são decisão de negócio.
 Se algo precisa mudar, sinalize — não altere no meio de um trabalho de layout.
@@ -42,6 +42,7 @@ retocá-los à mão.
 | Soluções | `solucoes/index.html` |
 | Materiais | `materiais/index.html` |
 | AgroAudit | `agroaudit/index.html` |
+| SafraCerta | `saas/index.html` |
 | Índice do blog | `blog/index.html` |
 | **Artigo-modelo** | `blog/nota-rejeitada-ibs-cbs-o-que-fazer.html` |
 | Boletim — índice | `boletim/index.html` |
@@ -54,12 +55,14 @@ São a **referência**. Não redesenhar: copiar delas.
 | Página | Arquivo | Observação |
 |---|---|---|
 | **6 artigos do blog** | ver seção 4 | **próxima tarefa** |
-| SafraCerta | `saas/index.html` | página de venda do ERP |
 | Quiz IBS/CBS | `obrigado-ibs-cbs/index.html` | 292 linhas de JS próprio |
 | Simulador | `simulador/index.html` | 129 linhas de JS próprio |
 | Guia Anti-Rejeição | `produtos/guia-anti-rejeicao/index.html` | página de venda, R$ 29 |
 | Pagamento | `pagamento.html` | botão de copiar Pix |
 | Painel | `painel/index.html` | uso interno, prioridade baixa |
+
+`styles.css` existe só para essas 11 páginas. Quando a última migrar, ele e o `script.js`
+saem do site.
 
 ### Fora dos dois sistemas (CSS inline próprio)
 
@@ -113,7 +116,7 @@ Cores de estado: verde `#4FA97F` = certo · âmbar `#C8862A` = atenção · verm
 | `.lead` / `.sub` | texto de apoio grande / cinza |
 | `.btn` / `.btn2` | botão sólido / contornado |
 | `.grid` `.g2` `.row` | layout |
-| `.cards` | grade com separação de 1px |
+| `.cards` | grade separada por linha de 1px — ver nota abaixo |
 | `.box` `.panel` `.dash` | caixa contornada / painel tinta / borda tracejada |
 | `.kv` | item de lista com linha em cima |
 | `.tag` | rótulo mono pequeno — **escreva o texto em maiúsculas** |
@@ -122,6 +125,12 @@ Cores de estado: verde `#4FA97F` = certo · âmbar `#C8862A` = atenção · verm
 | `.faq` `.faqq` · `.tabs` `.tab` | acordeão · filtros |
 | `.field` `.chip` | formulário em bloco escuro |
 | `.hide` | esconder |
+
+> **Nota sobre `.cards`.** A linha de separação vem da **sombra de cada célula**, não do
+> fundo do container. Antes era o contrário, e toda última linha incompleta virava um bloco
+> cinza vazio — apareceu no fluxo da safra do SafraCerta (9 itens) e em `/materiais/`
+> (11 itens). Se você montar um grid parecido à mão, use `.cards` em vez de recriar o
+> efeito, senão o problema volta.
 
 ### Artigo e prosa — para textos longos
 
@@ -173,16 +182,15 @@ Para cada um: **leia o arquivo atual, transponha o texto e as tabelas, troque s�
 Mantenha `canonical`, `og:*` e `description` que já existem, e acrescente o JSON-LD de
 `Article` no padrão do modelo. O índice do blog já lista os 7 e não precisa mudar.
 
-É a fatia mais valiosa que resta: o índice do blog já é v2, então hoje quem clica num
-artigo cai no visual antigo. Vale fazer os 6 numa rodada só.
+É a maior fatia que resta e a mais valiosa: o índice do blog já é v2, então hoje quem clica
+num artigo cai no visual antigo. Vale fazer os 6 numa rodada só.
 
 ### Depois disso
 
-1. **SafraCerta** (`saas/`) — página de venda, merece atenção de conversão, não só de cor
-2. **Quiz** e **Simulador** — layout simples, cuidado com o JS (seção 5)
-3. **Guia Anti-Rejeição** e **Pagamento**
-4. **Painel** — uso interno, pode ficar por último
-5. **Linktree** — só alinhar cor e tipografia
+1. **Quiz** e **Simulador** — layout simples, cuidado com o JS (seção 5)
+2. **Guia Anti-Rejeição** e **Pagamento**
+3. **Painel** — uso interno, pode ficar por último
+4. **Linktree** — só alinhar cor e tipografia
 
 ---
 
@@ -222,7 +230,8 @@ não use `/blog/index.html`. URL nova precisa entrar no `sitemap.xml`.
 | Planilha de custos | R$ 97 | `pay.kiwify.com.br/vGZ5nvZ` |
 | Contrato arrendamento | R$ 67 | `pay.kiwify.com.br/E4S9SDX` |
 | Guia Anti-Rejeição | R$ 29 | `pay.kiwify.com.br/0nNxK94` |
-| SafraCerta | R$ 97/mês | signup na Vercel |
+| SafraCerta Starter | R$ 97/mês | signup na Vercel |
+| SafraCerta Pro | R$ 297/mês | signup na Vercel |
 | Parametrização fiscal | a partir de R$ 1.500 | orçamento |
 | Acompanhamento mensal | a partir de R$ 900/mês | orçamento |
 
@@ -254,6 +263,7 @@ quais a rotina insere a edição mais nova. **Não remova nem renomeie.**
 5. JSON-LD válido como JSON; `sitemap.xml` válido como XML
 6. **Diff contra o arquivo do repositório** — confira que só mudou o que devia mudar
 7. Em página com dados, **compare os números um a um** com a versão anterior
+8. **Olhe a última linha de cada grid** — foi ali que apareceu o bloco cinza do `.cards`
 
 ---
 
