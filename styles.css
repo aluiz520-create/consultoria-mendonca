@@ -1,3 +1,6 @@
+/* folga para o cabeçalho fixo não cobrir o topo da seção no salto de âncora */
+[id] { scroll-margin-top: 88px; }
+
 :root {
   --green-900: #1b3a2b;
   --green-700: #2f5d3f;
