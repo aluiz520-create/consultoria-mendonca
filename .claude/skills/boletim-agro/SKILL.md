@@ -86,13 +86,39 @@ Seções, nesta ordem:
 
 **Padrão (sessão agendada diária): PUBLICAR NO SITE + notificar.** Faça as duas coisas:
 
-1. **Publicar no site** (a seção `boletim/` já existe; use a edição de 07/08 como modelo):
-   - Crie `boletim/AAAA-MM-DD.html` copiando a estrutura de `boletim/2026-08-08.html`
-     (mesmo header/nav, blocos Tempo/Cotações/Dólar/Radar/Gancho, CTA para o simulador e
-     WhatsApp no fim, tag do GA4 via `../assets/ga.js`). Troque só o conteúdo e a data.
+1. **Publicar no site — no formato v2** (o site foi migrado; não copie edição antiga em v1):
+   - **Modelo obrigatório: `boletim/2026-08-08.html`** — é a edição de referência já no formato
+     v2. Copie a estrutura dela e troque **só o conteúdo e a data**.
+   - O que o formato v2 exige, e que a versão antiga não tinha:
+     - `<link rel="stylesheet" href="/consultoria-mendonca/estilo-v2.css">` — **sem bloco
+       `<style>` na página** (as classes `.art`, `.prose`, `.note`, `.tag`, `.crumb`, `.dark`,
+       `.btn`, `.btn2`, `.row` já existem; não crie CSS novo);
+     - fontes Archivo + IBM Plex Mono via Google Fonts (copiar as tags do modelo);
+     - `<a class="skip" href="#top">Ir para o conteúdo</a>` como **primeiro elemento do
+       `<body>`**, e o `<main>` com `id="top"` — é o atalho de teclado do site inteiro;
+     - as meta tags `twitter:title`, `twitter:description`, `twitter:image`, `og:image:alt`
+       e `theme-color` (copiar do modelo, trocando só o que for da edição);
+     - `header class="site"` com `nav.main` e `footer class="site dark"` **idênticos** ao modelo;
+     - `<script defer src="/consultoria-mendonca/app-v2.js">` no lugar de `script.js`
+       — **e sem `<span id="year">`**, que era dependência do script antigo;
+     - URLs internas na forma de diretório (`/consultoria-mendonca/boletim/`,
+       `/consultoria-mendonca/simulador/`);
+     - `data-ev` e `data-origem` nos CTAs (`clique_simulador`, `clique_whatsapp`,
+       `clique_diagnostico` com `data-origem="boletim"`) — é o que alimenta o GA4;
+     - as 5 seções em `<section>` separadas por linha de 1px, cada uma com o rótulo em
+       `<p class="tag">`; o Gancho do dia num bloco `class="dark"`; a caixa de alerta em
+       `class="note"`.
    - Em `boletim/index.html`, insira o novo item **logo após** o marcador
-     `<!-- BOLETIM:INICIO ... -->` (a edição mais nova fica no topo), no mesmo formato
-     `<a class="blog-list-item" ...>` das existentes.
+     `<!-- BOLETIM:INICIO ... -->` (a edição mais nova fica no topo), no formato v2 da lista:
+
+     ```html
+     <li><a href="/consultoria-mendonca/boletim/AAAA-MM-DD.html">
+       <div class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--mut);margin-bottom:10px">DD/MM/AAAA · DIA</div>
+       <h2>Boletim Agro — DD/MM/AAAA</h2>
+       <p class="sub" style="font-size:16px">resumo em uma frase</p>
+     </a></li>
+     ```
+
    - Adicione a URL da nova edição em `sitemap.xml` e atualize o `lastmod` da seção `boletim/`.
    - Comite e faça push para o `main` (`git add boletim sitemap.xml && git commit && git push origin main`).
      O GitHub Pages republica sozinho. Não abra PR — é conteúdo diário.
@@ -101,4 +127,3 @@ Seções, nesta ordem:
 
 Sob demanda (usuário digitou "BOLETIM"): só imprima no chat; publique/comite apenas se pedido.
 Se o usuário pedir versão Story, entregue também o formato do §5.
-```

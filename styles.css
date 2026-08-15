@@ -1,3 +1,6 @@
+/* folga para o cabeçalho fixo não cobrir o topo da seção no salto de âncora */
+[id] { scroll-margin-top: 88px; }
+
 :root {
   --green-900: #1b3a2b;
   --green-700: #2f5d3f;
@@ -124,6 +127,14 @@ p { margin: 0 0 12px; color: var(--muted); }
   padding: 90px 130px 90px 48px;
   position: relative;
   z-index: 2;
+}
+/* O corte na diagonal e o recuo negativo existem para encaixar na coluna da
+   imagem. Sem ela, sobravam 90px para fora da tela e a página rolava na
+   horizontal. */
+.hero-banner-top > .hero-banner-left:only-child {
+  clip-path: none;
+  margin-right: 0;
+  padding-right: 48px;
 }
 .hero-banner-text h1 {
   color: #fff;
