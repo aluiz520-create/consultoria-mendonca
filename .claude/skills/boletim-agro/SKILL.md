@@ -43,9 +43,21 @@ antes de publicar. Anote a data de cada número e cite-a no rodapé de fontes.
    últimas semanas: Reforma Tributária (IBS/CBS, cClassTrib, cBenef), NFP-e/NF-e, SEFAZ-GO,
    Plano Safra, financiamento rural. **Fato com prazo sempre entra.**
 
-> Estado conhecido do radar fiscal (atualizar se mudar): PJ regime regular com IBS/CBS
-> obrigatórios na NF-e desde 03/08/2026 (NT 2025.002 v1.40, UB12-10); produtor PF adiado
-> para 01/01/2027 pelo Decreto 13.075/2026.
+> **Estado conhecido do radar fiscal — confira antes de repetir, isto já saiu errado no ar.**
+>
+> - **Destaque de IBS/CBS na NF-e: obrigatório.** O cronograma da Reforma segue inalterado.
+> - **Rejeição da nota: ADIADA.** O Ato Técnico Conjunto CGIBS/RFB nº 1, de 31/07/2026,
+>   suspendeu o início das regras de validação. A NT 2025.002 chegou à **v1.51**, que removeu
+>   as datas da regra **UB12-10** e a deixou como "implementação futura", sem prazo definido.
+>   **Nunca escreva que a nota é rejeitada desde 03/08** — a v1.40 previa isso, mas foi
+>   superada. A obrigação começou; a rejeição não.
+> - **Produtor PF:** CNPJ e emissão de documento fiscal eletrônico adiados para 01/01/2027
+>   (Decreto 13.075/2026, de 21/07, que alterou o Decreto 12.955/2026).
+> - **Art. 348 da LC 214/2025:** dispensa o recolhimento de IBS/CBS sobre fatos geradores de
+>   2026, **condicionada** ao cumprimento correto das obrigações acessórias.
+>
+> A referência da casa sobre isso é `blog/validacoes-ibs-cbs-adiadas-o-que-muda.html`.
+> **Leia esse post antes de escrever o bloco fiscal** e não contradiga o que o site já publicou.
 
 ## Passo 2 — Montar o boletim (formato fixo)
 
