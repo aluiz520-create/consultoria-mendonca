@@ -51,6 +51,12 @@ antes de publicar. Anote a data de cada número e cite-a no rodapé de fontes.
 >   as datas da regra **UB12-10** e a deixou como "implementação futura", sem prazo definido.
 >   **Nunca escreva que a nota é rejeitada desde 03/08** — a v1.40 previa isso, mas foi
 >   superada. A obrigação começou; a rejeição não.
+> - **Simples Nacional e MEI: também sem data.** A v1.40 previa 04/01/2027 para o início das
+>   rejeições desse grupo; a v1.51 removeu essa data junto com a do regime regular. **Não
+>   apresente 04/01/2027 como prazo de rejeição** — não há data em vigor para nenhum regime.
+> - Não escreva "a origem da maioria das rejeições" nem nada que trate rejeição como fato
+>   corrente. Com a validação adiada, a nota errada é **autorizada**; o erro aparece depois,
+>   na escrituração e no crédito de quem comprou de você.
 > - **Produtor PF:** CNPJ e emissão de documento fiscal eletrônico adiados para 01/01/2027
 >   (Decreto 13.075/2026, de 21/07, que alterou o Decreto 12.955/2026).
 > - **Art. 348 da LC 214/2025:** dispensa o recolhimento de IBS/CBS sobre fatos geradores de
