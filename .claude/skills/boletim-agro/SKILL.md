@@ -39,6 +39,23 @@ antes de publicar. Anote a data de cada número e cite-a no rodapé de fontes.
 3. **Tempo em Goiás** (Itaberaí e Goiânia) — condição, temperatura, chuva (mm), vento, umidade.
    Fonte: Climatempo/AccuWeather. Destaque qualquer alerta (chuva fora de época, vento forte,
    geada, umidade crítica) e o que significa para plantio/colheita/pulverização/transporte/armazenagem.
+
+> **Escala de aviso do INMET — sempre explicar a cor, nunca citar sozinha.**
+>
+> | Cor | Classificação | Umidade |
+> |---|---|---|
+> | Amarelo | Perigo potencial | 30% a 20% |
+> | Laranja | **Perigo** | abaixo de 20%, até ~12% |
+> | Vermelho | Grande perigo | abaixo de 12% |
+>
+> Duas regras, porque isso já saiu errado no ar:
+> 1. **Nunca escreva "alerta laranja" sem dizer o que laranja significa.** O produtor não tem
+>    obrigação de saber a escala — se ele precisa perguntar, o boletim falhou.
+> 2. **Confira a cor contra a umidade que você mesmo informou.** Se o texto diz 26% e a cor
+>    citada é laranja, há contradição: ou a cor está errada, ou o aviso é regional e a cidade
+>    está fora da faixa. Nesse caso, **diga isso explicitamente** em vez de deixar os dois
+>    números brigando no mesmo parágrafo.
+
 4. **Radar fiscal/agro** — cheque se há prazo, mudança de regra ou fato novo relevante nas
    últimas semanas: Reforma Tributária (IBS/CBS, cClassTrib, cBenef), NFP-e/NF-e, SEFAZ-GO,
    Plano Safra, financiamento rural. **Fato com prazo sempre entra.**
