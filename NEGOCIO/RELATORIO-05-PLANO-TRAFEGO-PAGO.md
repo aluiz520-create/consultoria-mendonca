@@ -777,7 +777,7 @@ queimar orçamento aprendendo o que R$700/mês já ensina mais barato.
 
 | Métrica | Onde medir | O que decide |
 |---|---|---|
-| Custo por lead (CPL) | Google Ads ÷ GA4 (`clique_whatsapp`) | Se o canal/campanha compensa |
+| Custo por lead (CPL) | Google Ads ÷ GA4 (`whatsapp_clique`) | Se o canal/campanha compensa |
 | Custo por diagnóstico concluído | GA4 (`ferramenta_concluida`, `diagnostico_concluido`) | Se a ferramenta segura quem chega |
 | Diagnósticos realizados | GA4 | Volume real do funil, não vaidade |
 | Contatos (WhatsApp) | GA4 + contagem manual das conversas | Qualidade da qualificação |
