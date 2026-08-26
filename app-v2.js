@@ -2,24 +2,53 @@
 var W='https://wa.me/5564992226766?text=';
 
 // ---------------------------------------------------------------------------
-// ONDE OS CADASTROS DO AGROAUDIT SÃO GRAVADOS
-//
-// Cole aqui a URL do formulário (Formspree, Google Apps Script ou qualquer
-// endpoint que aceite um POST em JSON). Ex.:
-//   var LEAD_ENDPOINT = 'https://formspree.io/f/xxxxxxxx';
-//
-// Enquanto estiver vazio, o cadastro NÃO é gravado em lugar nenhum: o lead só
-// existe se a pessoa clicar em "Confirmar pelo WhatsApp" na tela seguinte.
+// FASE 0 — captura de leads e analytics agora vivem em assets/lead.js
+// (objeto global CM), carregado ANTES deste arquivo. Os nomes de função
+// abaixo (track/enviarLead) continuam existindo como atalhos finos para
+// CM.track/CM.enviarLead, só para não precisar reescrever cada chamada
+// espalhada neste arquivo — alteração incremental, não uma reescrita.
+// Ver assets/lead.js para a lógica real (UTM, backend, scoring).
 // ---------------------------------------------------------------------------
-var LEAD_ENDPOINT='';
-
-function enviarLead(dados){
-if(!LEAD_ENDPOINT)return;
-try{fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(dados)})
-.catch(function(){track('lead_falhou',{origem:dados.origem});});}catch(e){}
+var CMok = typeof window !== 'undefined' && window.CM;
+if (!CMok) {
+  console.warn('[Controller do Agro] assets/lead.js não foi carregado antes de app-v2.js — captura de leads e analytics padronizado ficam inativos nesta página.');
 }
-function track(n,p){try{window.dataLayer=window.dataLayer||[];var o={event:n};for(var k in p)o[k]=p[k];window.dataLayer.push(o);if(window.gtag)window.gtag('event',n,p||{});}catch(e){}}
-document.addEventListener('click',function(e){var a=e.target.closest('[data-ev]');if(a)track(a.getAttribute('data-ev'),{origem:a.getAttribute('data-origem')||'','indice':a.getAttribute('data-indice')||undefined});});
+
+// Traduz nomes antigos de evento (usados em atributos data-ev espalhados
+// por várias páginas do site) para o funil padronizado da Fase 0, sem
+// precisar editar HTML de cada página.
+var EVENT_ALIAS = {
+  clique_whatsapp: 'whatsapp_clique',
+  diagnostico_iniciado: 'diagnostico_inicio',
+  lista_agroaudit_enviada: 'lead_enviado'
+};
+
+function track(n, p) {
+  var name = EVENT_ALIAS[n] || n;
+  if (CMok) { window.CM.track(name, p || {}); return; }
+  // fallback mínimo caso lead.js não tenha carregado — não quebra a página
+  try {
+    window.dataLayer = window.dataLayer || [];
+    var o = { event: name }; for (var k in p) o[k] = p[k];
+    window.dataLayer.push(o);
+    if (window.gtag) window.gtag('event', name, p || {});
+  } catch (e) {}
+}
+
+document.addEventListener('click', function (e) {
+  var a = e.target.closest('[data-ev]');
+  if (!a) return;
+  var evName = a.getAttribute('data-ev');
+  track(evName, { origem: a.getAttribute('data-origem') || '', indice: a.getAttribute('data-indice') || undefined });
+
+  // Clique em WhatsApp de um lead que JÁ existe (mesma origem) soma pontos
+  // ao score dele — "Clicou WhatsApp = +15" (item 7 da missão).
+  if (CMok && (evName === 'clique_whatsapp' || evName === 'whatsapp_clique')) {
+    var origem = a.getAttribute('data-origem') || 'geral';
+    var idLead = window.CM.idLeadAtual(origem);
+    window.CM.enviarEventoDeScore(idLead, 'clicou_whatsapp');
+  }
+});
 
 // --- checklist de problemas
 var pl=document.getElementById('pains');
@@ -61,7 +90,7 @@ Processos:'Quando a rotina depende de uma pessoa ou de duas fontes para o mesmo 
 Tecnologia:'Planilha não é o problema. Depender de controles fragmentados que não se falam é — porque cada um deles esconde uma parte da verdade.',
 Indicadores:'Dado espalhado não é gestão. Se você não consegue apontar o gargalo em minutos, a informação existe mas não está no lugar certo.'};
 var run=document.getElementById('q-run'),don=document.getElementById('q-done');
-var i=0,ans=[],fired=false;
+var i=0,ans=[],fired=false,ultimoResultado=null;
 function col(v){return v<50?'#B4472F':v<70?'#C8862A':'#4FA97F';}
 function show(a,b,c){idle.classList.toggle('hide',!a);run.classList.toggle('hide',!b);don.classList.toggle('hide',!c);}
 function paintQ(){var q=Q[i];document.getElementById('q-num').textContent=i+1;
@@ -82,32 +111,98 @@ document.getElementById('r-weak').textContent='Seu principal ponto de atenção 
 document.getElementById('r-explain').textContent=EXP[srt[0].label]||'';
 document.getElementById('r-wa').href=W+encodeURIComponent('Olá! Vim pelo diagnóstico da Consultoria Mendonça. Meu índice de controle operacional foi '+ov+'/100 ('+rows.map(function(r){return r.label+' '+r.value;}).join(', ')+'). Gostaria de entender o que isso significa para a minha operação.');
 document.getElementById('r-wa').setAttribute('data-indice',ov);
+ultimoResultado={indice:ov,dimensoes:rows};
 show(false,false,true);
 if(!fired){fired=true;track('diagnostico_concluido',{indice:ov});}}
 document.getElementById('q-start').addEventListener('click',function(){i=0;ans=[];fired=false;track('diagnostico_iniciado');show(false,true,false);paintQ();run.scrollIntoView?null:null;});
 run.querySelectorAll('.opt').forEach(function(b){b.addEventListener('click',function(){
 ans[i]=parseFloat(b.getAttribute('data-v'));i++;if(i>=Q.length){finish();}else{paintQ();}});});
 document.getElementById('q-back').addEventListener('click',function(){if(i>0){i--;paintQ();}});
-document.getElementById('q-reset').addEventListener('click',function(){i=0;ans=[];fired=false;show(true,false,false);});}
+document.getElementById('q-reset').addEventListener('click',function(){i=0;ans=[];fired=false;show(true,false,false);});
+
+// --- CTA "Análise profissional" (item 6 da Fase 0): mini-formulário que
+// aparece junto do resultado, sem obrigar a pessoa a sair para o WhatsApp
+// se preferir deixar contato e ser procurada.
+var apForm=document.getElementById('ap-form'),apSend=document.getElementById('ap-send');
+if(apForm&&apSend){
+var apSending=false;
+apSend.addEventListener('click',function(){
+if(apSending)return; // trava contra duplo clique / envio duplicado
+var g=function(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';};
+var nome=g('ap-nome'),wpp=g('ap-wpp'),mail=g('ap-email');
+var note=document.getElementById('ap-note');
+if(!nome||!wpp){note.textContent='Precisamos do seu nome e do WhatsApp para a análise.';note.style.color='#E08A72';return;}
+if(mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){note.textContent='Esse e-mail não parece válido — confira ou deixe em branco.';note.style.color='#E08A72';return;}
+if(!ultimoResultado){note.textContent='Refaça o diagnóstico antes de pedir a análise.';note.style.color='#E08A72';return;}
+apSending=true;apSend.disabled=true;apSend.textContent='Enviando...';note.textContent='';note.style.color='';
+track('solicitou_analise_profissional',{indice:ultimoResultado.indice});
+if(!CMok){note.textContent='Serviço de captura ainda não configurado neste site (ver backend/SETUP.md). Fale direto pelo WhatsApp acima.';apSending=false;apSend.disabled=false;apSend.textContent='Solicitar análise';return;}
+window.CM.enviarLead({
+origem:'diagnostico_home_analise_profissional',
+nome:nome,whatsapp:wpp,email:mail,
+indice_diagnostico:ultimoResultado.indice,
+dimensoes_diagnostico:ultimoResultado.dimensoes,
+servico_interesse:'Diagnóstico Financeiro Inteligente do Agro'
+}).then(function(res){
+apSending=false;
+if(res&&res.ok){
+window.CM.enviarEventoDeScore(res.id_lead,'solicitou_diagnostico_profissional');
+document.getElementById('ap-ok-name').textContent=nome.split(' ')[0];
+apForm.classList.add('hide');document.getElementById('ap-ok').classList.remove('hide');
+}else{
+apSend.disabled=false;apSend.textContent='Solicitar análise';
+note.textContent='Não conseguimos registrar agora. Você pode falar direto pelo WhatsApp acima enquanto resolvemos.';note.style.color='#E08A72';
+}
+});
+});
+}
+}
 
 // --- formulário AgroAudit
 var f=document.getElementById('aa-form');
-if(f){var tipo='';
+if(f){var tipo='';var aaSending=false;
 f.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
 f.querySelectorAll('.chip').forEach(function(x){x.setAttribute('aria-selected','false');x.setAttribute('aria-pressed','false');});
 c.setAttribute('aria-pressed','true');tipo=c.textContent.trim();});});
 document.getElementById('aa-send').addEventListener('click',function(){
-var g=function(id){return (document.getElementById(id).value||'').trim();};
-var nome=g('aa-nome'),emp=g('aa-empresa'),wpp=g('aa-wpp'),mail=g('aa-email');
+if(aaSending)return; // trava contra duplo clique / envio duplicado
+var g=function(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';};
+var nome=g('aa-nome'),emp=g('aa-empresa'),wpp=g('aa-wpp'),mail=g('aa-email'),estado=g('aa-estado'),porte=g('aa-porte');
 var note=document.getElementById('aa-note');
 if(!nome||!wpp){note.textContent='Precisamos ao menos do seu nome e do WhatsApp para te avisar.';note.style.color='#E08A72';return;}
-track('lista_agroaudit_enviada',{tipo_operacao:tipo||'nao_informado'});
-enviarLead({origem:'agroaudit_lista',_subject:'AgroAudit — novo cadastro: '+nome,
-nome:nome,empresa:emp,whatsapp:wpp,email:mail,tipo_operacao:tipo||'a definir',
-enviado_em:new Date().toISOString()});
+if(mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)){note.textContent='Esse e-mail não parece válido — confira ou deixe em branco.';note.style.color='#E08A72';return;}
+var btn=document.getElementById('aa-send');
+aaSending=true;btn.disabled=true;var textoOriginal=btn.textContent;btn.textContent='Enviando...';
+note.textContent='';note.style.color='';
+
+function mostrarConfirmacao(){
 document.getElementById('aa-ok-name').textContent=nome.split(' ')[0];
 document.getElementById('aa-ok-wa').href=W+encodeURIComponent('Olá! Quero entrar na lista dos primeiros testes do AgroAudit.\n\nNome: '+nome+'\nEmpresa: '+emp+'\nWhatsApp: '+wpp+'\nE-mail: '+mail+'\nTipo de operação que gostaria de auditar: '+(tipo||'a definir'));
-f.classList.add('hide');document.getElementById('aa-ok').classList.remove('hide');});}
+f.classList.add('hide');document.getElementById('aa-ok').classList.remove('hide');
+}
+
+if(!CMok){
+// lead.js não carregou — não finge sucesso, mas preserva o caminho de
+// confirmação por WhatsApp que já existia (rede de segurança original).
+aaSending=false;btn.disabled=false;btn.textContent=textoOriginal;
+mostrarConfirmacao();
+return;
+}
+
+window.CM.enviarLead({
+origem:'agroaudit_lista',
+nome:nome,empresa:emp,whatsapp:wpp,email:mail,
+estado:estado,porte_faturamento:porte,
+servico_interesse:tipo||'a definir'
+}).then(function(res){
+aaSending=false;btn.disabled=false;btn.textContent=textoOriginal;
+if(res&&res.id_lead){window.CM.enviarEventoDeScore(res.id_lead,'solicitou_contato');}
+// Mostra a confirmação (com o caminho de WhatsApp) mesmo se o backend
+// falhar — é a rede de segurança original: o lead ainda pode se
+// confirmar manualmente, e o console já registrou o problema.
+mostrarConfirmacao();
+});
+});}
 // --- cabeçalho recolhe ao descer no celular
 (function(){var h=document.querySelector('header.site');if(!h)return;var ult=0;
 window.addEventListener('scroll',function(){
