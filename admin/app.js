@@ -8,7 +8,16 @@
   var LEAD_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzIkLH8ud4fmEOHu3gCzcaX5rm3muIusoYXpncnBVzzvWX9sc-PHjzqWkpnJUDWUPVF1A/exec';
 
   var LS_KEY = 'cm_admin_key_v1';
-  var STATUS_OPCOES = ['NOVO', 'CONTATADO', 'QUALIFICADO', 'REUNIAO', 'PROPOSTA', 'NEGOCIACAO', 'GANHO', 'PERDIDO'];
+  // FASE 1 (26/08/2026): REUNIAO virou dois estagios — precisa bater exatamente
+  // com STATUS_VALIDOS do Code.gs (backend), senao o update_status é recusado.
+  var STATUS_OPCOES = ['NOVO', 'CONTATADO', 'QUALIFICADO', 'DIAGNOSTICO_AGENDADO', 'DIAGNOSTICO_REALIZADO', 'PROPOSTA', 'NEGOCIACAO', 'GANHO', 'PERDIDO'];
+  // 'REUNIAO' não existe mais no backend (STATUS_VALIDOS), mas leads antigos
+  // ainda têm essa palavra salva na planilha. Sem isto, o <select> não acha
+  // a opção e cai silenciosamente em "NOVO" — mostrando um status errado no
+  // painel. Mantemos ela só para exibir corretamente o dado antigo; ao
+  // escolher qualquer opção da lista nova, o lead avança e não volta a
+  // aparecer como REUNIAO.
+  var STATUS_LEGADO = 'REUNIAO';
 
   var gate = document.getElementById('gate');
   var panel = document.getElementById('panel');
@@ -126,17 +135,41 @@
       var badge = '<span class="tagpill badge-' + (l.classificacao || 'FRIO') + '">' + (l.classificacao || '') + ' · ' + (l.pontuacao || 0) + '</span>';
 
       var select = document.createElement('select');
-      STATUS_OPCOES.forEach(function (s) {
+      var opcoesParaEsteLead = STATUS_OPCOES;
+      if (l.status_crm === STATUS_LEGADO) {
+        // lead antigo ainda em REUNIAO: mostra o valor real dele + as opções
+        // novas, para não mentir sobre o status e ainda permitir avançar.
+        opcoesParaEsteLead = [STATUS_LEGADO].concat(STATUS_OPCOES);
+      }
+      opcoesParaEsteLead.forEach(function (s) {
         var opt = document.createElement('option');
-        opt.value = s; opt.textContent = s;
+        opt.value = s; opt.textContent = s === STATUS_LEGADO ? s + ' (antigo)' : s;
         if (s === l.status_crm) opt.selected = true;
         select.appendChild(opt);
       });
+
+      // FASE 1: observação e valor ficam junto do status, e são lidos no
+      // momento em que o status muda — não exigem um botão "salvar" à parte,
+      // mantendo o mesmo padrão de uso que já existia (trocar o status já salva).
+      var obsInput = document.createElement('input');
+      obsInput.type = 'text';
+      obsInput.placeholder = 'observação (opcional)';
+      obsInput.style.cssText = 'width:100%;font-size:12px;padding:4px';
+
+      var valorInput = document.createElement('input');
+      valorInput.type = 'text';
+      valorInput.placeholder = 'valor R$ (opcional)';
+      valorInput.style.cssText = 'width:100%;font-size:12px;padding:4px';
+      if (l.valor_negocio) valorInput.value = l.valor_negocio;
+
       select.addEventListener('change', function () {
         var novo = select.value;
         var msg = document.getElementById('crm-msg');
         msg.textContent = 'Salvando...';
-        apiPost({ action: 'update_status', id_lead: l.id_lead, novo_status: novo, alterado_por: 'painel' }).then(function (res) {
+        apiPost({
+          action: 'update_status', id_lead: l.id_lead, novo_status: novo, alterado_por: 'painel',
+          observacao: obsInput.value || '', valor: valorInput.value || ''
+        }).then(function (res) {
           if (res && res.ok) {
             msg.textContent = 'Status de ' + (l.nome || l.id_lead) + ' atualizado para ' + novo + '.';
           } else {
@@ -149,9 +182,15 @@
       var tdStatus = document.createElement('td');
       tdStatus.appendChild(select);
       tr.appendChild(tdStatus);
+      var tdObs = document.createElement('td');
+      tdObs.appendChild(obsInput);
+      tr.appendChild(tdObs);
+      var tdValor = document.createElement('td');
+      tdValor.appendChild(valorInput);
+      tr.appendChild(tdValor);
       tbody.appendChild(tr);
     });
-    if (!leads.length) tbody.innerHTML = '<tr><td colspan="7" style="color:var(--mut)">Nenhum lead ainda.</td></tr>';
+    if (!leads.length) tbody.innerHTML = '<tr><td colspan="9" style="color:var(--mut)">Nenhum lead ainda.</td></tr>';
   }
 
   // reabre direto se já tiver chave salva
