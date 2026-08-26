@@ -1,102 +1,70 @@
 {
-  "atualizado_em": "2026-08-08 (2ª leitura)",
-  "fonte": "GA4 (propriedade 546920453) e Instagram (@controllerdoagro) via Windsor.ai",
-  "aviso": "Campos com null significam 'não medido ainda' — nunca zero presumido, nunca estimativa.",
+  "atualizado_em": "26/08/2026",
+  "fonte": "GA4 (propriedade 546920453) e Instagram (@controllerdoagro) via Windsor.ai — puxado ao vivo, não é snapshot manual",
+  "aviso": "Campos com null significam 'não medido ainda' — nunca zero presumido, nunca estimativa. Vendas e receita não têm conector de pagamento ligado nesta atualização — seguem como confirmado por você (Kiwify/extrato Pix), não como medido automaticamente.",
   "negocio": {
-    "periodo_referencia": "07/08/2026 (primeiro dia com GA4 ativo)",
-    "visitantes": 5,
-    "sessoes": 9,
-    "paginas_vistas": 23,
+    "periodo_referencia": "07/08 a 26/08/2026 (20 dias com GA4 ativo)",
+    "visitantes": 15,
+    "sessoes": 74,
+    "sessoes_engajadas": 41,
+    "paginas_vistas": 223,
     "leads": null,
     "vendas": 0,
     "receita": 0,
     "receita_acumulada": 0,
     "taxa_conversao": null,
     "ticket_medio": null,
-    "observacao_leads": "Leads chegam por WhatsApp e ainda não são contados. Contagem manual até existir volume.",
-    "observacao_vendas": "Zero vendas confirmadas. Nenhum numero de venda aparece aqui sem confirmacao real da Kiwify ou do extrato Pix. Ate 08/08 o produto de R$ 29 ainda nao existe na Kiwify."
+    "observacao_leads": "A contagem de leads migrou para o CRM (/admin/), que já registra por status e por origem — não repito o número aqui para não ter duas fontes divergentes. Veja o painel do CRM para o total oficial.",
+    "observacao_vendas": "Zero vendas confirmadas nesta atualização. Não há conector de pagamento (Kiwify/Pix) ligado ao Windsor.ai — este número reflete a última confirmação manual, não uma nova verificação automática."
   },
   "aquisicao": [
-    {
-      "canal": "Organic Social (Instagram)",
-      "sessoes": 5,
-      "usuarios": 2
-    },
-    {
-      "canal": "Unassigned",
-      "sessoes": 3,
-      "usuarios": 2
-    },
-    {
-      "canal": "Direct",
-      "sessoes": 1,
-      "usuarios": 1
-    },
-    {
-      "canal": "Google (orgânico)",
-      "sessoes": 0,
-      "usuarios": 0
-    },
-    {
-      "canal": "TikTok",
-      "sessoes": 0,
-      "usuarios": 0
-    },
-    {
-      "canal": "Facebook",
-      "sessoes": 0,
-      "usuarios": 0
-    }
+    { "canal": "Organic Social (Instagram)", "sessoes": 36, "usuarios": 10 },
+    { "canal": "Organic Search (Google)", "sessoes": 33, "usuarios": 1 },
+    { "canal": "Direct", "sessoes": 3, "usuarios": 3 },
+    { "canal": "Unassigned", "sessoes": 3, "usuarios": 2 },
+    { "canal": "Paid Search", "sessoes": 1, "usuarios": 1 }
+  ],
+  "aquisicao_observacao": "ATENÇÃO — achado que precisa da sua validação: o GA4 registrou 1 sessão classificada como 'Paid Search' no período, mas não existe conta Google Ads ativa (confirmado em NEGOCIO/RELATORIO-05, linha de base). Pode ser um clique com parâmetro de campanha (utm/gclid) em algum link testado manualmente, ou uma classificação automática do GA4 sem anúncio real por trás. Não é uma campanha paga rodando — é 1 sessão isolada, sinalizada aqui para você não estranhar depois.",
+  "funil_eventos": [
+    { "evento": "page_view", "contagem": 223, "observacao": null },
+    { "evento": "session_start", "contagem": 73, "observacao": null },
+    { "evento": "first_visit", "contagem": 15, "observacao": null },
+    { "evento": "scroll", "contagem": 63, "observacao": null },
+    { "evento": "clique_agroaudit", "contagem": 1, "observacao": null },
+    { "evento": "clique_boletim", "contagem": 1, "observacao": null },
+    { "evento": "lead_enviado", "contagem": 2, "observacao": "As 2 conversões reais do período — o número que mais importa aqui." },
+    { "evento": "whatsapp_clique", "contagem": 0, "observacao": "DADOS INSUFICIENTES PARA CONCLUSÃO — zero ocorrências em 20 dias. Com tráfego baixo (74 sessões) pode ser só falta de volume, não é necessariamente um bug de tracking. Recomendo um teste manual: clicar no botão de WhatsApp do site uma vez e conferir se o evento aparece em tempo real no GA4." },
+    { "evento": "diagnostico_inicio", "contagem": 0, "observacao": "DADOS INSUFICIENTES PARA CONCLUSÃO — mesma recomendação: testar manualmente o diagnóstico e conferir o evento em tempo real no GA4 antes de assumir que é falha de tracking." },
+    { "evento": "diagnostico_concluido", "contagem": 0, "observacao": "DADOS INSUFICIENTES PARA CONCLUSÃO — mesmo caso do item acima." },
+    { "evento": "ferramenta_concluida", "contagem": 0, "observacao": "Este é o evento que NEGOCIO/ACAO-NECESSARIA-DO-PROPRIETARIO.md (item 'Como saber se funcionou') definiu como o mais valioso do negócio. Continua em 0 — ainda não há amostra para saber se a ferramenta 'Já está obrigado ao IBS/CBS?' está prendendo quem chega até ela." }
   ],
   "produto": {
     "pagina_mais_acessada": {
-      "pagina": "/boletim/",
-      "visualizacoes": 8
+      "pagina": "/ (Home)",
+      "visualizacoes": 84,
+      "observacao": "GA4 conta '/consultoria-mendonca/' e '/consultoria-mendonca/index.html' como caminhos diferentes (84 + 30 views) — é a mesma página, só duas formas de chegar nela. Somadas, 114 visualizações."
     },
-    "ferramenta_mais_usada": null,
+    "ferramenta_mais_usada": "AgroAudit (/agroaudit/) — 4 visualizações de página, 1 clique registrado. Amostra baixa, não dá para eleger 'a mais usada' com confiança ainda.",
     "oferta_mais_vendida": null,
     "taxa_abandono": null,
-    "observacao": "Ferramentas ainda com 0 visitas. /obrigado-ibs-cbs/ e /dinheiro/ foram publicadas em 08/08 e ainda nao tem historico. Alcance no Instagram continua em 1 e cliques no link em 0."
+    "observacao": "Boletim segue como o conteúdo mais visitado depois da Home (36 + 21 = 57 views somando as duas URLs). /obrigado-ibs-cbs/ (a ferramenta principal da Fase 1) teve só 3 visualizações no período — é o gargalo real: pouca gente ainda chega nela."
   },
   "instagram": {
-    "seguidores": 611,
-    "posts_publicados": 5,
-    "dias_sem_publicar": 3,
-    "alcance_ultimo_dia": 1,
-    "cliques_no_link_30d": 0,
-    "salvamentos_30d": 0,
-    "compartilhamentos_30d": 0
+    "seguidores": 477,
+    "seguidores_observacao": "ATENÇÃO — precisa da sua validação: a última leitura (08/08) registrou 611 seguidores; agora, 18 dias depois, o Windsor.ai retorna 477 — uma queda de 134. Não vou presumir a causa (pode ser diferença de definição entre a leitura antiga e esta, conta trocada, ou perda real de seguidores) — confira direto no app do Instagram antes de tratar este número como fato.",
+    "posts_publicados": null,
+    "dias_sem_publicar": null,
+    "alcance_ultimo_dia": null,
+    "cliques_no_link_30d": null,
+    "salvamentos_30d": null,
+    "compartilhamentos_30d": null,
+    "observacao_geral": "Os campos de atividade (posts, alcance, salvamentos) não vieram nesta consulta — o conector do Instagram no Windsor.ai priorizou os dados de perfil (seguidores, contagem de mídia). Marcados como não medidos aqui em vez de repetir o número antigo de 08/08, que já estaria desatualizado."
   },
   "metas": [
-    {
-      "marco": "Primeira venda",
-      "alvo": 1,
-      "atual": 0,
-      "unidade": "venda"
-    },
-    {
-      "marco": "R$ 100",
-      "alvo": 100,
-      "atual": 0,
-      "unidade": "reais"
-    },
-    {
-      "marco": "R$ 1.000",
-      "alvo": 1000,
-      "atual": 0,
-      "unidade": "reais"
-    },
-    {
-      "marco": "R$ 10.000",
-      "alvo": 10000,
-      "atual": 0,
-      "unidade": "reais"
-    },
-    {
-      "marco": "R$ 100.000",
-      "alvo": 100000,
-      "atual": 0,
-      "unidade": "reais"
-    }
+    { "marco": "Primeira venda", "alvo": 1, "atual": 0, "unidade": "venda" },
+    { "marco": "R$ 100", "alvo": 100, "atual": 0, "unidade": "reais" },
+    { "marco": "R$ 1.000", "alvo": 1000, "atual": 0, "unidade": "reais" },
+    { "marco": "R$ 10.000", "alvo": 10000, "atual": 0, "unidade": "reais" },
+    { "marco": "R$ 100.000", "alvo": 100000, "atual": 0, "unidade": "reais" }
   ]
 }
