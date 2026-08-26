@@ -12,6 +12,24 @@ WhatsApp, orçamento, métricas e plano de execução de 30 dias.
 > problema na Home, ele está isolado na seção **"Oportunidades futuras"**, no fim — não foi
 > corrigido.
 
+   > **ERRATA (26/08/2026 — antes de configurar qualquer campanha real, ler isto):**
+   > 1. **Prefixo de URL.** Todo caminho citado neste documento (`/solucoes/#gestao`,
+   >    `/obrigado-ibs-cbs/`, `/blog/`, etc.) é relativo à raiz do site. Como o site vive num
+   >    subdiretório do GitHub Pages, a URL final real de cada um começa com
+   >    `/consultoria-mendonca/` — ex.: `/solucoes/#gestao` deste relatório é, na prática,
+   >    `https://aluiz520-create.github.io/consultoria-mendonca/solucoes/#gestao`. Sem esse
+   >    prefixo, toda "Página de Destino" configurada no Google Ads resulta em erro 404. Esta
+   >    correção NÃO foi propagada linha a linha pelo documento (seria uma reescrita grande e de
+   >    baixo valor para um plano ainda não executado) — quem for montar a campanha real na Seção
+   >    16 monta a URL final sempre com esse prefixo.
+   > 2. **Nome do evento de conversão.** O documento originalmente citava o evento GA4
+   >    `clique_whatsapp`. O evento que o site realmente dispara é **`whatsapp_clique`** (o
+   >    `app-v2.js` traduz o nome interno pela tabela `EVENT_ALIAS` antes de mandar pro GA4).
+   >    Importar `clique_whatsapp` como conversão no Google Ads não encontraria o evento — os três
+   >    pontos que citavam o nome errado já foram corrigidos abaixo (Seções 15 e 16).
+   >
+   > Status: **CONFIRMADO** (validado direto no código de `assets/lead.js` e `app-v2.js` em
+   > 26/08/2026, antes de qualquer campanha real ser configurada).
 ## Base usada (e por que isso importa)
 
 Antes de escrever uma linha de anúncio, li o que já existe no repositório: o código real do
@@ -66,7 +84,7 @@ agora):
   Página de Destino de um anúncio pago com esse domínio comunica menos autoridade do que um
   `.com.br` para quem está decidindo contratar um projeto de R$20 mil.
 - O funil pago não tem para onde crescer sem *tracking*: hoje o site mede eventos no GA4
-  (`clique_whatsapp`, `clique_diagnostico`, `ferramenta_concluida` etc. via `data-ev`), mas
+  (`whatsapp_clique`, `clique_diagnostico`, `ferramenta_concluida` etc. via `data-ev`), mas
   esses eventos não estão importados como conversão no Google Ads.
 
 **Conclusão prática:** antes de gastar o primeiro real em mídia, a Seção 16 (checklist) lista o
@@ -800,8 +818,10 @@ que já rege o `painel/dados.json` deste projeto.
 
 1. Criar conta Google Ads (Modo Especialista, não Campanha Inteligente).
 2. Vincular a conta Google Ads ao GA4 (propriedade 546920453) e importar como conversão os
-   eventos `clique_whatsapp`, `ferramenta_concluida` e `diagnostico_concluido` — já existem, só
-   precisam ser importados.
+   eventos `whatsapp_clique`, `ferramenta_concluida` e `diagnostico_concluido` — já existem, só
+   precisam ser importados. **Atenção ao nome exato** — é `whatsapp_clique`, não
+   `clique_whatsapp` (ver Errata no início deste documento). Ao criar cada "Página de Destino"
+   nesta etapa, usar sempre a URL completa com o prefixo `/consultoria-mendonca/` (ver Errata).
 3. Configurar o Google Business Profile completo (Seção 7): descrição, categorias, serviços,
    Q&A, horário, área de atendimento.
 4. Conectar o Google Search Console (ação pendente há dias — `NEGOCIO/ACAO-NECESSARIA-DO-PROPRIETARIO.md`,
