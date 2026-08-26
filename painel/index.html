@@ -110,6 +110,7 @@
     html += '<div class="painel-grade">';
     html += item(n.visitantes, "Visitantes");
     html += item(n.sessoes, "Sessões");
+    if (n.sessoes_engajadas !== undefined) html += item(n.sessoes_engajadas, "Sessões engajadas");
     html += item(n.paginas_vistas, "Páginas vistas");
     html += item(n.leads, "Leads");
     html += item(n.vendas, "Vendas");
@@ -127,14 +128,32 @@
     d.aquisicao.forEach(function (c) {
       html += "<tr><td>" + escapar(c.canal) + "</td><td>" + c.sessoes + "</td><td>" + c.usuarios + "</td></tr>";
     });
-    html += "</tbody></table></div>";
+    html += "</tbody></table>";
+    if (d.aquisicao_observacao) {
+      html += '<div class="painel-nota">' + escapar(d.aquisicao_observacao) + "</div>";
+    }
+    html += "</div>";
+
+    // ---- FUNIL DE EVENTOS (conversão) ----
+    if (d.funil_eventos && d.funil_eventos.length) {
+      html += '<div class="painel-bloco"><h2>Funil — eventos de conversão (GA4)</h2>';
+      html += '<table class="painel-tabela"><thead><tr><th>Evento</th><th>Contagem</th><th>Observação</th></tr></thead><tbody>';
+      d.funil_eventos.forEach(function (ev) {
+        var contClasse = ev.contagem === 0 ? ' style="color:#b3402c;font-weight:700"' : "";
+        html += "<tr><td>" + escapar(ev.evento) + "</td><td" + contClasse + ">" + ev.contagem + "</td><td>" +
+                (ev.observacao ? escapar(ev.observacao) : "") + "</td></tr>";
+      });
+      html += "</tbody></table></div>";
+    }
 
     // ---- PRODUTO ----
     var p = d.produto;
     html += '<div class="painel-bloco"><h2>Produto</h2>';
     html += '<table class="painel-tabela"><tbody>';
     html += "<tr><td><strong>Página mais acessada</strong></td><td>" +
-            escapar(p.pagina_mais_acessada.pagina) + " — " + p.pagina_mais_acessada.visualizacoes + " visualizações</td></tr>";
+            escapar(p.pagina_mais_acessada.pagina) + " — " + p.pagina_mais_acessada.visualizacoes + " visualizações" +
+            (p.pagina_mais_acessada.observacao ? "<br><span style='font-size:.82rem;color:var(--muted)'>" + escapar(p.pagina_mais_acessada.observacao) + "</span>" : "") +
+            "</td></tr>";
     html += "<tr><td><strong>Ferramenta mais usada</strong></td><td>" +
             (p.ferramenta_mais_usada ? escapar(p.ferramenta_mais_usada) : "— sem dados") + "</td></tr>";
     html += "<tr><td><strong>Oferta mais vendida</strong></td><td>" +
@@ -154,7 +173,14 @@
     html += item(i.cliques_no_link_30d, "Cliques no link (30d)");
     html += item(i.salvamentos_30d, "Salvamentos (30d)");
     html += item(i.compartilhamentos_30d, "Compartilhamentos (30d)");
-    html += "</div></div>";
+    html += "</div>";
+    if (i.seguidores_observacao) {
+      html += '<div class="painel-nota">' + escapar(i.seguidores_observacao) + "</div>";
+    }
+    if (i.observacao_geral) {
+      html += '<div class="painel-nota">' + escapar(i.observacao_geral) + "</div>";
+    }
+    html += "</div>";
 
     // ---- METAS ----
     html += '<div class="painel-bloco"><h2>Metas</h2>';
