@@ -399,6 +399,10 @@
       atividade: respostas.atividade,
       uf: respostas.uf
     });
+    if (window.CM && window.CM.idLeadAtual && window.CM.enviarEventoDeScore) {
+      var idLead = window.CM.idLeadAtual("ferramenta_ibs_cbs");
+      window.CM.enviarEventoDeScore(idLead, "ferramenta_concluida");
+    }
   }
 
   elOptions.addEventListener("click", function (e) {
@@ -430,10 +434,14 @@
 
   document.getElementById("quizOfertaBtn").addEventListener("click", function () {
     ga("clique_oferta_guia", { perfil: perfilAtual, preco: 29 });
+    if (window.CM && window.CM.idLeadAtual && window.CM.enviarEventoDeScore) {
+      var idLead = window.CM.idLeadAtual("ferramenta_ibs_cbs");
+      window.CM.enviarEventoDeScore(idLead, "clicou_oferta_guia");
+    }
   });
 
   document.getElementById("quizWhatsappBtn").addEventListener("click", function () {
-    ga("clique_whatsapp", { perfil: perfilAtual, origem: "ferramenta_ibs_cbs" });
+    ga("whatsapp_clique", { perfil: perfilAtual, origem: "ferramenta_ibs_cbs" });
   });
 
   document.getElementById("quizCopiarBtn").addEventListener("click", function () {
