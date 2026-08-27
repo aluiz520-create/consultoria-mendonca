@@ -1011,6 +1011,48 @@ p { margin: 0 0 12px; color: var(--muted); }
   line-height: 1.5;
   color: var(--muted);
 }
+/* FASE 1C (27/08/2026) — captura de lead em /obrigado-ibs-cbs/ */
+.tool-captura {
+  margin: 28px auto 0;
+  padding: 24px;
+  max-width: 460px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  text-align: left;
+}
+.tool-captura h3 { font-size: 1.1rem; margin: 0 0 6px; color: var(--green-900); }
+.tool-captura-sub { font-size: .9rem; color: var(--muted); margin: 0 0 16px; }
+.tool-captura-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.tool-captura-field label { font-size: .84rem; font-weight: 600; color: var(--green-900); }
+.tool-captura-opcional { font-weight: 400; color: var(--muted); }
+.tool-captura-field input {
+  padding: 11px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: .95rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--cream);
+}
+.tool-captura-field input:focus { outline: none; border-color: var(--green-600); }
+.tool-captura #quizCapturaBtn { width: 100%; }
+.tool-captura-erro {
+  font-size: .86rem;
+  color: #b3261e;
+  margin: -4px 0 14px;
+}
+.tool-captura-ok {
+  text-align: center;
+  background: var(--cream);
+}
+.tool-captura-ok-icone {
+  font-size: 1.6rem;
+  color: var(--green-600);
+  margin: 0 0 6px;
+}
+.tool-captura-ok p { margin: 0 0 6px; color: var(--ink); }
+.tool-captura-ok p:last-child { margin-bottom: 0; }
 .tool-explica {
   margin-top: 56px;
 }
