@@ -165,6 +165,10 @@
         metodo: viaKiwify ? "kiwify" : "whatsapp_pix"
       });
     }
+    if (window.CM && window.CM.idLeadAtual && window.CM.enviarEventoDeScore) {
+      var idLead = window.CM.idLeadAtual("guia_anti_rejeicao");
+      window.CM.enviarEventoDeScore(idLead, "inicio_checkout");
+    }
   });
 })();
 </script>
