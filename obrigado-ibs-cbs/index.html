@@ -128,6 +128,32 @@
         <button type="button" class="btn btn-outline" id="quizRestartBtn">Refazer o teste</button>
       </div>
 
+      <div class="tool-captura" id="quizCaptura">
+        <h3>Quer que a gente acompanhe o seu caso?</h3>
+        <p class="tool-captura-sub">Se quiser, deixe seus dados e nossa equipe pode entrar em contato para entender melhor a sua situação.</p>
+        <form id="quizCapturaForm" novalidate>
+          <div class="tool-captura-field">
+            <label for="quizCapturaNome">Nome</label>
+            <input type="text" id="quizCapturaNome" name="nome" autocomplete="name" required>
+          </div>
+          <div class="tool-captura-field">
+            <label for="quizCapturaWhatsapp">WhatsApp</label>
+            <input type="tel" id="quizCapturaWhatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(64) 90000-0000" required>
+          </div>
+          <div class="tool-captura-field">
+            <label for="quizCapturaEmail">E-mail <span class="tool-captura-opcional">(opcional)</span></label>
+            <input type="email" id="quizCapturaEmail" name="email" autocomplete="email">
+          </div>
+          <p class="tool-captura-erro" id="quizCapturaErro" hidden></p>
+          <button type="submit" class="btn btn-primary" id="quizCapturaBtn">Quero acompanhamento</button>
+        </form>
+      </div>
+
+      <div class="tool-captura tool-captura-ok" id="quizCapturaOk" hidden>
+        <p class="tool-captura-ok-icone">&#10003;</p>
+        <p><strong>Recebemos os seus dados.</strong> A nossa equipe pode entrar em contato para entender melhor a sua situação.</p>
+      </div>
+
       <p class="tool-aviso">Conteúdo educativo, baseado na legislação vigente na data desta página.
       Não substitui a análise da sua operação específica nem o trabalho do seu contador responsável.
       O enquadramento correto depende de fatos que só a sua escrituração mostra.</p>
@@ -309,6 +335,11 @@
   var elOferta = document.getElementById("quizOferta");
   var iniciouEnviado = false;
 
+  // FASE 1C (27/08/2026) — captura de lead + reconciliação de eventos de score
+  // disparados antes de existir um lead identificado nesta sessão.
+  var scoreEventosEnviados = { ferramenta_concluida: false, clicou_oferta_guia: false };
+  var reconciliadoAposLead = false;
+
   function ga(evento, params) {
     if (typeof gtag === "function") gtag("event", evento, params || {});
   }
@@ -402,6 +433,7 @@
     if (window.CM && window.CM.idLeadAtual && window.CM.enviarEventoDeScore) {
       var idLead = window.CM.idLeadAtual("ferramenta_ibs_cbs");
       window.CM.enviarEventoDeScore(idLead, "ferramenta_concluida");
+      scoreEventosEnviados.ferramenta_concluida = true;
     }
   }
 
@@ -437,6 +469,7 @@
     if (window.CM && window.CM.idLeadAtual && window.CM.enviarEventoDeScore) {
       var idLead = window.CM.idLeadAtual("ferramenta_ibs_cbs");
       window.CM.enviarEventoDeScore(idLead, "clicou_oferta_guia");
+      scoreEventosEnviados.clicou_oferta_guia = true;
     }
   });
 
@@ -473,6 +506,105 @@
     elCard.hidden = false;
     render();
   });
+
+  // FASE 1C (27/08/2026) — captura voluntária de lead após o resultado.
+  var quizCapturaForm = document.getElementById("quizCapturaForm");
+  if (quizCapturaForm) {
+    var elCapturaBloco = document.getElementById("quizCaptura");
+    var elCapturaOk = document.getElementById("quizCapturaOk");
+    var elCapturaNome = document.getElementById("quizCapturaNome");
+    var elCapturaWpp = document.getElementById("quizCapturaWhatsapp");
+    var elCapturaEmail = document.getElementById("quizCapturaEmail");
+    var elCapturaErro = document.getElementById("quizCapturaErro");
+    var elCapturaBtn = document.getElementById("quizCapturaBtn");
+    var capturaEnviando = false;
+
+    function capturaMostrarErro(msg) {
+      elCapturaErro.textContent = msg;
+      elCapturaErro.hidden = false;
+    }
+    function capturaLimparErro() {
+      elCapturaErro.hidden = true;
+      elCapturaErro.textContent = "";
+    }
+    function capturaWhatsappValido(v) {
+      var digitos = v.replace(/\D/g, "");
+      return digitos.length >= 10 && digitos.length <= 13;
+    }
+    function capturaEmailValido(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    quizCapturaForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (capturaEnviando) return;
+
+      var nome = elCapturaNome.value.trim();
+      var whatsapp = elCapturaWpp.value.trim();
+      var email = elCapturaEmail.value.trim();
+
+      capturaLimparErro();
+
+      if (!nome) {
+        capturaMostrarErro("Preencha o seu nome.");
+        elCapturaNome.focus();
+        return;
+      }
+      if (!whatsapp || !capturaWhatsappValido(whatsapp)) {
+        capturaMostrarErro("Informe um WhatsApp válido, com DDD.");
+        elCapturaWpp.focus();
+        return;
+      }
+      if (email && !capturaEmailValido(email)) {
+        capturaMostrarErro("Esse e-mail não parece válido. Deixe em branco se preferir.");
+        elCapturaEmail.focus();
+        return;
+      }
+      if (!window.CM || !window.CM.enviarLead) {
+        capturaMostrarErro("Não foi possível enviar agora. Tente novamente em instantes.");
+        return;
+      }
+
+      capturaEnviando = true;
+      elCapturaBtn.disabled = true;
+      elCapturaBtn.textContent = "Enviando...";
+
+      window.CM.enviarLead({
+        origem: "ferramenta_ibs_cbs",
+        nome: nome,
+        whatsapp: whatsapp,
+        email: email,
+        servico_interesse: "diagnostico_ibs_cbs:" + perfilAtual
+      }).then(function (res) {
+        capturaEnviando = false;
+
+        if (res && res.ok) {
+          elCapturaBloco.hidden = true;
+          elCapturaOk.hidden = false;
+          elCapturaOk.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+          if (!reconciliadoAposLead) {
+            reconciliadoAposLead = true;
+            var idLead = window.CM.idLeadAtual("ferramenta_ibs_cbs");
+            Object.keys(scoreEventosEnviados).forEach(function (evento) {
+              if (scoreEventosEnviados[evento]) {
+                window.CM.enviarEventoDeScore(idLead, evento);
+              }
+            });
+          }
+        } else {
+          elCapturaBtn.disabled = false;
+          elCapturaBtn.textContent = "Quero acompanhamento";
+          capturaMostrarErro("Não foi possível enviar agora. Os dados que você digitou não foram perdidos — tente de novo.");
+        }
+      }).catch(function () {
+        capturaEnviando = false;
+        elCapturaBtn.disabled = false;
+        elCapturaBtn.textContent = "Quero acompanhamento";
+        capturaMostrarErro("Não foi possível enviar agora. Os dados que você digitou não foram perdidos — tente de novo.");
+      });
+    });
+  }
 
   render();
 })();
