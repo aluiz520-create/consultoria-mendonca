@@ -105,6 +105,34 @@ Seções, nesta ordem:
 - Curto e escaneável. Máx. 3 emoji por bloco, como marcador.
 - Não prometer o que depende do cliente. Ver `marca/00-MEMORIA-DO-PROJETO.md` (tom e proibições).
 
+## Passo 3.5 — Autoconferência (obrigatório, antes de commitar)
+
+Quatro erros já foram ao ar pela mesma causa: **um rótulo técnico escrito sem conferir contra o
+número que a própria edição informa na linha ao lado.** Foram eles — "nota rejeitada desde 03/08",
+"prazo de 04/01/2027 para Simples/MEI", "alerta laranja com umidade de 26%" e "alerta amarelo de
+perigo". Nenhum foi erro de pesquisa: os dados estavam certos, o rótulo é que não batia.
+
+Antes de `git add`, releia o texto pronto e responda estas cinco perguntas. Se alguma falhar,
+corrija **antes** de publicar:
+
+1. **Cor do alerta × umidade.** A cor citada corresponde à faixa da umidade que eu mesmo escrevi?
+   O nome da classificação está certo para essa cor (amarelo = perigo potencial, laranja = perigo,
+   vermelho = grande perigo)? Se a cidade está fora da faixa da cor, eu disse isso explicitamente?
+2. **Prazo × norma vigente.** Toda data que apresento como prazo em vigor ainda está em vigor?
+   Confira contra o bloco "Estado conhecido do radar fiscal" acima — várias datas que circulam
+   foram revogadas e continuam sendo repetidas por aí.
+3. **Variação × valor anterior.** A seta e o percentual batem com o valor da edição de ontem?
+   Abra o arquivo de ontem e confirme. Se a base do cálculo não é o número que ontem publicou,
+   ou eu errei a conta ou estou contando duas vezes o mesmo movimento.
+4. **Desconto × tabela.** Cada desconto para o nacional é a subtração das duas colunas da linha?
+   Faça a conta, não estime.
+5. **Data de cada número.** Todo valor tem data declarada no rodapé, e a data bate com o que o
+   corpo do texto afirma? Um número de anteontem não pode ser apresentado como "de ontem".
+
+**Se um dado não puder ser confirmado, diga isso na edição** — no corpo, não só no rodapé. Publicar
+com a lacuna declarada é sempre melhor que preencher no palpite. Já saiu edição com chuva de 50 mm
+inventada; não repita.
+
 ## Passo 4 — Entrega
 
 **Padrão (sessão agendada diária): PUBLICAR NO SITE + notificar.** Faça as duas coisas:
