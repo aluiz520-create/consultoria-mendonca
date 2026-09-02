@@ -115,9 +115,13 @@ perigo". Nenhum foi erro de pesquisa: os dados estavam certos, o rótulo é que 
 Antes de `git add`, releia o texto pronto e responda estas cinco perguntas. Se alguma falhar,
 corrija **antes** de publicar:
 
-1. **Cor do alerta × umidade.** A cor citada corresponde à faixa da umidade que eu mesmo escrevi?
-   O nome da classificação está certo para essa cor (amarelo = perigo potencial, laranja = perigo,
-   vermelho = grande perigo)? Se a cidade está fora da faixa da cor, eu disse isso explicitamente?
+1. **Cor do alerta × umidade.** Três coisas, e cada uma já falhou em uma edição diferente:
+   (a) a cor citada corresponde à faixa da umidade que eu mesmo escrevi? (b) o nome da
+   classificação está certo para essa cor — amarelo = perigo potencial, laranja = perigo,
+   vermelho = grande perigo? (c) se eu escrevi a **ordem de gravidade**, ela está na direção
+   certa? A escala sobe amarelo → laranja → vermelho. Laranja é **acima** do amarelo e **abaixo**
+   do vermelho; já saiu edição com essa frase invertida. E se a cidade está fora da faixa da cor,
+   eu disse isso explicitamente?
 2. **Prazo × norma vigente.** Toda data que apresento como prazo em vigor ainda está em vigor?
    Confira contra o bloco "Estado conhecido do radar fiscal" acima — várias datas que circulam
    foram revogadas e continuam sendo repetidas por aí.
